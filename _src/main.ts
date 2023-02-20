@@ -1,6 +1,7 @@
 import { CauseException } from '@effect-app/infra/errors'
-
 import { runtimeDebug } from '@effect/io/Debug'
+
+import { createFastify } from './fastify.js'
 
 runtimeDebug.traceStackLimit = 50
 if (process.argv.includes('--debug')) {
@@ -9,6 +10,9 @@ if (process.argv.includes('--debug')) {
   runtimeDebug.traceStackLimit = 100
   // runtimeDebug.filterStackFrame = _ => true
 }
+
+const { fastify, start, stop } = createFastify({})
+start()
 
 const main = Effect.gen(function* ($) {
   const cfg = {}
