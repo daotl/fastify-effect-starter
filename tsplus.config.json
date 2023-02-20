@@ -1,7 +1,7 @@
 {
   "importMap": {
     "^(.*)/_src/(.*)\\.[cm]?[tj]s$": "@daotl/effet-starter/$2",
-    "^(.*)/node_modules/@daotl/nodejs-effect-starter/(.*)/_src/(.*)\\.[cm]?[tj]s$": "@daotl/nodejs-effect-starter/$2/$3",
+    "^(.*)/node_modules/@daotl/fastify-effect-starter/(.*)/_src/(.*)\\.[cm]?[tj]s$": "@daotl/fastify-effect-starter/$2/$3",
     "^(.*)/node_modules/(.*)\\.[cm]?[tj]s$": "$2"
   }
 }

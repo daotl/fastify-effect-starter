@@ -1,1 +1,1 @@
-import '@daotl/nodejs-effect-starter/_global'
+import '@daotl/fastify-effect-starter/_global'

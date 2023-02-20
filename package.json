@@ -1,5 +1,5 @@
 {
-  "name": "@daotl/nodejs-effect-starter",
+  "name": "@daotl/fastify-effect-starter",
   "version": "0.0.1",
   "description": "Node.js + Effect starter template for DAOT projects",
   "type": "module",

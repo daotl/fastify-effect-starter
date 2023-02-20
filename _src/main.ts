@@ -30,3 +30,4 @@ const reportAppError = <E>(cause: Cause<E>) => {
 }
 
 program.tapErrorCause(reportAppError).runMain()
+console.log('hi world')
