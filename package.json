@@ -39,15 +39,22 @@
     }
   },
   "dependencies": {
-    "@effect-app/infra": "^0.26.3",
-    "@effect-app/prelude": "^0.21.8",
     "@effect-app/core": "^0.24.1",
+    "@effect-app/infra": "^0.26.3",
     "@effect-app/infra-adapters": "^0.20.8",
+    "@effect-app/prelude": "^0.21.8",
     "@effect-app/schema": "^0.18.7",
-    "@effect/io": "^0.1.12",
-    "@fp-ts/core": "^0.2.1",
     "@effect/data": "^0.1.2",
-    "source-map-support": "^0.5.21"
+    "@effect/io": "^0.1.12",
+    "@fastify/websocket": "^7.1.2",
+    "@fp-ts/core": "^0.2.1",
+    "@trpc/client": "^10.12.0",
+    "@trpc/server": "^10.12.0",
+    "fastify": "^4.13.0",
+    "source-map-support": "^0.5.21",
+    "superjson": "^1.12.2",
+    "ws": "^8.12.1",
+    "zod": "^3.20.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
