@@ -17,7 +17,7 @@
     "paths": {
       "~/*": ["./_src/*"]
     },
-    "types": ["./types/modules", "node"],
+    // "types": ["./types/modules", "node"],
     "outDir": "./dist",
     "transformers": [
       // Transform paths in output .js files
