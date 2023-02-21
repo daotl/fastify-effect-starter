@@ -11,7 +11,7 @@ if (process.argv.includes('--debug')) {
   // runtimeDebug.filterStackFrame = _ => true
 }
 
-const { fastify, start, stop } = createFastify({})
+const { fastify: _1, start, stop: _2 } = await createFastify({})
 start()
 
 const main = Effect.gen(function* ($) {
@@ -34,4 +34,3 @@ const reportAppError = <E>(cause: Cause<E>) => {
 }
 
 program.tapErrorCause(reportAppError).runMain()
-console.log('hi world')
