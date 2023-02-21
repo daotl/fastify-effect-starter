@@ -1,3 +1,11 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "[javascript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[typescript]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rome.rome"
+  }
 }
