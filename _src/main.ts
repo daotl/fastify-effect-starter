@@ -2,11 +2,20 @@ import { CauseException } from '@effect-app/infra/errors'
 import wss from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUI from '@fastify/swagger-ui'
+
+import {
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod'
 
 import { runtimeDebug } from '@effect/io/Debug'
 
 import { createContext } from './trpc/context.js'
 import { trpcRouter } from './trpc/index.js'
+import { Effect } from '@effect/io/Effect'
 
 runtimeDebug.traceStackLimit = 50
 if (process.argv.includes('--debug')) {
@@ -44,10 +53,10 @@ export interface ServerOptions {
   prefix?: string
 }
 export function createServer(opts: ServerOptions) {
-  const dev = opts.dev ?? true
+  // const dev = opts.dev ?? true
   const port = opts.port ?? 3000
   const prefix = opts.prefix ?? '/trpc'
-  const server = Fa.fastify({ logger: dev })
+  const server = Fa.fastify({ logger: false })
 
   server.register(
     wss as unknown as Fa.FastifyPluginCallback<any, any, any, any>,
@@ -60,6 +69,30 @@ export function createServer(opts: ServerOptions) {
 
   server.get('/', async () => {
     return { hello: 'wait-on 💨' }
+  })
+
+  server.setValidatorCompiler(validatorCompiler)
+  server.setSerializerCompiler(serializerCompiler)
+
+  server.register(fastifySwagger, {
+    openapi: {
+      info: {
+        title: 'SampleApi',
+        description: 'Sample backend service',
+        version: '1.0.0',
+      },
+      servers: [],
+    },
+    transform: jsonSchemaTransform,
+    // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
+    //
+    // transform: createJsonSchemaTransform({
+    //   skipList: [ '/documentation/static/*' ]
+    // })
+  })
+
+  server.register(fastifySwaggerUI, {
+    routePrefix: '/documentation',
   })
 
   const stop = () => server.close()
