@@ -1,14 +1,16 @@
 import type * as Fa from 'fastify'
-import type { Fastify } from '~/fastify.js'
+import type { ZodTypeProvider } from 'fastify-type-provider-zod'
+
+import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
+import type * as http from '~/http/index.js'
 
 import { type AuthConfig } from './config.js'
 import { type Session, SessionCache, sessionIdCookieName } from './session.js'
-import type * as http from '~/http/index.js'
 
 const signOutUrl = '/'
 
 export const authRoutes =
-  (config: AuthConfig, sessionCache: SessionCache): Fa.FastifyPluginCallback =>
+  (config: AuthConfig, sessionCache: SessionCache): FastifyNestedRoutes =>
   async (fastify: Fastify, _, done) => {
     await fastify
       .route({

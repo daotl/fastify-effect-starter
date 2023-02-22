@@ -1,9 +1,17 @@
-import cookie from '@fastify/cookie'
-import middie from '@fastify/middie'
+import fastifyCookie from '@fastify/cookie'
+import fastifyMiddie from '@fastify/middie'
 import { fastifyRequestContext } from '@fastify/request-context'
-import wss from '@fastify/websocket'
+import fastifySwagger from '@fastify/swagger'
+import fastifySwaggerUI from '@fastify/swagger-ui'
+import fastifyWebSocket from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
+import {
+  type ZodTypeProvider,
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+} from 'fastify-type-provider-zod'
 import type { Spread } from 'type-fest'
 
 import {
@@ -12,20 +20,26 @@ import {
   authRoutes,
   newAuthHook,
   newSessionCache,
-} from './auth/index.js'
-import type { User } from './models/index.js'
+} from '~/auth/index.js'
 import type * as http from '~/http/index.js'
+import type { User } from '~/models/index.js'
 import { genCreateContext, trpcRouter } from '~/trpc/index.js'
 
-export interface ServerOptions {
+export type ServerOptions = {
   dev?: boolean
   port?: number
   prefix?: string
 }
 
-export interface FastifyContextConfig {
+export type FastifyContextConfig = {
   authLevel: AuthLevel
 }
+
+export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
+  {},
+  Fa.RawServerDefault,
+  ZodTypeProvider
+>
 
 export async function createFastify(opts: ServerOptions) {
   const dev = opts.dev ?? true
@@ -33,24 +47,48 @@ export async function createFastify(opts: ServerOptions) {
   const prefix = opts.prefix ?? '/api/trpc'
 
   const f1 = Fa.fastify({ logger: dev })
-    .register(middie)
-    .register(cookie)
+    .setValidatorCompiler(validatorCompiler)
+    .setSerializerCompiler(serializerCompiler)
+    .withTypeProvider<ZodTypeProvider>()
+    .register(fastifyMiddie)
+    .register(fastifyCookie)
     .register(fastifyRequestContext, {
       hook: 'onRequest',
       defaultStoreValues: () => ({ user: {} as unknown as User }),
     })
-    .register(wss as unknown as Fa.FastifyPluginCallback)
+    .register(fastifyWebSocket as unknown as Fa.FastifyPluginCallback)
+    .register(fastifySwagger, {
+      openapi: {
+        info: {
+          title: 'SampleApi',
+          description: 'Sample backend service',
+          version: '1.0.0',
+        },
+        servers: [],
+      },
+      transform: jsonSchemaTransform,
+      // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
+      //
+      // transform: createJsonSchemaTransform({
+      //   skipList: [ '/documentation/static/*' ]
+      // })
+    })
+    .register(fastifySwaggerUI, {
+      routePrefix: '/documentation',
+    })
     .register(fastifyTRPCPlugin, {
       prefix,
       useWSS: true,
       trpcOptions: {
         router: trpcRouter,
         createContext: genCreateContext(),
-        wss,
+        wss: fastifyWebSocket,
       },
     })
 
-  type Types = Parameters<typeof f1['route']>[0] extends Fa.RouteOptions<
+  type RouteOptionsTypes = Parameters<
+    typeof f1['route']
+  >[0] extends Fa.RouteOptions<
     infer RawServer,
     infer RawRequest,
     infer RawReply,
@@ -71,13 +109,13 @@ export async function createFastify(opts: ServerOptions) {
 
   const route = (
     opts: Fa.RouteOptions<
-      Types['RawServer'],
-      Types['RawRequest'],
-      Types['RawReply'],
-      Types['RouteGeneric'],
+      RouteOptionsTypes['RawServer'],
+      RouteOptionsTypes['RawRequest'],
+      RouteOptionsTypes['RawReply'],
+      RouteOptionsTypes['RouteGeneric'],
       FastifyContextConfig,
-      Types['SchemaCompiler'],
-      Types['TypeProvider']
+      RouteOptionsTypes['SchemaCompiler'],
+      RouteOptionsTypes['TypeProvider']
     >,
   ) => f1.route<Fa.RouteGenericInterface, FastifyContextConfig>(opts)
   type RouteFn = typeof route
@@ -106,11 +144,31 @@ export async function createFastify(opts: ServerOptions) {
 
   const stop = () => fastify.close()
 
-  type R = Exclude<typeof fastify, PromiseLike<undefined>>
+  type FastifyTypes = typeof f1 extends Fa.FastifyInstance<
+    infer RawServer,
+    infer RawRequest,
+    infer RawReply,
+    infer Logger,
+    infer TypeProvider
+  >
+    ? {
+        RawServer: RawServer
+        RawRequest: RawRequest
+        RawReply: RawReply
+        Logger: Logger
+        TypeProvider: TypeProvider
+      }
+    : never
 
   return {
     fastify: fastify as Spread<
-      Fa.FastifyInstance,
+      Fa.FastifyInstance<
+        FastifyTypes['RawServer'],
+        FastifyTypes['RawRequest'],
+        FastifyTypes['RawReply'],
+        FastifyTypes['Logger'],
+        FastifyTypes['TypeProvider']
+      >,
       {
         route: RouteFn
       }
