@@ -3,13 +3,13 @@ import { z } from 'zod'
 import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
 import type * as http from '~/http/index.js'
 
-import { type AuthConfig } from './config.js'
+import { type Config } from './config.js'
 import { type Session, SessionCache, sessionIdCookieName } from './session.js'
 
 const signOutUrl = '/'
 
-export const authRoutes =
-  (config: AuthConfig, sessionCache: SessionCache): FastifyNestedRoutes =>
+export const routes =
+  (config: Config, sessionCache: SessionCache): FastifyNestedRoutes =>
   async (fastify: Fastify, _, done) => {
     await fastify
       .route({
@@ -35,12 +35,15 @@ export const authRoutes =
         method: 'GET',
         url: '/signout',
         handler: (req, reply) => {
-          const session = (req.requestContext as http.Context).session
-          if (session) {
-            sessionCache.delete(session.id)
-            // Remove session ID cookie
-            reply.setCookie(sessionIdCookieName, session.id, { maxAge: 0 })
-          }
+          Option.fromNullable(req.requestContext.get('auth'))
+            .map(R.prop('session'))
+            .map(R.prop('id'))
+            .tap((sid) => {
+              sessionCache.delete(sid)
+              // Remove session ID cookie
+              reply.setCookie(sessionIdCookieName, sid, { maxAge: 0 })
+              return some(null)
+            })
           reply.redirect(signOutUrl)
         },
       })

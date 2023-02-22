@@ -3,13 +3,13 @@ import type * as Fa from 'fastify'
 import type { FastifyContextConfig } from '~/fastify.js'
 import { cookieStr } from '~/http/index.js'
 
-import type { AuthConfig } from './config.js'
+import type { Config } from './config.js'
 import { type Session, SessionCache, sessionIdCookieName } from './session.js'
 import { User } from '~/models/index.js'
 
 // onRequest hook
 export const newAuthHook =
-  (_config: AuthConfig, sessionCache: SessionCache): Fa.onRequestHookHandler =>
+  (_config: Config, sessionCache: SessionCache): Fa.onRequestHookHandler =>
   (req, reply, done) => {
     const authLevel =
       (req.routeConfig as FastifyContextConfig).authLevel ?? 'protected'
@@ -67,8 +67,10 @@ export const newAuthHook =
             // Signed-in, make sure all routes have the `User` object if they want
             // via AuthenticatedUserParameterResolver
             req.log.info('Secure API requested by', user.name)
-            ;(req.requestContext as any).session = session
-            ;(req.requestContext as any).user = user
+            req.requestContext.set('auth', {
+              session,
+              user,
+            })
 
             // Set or refresh session ID cookie
             reply.header(

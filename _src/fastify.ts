@@ -15,16 +15,8 @@ import {
 import type { Spread } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
-import {
-  AuthConfig,
-  type AuthLevel,
-  authRoutes,
-  newAuthHook,
-  newSessionCache,
-} from '~/auth/index.js'
-import type * as http from '~/http/index.js'
-import type { User } from '~/models/index.js'
-import { genCreateContext, trpcRouter } from '~/trpc/index.js'
+import * as auth from '~/auth/index.js'
+import * as trpc from '~/trpc/index.js'
 
 export type ServerOptions = {
   dev?: boolean
@@ -33,7 +25,7 @@ export type ServerOptions = {
 }
 
 export type FastifyContextConfig = {
-  authLevel: AuthLevel
+  authLevel: auth.AuthLevel
 }
 
 export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
@@ -50,6 +42,12 @@ export interface FastifyZodSchema {
   response?: ZodTypeAny
 }
 
+declare module '@fastify/request-context' {
+  interface RequestContextData {
+    auth: auth.ContextData
+  }
+}
+
 export async function createFastify(opts: ServerOptions) {
   const dev = opts.dev ?? true
   const port = opts.port ?? 3000
@@ -63,7 +61,7 @@ export async function createFastify(opts: ServerOptions) {
     .register(fastifyCookie)
     .register(fastifyRequestContext, {
       hook: 'onRequest',
-      defaultStoreValues: () => ({ user: {} as unknown as User }),
+      // defaultStoreValues: () => ({ user: {} as unknown as User }),
     })
     .register(fastifyWebSocket as unknown as Fa.FastifyPluginCallback)
     .register(fastifySwagger, {
@@ -89,8 +87,8 @@ export async function createFastify(opts: ServerOptions) {
       prefix,
       useWSS: true,
       trpcOptions: {
-        router: trpcRouter,
-        createContext: genCreateContext(),
+        router: trpc.trpcRouter,
+        createContext: trpc.genCreateContext(),
         wss: fastifyWebSocket,
       },
     })
@@ -131,17 +129,20 @@ export async function createFastify(opts: ServerOptions) {
     )
   type RouteFn = typeof route
 
-  const authConfig = new AuthConfig()
-  const sessionCache = newSessionCache()
+  const authConfig = new auth.Config()
+  const sessionCache = auth.newSessionCache()
   const fastify = f1
-    .addHook('onRequest', newAuthHook(authConfig, sessionCache))
+    .addHook('onRequest', auth.newAuthHook(authConfig, sessionCache))
     // Middlewares
     // Routes
     .get('/', (req) => {
-      const user = (req.requestContext as http.Context).user
-      return { msg: `hello ${user?.name ?? 'anonymous'}` }
+      const oUserName = Option.fromNullable(req.requestContext.get('auth'))
+        .map(R.prop('user'))
+        .map(R.prop('name'))
+
+      return { msg: `hello ${oUserName.getOrElse('anonymous')}` }
     })
-    .register(authRoutes(authConfig, sessionCache), { prefix: '/api/auth' })
+    .register(auth.routes(authConfig, sessionCache), { prefix: '/api/auth' })
 
   const start = async () => {
     try {

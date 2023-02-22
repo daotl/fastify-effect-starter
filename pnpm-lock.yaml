@@ -66,6 +66,7 @@ importers:
       npm-check-updates: ^16.7.4
       patch-package: ^6.5.1
       prebuild-install: ^7.1.1
+      remeda: ^1.6.2
       rome: ^11.0.0
       source-map-support: ^0.5.21
       superjson: ^1.12.2
@@ -100,6 +101,7 @@ importers:
       '@trpc/server': 10.12.0
       fastify: 4.13.0
       fastify-type-provider-zod: 1.1.9_fastify@4.13.0+zod@3.20.6
+      remeda: 1.6.2
       source-map-support: 0.5.21
       superjson: 1.12.2
       tlru: 1.0.2
@@ -2239,7 +2241,7 @@ packages:
       nanoid: 4.0.1
       path-parser: 6.1.0
       query-string: 8.1.0
-      ts-pattern: 4.1.4
+      ts-pattern: 4.2.1
       uuid: 9.0.0
       validator: 13.9.0
     transitivePeerDependencies:
@@ -11237,6 +11239,10 @@ packages:
       jsesc: 0.5.0
     dev: true
 
+  /remeda/1.6.2:
+    resolution: {integrity: sha512-4/gci8Crgp6l0ATZEvu/FxHJPjDUMZZ1vhSIROHNNx/cXi77ar/7Cj2Z8Bysd0Vs824QFRfcIKqOxqH+pKDW1Q==}
+    dev: false
+
   /remote-git-tags/3.0.0:
     resolution: {integrity: sha512-C9hAO4eoEsX+OXA4rla66pXZQ+TLQ8T9dttgQj18yuKlPMTVkIkdYXvlMC55IuUsIkV6DpmQYi10JKFLaU+l7w==}
     engines: {node: '>=8'}
@@ -12403,8 +12409,8 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-pattern/4.1.4:
-    resolution: {integrity: sha512-Mcw65oUd1w5ktKi5BRwrnz16Otwk9iv7P0dKgvbi+A1albCDgnixohSqNLuFwIp5dzxPmTPm0iDQ6p1ZJr9uGw==}
+  /ts-pattern/4.2.1:
+    resolution: {integrity: sha512-lXCmHZb01QOM9HdCLvisCGUH9ATdKPON9UaUvwe007gJAhuSBhRWIAIowys5QqNxEq6odWctfMIdI96vzjnOMQ==}
     dev: false
 
   /ts-transform-paths/3.0.0:

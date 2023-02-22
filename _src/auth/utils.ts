@@ -40,5 +40,3 @@ import { type Session } from './session.js'
 //     return user
 //   }
 // }
-
-export type AuthLevel = 'public' | 'optional' | 'protected' | 'admin'
