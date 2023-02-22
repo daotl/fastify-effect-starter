@@ -13,6 +13,7 @@ import {
   validatorCompiler,
 } from 'fastify-type-provider-zod'
 import type { Spread } from 'type-fest'
+import type { ZodTypeAny } from 'zod'
 
 import {
   AuthConfig,
@@ -40,6 +41,14 @@ export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
   Fa.RawServerDefault,
   ZodTypeProvider
 >
+
+export interface FastifyZodSchema {
+  body?: ZodTypeAny
+  querystring?: ZodTypeAny
+  params?: ZodTypeAny
+  headers?: ZodTypeAny
+  response?: ZodTypeAny
+}
 
 export async function createFastify(opts: ServerOptions) {
   const dev = opts.dev ?? true
@@ -94,7 +103,7 @@ export async function createFastify(opts: ServerOptions) {
     infer RawReply,
     infer RouteGeneric,
     unknown,
-    infer SchemaCompiler,
+    Fa.FastifySchema,
     infer TypeProvider
   >
     ? {
@@ -102,7 +111,6 @@ export async function createFastify(opts: ServerOptions) {
         RawRequest: RawRequest
         RawReply: RawReply
         RouteGeneric: RouteGeneric
-        SchemaCompiler: SchemaCompiler
         TypeProvider: TypeProvider
       }
     : never
@@ -114,10 +122,13 @@ export async function createFastify(opts: ServerOptions) {
       RouteOptionsTypes['RawReply'],
       RouteOptionsTypes['RouteGeneric'],
       FastifyContextConfig,
-      RouteOptionsTypes['SchemaCompiler'],
+      FastifyZodSchema,
       RouteOptionsTypes['TypeProvider']
     >,
-  ) => f1.route<Fa.RouteGenericInterface, FastifyContextConfig>(opts)
+  ) =>
+    f1.route<Fa.RouteGenericInterface, FastifyContextConfig, FastifyZodSchema>(
+      opts,
+    )
   type RouteFn = typeof route
 
   const authConfig = new AuthConfig()

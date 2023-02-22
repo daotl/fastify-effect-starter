@@ -53,7 +53,6 @@ export const newAuthHook =
         oUser.match(
           () => {
             // Not successfully signed-in
-            console.log('haha fuck')
             oSession.tap((s) => {
               // Invalid session, remove it
               sessionCache.delete(s.id)

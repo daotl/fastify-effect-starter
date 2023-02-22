@@ -1,5 +1,4 @@
-import type * as Fa from 'fastify'
-import type { ZodTypeProvider } from 'fastify-type-provider-zod'
+import { z } from 'zod'
 
 import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
 import type * as http from '~/http/index.js'
@@ -18,6 +17,9 @@ export const authRoutes =
         config: { authLevel: 'public' },
         method: 'GET',
         url: '/signin',
+        schema: {
+          response: z.object({ status: z.literal('ok') }),
+        },
         handler: (_req, reply) => {
           const session: Session = { id: config.mockUserId }
           sessionCache.set(session.id, session)
