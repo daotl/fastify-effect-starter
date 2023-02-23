@@ -1,7 +1,9 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "lib": ["esnext"],
+    "lib": [
+      "esnext"
+    ],
     "tsPlusConfig": "./tsplus.config.json",
     //        "tsPlusGlobalFiles": [
     //            "./_src/_global.ts"
@@ -15,7 +17,9 @@
     // keep in here, cause madge can't detect it from extended tsconfig
     "moduleResolution": "Node16",
     "paths": {
-      "~/*": ["./_src/*"]
+      "~/*": [
+        "./_src/*"
+      ]
     },
     // "types": ["./types/modules", "node"],
     "outDir": "./dist",
@@ -32,14 +36,21 @@
       {
         "name": "@effect/language-service/transformer",
         "trace": {
-          "exclude": ["**/*.ts"]
+          "exclude": [
+            "**/*.ts"
+          ]
         }
         //"debug": {}
       }
     ]
   },
-  "include": ["./_src/**/*.ts"],
+  "include": [
+    "./_src/**/*.ts",
+    "./_src/**/*.mts",
+    "./_src/**/*.cts"
+  ],
   "exclude": [
+    "**/__template.ts",
     "./dist",
     "*.test.ts",
     "node_modules",
@@ -53,7 +64,9 @@
   ],
   "ts-node": {
     "files": true,
-    "require": ["tsconfig-paths/register"]
+    "require": [
+      "tsconfig-paths/register"
+    ]
     // "compilerOptions": {
     //   "module": "CommonJS"
     // }
