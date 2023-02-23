@@ -2,9 +2,7 @@
   "extends": "./node_modules/@tsconfig/node18-strictest-esm/tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "target": "es2021",
     // inline source maps stay better in sync with the source, which should aid with watchers.
     //"sourceMap": true,
@@ -12,8 +10,6 @@
     "incremental": true,
     "composite": true,
     "declarationMap": true,
-    "allowJs": true,
-    "checkJs": false,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "noImplicitAny": true,
@@ -50,13 +46,11 @@
       {
         "name": "@effect/language-service/transformer",
         "trace": {
-          "exclude": [
-            "**/*.ts"
-          ]
+          "exclude": ["**/*.ts"]
         }
         //"debug": {}
       }
-    ],
+    ]
     // "types": ["vitest/globals"]
   },
   "watchOptions": {
@@ -77,13 +71,10 @@
       "**/.logs",
       "**/.*"
     ],
-    "excludeFiles": [
-      "**/*.tmp",
-      "openapi.json",
-      "*.json"
-    ]
+    "excludeFiles": ["**/*.tmp", "openapi.json", "*.json"]
   },
   "exclude": [
+    "**/__template.ts",
     "**/node_modules",
     "**/build",
     "**/lib",

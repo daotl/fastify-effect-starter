@@ -1,1 +1,1 @@
-import '@daotl/fastify-effect-starter/_global'
+import '@fastify-effect-starter/main/_global'

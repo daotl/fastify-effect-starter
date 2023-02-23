@@ -1,0 +1,9 @@
+{
+  "name": "edgeql-js",
+  "main": "generated/index.js",
+  "types": "generated/index.d.ts",
+  "exports": {
+    ".": "./generated/index.js",
+    "./*": "./generated/*.js"
+  }
+}

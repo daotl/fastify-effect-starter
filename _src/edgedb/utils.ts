@@ -1,12 +1,13 @@
+import edgeqlJs from 'edgeql-js'
+import { castMaps } from 'edgeql-js/imports'
+import type models from 'edgeql-js/modules/default'
+import { type $bool } from 'edgeql-js/modules/std'
+import * as $ from 'edgeql-js/reflection'
 import type { EmptyObject, Except } from 'type-fest'
 
-import type { ModelMap as ModelTypeMap } from '~/models/index.js'
+export const e = edgeqlJs.default
 
-import { e } from './index.js'
-import { castMaps } from './generated/edgeql-js/imports.js'
-import type models from './generated/edgeql-js/modules/default.js'
-import { type $bool } from './generated/edgeql-js/modules/std.js'
-import * as $ from './generated/edgeql-js/reflection.mjs'
+import type { ModelMap as ModelTypeMap } from '~/models/index.js'
 
 export type ModelMap = Except<typeof models, 'Base'>
 export type Model = ModelMap[keyof ModelTypeMap]

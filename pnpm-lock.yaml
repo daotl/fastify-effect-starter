@@ -44,6 +44,7 @@ importers:
       '@fp-ts/core': ^0.2.1
       '@trpc/client': ^10.12.0
       '@trpc/server': ^10.12.0
+      '@tsconfig/node18': ^1.0.1
       '@tsconfig/node18-strictest-esm': ^1.0.1
       '@tsplus/installer': 0.0.170
       '@types/connect': ^3.4.35
@@ -61,6 +62,7 @@ importers:
       dprint: ^0.34.5
       edgedb: ^1.0.2
       edgedb-zod: 1.0.0-beta4
+      edgeql-js: workspace:*
       enhanced-resolve: ^5.12.0
       eslint: ^8.34.0
       eslint-plugin-codegen: ^0.17.0
@@ -74,7 +76,6 @@ importers:
       npm-check-updates: ^16.7.4
       patch-package: ^6.5.1
       prebuild-install: ^7.1.1
-      rambdax: ^9.0.0
       remeda: ^1.6.2
       rome: ^11.0.0
       source-map-support: ^0.5.21
@@ -110,10 +111,10 @@ importers:
       '@trpc/client': 10.12.0_@trpc+server@10.12.0
       '@trpc/server': 10.12.0
       edgedb: registry.npmmirror.com/edgedb/1.0.2
+      edgeql-js: link:dbschema/edgeql-js
       fastify: 4.13.0
       fastify-type-provider-zod: 1.1.9_fastify@4.13.0+zod@3.20.6
       http-status-codes: 2.2.0
-      rambdax: 9.0.0
       remeda: registry.npmmirror.com/remeda/1.6.2
       source-map-support: 0.5.21
       superjson: 1.12.2
@@ -131,6 +132,7 @@ importers:
       '@effect-app/cli': 0.3.1
       '@effect-app/compiler': 0.12.0_@types+node@18.13.0
       '@effect/language-service': 0.0.19_izp2ue34jjv4swyrhg2ux4ha3e
+      '@tsconfig/node18': 1.0.1
       '@tsconfig/node18-strictest-esm': 1.0.1
       '@tsplus/installer': 0.0.170_vj2azuskzz5i7xpphvbeyzxv5e
       '@types/connect': 3.4.35
@@ -1640,6 +1642,10 @@ packages:
 
   /@tsconfig/node18-strictest-esm/1.0.1:
     resolution: {integrity: sha512-cHzmAqw7CMbyqROWeBgVhard3F2V6zxOSJnQ4E6SJWruXD5ypuP9/QKekwBdfXQ4oUTaizIICKIwb+v3v33t0w==}
+    dev: true
+
+  /@tsconfig/node18/1.0.1:
+    resolution: {integrity: sha512-sNFeK6X2ATlhlvzyH4kKYQlfHXE2f2/wxtB9ClvYXevWpmwkUT7VaSrjIN9E76Qebz8qP5JOJJ9jD3QoD/Z9TA==}
     dev: true
 
   /@tsplus/installer/0.0.170_vj2azuskzz5i7xpphvbeyzxv5e:
@@ -6178,10 +6184,6 @@ packages:
     resolution: {integrity: sha512-twwRO/ilhlG/FIgYeKGFqyHhoEhqgnKVkcmqMKi2r524gz3ZbDTcyFt38E9xjJI2vT+KbRNHVbnJ/e0I25Azwg==}
     dev: true
 
-  /rambdax/9.0.0:
-    resolution: {integrity: sha512-8vcixAlXoFNdCoa35nDzLqntyimVMiQpWUhQgMkOb/pdxZULN+8d9l2kosEQ6Aq0awpI2m+u973cSlg2UrAbyw==}
-    dev: false
-
   /rc-config-loader/4.1.2:
     resolution: {integrity: sha512-qKTnVWFl9OQYKATPzdfaZIbTxcHziQl92zYSxYC6umhOqyAsoj8H8Gq/+aFjAso68sBdjTz3A7omqeAkkF1MWg==}
     dependencies:
@@ -7899,7 +7901,7 @@ packages:
     patched: true
 
   github.com/daotl/ts-to-zod/0f238da3e58f295bb8a03da96a0414cc43757580:
-    resolution: {commit: 0f238da3e58f295bb8a03da96a0414cc43757580, repo: git+ssh://git@github.com/daotl/ts-to-zod.git, type: git}
+    resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/0f238da3e58f295bb8a03da96a0414cc43757580}
     name: ts-to-zod
     version: 2.0.1
     hasBin: true

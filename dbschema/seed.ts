@@ -1,11 +1,17 @@
 import 'module-alias/register'
 
-import { createClient } from 'edgedb'
-import { omit } from 'rambdax/immutable'
+enum v {
+  a = 'b',
+}
+type V = typeof v[keyof typeof v]
+const abc: V = 'b' as v
 
-import { Config } from '~/auth/config'
-import { default as e } from '~/edgedb/generated/edgeql-js/index.js'
-import * as E from '~/edgedb/index.js'
+import { createClient } from 'edgedb'
+import { omit } from 'remeda'
+
+import { Config } from '../_src/auth/config.js'
+import * as E from '../_src/edgedb/index.js'
+import { default as e } from './edgeql-js/generated/index.mjs'
 
 const client = createClient().withConfig({
   allow_user_specified_id: true,
@@ -49,7 +55,7 @@ async function main(): Promise<void> {
         email: 'nex@daot.io',
         name: 'Nex',
       },
-      omit<E.UpsertShape<typeof e.User>>('id'),
+      omit<E.UpsertShape<typeof e.User>>(['id']),
     ),
     E.User.upsert(e.User.email, {
       email: 'john@daot.io',

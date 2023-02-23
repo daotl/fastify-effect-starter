@@ -1,30 +1,22 @@
 // codegen:start {preset: custom, source: ../../../eslint-codegen/edgedb-helpers.cjs, export: all}
 import type { Cardinality } from 'edgedb/dist/reflection'
-import { identity, omit } from 'rambdax/immutable'
-
-import { /* type EdgedbClient, */ e } from '../index.js'
 import type {
   $expr_Insert,
   $expr_InsertUnlessConflict,
   InsertShape,
-} from '../generated/edgeql-js/insert.js'
-import type {
-  $expr_PathNode,
-  $linkPropify,
-} from '../generated/edgeql-js/path.js'
+} from 'edgeql-js/insert'
+import type { $expr_PathNode, $linkPropify } from 'edgeql-js/path'
 import type {
   ComputeSelectCardinality,
-  objectTypeToSelectShape,
   SelectModifierNames,
   SelectModifiers,
   UnknownSelectModifiers,
-} from '../generated/edgeql-js/select.js'
-import type { $scopify, TypeSet } from '../generated/edgeql-js/typesystem.js'
-import type {
-  $expr_Update,
-  UpdateShape,
-} from '../generated/edgeql-js/update.js'
-import type { ModelMap } from '../utils.js'
+  objectTypeToSelectShape,
+} from 'edgeql-js/select'
+import type { $scopify, TypeSet } from 'edgeql-js/typesystem'
+import type { $expr_Update, UpdateShape } from 'edgeql-js/update'
+
+import { type ModelMap, e } from '../utils.js'
 import { type UpsertShape, upsertConflictGetter } from './common.js'
 
 type Model = ModelMap['Post']
@@ -58,8 +50,7 @@ export const selectWithTotal = <
     total: e.count(
       e.select<Model, Shape, Modifiers>(
         modelType,
-        // @ts-expect-error
-        (scope) => omit(['offset', 'limit'], shape(scope)) as Readonly<Shape>,
+        (scope) => R.omit(shape(scope), ['offset', 'limit']) as Readonly<Shape>,
       ),
     ),
     data: e.select<Model, Shape, Modifiers>(modelType, shape),
@@ -111,11 +102,11 @@ export const upsert = <
   InsShape extends UpsertShape<Model>,
   UpShapeFn extends (
     insertShape: UpsertShape<Model>,
-  ) => UpdateShape<Model> = typeof identity,
+  ) => UpdateShape<Model> = typeof R['identity'],
 >(
   on: On,
   insertShape: InsShape,
-  updateShapeFn: UpShapeFn = identity as UpShapeFn,
+  updateShapeFn: UpShapeFn = R.identity as unknown as UpShapeFn,
 ): $expr_InsertUnlessConflict<
   Element,
   ReturnType<
@@ -146,7 +137,7 @@ export const upsertSelect = <
   ],
   UpShapeFn extends (
     insertShape: UpsertShape<Model>,
-  ) => UpdateShape<Model> = typeof identity,
+  ) => UpdateShape<Model> = typeof R['identity'],
   SelShape extends objectTypeToSelectShape<
     ExprInsertUnlessConflictExact[0]['__element__']
   > &
@@ -155,7 +146,7 @@ export const upsertSelect = <
 >(
   on: On,
   insertShape: InsShape,
-  updateShapeFn: UpShapeFn = identity as UpShapeFn,
+  updateShapeFn: UpShapeFn = R.identity as unknown as UpShapeFn,
   selectShape: SelShape = modelType['*'] as unknown as SelShape,
 ) =>
   e.select<ExprInsertUnlessConflictExact[0], SelShape>(
