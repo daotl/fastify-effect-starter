@@ -1,0 +1,20 @@
+version: '3'
+name: fastify-effect-starter
+
+services:
+  edgedb:
+    image: edgedb/edgedb:2.9
+    restart: unless-stopped
+    volumes:
+      - ./edgedb-cli-config:/root/.config/edgedb
+      - ../edgedb.toml:/edgedb.toml:ro
+      - ../dbschema:/dbschema
+      - ~/dev/docker-volumes/fastify-effect-starter/edgedb:/var/lib/edgedb/data
+    ports:
+      - 15656:5656
+    environment:
+      EDGEDB_SERVER_SECURITY: insecure_dev_mode
+      EDGEDB_SERVER_DATABASE: fastify_effect_starter
+      EDGEDB_SERVER_USER: fastify_effect_starter
+      EDGEDB_SERVER_PASSWORD: password
+      EDGEDB_SERVER_ADMIN_UI: enabled

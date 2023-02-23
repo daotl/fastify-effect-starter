@@ -1,5 +1,5 @@
 import { createTRPCProxyClient, httpBatchLink } from '@trpc/client'
-import type { TrpcRouter } from '~/trpc/router.js'
+import type { TrpcRouter } from '~/trpc/router'
 import superjson from 'superjson'
 
 const httpBatchLinkOpts = { url: 'http://localhost:3000/trpc' }

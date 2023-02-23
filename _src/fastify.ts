@@ -12,6 +12,7 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
+import R from 'rambdax/immutable'
 import type { Spread } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
