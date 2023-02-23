@@ -1,11 +1,10 @@
+import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 
 import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
-import type * as http from '~/http/index.js'
 
 import { type Config } from './config.js'
 import { type Session, SessionCache, sessionIdCookieName } from './session.js'
-import { omit } from 'remeda'
 
 const signOutUrl = '/'
 
@@ -19,7 +18,7 @@ export const routes =
         method: 'GET',
         url: '/signin',
         schema: {
-          response: { 200: z.object({ status: z.literal('ok') }) },
+          response: { [StatusCodes.OK]: z.object({ status: z.literal('ok') }) },
         },
 
         handler: (_req, reply) => {
@@ -36,6 +35,11 @@ export const routes =
         config: { authLevel: 'protected' },
         method: 'GET',
         url: '/signout',
+        schema: {
+          response: {
+            [StatusCodes.OK]: z.literal(''),
+          },
+        },
         handler: (req, reply) => {
           Option.fromNullable(req.requestContext.get('auth'))
             .map(R.prop('session'))

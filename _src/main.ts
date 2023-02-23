@@ -1,4 +1,5 @@
 import { CauseException } from '@effect-app/infra/errors'
+import { Cause } from '@effect/io/Cause.js'
 import { runtimeDebug } from '@effect/io/Debug'
 
 import { createFastify } from './fastify.js'

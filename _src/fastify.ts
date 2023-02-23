@@ -12,9 +12,9 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
+import { StatusCodes } from 'http-status-codes'
 import type { Spread, ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
-import { StatusCodes } from 'http-status-codes'
 
 import * as auth from '~/auth/index.js'
 import * as trpc from '~/trpc/index.js'
