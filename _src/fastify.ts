@@ -12,8 +12,9 @@ import {
   serializerCompiler,
   validatorCompiler,
 } from 'fastify-type-provider-zod'
-import type { Spread } from 'type-fest'
+import type { Spread, ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
+import { StatusCodes } from 'http-status-codes'
 
 import * as auth from '~/auth/index.js'
 import * as trpc from '~/trpc/index.js'
@@ -33,13 +34,12 @@ export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
   Fa.RawServerDefault,
   ZodTypeProvider
 >
-
 export interface FastifyZodSchema {
   body?: ZodTypeAny
   querystring?: ZodTypeAny
   params?: ZodTypeAny
   headers?: ZodTypeAny
-  response?: ZodTypeAny
+  response?: Partial<Record<ValueOf<typeof StatusCodes>, ZodTypeAny>>
 }
 
 declare module '@fastify/request-context' {

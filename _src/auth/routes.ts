@@ -5,6 +5,7 @@ import type * as http from '~/http/index.js'
 
 import { type Config } from './config.js'
 import { type Session, SessionCache, sessionIdCookieName } from './session.js'
+import { omit } from 'remeda'
 
 const signOutUrl = '/'
 
@@ -18,8 +19,9 @@ export const routes =
         method: 'GET',
         url: '/signin',
         schema: {
-          response: z.object({ status: z.literal('ok') }),
+          response: { 200: z.object({ status: z.literal('ok') }) },
         },
+
         handler: (_req, reply) => {
           const session: Session = { id: config.mockUserId }
           sessionCache.set(session.id, session)
