@@ -1,10 +1,10 @@
 import { identity } from 'rambdax/immutable'
 
 import { e } from '../index.js'
-import type { InsertShape } from '../generated/edgeql-js/insert.mjs'
-import type { $expr_PathNode } from '../generated/edgeql-js/path.mjs'
-import type { $scopify, TypeSet } from '../generated/edgeql-js/typesystem.mjs'
-import type { UpdateShape } from '../generated/edgeql-js/update.mjs'
+import type { InsertShape } from '@edgeql-js/insert.mjs'
+import type { $expr_PathNode } from '@edgeql-js/path.mjs'
+import type { $scopify, TypeSet } from '@edgeql-js/typesystem.mjs'
+import type { UpdateShape } from '@edgeql-js/update.mjs'
 
 export type UpsertShape<Root extends $expr_PathNode> = InsertShape<
   Root['__element__']

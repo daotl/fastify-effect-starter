@@ -1,7 +1,7 @@
 import { type CreateFastifyContextOptions } from '@trpc/server/adapters/fastify'
 import type * as Fa from 'fastify'
 
-import type * as http from '~/http/index'
+import type * as http from '~/http/index.js'
 
 export type Context = http.Context
 

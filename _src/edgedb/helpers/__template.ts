@@ -1,28 +1,23 @@
 import type { Cardinality } from 'edgedb/dist/reflection'
 import { identity, omit } from 'rambdax/immutable'
 
-import { /* type EdgedbClient, */ e } from '../index.js'
 import type {
   $expr_Insert,
   $expr_InsertUnlessConflict,
   InsertShape,
-} from '../generated/edgeql-js/insert.js'
-import type {
-  $expr_PathNode,
-  $linkPropify,
-} from '../generated/edgeql-js/path.js'
+} from '@edgeql-js/insert.mjs'
+import type { $expr_PathNode, $linkPropify } from '@edgeql-js/path.mjs'
 import type {
   ComputeSelectCardinality,
-  objectTypeToSelectShape,
   SelectModifierNames,
   SelectModifiers,
   UnknownSelectModifiers,
-} from '../generated/edgeql-js/select.js'
-import type { $scopify, TypeSet } from '../generated/edgeql-js/typesystem.js'
-import type {
-  $expr_Update,
-  UpdateShape,
-} from '../generated/edgeql-js/update.js'
+  objectTypeToSelectShape,
+} from '@edgeql-js/select.mjs'
+import type { $scopify, TypeSet } from '@edgeql-js/typesystem.mjs'
+import type { $expr_Update, UpdateShape } from '@edgeql-js/update.mjs'
+
+import { /* type EdgedbClient, */ e } from '../index.js'
 import type { ModelMap } from '../utils.js'
 import { type UpsertShape, upsertConflictGetter } from './common.js'
 

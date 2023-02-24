@@ -1,5 +1,5 @@
 {
-  "name": "@daotl/fastify-effect-starter",
+  "name": "@fastify-effect-starter/main",
   "version": "0.0.1",
   "description": "Node.js + Effect starter template for DAOT projects",
   "type": "module",
@@ -26,16 +26,16 @@
     "dev:compiled:watch": "NODE_ENV=development nodemon --exec pnpm dev:compiled",
     "start": "pnpm start:compiled",
     "start:compiled": "node --experimental-specifier-resolution=node -r source-map-support/register ./dist/main.js",
-    "ncu": "ncu",
-    "nnm": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm i",
-    "preinstall": "npx only-allow pnpm",
     "edgedb:migration:create": "docker exec fastify-effect-starter-edgedb-1 edgedb -I fastify_effect_starter migration create",
     "edgedb:migrate": "docker exec fastify-effect-starter-edgedb-1 edgedb -I fastify_effect_starter migrate",
     "edgedb:gen": "concurrently 'pnpm edgedb:gen:interfaces' 'pnpm edgedb:gen:edgeql-js' 'pnpm edgedb:gen:zod'",
     "edgedb:gen:interfaces": "dotenv -- npx @edgedb/generate interfaces --force-overwrite --file _src/models/generated/interfaces.ts && npx ts-to-zod --config edgedb --skipValidation",
-    "edgedb:gen:edgeql-js": "mkdir -p _src/edgedb/generated/edgeql-js && dotenv -- npx @edgedb/generate edgeql-js --target mts --force-overwrite --out _src/edgedb/generated/edgeql-js",
+    "edgedb:gen:edgeql-js": "mkdir -p dbschema/edgeql-js/generated && dotenv -- npx @edgedb/generate edgeql-js --target mts --force-overwrite --out dbschema/edgeql-js/generated",
     "edgedb:gen:zod": "dotenv -- npx edgedb-zod --outputDir _src/models/generated/zod",
-    "edgedb:seed": "dotenv ts-node dbschema/seed.ts"
+    "edgedb:seed": "dotenv ts-node dbschema/seed.ts",
+    "ncu": "ncu",
+    "nnm": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && pnpm i",
+    "preinstall": "npx only-allow pnpm"
   },
   "pnpm": {
     "patchedDependencies": {
@@ -46,7 +46,6 @@
     }
   },
   "dependencies": {
-    "rambdax": "^9.0.0",
     "@effect-app/core": "^0.24.1",
     "@effect-app/infra": "^0.26.3",
     "@effect-app/infra-adapters": "^0.20.8",
@@ -75,10 +74,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.20.7",
-    "@daotl/eslint-config": "^0.3.33",
-    "@daotl/tsconfig": "^0.1.2",
     "@daotl/effect-app-eslint-codegen-model": "^0.11.0",
+    "@daotl/eslint-config": "^0.3.33",
     "@daotl/rome-config": "0.0.1-alpha.4",
+    "@daotl/tsconfig": "^0.1.2",
     "@dprint/typescript": "^0.83.0",
     "@edgedb/generate": "^0.0.7",
     "@effect-app/cli": "^0.3.1",
@@ -86,6 +85,7 @@
     "@effect-app/core": "^0.24.1",
     "@effect-app/prelude": "^0.21.8",
     "@effect/language-service": "^0.0.19",
+    "@tsconfig/node18": "^1.0.1",
     "@tsconfig/node18-strictest-esm": "^1.0.1",
     "@tsplus/installer": "0.0.170",
     "@types/connect": "^3.4.35",

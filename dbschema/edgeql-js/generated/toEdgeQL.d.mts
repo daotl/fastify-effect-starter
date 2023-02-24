@@ -1,0 +1,17 @@
+import { $expr_Array, $expr_NamedTuple, $expr_Tuple, $expr_TuplePath } from "./typesystem.mjs";
+import type { $expr_Literal } from "./literal.mjs";
+import type { $expr_PathLeaf, $expr_PathNode, $expr_TypeIntersection } from "./path.mjs";
+import type { $expr_Cast } from "./cast.mjs";
+import type { $expr_Detached } from "./detached.mjs";
+import type { $expr_For, $expr_ForVar } from "./for.mjs";
+import type { $expr_Function, $expr_Operator } from "./funcops.mjs";
+import type { $expr_Insert, $expr_InsertUnlessConflict } from "./insert.mjs";
+import type { $expr_Param, $expr_WithParams } from "./params.mjs";
+import type { $expr_Delete, $expr_Select } from "./select.mjs";
+import type { $expr_Set } from "./set.mjs";
+import type { $expr_Update } from "./update.mjs";
+import type { $expr_Alias, $expr_With } from "./with.mjs";
+import type { $expr_Group } from "./group.mjs";
+import type { $expr_Global } from "./globals.mjs";
+export type SomeExpression = $expr_PathNode | $expr_PathLeaf | $expr_Literal | $expr_Set | $expr_Array | $expr_Tuple | $expr_NamedTuple | $expr_TuplePath | $expr_Cast | $expr_Select | $expr_Delete | $expr_Update | $expr_Insert | $expr_InsertUnlessConflict | $expr_Function | $expr_Operator | $expr_For | $expr_ForVar | $expr_TypeIntersection | $expr_Alias | $expr_With | $expr_WithParams | $expr_Param | $expr_Detached | $expr_Group | $expr_Global;
+export declare function $toEdgeQL(this: any): string;

@@ -1,0 +1,31 @@
+{
+  "extends": "../../node_modules/@tsconfig/node18/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "tsPlusTypes": [
+      "../../../node_modules/@effect-app/core/vendor/effect-io-tsplus.json",
+      "../../../node_modules/@effect-app/core/vendor/effect-stm-tsplus.json",
+      "../../../node_modules/@effect-app/core/vendor/fp-ts-core-tsplus.json",
+      "../../../node_modules/@effect-app/core/vendor/effect-data-tsplus.json",
+      "../../../node_modules/@effect-app/core/vendor/fp-ts-optic-tsplus.json"
+    ],
+    "plugins": [
+      {
+        "name": "@effect/language-service",
+        "diagnostics": {
+          "1002": "none"
+        }
+      }
+    ],
+    "transformers": [
+      {
+        "name": "@effect/language-service/transformer",
+        "trace": {
+          "exclude": ["**/*.ts"]
+        }
+        //"debug": {}
+      }
+    ]
+  },
+  "include": ["./generated/**/*.ts", "./generated/**/*.mts"]
+}
