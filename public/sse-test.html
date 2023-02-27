@@ -1,0 +1,23 @@
+<html>
+
+<head>
+    <title>SSE Test</title>
+    <script>
+        const es = new EventSource('/api/sse')
+
+        es.addEventListener('close', es.close)
+
+        es.onmessage = function (event) {
+            const list = document.getElementById('results')
+            const e = document.createElement('li')
+            e.textContent = `message: ${event.data}`
+            list.appendChild(e)
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="results"></ul>
+</body>
+
+</html>

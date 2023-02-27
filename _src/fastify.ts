@@ -1,17 +1,18 @@
+import path from 'node:path'
+import url from 'node:url'
+
 import fastifyCookie from '@fastify/cookie'
+import fastifyCors from '@fastify/cors'
+import fastifyHelmet from '@fastify/helmet'
 import fastifyMiddie from '@fastify/middie'
 import { fastifyRequestContext } from '@fastify/request-context'
+import fastifyStatic from '@fastify/static'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
 import fastifyWebSocket from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
-import {
-  type ZodTypeProvider,
-  jsonSchemaTransform,
-  serializerCompiler,
-  validatorCompiler,
-} from 'fastify-type-provider-zod'
+import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 import type { Spread, ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
@@ -32,7 +33,7 @@ export type FastifyContextConfig = {
 export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
   {},
   Fa.RawServerDefault,
-  ZodTypeProvider
+  FastifyZod.ZodTypeProvider
 >
 export interface FastifyZodSchema {
   body?: ZodTypeAny
@@ -54,16 +55,49 @@ export async function createFastify(opts: ServerOptions) {
   const prefix = opts.prefix ?? '/api/trpc'
 
   const f1 = Fa.fastify({ logger: dev })
-    .setValidatorCompiler(validatorCompiler)
-    .setSerializerCompiler(serializerCompiler)
-    .withTypeProvider<ZodTypeProvider>()
+    // Zod schema validator
+    // https://github.com/turkerdev/fastify-type-provider-zod
+    .setValidatorCompiler(FastifyZod.validatorCompiler)
+    .setSerializerCompiler(FastifyZod.serializerCompiler)
+    .withTypeProvider<FastifyZod.ZodTypeProvider>()
+    // Middleware
+    // https://github.com/fastify/middie
     .register(fastifyMiddie)
+    // Add security headers
+    // https://github.com/fastify/fastify-helmet
+    .register(fastifyHelmet, {
+      contentSecurityPolicy: false,
+    })
+    // CORS
+    // https://github.com/fastify/fastify-cors
+    .register(fastifyCors, {
+      origin: '*',
+      methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+      allowedHeaders: ['Content-Type', 'Authorization'],
+      // exposedHeaders: ['Content-Range', 'X-Content-Range'],
+      credentials: true,
+      // maxAge: 86400,
+    })
+    // Parse and set cookies
+    // https://github.com/fastify/fastify-cookie
     .register(fastifyCookie)
+    // Serve static files
+    // https://github.com/fastify/fastify-static
+    .register(fastifyStatic, {
+      root: path.resolve(url.fileURLToPath(import.meta.url), '../../public'),
+      // prefix: '/public/', // optional: default '/'
+    })
+    // Request-scoped storage
+    // https://github.com/fastify/fastify-request-context
     .register(fastifyRequestContext, {
       hook: 'onRequest',
       // defaultStoreValues: () => ({ user: {} as unknown as User }),
     })
+    // WebSocket based on ws@8
+    // https://github.com/fastify/fastify-websocket
     .register(fastifyWebSocket as unknown as Fa.FastifyPluginCallback)
+    // Swagger (OpenAPI v3)
+    // https://github.com/fastify/fastify-swagger
     .register(fastifySwagger, {
       openapi: {
         info: {
@@ -73,16 +107,19 @@ export async function createFastify(opts: ServerOptions) {
         },
         servers: [],
       },
-      transform: jsonSchemaTransform,
+      transform: FastifyZod.jsonSchemaTransform,
       // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
       //
-      // transform: createJsonSchemaTransform({
+      // transform: createFastifyZod.JsonSchemaTransform({
       //   skipList: [ '/documentation/static/*' ]
       // })
     })
+    // https://github.com/fastify/fastify-swagger-ui
     .register(fastifySwaggerUI, {
       routePrefix: '/documentation',
     })
+    // tRPC
+    // https://trpc.io/docs/fastify
     .register(fastifyTRPCPlugin, {
       prefix,
       useWSS: true,
