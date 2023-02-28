@@ -5,9 +5,6 @@
   "type": "module",
   "private": true,
   "license": "MIT",
-  "_moduleAliases": {
-    "~": "_src"
-  },
   "scripts": {
     "circular": "pnpm circular:src && pnpm circular:dist",
     "circular:src": "madge --circular --ts-config ./tsconfig.json --extensions ts ./_src",
@@ -28,8 +25,8 @@
     "test": "vitest",
     "test:run": "pnpm run test run",
     "testsuite": "pnpm circular && pnpm run test:run && pnpm lint",
-    "dev": "NODE_ENV=development ts-node-esm -P tsconfig.src.json _src/main.ts",
-    "dev:compiled": "NODE_ENV=development pnpm start:compiled | scripts/humanlog.sh",
+    "dev": "NODE_ENV=development dotenv -- ts-node-esm -P tsconfig.src.json _src/main.ts",
+    "dev:compiled": "NODE_ENV=development dotenv -- pnpm start:compiled | scripts/humanlog.sh",
     "dev:compiled:watch": "NODE_ENV=development nodemon --exec pnpm dev:compiled",
     "start": "pnpm start:compiled",
     "start:compiled": "node --experimental-specifier-resolution=node -r source-map-support/register ./dist/main.js",
