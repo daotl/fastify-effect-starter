@@ -17,6 +17,7 @@ import type { $scopify, TypeSet } from 'edgeql-js/typesystem'
 import type { $expr_Update, UpdateShape } from 'edgeql-js/update'
 
 import { type ModelMap, e } from '../utils.js'
+import * as R from 'remeda'
 import { type UpsertShape, upsertConflictGetter } from './common.js'
 
 type Model = ModelMap['Post']

@@ -6,7 +6,9 @@
     "outDir": "./_test/dist",
     "tsBuildInfoFile": "./_test/dist/.tsbuildinfo"
   },
-  "include": ["./_test/**/*.ts"],
+  "include": [
+    "./_test/**/*.ts"
+  ],
   "exclude": [
     "./dist",
     "./_test/dist",

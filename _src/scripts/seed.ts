@@ -1,17 +1,9 @@
-import 'module-alias/register'
-
-enum v {
-  a = 'b',
-}
-type V = typeof v[keyof typeof v]
-const abc: V = 'b' as v
-
 import { createClient } from 'edgedb'
-import { omit } from 'remeda'
+import { default as e } from 'edgeql-js'
+import * as R from 'remeda'
 
-import { Config } from '../_src/auth/config.js'
-import * as E from '../_src/edgedb/index.js'
-import { default as e } from './edgeql-js/generated/index.mjs'
+import { Config } from '../auth/config.js'
+import * as E from '../edgedb/index.js'
 
 const client = createClient().withConfig({
   allow_user_specified_id: true,
@@ -49,19 +41,19 @@ async function main(): Promise<void> {
 
   const users = await Promise.all([
     E.User.upsert(
-      e.User.email,
+      e.default.User.email,
       {
         id: new Config().mockUserId,
         email: 'nex@daot.io',
         name: 'Nex',
       },
-      omit<E.UpsertShape<typeof e.User>>(['id']),
+      R.omit(['id']),
     ),
-    E.User.upsert(e.User.email, {
+    E.User.upsert(e.default.User.email, {
       email: 'john@daot.io',
       name: 'John',
     }),
-    E.User.upsert(e.User.email, {
+    E.User.upsert(e.default.User.email, {
       email: 'marie@daot.io',
       name: 'Marie',
     }),
@@ -87,13 +79,13 @@ async function main(): Promise<void> {
       published: true,
       author: users[2],
     },
-  ] as const
+  ]
 
   await Promise.all([
     ...posts.map((p) =>
       // FIXME: Update author also. Currently if we don't omit `author`, there's an error:
       //   Error: Cannot extract repeated or aliased expression into 'WITH' block, expression or its aliases appear outside root scope
-      E.Post.upsert(e.Post.title, p, omit<typeof p>('author')).run(client),
+      E.Post.upsert(e.default.Post.title, p, R.omit(['author'])).run(client),
     ),
   ])
 }

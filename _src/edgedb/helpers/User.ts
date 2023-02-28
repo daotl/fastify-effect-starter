@@ -5,6 +5,7 @@ import type {
   $expr_InsertUnlessConflict,
   InsertShape,
 } from 'edgeql-js/insert'
+import * as R from 'remeda'
 import type { $expr_PathNode, $linkPropify } from 'edgeql-js/path'
 import type {
   ComputeSelectCardinality,

@@ -6,5 +6,8 @@
     "tsBuildInfoFile": "./_test/dist/.local.tsbuildinfo",
     "noEmit": true
   },
-  "include": ["./_test/**/*.ts", "./_src/**/*.ts"]
+  "include": [
+    "./_test/**/*.ts",
+    "./_src/**/*.ts"
+  ]
 }

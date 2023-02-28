@@ -1,6 +1,7 @@
 import path from 'node:path'
 import url from 'node:url'
 
+import * as R from 'remeda'
 import fastifyCookie from '@fastify/cookie'
 import fastifyCors from '@fastify/cors'
 import fastifyCsrfProtection from '@fastify/csrf-protection'

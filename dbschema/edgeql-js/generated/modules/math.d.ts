@@ -254,12 +254,12 @@ declare function stddev_pop<
   vals: P1,
 ): stddev_popλFuncExpr2<P1>;
 
-declare type var_b07f4c6f7ccd11eda8fe31f05c6eefdfλFuncExpr<
+declare type var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
 > = $.$expr_Function<
   _std.$number, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
 >;
-declare type var_b07f4c6f7ccd11eda8fe31f05c6eefdfλFuncExpr2<
+declare type var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr2<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
 > = $.$expr_Function<
   _std.$decimal, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
@@ -267,19 +267,19 @@ declare type var_b07f4c6f7ccd11eda8fe31f05c6eefdfλFuncExpr2<
 /**
  * Return the sample variance of the input set.
  */
-declare function var_b07f4c6f7ccd11eda8fe31f05c6eefdf<
+declare function var_43a5cee47ce511ed8b6c696d3d95a080<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
 >(
   vals: P1,
-): var_b07f4c6f7ccd11eda8fe31f05c6eefdfλFuncExpr<P1>;
+): var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr<P1>;
 /**
  * Return the sample variance of the input set.
  */
-declare function var_b07f4c6f7ccd11eda8fe31f05c6eefdf<
+declare function var_43a5cee47ce511ed8b6c696d3d95a080<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
 >(
   vals: P1,
-): var_b07f4c6f7ccd11eda8fe31f05c6eefdfλFuncExpr2<P1>;
+): var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr2<P1>;
 
 declare type var_popλFuncExpr<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
@@ -320,7 +320,7 @@ declare type __defaultExports = {
   "mean": typeof mean;
   "stddev": typeof stddev;
   "stddev_pop": typeof stddev_pop;
-  "var": typeof var_b07f4c6f7ccd11eda8fe31f05c6eefdf;
+  "var": typeof var_43a5cee47ce511ed8b6c696d3d95a080;
   "var_pop": typeof var_pop
 };
 declare const __defaultExports: __defaultExports;

@@ -82,8 +82,8 @@ export declare type $number = $.ScalarType<"std::number", number>;
 declare const number: $.scalarTypeWithConstructor<$number, string>
 
 export declare type $BaseObjectλShape = $.typeutil.flatten<{
-  "__type__": $.LinkDesc<_schema.$ObjectType, $.Cardinality.One, {}, false, false,  true, false>;
   "id": $.PropertyDesc<$uuid, $.Cardinality.One, true, false, true, true>;
+  "__type__": $.LinkDesc<_schema.$ObjectType, $.Cardinality.One, {}, false, false,  true, false>;
 }>;
 declare type $BaseObject = $.ObjectType<"std::BaseObject", $BaseObjectλShape, null, [
   {id: {__element__: $uuid, __cardinality__: $.Cardinality.One | $.Cardinality.AtMostOne },},
@@ -92,15 +92,15 @@ declare const $BaseObject: $BaseObject
 
 declare const BaseObject: $.$expr_PathNode<$.TypeSet<$BaseObject, $.Cardinality.Many>, null> 
 
-export declare type $Object_a95265547ccd11edaf577b7152587f02λShape = $.typeutil.flatten<$BaseObjectλShape & {
+export declare type $Object_3dff02017ce511eda4582d4e2bc60621λShape = $.typeutil.flatten<$BaseObjectλShape & {
 }>;
-declare type $Object_a95265547ccd11edaf577b7152587f02 = $.ObjectType<"std::Object", $Object_a95265547ccd11edaf577b7152587f02λShape, null, [
+declare type $Object_3dff02017ce511eda4582d4e2bc60621 = $.ObjectType<"std::Object", $Object_3dff02017ce511eda4582d4e2bc60621λShape, null, [
   ...$BaseObject['__exclusives__'],
 ]>;
-export declare type $Object = $Object_a95265547ccd11edaf577b7152587f02
-declare const $Object_a95265547ccd11edaf577b7152587f02: $Object_a95265547ccd11edaf577b7152587f02
+export declare type $Object = $Object_3dff02017ce511eda4582d4e2bc60621
+declare const $Object_3dff02017ce511eda4582d4e2bc60621: $Object_3dff02017ce511eda4582d4e2bc60621
 
-declare const Object_a95265547ccd11edaf577b7152587f02: $.$expr_PathNode<$.TypeSet<$Object_a95265547ccd11edaf577b7152587f02, $.Cardinality.Many>, null> 
+declare const Object_3dff02017ce511eda4582d4e2bc60621: $.$expr_PathNode<$.TypeSet<$Object_3dff02017ce511eda4582d4e2bc60621, $.Cardinality.Many>, null> 
 
 export declare type $FreeObjectλShape = $.typeutil.flatten<$BaseObjectλShape & {
 }>;
@@ -3047,7 +3047,7 @@ declare function sequence_next<
 
 
 
-export { JsonEmpty, bigint, bool, bytes, datetime, decimal, duration, float32, float64, int16, int32, int64, json, $sequence, str, uuid, number, $BaseObject, BaseObject, $Object_a95265547ccd11edaf577b7152587f02, Object_a95265547ccd11edaf577b7152587f02, $FreeObject, FreeObject };
+export { JsonEmpty, bigint, bool, bytes, datetime, decimal, duration, float32, float64, int16, int32, int64, json, $sequence, str, uuid, number, $BaseObject, BaseObject, $Object_3dff02017ce511eda4582d4e2bc60621, Object_3dff02017ce511eda4582d4e2bc60621, $FreeObject, FreeObject };
 
 export type { $anyscalar, $anypoint, $anydiscrete, $anycontiguous, $anyreal, $anyfloat, $anyint, $anynumeric };
 
@@ -3068,7 +3068,7 @@ declare type __defaultExports = {
   "str": typeof str;
   "uuid": typeof uuid;
   "BaseObject": typeof BaseObject;
-  "Object": typeof Object_a95265547ccd11edaf577b7152587f02;
+  "Object": typeof Object_3dff02017ce511eda4582d4e2bc60621;
   "FreeObject": typeof FreeObject;
   "assert_single": typeof assert_single;
   "assert_exists": typeof assert_exists;

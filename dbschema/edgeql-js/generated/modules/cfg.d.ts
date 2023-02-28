@@ -29,7 +29,6 @@ declare const $ConfigObject: $ConfigObject
 declare const ConfigObject: $.$expr_PathNode<$.TypeSet<$ConfigObject, $.Cardinality.Many>, null> 
 
 export declare type $AbstractConfigλShape = $.typeutil.flatten<$ConfigObjectλShape & {
-  "auth": $.LinkDesc<$Auth, $.Cardinality.Many, {}, false, false,  false, false>;
   "session_idle_timeout": $.PropertyDesc<_std.$duration, $.Cardinality.One, false, false, false, true>;
   "session_idle_transaction_timeout": $.PropertyDesc<_std.$duration, $.Cardinality.One, false, false, false, true>;
   "query_execution_timeout": $.PropertyDesc<_std.$duration, $.Cardinality.One, false, false, false, false>;
@@ -44,6 +43,7 @@ export declare type $AbstractConfigλShape = $.typeutil.flatten<$ConfigObjectλS
   "effective_cache_size": $.PropertyDesc<$memory, $.Cardinality.AtMostOne, false, false, false, false>;
   "effective_io_concurrency": $.PropertyDesc<_std.$int64, $.Cardinality.AtMostOne, false, false, false, false>;
   "default_statistics_target": $.PropertyDesc<_std.$int64, $.Cardinality.AtMostOne, false, false, false, false>;
+  "auth": $.LinkDesc<$Auth, $.Cardinality.Many, {}, false, false,  false, false>;
 }>;
 declare type $AbstractConfig = $.ObjectType<"cfg::AbstractConfig", $AbstractConfigλShape, null, [
   ...$ConfigObject['__exclusives__'],
@@ -53,10 +53,10 @@ declare const $AbstractConfig: $AbstractConfig
 declare const AbstractConfig: $.$expr_PathNode<$.TypeSet<$AbstractConfig, $.Cardinality.Many>, null> 
 
 export declare type $AuthλShape = $.typeutil.flatten<$ConfigObjectλShape & {
-  "method": $.LinkDesc<$AuthMethod, $.Cardinality.AtMostOne, {}, true, false,  true, false>;
   "priority": $.PropertyDesc<_std.$int64, $.Cardinality.One, true, false, true, false>;
   "user": $.PropertyDesc<_std.$str, $.Cardinality.Many, false, false, true, true>;
   "comment": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, true, false>;
+  "method": $.LinkDesc<$AuthMethod, $.Cardinality.AtMostOne, {}, true, false,  true, false>;
   "<auth[is cfg::AbstractConfig]": $.LinkDesc<$AbstractConfig, $.Cardinality.Many, {}, false, false,  false, false>;
   "<auth[is cfg::Config]": $.LinkDesc<$Config, $.Cardinality.Many, {}, false, false,  false, false>;
   "<auth[is cfg::InstanceConfig]": $.LinkDesc<$InstanceConfig, $.Cardinality.Many, {}, false, false,  false, false>;
@@ -65,8 +65,8 @@ export declare type $AuthλShape = $.typeutil.flatten<$ConfigObjectλShape & {
 }>;
 declare type $Auth = $.ObjectType<"cfg::Auth", $AuthλShape, null, [
   ...$ConfigObject['__exclusives__'],
-  {method: {__element__: $AuthMethod, __cardinality__: $.Cardinality.One | $.Cardinality.AtMostOne },},
   {priority: {__element__: _std.$int64, __cardinality__: $.Cardinality.One | $.Cardinality.AtMostOne },},
+  {method: {__element__: $AuthMethod, __cardinality__: $.Cardinality.One | $.Cardinality.AtMostOne },},
 ]>;
 declare const $Auth: $Auth
 

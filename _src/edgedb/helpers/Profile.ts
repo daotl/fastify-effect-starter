@@ -13,6 +13,7 @@ import type {
   UnknownSelectModifiers,
   objectTypeToSelectShape,
 } from 'edgeql-js/select'
+import * as R from 'remeda'
 import type { $scopify, TypeSet } from 'edgeql-js/typesystem'
 import type { $expr_Update, UpdateShape } from 'edgeql-js/update'
 

@@ -9,4 +9,4 @@ import { none, some } from '@fp-ts/core/Option'
 /**
  * @tsplus global
  */
-import { default as R } from 'remeda'
+import { R } from '@fastify-effect-starter/main/_global/remeda'
