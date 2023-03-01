@@ -2,18 +2,17 @@ import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 
 import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
+import type { User } from '~/models/index.js'
 
 import { type Config } from './config.js'
-import { type Session, SessionCache, sessionIdCookieName } from './session.js'
 
-const signOutUrl = '/'
+const signOutUrl = '/api/hello'
 
 export const routes =
-  (config: Config, sessionCache: SessionCache): FastifyNestedRoutes =>
+  (_config: Config): FastifyNestedRoutes =>
   async (fastify: Fastify, _, done) => {
     await fastify
       .route({
-        // @http.GET('/api/auth/signin').use(authGroup('public'))
         config: { authLevel: 'public' },
         method: 'GET',
         url: '/signin',
@@ -21,17 +20,23 @@ export const routes =
           response: { [StatusCodes.OK]: z.object({ status: z.literal('ok') }) },
         },
 
-        handler: (_req, reply) => {
-          const session: Session = { id: config.mockUserId }
-          sessionCache.set(session.id, session)
-          reply
-            .code(200)
-            .setCookie(sessionIdCookieName, session.id)
-            .send({ status: 'ok' })
+        handler: (req, reply) => {
+          if (!req.session.user) {
+            const oUser = some({
+              createdAt: new Date(),
+              id: '52',
+              name: 'Nex',
+              email: 'hitnexup@gmail.com',
+            } as User)
+            oUser.tap((u) => {
+              req.session.user = u
+              return some(null)
+            })
+          }
+          reply.code(200).send({ status: 'ok' })
         },
       })
       .route({
-        // @http.GET('/api/auth/signout').use(authGroup('protected'))
         config: { authLevel: 'protected' },
         method: 'GET',
         url: '/signout',
@@ -41,15 +46,7 @@ export const routes =
           },
         },
         handler: (req, reply) => {
-          Option.fromNullable(req.requestContext.get('auth'))
-            .map(R.prop('session'))
-            .map(R.prop('id'))
-            .tap((sid) => {
-              sessionCache.delete(sid)
-              // Remove session ID cookie
-              reply.setCookie(sessionIdCookieName, sid, { maxAge: 0 })
-              return some(null)
-            })
+          req.session.destroy()
           reply.redirect(signOutUrl)
         },
       })

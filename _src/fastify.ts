@@ -3,9 +3,12 @@ import url from 'node:url'
 
 import fastifyCookie from '@fastify/cookie'
 import fastifyCors from '@fastify/cors'
+import fastifyCsrfProtection from '@fastify/csrf-protection'
+import fastifyFormBody from '@fastify/formbody'
 import fastifyHelmet from '@fastify/helmet'
 import fastifyMiddie from '@fastify/middie'
 import { fastifyRequestContext } from '@fastify/request-context'
+import fastifySession from '@fastify/session'
 import fastifyStatic from '@fastify/static'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
@@ -14,10 +17,12 @@ import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
+import * as R from 'remeda'
 import type { Spread, ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
 import * as auth from '~/auth/index.js'
+import type { User } from '~/models/index.js'
 import * as trpc from '~/trpc/index.js'
 
 export type ServerOptions = {
@@ -43,10 +48,14 @@ export interface FastifyZodSchema {
   response?: Partial<Record<ValueOf<typeof StatusCodes>, ZodTypeAny>>
 }
 
-declare module '@fastify/request-context' {
-  interface RequestContextData {
-    auth: auth.ContextData
+declare module 'fastify' {
+  interface Session {
+    user: User
   }
+}
+
+declare module '@fastify/request-context' {
+  interface RequestContextData {}
 }
 
 export async function createFastify(opts: ServerOptions) {
@@ -80,7 +89,19 @@ export async function createFastify(opts: ServerOptions) {
     })
     // Parse and set cookies
     // https://github.com/fastify/fastify-cookie
-    .register(fastifyCookie)
+    .register(fastifyCookie, { secret: 'COOKIE_SECRET' }) // See following section to ensure security
+    // Session
+    // https://github.com/fastify/session
+    .register(fastifySession, {
+      secret: 'a secret with minimum length of 32 characters',
+      cookie: {
+        secure: 'auto',
+        maxAge: 1800_000,
+      },
+    })
+    // CSRF protection
+    // https://github.com/fastify/csrf-protection
+    .register(fastifyCsrfProtection, { cookieOpts: { signed: true } })
     // Serve static files
     // https://github.com/fastify/fastify-static
     .register(fastifyStatic, {
@@ -93,6 +114,9 @@ export async function createFastify(opts: ServerOptions) {
       hook: 'onRequest',
       // defaultStoreValues: () => ({ user: {} as unknown as User }),
     })
+    // application/x-www-form-urlencoded
+    // https://github.com/fastify/fastify-formbody
+    .register(fastifyFormBody)
     // WebSocket based on ws@8
     // https://github.com/fastify/fastify-websocket
     .register(fastifyWebSocket as unknown as Fa.FastifyPluginCallback)
@@ -167,19 +191,18 @@ export async function createFastify(opts: ServerOptions) {
   type RouteFn = typeof route
 
   const authConfig = new auth.Config()
-  const sessionCache = auth.newSessionCache()
   const fastify = f1
-    .addHook('onRequest', auth.newAuthHook(authConfig, sessionCache))
+    .addHook('onRequest', auth.newAuthHook(authConfig))
     // Middlewares
     // Routes
-    .get('/', (req) => {
-      const oUserName = Option.fromNullable(req.requestContext.get('auth'))
-        .map(R.prop('user'))
-        .map(R.prop('name'))
+    .get('/api/hello', (req) => {
+      const oUserName = Option.fromNullable(req.session.user).map(
+        R.prop('name'),
+      )
 
       return { msg: `hello ${oUserName.getOrElse('anonymous')}` }
     })
-    .register(auth.routes(authConfig, sessionCache), { prefix: '/api/auth' })
+    .register(auth.routes(authConfig), { prefix: '/api/auth' })
 
   const start = async () => {
     try {
