@@ -27,7 +27,7 @@
     "testsuite": "pnpm circular && pnpm run test:run && pnpm lint",
     "dev": "NODE_ENV=development dotenv -- ts-node-esm -P tsconfig.src.json _src/main.ts",
     "dev:compiled": "NODE_ENV=development dotenv -- pnpm start:compiled | scripts/humanlog.sh",
-    "dev:compiled:watch": "NODE_ENV=development nodemon --exec pnpm dev:compiled",
+    "dev:compiled:watch": "nodemon --exec pnpm dev:compiled",
     "start": "pnpm start:compiled",
     "start:compiled": "node --experimental-specifier-resolution=node -r source-map-support/register ./dist/main.js",
     "edgedb:migration:create": "docker exec fastify-effect-starter-edgedb-1 edgedb -I fastify_effect_starter migration create",

@@ -1,9 +1,9 @@
 import { createClient } from 'edgedb'
-import { default as e } from 'edgeql-js'
 import * as R from 'remeda'
 
 import { Config } from '../auth/config.js'
 import * as E from '../edgedb/index.js'
+import { e } from '../edgedb/index.js'
 
 const client = createClient().withConfig({
   allow_user_specified_id: true,
@@ -41,7 +41,7 @@ async function main(): Promise<void> {
 
   const users = await Promise.all([
     E.User.upsert(
-      e.default.User.email,
+      e.User.email,
       {
         id: new Config().mockUserId,
         email: 'nex@daot.io',
@@ -49,7 +49,7 @@ async function main(): Promise<void> {
       },
       R.omit(['id']),
     ),
-    E.User.upsert(e.default.User.email, {
+    E.User.upsert(e.User.email, {
       email: 'john@daot.io',
       name: 'John',
     }),
@@ -85,7 +85,7 @@ async function main(): Promise<void> {
     ...posts.map((p) =>
       // FIXME: Update author also. Currently if we don't omit `author`, there's an error:
       //   Error: Cannot extract repeated or aliased expression into 'WITH' block, expression or its aliases appear outside root scope
-      E.Post.upsert(e.default.Post.title, p, R.omit(['author'])).run(client),
+      E.Post.upsert(e.Post.title, p, R.omit(['author'])).run(client),
     ),
   ])
 }

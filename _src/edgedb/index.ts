@@ -1,6 +1,8 @@
 // 3p
 export { Client as EdgedbClient } from 'edgedb/dist/baseClient.js'
-export { default as e } from 'edgeql-js'
+import edgeqlJs from 'edgeql-js'
+
 // app
-export * from './helpers/index.js'
+export const e = edgeqlJs.default
 export * from './utils.js'
+export * from './helpers/index.js'

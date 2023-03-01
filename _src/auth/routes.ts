@@ -1,12 +1,16 @@
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
-import * as R from 'remeda'
 import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
 import type { User } from '~/models/index.js'
-
-import { type Config } from './config.js'
+import { e } from '~/edgedb/index.js'
+import { createClient } from 'edgedb'
+import { Config } from './config.js'
 
 const signOutUrl = '/api/hello'
+
+const client = createClient().withConfig({
+  allow_user_specified_id: true,
+})
 
 export const routes =
   (_config: Config): FastifyNestedRoutes =>
@@ -20,14 +24,19 @@ export const routes =
           response: { [StatusCodes.OK]: z.object({ status: z.literal('ok') }) },
         },
 
-        handler: (req, reply) => {
+        handler: async (req, reply) => {
           if (!req.session.user) {
-            const oUser = some({
-              createdAt: new Date(),
-              id: '52',
-              name: 'Nex',
-              email: 'hitnexup@gmail.com',
-            } as User)
+            const oUser = Option.fromNullable(
+              await e
+                .select(e.User, () => ({
+                  filter_single: { id: new Config().mockUserId },
+                  createdAt: true,
+                  id: true,
+                  name: true,
+                  email: true,
+                }))
+                .run(client),
+            )
             oUser.tap((u) => {
               req.session.user = u
               return some(null)

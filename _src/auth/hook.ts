@@ -3,7 +3,6 @@ import type * as Fa from 'fastify'
 import type { FastifyContextConfig } from '~/fastify.js'
 
 import type { Config } from './config.js'
-import type { User } from '~/models/index.js'
 
 // onRequest hook
 export const newAuthHook =
