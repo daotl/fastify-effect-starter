@@ -1,7 +1,6 @@
 import path from 'node:path'
 import url from 'node:url'
 
-import * as R from 'remeda'
 import fastifyCookie from '@fastify/cookie'
 import fastifyCors from '@fastify/cors'
 import fastifyCsrfProtection from '@fastify/csrf-protection'
@@ -18,7 +17,7 @@ import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
-import * as R from 'remeda'
+
 import type { Spread, ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 

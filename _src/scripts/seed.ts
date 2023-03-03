@@ -1,5 +1,4 @@
 import { createClient } from 'edgedb'
-import * as R from 'remeda'
 
 import { Config } from '../auth/config.js'
 import * as E from '../edgedb/index.js'

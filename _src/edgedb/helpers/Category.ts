@@ -1,6 +1,5 @@
 // codegen:start {preset: custom, source: ../../../eslint-codegen/edgedb-helpers.cjs, export: all}
 import type { Cardinality } from 'edgedb/dist/reflection'
-import * as R from 'remeda'
 import type {
   $expr_Insert,
   $expr_InsertUnlessConflict,

@@ -30,7 +30,20 @@ export const R = {
   forEachObj: r.forEachObj,
   fromPairs: r.fromPairs,
   groupBy: r.groupBy,
-  guards: r.guards,
+  // guards.ts
+  isString: r.isString,
+  isNumber: r.isNumber,
+  isDefined: r.isDefined,
+  isBoolean: r.isBoolean,
+  isPromise: r.isPromise,
+  isArray: r.isArray,
+  isObject: r.isObject,
+  isFunction: r.isFunction,
+  isNil: r.isNil,
+  isError: r.isError,
+  isDate: r.isDate,
+  isTruthy: r.isTruthy,
+  isNot: r.isNot,
   identity: r.identity,
   indexBy: r.indexBy,
   intersection: r.intersection,
@@ -79,5 +92,4 @@ export const R = {
   values: r.values,
   zip: r.zip,
   zipWith: r.zipWith,
-  //# sourceMappingURL=index.d.ts.map
 } as const
