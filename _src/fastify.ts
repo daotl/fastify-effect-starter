@@ -1,6 +1,7 @@
 import path from 'node:path'
 import url from 'node:url'
 
+import fastifyCaching from '@fastify/caching'
 import fastifyCookie from '@fastify/cookie'
 import fastifyCors from '@fastify/cors'
 import fastifyCsrfProtection from '@fastify/csrf-protection'
@@ -115,6 +116,11 @@ export async function createFastify(opts: ServerOptions = { dev: false }) {
     // application/x-www-form-urlencoded
     // https://github.com/fastify/fastify-formbody
     .register(fastifyFormBody)
+    // Caching & cache control headers
+    .register(fastifyCaching, {
+      privacy: (fastifyCaching.privacy as unknown as fastifyCaching.Privacy)
+        .NOCACHE,
+    })
     // WebSocket based on ws@8
     // https://github.com/fastify/fastify-websocket
     .register(fastifyWebSocket as unknown as Fa.FastifyPluginCallback)

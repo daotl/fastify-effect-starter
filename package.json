@@ -61,6 +61,7 @@
     "@effect-app/schema": "^0.18.7",
     "@effect/data": "^0.1.2",
     "@effect/io": "^0.1.12",
+    "@fastify/caching": "^8.2.0",
     "@fastify/cookie": "^8.3.0",
     "@fastify/cors": "^8.2.0",
     "@fastify/csrf-protection": "^6.1.0",
