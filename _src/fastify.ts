@@ -28,7 +28,6 @@ import * as trpc from '~/trpc/index.js'
 export type ServerOptions = {
   dev?: boolean
   port?: number
-  prefix?: string
 }
 
 export type FastifyContextConfig = {
@@ -58,12 +57,8 @@ declare module '@fastify/request-context' {
   interface RequestContextData {}
 }
 
-export async function createFastify(opts: ServerOptions) {
-  const dev = opts.dev ?? true
-  const port = opts.port ?? 3000
-  const prefix = opts.prefix ?? '/api/trpc'
-
-  const f1 = Fa.fastify({ logger: dev })
+export async function createFastify(opts: ServerOptions = { dev: false }) {
+  const fastify = Fa.fastify({ logger: opts.dev })
     // Zod schema validator
     // https://github.com/turkerdev/fastify-type-provider-zod
     .setValidatorCompiler(FastifyZod.validatorCompiler)
@@ -101,7 +96,10 @@ export async function createFastify(opts: ServerOptions) {
     })
     // CSRF protection
     // https://github.com/fastify/csrf-protection
-    .register(fastifyCsrfProtection, { cookieOpts: { signed: true } })
+    .register(fastifyCsrfProtection, {
+      cookieOpts: { signed: true },
+      sessionPlugin: '@fastify/session',
+    })
     // Serve static files
     // https://github.com/fastify/fastify-static
     .register(fastifyStatic, {
@@ -145,7 +143,7 @@ export async function createFastify(opts: ServerOptions) {
     // tRPC
     // https://trpc.io/docs/fastify
     .register(fastifyTRPCPlugin, {
-      prefix,
+      prefix: '/api/trpc',
       useWSS: true,
       trpcOptions: {
         router: trpc.trpcRouter,
@@ -155,7 +153,7 @@ export async function createFastify(opts: ServerOptions) {
     })
 
   type RouteOptionsTypes = Parameters<
-    typeof f1['route']
+    typeof fastify['route']
   >[0] extends Fa.RouteOptions<
     infer RawServer,
     infer RawRequest,
@@ -185,38 +183,14 @@ export async function createFastify(opts: ServerOptions) {
       RouteOptionsTypes['TypeProvider']
     >,
   ) =>
-    f1.route<Fa.RouteGenericInterface, FastifyContextConfig, FastifyZodSchema>(
-      opts,
-    )
+    fastify.route<
+      Fa.RouteGenericInterface,
+      FastifyContextConfig,
+      FastifyZodSchema
+    >(opts)
   type RouteFn = typeof route
 
-  const authConfig = new auth.Config()
-  const fastify = f1
-    .addHook('onRequest', auth.newAuthHook(authConfig))
-    // Middlewares
-    // Routes
-    .get('/api/hello', (req) => {
-      const oUserName = Option.fromNullable(req.session.user).map(
-        R.prop('name'),
-      )
-
-      return { msg: `hello ${oUserName.getOrElse('anonymous')}` }
-    })
-    .register(auth.routes(authConfig), { prefix: '/api/auth' })
-
-  const start = async () => {
-    try {
-      await fastify.listen({ port })
-      console.log('listening on port', port)
-    } catch (err) {
-      fastify.log.error(err)
-      process.exit(1)
-    }
-  }
-
-  const stop = () => fastify.close()
-
-  type FastifyTypes = typeof f1 extends Fa.FastifyInstance<
+  type FastifyTypes = typeof fastify extends Fa.FastifyInstance<
     infer RawServer,
     infer RawRequest,
     infer RawReply,
@@ -232,22 +206,18 @@ export async function createFastify(opts: ServerOptions) {
       }
     : never
 
-  return {
-    fastify: fastify as Spread<
-      Fa.FastifyInstance<
-        FastifyTypes['RawServer'],
-        FastifyTypes['RawRequest'],
-        FastifyTypes['RawReply'],
-        FastifyTypes['Logger'],
-        FastifyTypes['TypeProvider']
-      >,
-      {
-        route: RouteFn
-      }
+  return fastify as Spread<
+    Fa.FastifyInstance<
+      FastifyTypes['RawServer'],
+      FastifyTypes['RawRequest'],
+      FastifyTypes['RawReply'],
+      FastifyTypes['Logger'],
+      FastifyTypes['TypeProvider']
     >,
-    start,
-    stop,
-  }
+    {
+      route: RouteFn
+    }
+  >
 }
 
-export type Fastify = Awaited<ReturnType<typeof createFastify>>['fastify']
+export type Fastify = Awaited<ReturnType<typeof createFastify>>

@@ -1,10 +1,10 @@
+import { createClient } from 'edgedb'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
-import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
-import type { User } from '~/models/index.js'
-import { e } from '~/edgedb/index.js'
-import { createClient } from 'edgedb'
+
 import { Config } from './config.js'
+import { e } from '~/edgedb/index.js'
+import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
 
 const signOutUrl = '/api/hello'
 
