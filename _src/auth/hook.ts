@@ -1,6 +1,6 @@
 import type * as Fa from 'fastify'
 
-import type { FastifyContextConfig } from '~/fastify.js'
+import type { FastifyContextConfig } from '~/fastify/index.js'
 
 import type { Config } from './config.js'
 

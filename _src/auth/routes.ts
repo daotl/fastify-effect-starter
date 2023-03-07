@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 import { Config } from './config.js'
 import { e } from '~/edgedb/index.js'
-import type { Fastify, FastifyNestedRoutes } from '~/fastify.js'
+import type { Fastify, FastifyNestedRoutes } from '~/fastify/index.js'
 
 const signOutUrl = '/api/hello'
 

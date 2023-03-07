@@ -16,7 +16,7 @@ import fastifySwaggerUI from '@fastify/swagger-ui'
 import fastifyWebSocket from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
-import fastifyHealthCheck from 'fastify-helathcheck'
+import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 
@@ -41,6 +41,7 @@ export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
   Fa.RawServerDefault,
   FastifyZod.ZodTypeProvider
 >
+
 export interface FastifyZodSchema {
   body?: ZodTypeAny
   querystring?: ZodTypeAny

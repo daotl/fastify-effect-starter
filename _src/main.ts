@@ -3,7 +3,7 @@ import { CauseException } from '@effect-app/infra/errors'
 import { runtimeDebug } from '@effect/io/Debug'
 
 import * as auth from './auth/index.js'
-import { type ServerOptions, createFastify } from './fastify.js'
+import { type ServerOptions, createFastify } from '~/fastify/index.js'
 
 runtimeDebug.traceStackLimit = 50
 if (process.argv.includes('--debug')) {
