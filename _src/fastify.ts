@@ -16,6 +16,7 @@ import fastifySwaggerUI from '@fastify/swagger-ui'
 import fastifyWebSocket from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
+import fastifyHealthCheck from 'fastify-helathcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
 
@@ -157,6 +158,8 @@ export async function createFastify(opts: ServerOptions = { dev: false }) {
         wss: fastifyWebSocket,
       },
     })
+  // Health check `GET /health`
+  fastify.register(fastifyHealthCheck)
 
   type RouteOptionsTypes = Parameters<
     typeof fastify['route']
