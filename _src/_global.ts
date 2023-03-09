@@ -1,5 +1,4 @@
-import '@effect-app/infra/_global'
-import '@effect-app/prelude/_global'
+import '@fastify-effect-starter/prelude/_global'
 
 /**
  * @tsplus global

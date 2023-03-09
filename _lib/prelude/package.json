@@ -1,0 +1,35 @@
+{
+  "name": "@fastify-effect-starter/prelude",
+  "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*.js"
+  },
+  "scripts": {
+    "clean:all": "concurrently 'pnpm clean' 'pnpm clean:test'",
+    "clean:src": "rimraf dist",
+    "clean:test": "rimraf _test/dist",
+    "build:all": "pnpm clean:all && NODE_OPTIONS=--max-old-space-size=6144 tsc --build",
+    "build": "pnpm clean:src && NODE_OPTIONS=--max-old-space-size=6144 tsc",
+    "build:test": "pnpm clean:test && NODE_OPTIONS=--max-old-space-size=6144 tsc -p tsconfig.test.json"
+  },
+  "dependencies": {
+    "@effect-app/core": "^0.24.1",
+    "@effect-app/infra": "^0.26.3",
+    "@effect-app/infra-adapters": "^0.20.8",
+    "@effect-app/prelude": "^0.21.8",
+    "@effect-app/schema": "^0.18.7",
+    "@effect/data": "^0.1.2",
+    "@effect/io": "^0.1.12",
+    "change-case": "^4.1.2",
+    "date-fns": "^2.29.3"
+  },
+  "devDependencies": {
+    "tsconfig-paths": "^4.1.2",
+    "typescript": "https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.170/compiler/typescript.tgz"
+  },
+  "sideEffects": false
+}

@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 import { Config } from './config.js'
 import { e } from '~/edgedb/index.js'
-import type { Fastify, FastifyNestedRoutes } from '~/fastify/index.js'
+import { Fastify } from '~/fastify/index.js'
 
 const signOutUrl = '/api/hello'
 
@@ -12,40 +12,49 @@ const client = createClient().withConfig({
   allow_user_specified_id: true,
 })
 
-export const routes =
-  (_config: Config): FastifyNestedRoutes =>
-  async (fastify: Fastify, _, done) => {
-    await fastify
-      .route({
+export const routes = (_config: Config) =>
+  Fastify.register(
+    (_Fastify) =>
+      Fastify.route({
         config: { authLevel: 'public' },
         method: 'GET',
         url: '/signin',
         schema: {
-          response: { [StatusCodes.OK]: z.object({ status: z.literal('ok') }) },
+          response: {
+            [StatusCodes.OK]: z.object({ status: z.literal('ok') }),
+          },
         },
 
-        handler: async (req, reply) => {
-          if (!req.session.user) {
-            const oUser = Option.fromNullable(
-              await e
-                .select(e.User, () => ({
-                  filter_single: { id: new Config().mockUserId },
-                  createdAt: true,
-                  id: true,
-                  name: true,
-                  email: true,
-                }))
-                .run(client),
-            )
-            oUser.tap((u) => {
-              req.session.user = u
-              return some(null)
-            })
-          }
-          reply.code(200).send({ status: 'ok' })
-        },
-      })
-      .route({
+        handler: (req, reply) =>
+          Effect.gen(function* ($) {
+            if (!req.session.user) {
+              const oUser = Option.fromNullable(
+                yield* $(
+                  Effect.promise(() =>
+                    e
+                      .select(e.User, () => ({
+                        filter_single: { id: new Config().mockUserId },
+                        createdAt: true,
+                        id: true,
+                        name: true,
+                        email: true,
+                      }))
+                      .run(client),
+                  ),
+                ),
+              )
+
+              oUser.tap((u) => {
+                req.session.user = u
+                return some(null)
+              })
+            }
+            // Both forms are supported
+            reply.code(200) //.send({ status: 'ok' })
+            return { status: 'ok' }
+          }),
+      }) >
+      Fastify.route({
         config: { authLevel: 'protected' },
         method: 'GET',
         url: '/signout',
@@ -54,11 +63,10 @@ export const routes =
             [StatusCodes.OK]: z.literal(''),
           },
         },
-        handler: (req, reply) => {
-          req.session.destroy()
-          reply.redirect(signOutUrl)
-        },
-      })
-
-    done()
-  }
+        handler: (req, reply) =>
+          Effect.gen(function* () {
+            req.session.destroy()
+            reply.redirect(signOutUrl)
+          }),
+      }),
+  )

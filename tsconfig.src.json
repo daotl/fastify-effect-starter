@@ -3,7 +3,9 @@
   "compilerOptions": {
     "composite": true,
     "tsPlusConfig": "./tsplus.config.json",
-    "lib": ["esnext"],
+    "lib": [
+      "esnext"
+    ],
     "tsBuildInfoFile": "./dist/.tsbuildinfo",
     "esModuleInterop": true,
     // temp disbaled to support ts-plus ops
@@ -13,8 +15,12 @@
     // keep in here, cause madge can't detect it from extended tsconfig
     "moduleResolution": "Node16",
     "paths": {
-      "~/*": ["_src/*"],
-      "@fastify-effect-starter/main/*": ["_src/*"]
+      "~/*": [
+        "_src/*"
+      ],
+      "@fastify-effect-starter/main/*": [
+        "_src/*"
+      ]
     },
     // "types": ["./types/modules", "node"],
     "outDir": "./dist",
@@ -31,7 +37,9 @@
       {
         "name": "@effect/language-service/transformer",
         "trace": {
-          "exclude": ["**/*.ts"]
+          "exclude": [
+            "**/*.ts"
+          ]
         }
         //"debug": {}
       }
@@ -41,7 +49,6 @@
     "./_src/**/*.ts",
     "./_src/**/*.mts",
     "_src/main.ts.bk",
-    "_src/main.ts.bk2"
   ],
   "exclude": [
     "**/__template.ts",
@@ -58,7 +65,9 @@
   ],
   "ts-node": {
     "files": true,
-    "require": ["tsconfig-paths/register"]
+    "require": [
+      "tsconfig-paths/register"
+    ]
     // "compilerOptions": {
     //   "module": "CommonJS"
     // }

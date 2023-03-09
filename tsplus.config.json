@@ -1,7 +1,8 @@
 {
   "importMap": {
-    "^(.*)/_src/(.*)\\.[cm]?[tj]s$": "@fastify-effect-starter/main/$2",
-    "^(.*)/node_modules/@fastify-effect-starter/(.*)/_src/(.*)\\.[cm]?[tj]s$": "@fastify-effect-starter/$2/$3",
-    "^(.*)/node_modules/(.*)\\.[cm]?[tj]s$": "$2"
+    "^(.*)/_lib/(.+)/_src/(.+)\\.[cm]?[tj]s$": "@fastify-effect-starter/$2/$3",
+    "^(.*)/_src/(.+)\\.[cm]?[tj]s$": "@fastify-effect-starter/main/$2",
+    "^(.*)/node_modules/@fastify-effect-starter/(.+)/_src/(.+)\\.[cm]?[tj]s$": "@fastify-effect-starter/$2/$3",
+    "^(.*)/node_modules/(.+)\\.[cm]?[tj]s$": "$2"
   }
 }

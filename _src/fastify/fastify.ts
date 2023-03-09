@@ -1,3 +1,4 @@
+import http from 'node:http'
 import path from 'node:path'
 import url from 'node:url'
 
@@ -19,8 +20,7 @@ import * as Fa from 'fastify'
 import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
-
-import type { Spread, ValueOf } from 'type-fest'
+import type { ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
 import * as auth from '~/auth/index.js'
@@ -60,8 +60,11 @@ declare module '@fastify/request-context' {
   interface RequestContextData {}
 }
 
-export async function createFastify(opts: ServerOptions = { dev: false }) {
-  const fastify = Fa.fastify({ logger: opts.dev })
+export function createFastify<
+  Server extends http.Server = http.Server,
+  Logger extends Fa.FastifyBaseLogger = Fa.FastifyBaseLogger,
+>(opts?: Fa.FastifyHttpOptions<Server, Logger>) {
+  const fastify = Fa.fastify(opts)
     // Zod schema validator
     // https://github.com/turkerdev/fastify-type-provider-zod
     .setValidatorCompiler(FastifyZod.validatorCompiler)
@@ -159,75 +162,8 @@ export async function createFastify(opts: ServerOptions = { dev: false }) {
         wss: fastifyWebSocket,
       },
     })
-  // Health check `GET /health`
-  fastify.register(fastifyHealthCheck)
+    // Health check `GET /health`
+    .register(fastifyHealthCheck)
 
-  type RouteOptionsTypes = Parameters<
-    typeof fastify['route']
-  >[0] extends Fa.RouteOptions<
-    infer RawServer,
-    infer RawRequest,
-    infer RawReply,
-    infer RouteGeneric,
-    unknown,
-    Fa.FastifySchema,
-    infer TypeProvider
-  >
-    ? {
-        RawServer: RawServer
-        RawRequest: RawRequest
-        RawReply: RawReply
-        RouteGeneric: RouteGeneric
-        TypeProvider: TypeProvider
-      }
-    : never
-
-  const route = (
-    opts: Fa.RouteOptions<
-      RouteOptionsTypes['RawServer'],
-      RouteOptionsTypes['RawRequest'],
-      RouteOptionsTypes['RawReply'],
-      RouteOptionsTypes['RouteGeneric'],
-      FastifyContextConfig,
-      FastifyZodSchema,
-      RouteOptionsTypes['TypeProvider']
-    >,
-  ) =>
-    fastify.route<
-      Fa.RouteGenericInterface,
-      FastifyContextConfig,
-      FastifyZodSchema
-    >(opts)
-  type RouteFn = typeof route
-
-  type FastifyTypes = typeof fastify extends Fa.FastifyInstance<
-    infer RawServer,
-    infer RawRequest,
-    infer RawReply,
-    infer Logger,
-    infer TypeProvider
-  >
-    ? {
-        RawServer: RawServer
-        RawRequest: RawRequest
-        RawReply: RawReply
-        Logger: Logger
-        TypeProvider: TypeProvider
-      }
-    : never
-
-  return fastify as Spread<
-    Fa.FastifyInstance<
-      FastifyTypes['RawServer'],
-      FastifyTypes['RawRequest'],
-      FastifyTypes['RawReply'],
-      FastifyTypes['Logger'],
-      FastifyTypes['TypeProvider']
-    >,
-    {
-      route: RouteFn
-    }
-  >
+  return fastify
 }
-
-export type Fastify = Awaited<ReturnType<typeof createFastify>>
