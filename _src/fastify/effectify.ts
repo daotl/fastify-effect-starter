@@ -121,8 +121,8 @@ export type EffectFastifyPlugin<
   // FastifyInstance extends Fa.FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>,
   Fastify = any,
   FastifyApp = any,
-  Options extends Fa.FastifyPluginOptions = Record<never, never>,
   R = never,
+  Options extends Fa.FastifyPluginOptions = Record<never, never>,
 > = (
   // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
   // Fastify: ReturnType<typeof _effectify<FastifyInstance>>,
@@ -431,14 +431,14 @@ export function effectify<
     <
       // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
       Fastify,
+      R = never,
       Options extends Fa.FastifyPluginOptions = Record<never, never>,
-      // R = never,
     >(
-      plugin: EffectFastifyPlugin<Fastify, FastifyApp, Options, never>,
+      plugin: EffectFastifyPlugin<Fastify, FastifyApp, R, Options>,
     ) =>
     (
       opts?: FastifyRegisterOptions<FastifyInstance, Options>,
-    ): Effect<FastifyApp /* | R*/, never, void> =>
+    ): Effect<FastifyApp | R, never, void> =>
       accessFastify.flatMap((fastify) =>
         Effect.async<FastifyApp, never, void>(async (cb) => {
           await fastify.register((instance, _opts, done) => {

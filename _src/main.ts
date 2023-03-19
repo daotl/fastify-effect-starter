@@ -1,6 +1,7 @@
 import { runtimeDebug } from '@effect/io/Debug'
 
 import * as auth from './auth/index.js'
+import { createLiveEdgedb } from './edgedb/index.js'
 import { Fastify } from '~/fastify/index.js'
 
 runtimeDebug.traceStackLimit = 50
@@ -13,13 +14,19 @@ if (process.argv.includes('--debug')) {
 
 const liveFastify = Fastify.createLiveFastify('localhost', 3000)
 
-const authConfig = new auth.Config()
+const liveEdgedb = createLiveEdgedb({
+  allow_user_specified_id: true,
+})
+
+const services = liveFastify > liveEdgedb
 
 const initFastify = Fastify.accessFastify.tap((fastify) => {
   fastify.addHook('onRequest', auth.newAuthHook(authConfig))
   // Middlewares
   return Effect.unit
 })
+
+const authConfig = new auth.Config()
 
 const routes =
   auth.routes(authConfig)({ prefix: '/api/auth' }) >
@@ -36,8 +43,7 @@ const main = Effect.gen(function* ($) {
 
   return yield* $(
     Effect.never().scoped.provideLayer(
-      liveFastify >
-        (initFastify > routes > Fastify.listen).toScopedDiscardLayer,
+      services > (initFastify > routes > Fastify.listen).toScopedDiscardLayer,
     ),
   )
 })

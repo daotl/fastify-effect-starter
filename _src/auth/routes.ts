@@ -1,16 +1,12 @@
-import { createClient } from 'edgedb'
 import { StatusCodes } from 'http-status-codes'
 import { z } from 'zod'
 
 import { Config } from './config.js'
 import { e } from '~/edgedb/index.js'
+import * as E from '~/edgedb/index.js'
 import { Fastify } from '~/fastify/index.js'
 
 const signOutUrl = '/api/hello'
-
-const client = createClient().withConfig({
-  allow_user_specified_id: true,
-})
 
 export const routes = (_config: Config) =>
   Fastify.register(
@@ -27,6 +23,8 @@ export const routes = (_config: Config) =>
 
         handler: (req, reply) =>
           Effect.gen(function* ($) {
+            const edgedb = yield* $(Effect.service(E.tagEdgedb))
+
             if (!req.session.user) {
               const oUser = Option.fromNullable(
                 yield* $(
@@ -39,7 +37,7 @@ export const routes = (_config: Config) =>
                         name: true,
                         email: true,
                       }))
-                      .run(client),
+                      .run(edgedb),
                   ),
                 ),
               )

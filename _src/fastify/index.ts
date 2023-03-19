@@ -27,16 +27,16 @@ export const Fastify = {
   ..._Fastify,
   // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
   register: <
+    R = never,
     Options extends Fa.FastifyPluginOptions = Record<never, never>,
-    // R = never,
   >(
     plugin: EffectFastifyPlugin<
       typeof _Fastify,
       typeof _Fastify['_types']['FastifyApp'],
-      Options,
-      never
+      R,
+      Options
     >,
-  ) => _Fastify.register<typeof _Fastify, Options>(plugin),
+  ) => _Fastify.register<typeof _Fastify, R, Options>(plugin),
 }
 
 export type Fastify = typeof Fastify
