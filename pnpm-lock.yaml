@@ -94,7 +94,7 @@ importers:
       superjson: ^1.12.2
       tlru: ^1.0.2
       ts-node: ^10.9.1
-      ts-to-zod: daotl/ts-to-zod#0f238da3e58f295bb8a03da96a0414cc43757580
+      ts-to-zod: daotl/ts-to-zod#17898c317daa5e1f09c462434abc21cabf1b536d
       ts-transform-paths: ^3.0.0
       tsc-watch: ^6.0.0
       tsconfig-paths: ^4.1.2
@@ -185,7 +185,7 @@ importers:
       prebuild-install: 7.1.1
       rome: 11.0.0
       ts-node: 10.9.1_vj2azuskzz5i7xpphvbeyzxv5e
-      ts-to-zod: github.com/daotl/ts-to-zod/0f238da3e58f295bb8a03da96a0414cc43757580
+      ts-to-zod: github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d
       ts-transform-paths: 3.0.0
       tsc-watch: 6.0.0_gmyzgtbobtwqxr3kpifzlndcxy
       tsconfig-paths: 4.1.2
@@ -8226,16 +8226,17 @@ packages:
     dev: true
     patched: true
 
-  github.com/daotl/ts-to-zod/0f238da3e58f295bb8a03da96a0414cc43757580:
-    resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/0f238da3e58f295bb8a03da96a0414cc43757580}
+  github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d:
+    resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/17898c317daa5e1f09c462434abc21cabf1b536d}
     name: ts-to-zod
-    version: 2.0.1
+    version: 3.0.0
     hasBin: true
     prepare: true
     requiresBuild: true
     dependencies:
       '@oclif/command': 1.8.22
       '@oclif/config': 1.18.8
+      '@oclif/errors': 1.3.6
       '@oclif/plugin-help': 3.3.1
       '@typescript/vfs': 1.4.0
       async: 3.2.4
