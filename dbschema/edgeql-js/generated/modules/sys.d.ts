@@ -56,11 +56,11 @@ declare const $ExtensionPackage: $ExtensionPackage
 declare const ExtensionPackage: $.$expr_PathNode<$.TypeSet<$ExtensionPackage, $.Cardinality.Many>, null> 
 
 export declare type $RoleλShape = $.typeutil.flatten<$SystemObjectλShape & _schema.$InheritingObjectλShape & _schema.$AnnotationSubjectλShape & {
+  "member_of": $.LinkDesc<$Role, $.Cardinality.Many, {}, false, false,  false, false>;
   "superuser": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, false, false, false>;
   "password": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
   "name": $.PropertyDesc<_std.$str, $.Cardinality.One, true, false, false, false>;
   "is_superuser": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, true, false, false>;
-  "member_of": $.LinkDesc<$Role, $.Cardinality.Many, {}, false, false,  false, false>;
   "<member_of[is sys::Role]": $.LinkDesc<$Role, $.Cardinality.Many, {}, false, false,  false, false>;
   "<member_of": $.LinkDesc<$.ObjectType, $.Cardinality.Many, {}, false, false,  false, false>;
 }>;

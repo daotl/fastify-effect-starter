@@ -10,19 +10,19 @@ export declare type $Role = {
 } & $.EnumType<"default::Role", ["user", "admin"]>;
 declare const Role: $Role
 
-export declare type $BaseλShape = $.typeutil.flatten<_std.$Object_3dff02017ce511eda4582d4e2bc60621λShape & {
+export declare type $BaseλShape = $.typeutil.flatten<_std.$Object_a95265547ccd11edaf577b7152587f02λShape & {
   "createdAt": $.PropertyDesc<_std.$datetime, $.Cardinality.One, false, false, false, true>;
 }>;
 declare type $Base = $.ObjectType<"default::Base", $BaseλShape, null, [
-  ..._std.$Object_3dff02017ce511eda4582d4e2bc60621['__exclusives__'],
+  ..._std.$Object_a95265547ccd11edaf577b7152587f02['__exclusives__'],
 ]>;
 declare const $Base: $Base
 
 declare const Base: $.$expr_PathNode<$.TypeSet<$Base, $.Cardinality.Many>, null> 
 
 export declare type $CategoryλShape = $.typeutil.flatten<$BaseλShape & {
-  "name": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
   "posts": $.LinkDesc<$Post, $.Cardinality.Many, {}, false, true,  false, false>;
+  "name": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
   "<categories[is Post]": $.LinkDesc<$Post, $.Cardinality.Many, {}, false, false,  false, false>;
   "<categories": $.LinkDesc<$.ObjectType, $.Cardinality.Many, {}, false, false,  false, false>;
 }>;
@@ -34,11 +34,11 @@ declare const $Category: $Category
 declare const Category: $.$expr_PathNode<$.TypeSet<$Category, $.Cardinality.Many>, null> 
 
 export declare type $PostλShape = $.typeutil.flatten<$BaseλShape & {
+  "categories": $.LinkDesc<$Category, $.Cardinality.Many, {}, false, false,  false, false>;
+  "author": $.LinkDesc<$User, $.Cardinality.One, {}, false, false,  false, false>;
   "title": $.PropertyDesc<_std.$str, $.Cardinality.One, true, false, false, false>;
   "content": $.PropertyDesc<_std.$str, $.Cardinality.One, false, false, false, false>;
   "published": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, false, false, true>;
-  "categories": $.LinkDesc<$Category, $.Cardinality.Many, {}, false, false,  false, false>;
-  "author": $.LinkDesc<$User, $.Cardinality.One, {}, false, false,  false, false>;
   "<posts[is Category]": $.LinkDesc<$Category, $.Cardinality.Many, {}, false, false,  false, false>;
   "<posts[is User]": $.LinkDesc<$User, $.Cardinality.Many, {}, false, false,  false, false>;
   "<posts": $.LinkDesc<$.ObjectType, $.Cardinality.Many, {}, false, false,  false, false>;
@@ -52,8 +52,8 @@ declare const $Post: $Post
 declare const Post: $.$expr_PathNode<$.TypeSet<$Post, $.Cardinality.Many>, null> 
 
 export declare type $ProfileλShape = $.typeutil.flatten<$BaseλShape & {
-  "bio": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
   "user": $.LinkDesc<$User, $.Cardinality.Many, {}, false, true,  false, false>;
+  "bio": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
   "<profile[is User]": $.LinkDesc<$User, $.Cardinality.Many, {}, false, false,  false, false>;
   "<profile": $.LinkDesc<$.ObjectType, $.Cardinality.Many, {}, false, false,  false, false>;
 }>;
@@ -65,11 +65,11 @@ declare const $Profile: $Profile
 declare const Profile: $.$expr_PathNode<$.TypeSet<$Profile, $.Cardinality.Many>, null> 
 
 export declare type $UserλShape = $.typeutil.flatten<$BaseλShape & {
+  "profile": $.LinkDesc<$Profile, $.Cardinality.AtMostOne, {}, false, false,  false, false>;
+  "posts": $.LinkDesc<$Post, $.Cardinality.Many, {}, false, true,  false, false>;
   "email": $.PropertyDesc<_std.$str, $.Cardinality.One, true, false, false, false>;
   "name": $.PropertyDesc<_std.$str, $.Cardinality.One, false, false, false, false>;
   "role": $.PropertyDesc<$Role, $.Cardinality.One, false, false, false, true>;
-  "profile": $.LinkDesc<$Profile, $.Cardinality.AtMostOne, {}, false, false,  false, false>;
-  "posts": $.LinkDesc<$Post, $.Cardinality.Many, {}, false, true,  false, false>;
   "<author[is Post]": $.LinkDesc<$Post, $.Cardinality.Many, {}, false, false,  false, false>;
   "<user[is Profile]": $.LinkDesc<$Profile, $.Cardinality.Many, {}, false, false,  false, false>;
   "<author": $.LinkDesc<$.ObjectType, $.Cardinality.Many, {}, false, false,  false, false>;

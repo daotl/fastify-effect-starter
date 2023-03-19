@@ -24,171 +24,171 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const $ = __importStar(require("../reflection"));
 const _ = __importStar(require("../imports"));
-const AccessKind = $.makeType(_.spec, "3e641efe-7ce5-11ed-831a-c1e287ede1fe", _.syntax.literal);
+const AccessKind = $.makeType(_.spec, "a9d01113-7ccd-11ed-9191-63aadb2afdf0", _.syntax.literal);
 
-const AccessPolicyAction = $.makeType(_.spec, "3e637021-7ce5-11ed-ad4b-e3cd7eaad23a", _.syntax.literal);
+const AccessPolicyAction = $.makeType(_.spec, "a9cf5e66-7ccd-11ed-bb42-59b67ae6d666", _.syntax.literal);
 
-const Cardinality = $.makeType(_.spec, "3e5f9543-7ce5-11ed-b6bd-254905c3406c", _.syntax.literal);
+const Cardinality = $.makeType(_.spec, "a9ca59a2-7ccd-11ed-8d56-3153370086b9", _.syntax.literal);
 
-const OperatorKind = $.makeType(_.spec, "3e613c44-7ce5-11ed-a461-33b3c34e54ff", _.syntax.literal);
+const OperatorKind = $.makeType(_.spec, "a9cc7c9c-7ccd-11ed-bb16-4d74213146f6", _.syntax.literal);
 
-const ParameterKind = $.makeType(_.spec, "3e625afd-7ce5-11ed-b0ec-3d0a03fe8077", _.syntax.literal);
+const ParameterKind = $.makeType(_.spec, "a9cdef4d-7ccd-11ed-a53b-23571d0801a2", _.syntax.literal);
 
-const SourceDeleteAction = $.makeType(_.spec, "3e60b2dc-7ce5-11ed-b819-1b376587153b", _.syntax.literal);
+const SourceDeleteAction = $.makeType(_.spec, "a9cbcb38-7ccd-11ed-aeeb-c7c6a07c6b78", _.syntax.literal);
 
-const TargetDeleteAction = $.makeType(_.spec, "3e60277c-7ce5-11ed-8e48-6b6f160a9e82", _.syntax.literal);
+const TargetDeleteAction = $.makeType(_.spec, "a9cb1922-7ccd-11ed-bf28-d59bf8227d4a", _.syntax.literal);
 
-const TypeModifier = $.makeType(_.spec, "3e62e555-7ce5-11ed-a581-45e54d687424", _.syntax.literal);
+const TypeModifier = $.makeType(_.spec, "a9cea63d-7ccd-11ed-971a-2d77cc090c39", _.syntax.literal);
 
-const Volatility = $.makeType(_.spec, "3e61d0ee-7ce5-11ed-bedf-bdea01a762ae", _.syntax.literal);
+const Volatility = $.makeType(_.spec, "a9cd3d32-7ccd-11ed-b826-9bfe92a75b80", _.syntax.literal);
 
-const $Object_3e64d1877ce511ed817451bf3d27aba3 = $.makeType(_.spec, "3e64d187-7ce5-11ed-8174-51bf3d27aba3", _.syntax.literal);
+const $Object_a9d0f5f17ccd11edaa8747f9107ad266 = $.makeType(_.spec, "a9d0f5f1-7ccd-11ed-aa87-47f9107ad266", _.syntax.literal);
 
-const Object_3e64d1877ce511ed817451bf3d27aba3= _.syntax.$PathNode($.$toSet($Object_3e64d1877ce511ed817451bf3d27aba3, $.Cardinality.Many), null);
+const Object_a9d0f5f17ccd11edaa8747f9107ad266= _.syntax.$PathNode($.$toSet($Object_a9d0f5f17ccd11edaa8747f9107ad266, $.Cardinality.Many), null);
 
-const $SubclassableObject = $.makeType(_.spec, "3e6e74f6-7ce5-11ed-b489-d538231f486d", _.syntax.literal);
+const $SubclassableObject = $.makeType(_.spec, "a9dcb714-7ccd-11ed-a2c5-9932b24b9976", _.syntax.literal);
 
 const SubclassableObject= _.syntax.$PathNode($.$toSet($SubclassableObject, $.Cardinality.Many), null);
 
-const $InheritingObject = $.makeType(_.spec, "3f8054a9-7ce5-11ed-af26-d9a6fb4667ad", _.syntax.literal);
+const $InheritingObject = $.makeType(_.spec, "ab36692a-7ccd-11ed-8fb0-1537c8fa8f82", _.syntax.literal);
 
 const InheritingObject= _.syntax.$PathNode($.$toSet($InheritingObject, $.Cardinality.Many), null);
 
-const $AnnotationSubject = $.makeType(_.spec, "3f5dd2b8-7ce5-11ed-a2cc-b38c37cf2fc9", _.syntax.literal);
+const $AnnotationSubject = $.makeType(_.spec, "ab0984e9-7ccd-11ed-8f83-c359f6e18108", _.syntax.literal);
 
 const AnnotationSubject= _.syntax.$PathNode($.$toSet($AnnotationSubject, $.Cardinality.Many), null);
 
-const $AccessPolicy = $.makeType(_.spec, "40761ffb-7ce5-11ed-a1ed-0d3143ad7dae", _.syntax.literal);
+const $AccessPolicy = $.makeType(_.spec, "ac748ec7-7ccd-11ed-a1ec-eb35a5215b11", _.syntax.literal);
 
 const AccessPolicy= _.syntax.$PathNode($.$toSet($AccessPolicy, $.Cardinality.Many), null);
 
-const $Alias = $.makeType(_.spec, "40a0a959-7ce5-11ed-9b87-57e81e5b9211", _.syntax.literal);
+const $Alias = $.makeType(_.spec, "acaa5e10-7ccd-11ed-bf4b-1736d0301e04", _.syntax.literal);
 
 const Alias= _.syntax.$PathNode($.$toSet($Alias, $.Cardinality.Many), null);
 
-const $Annotation = $.makeType(_.spec, "3f690457-7ce5-11ed-873c-bd84ecf8315b", _.syntax.literal);
+const $Annotation = $.makeType(_.spec, "ab17475a-7ccd-11ed-85bf-7be2ad14142a", _.syntax.literal);
 
 const Annotation= _.syntax.$PathNode($.$toSet($Annotation, $.Cardinality.Many), null);
 
-const $Type = $.makeType(_.spec, "3e7ccba1-7ce5-11ed-acbd-45ffb0371878", _.syntax.literal);
+const $Type = $.makeType(_.spec, "a9eee068-7ccd-11ed-935b-6d1e5b07bae7", _.syntax.literal);
 
 const Type= _.syntax.$PathNode($.$toSet($Type, $.Cardinality.Many), null);
 
-const $PrimitiveType = $.makeType(_.spec, "3eb09a9c-7ce5-11ed-bb02-2fcbc0d21a7d", _.syntax.literal);
+const $PrimitiveType = $.makeType(_.spec, "aa333803-7ccd-11ed-889a-e7d40d69f82a", _.syntax.literal);
 
 const PrimitiveType= _.syntax.$PathNode($.$toSet($PrimitiveType, $.Cardinality.Many), null);
 
-const $CollectionType = $.makeType(_.spec, "3eebb000-7ce5-11ed-bc40-c3e10ee0c97f", _.syntax.literal);
+const $CollectionType = $.makeType(_.spec, "aa7a91b8-7ccd-11ed-9890-d72aa00b6800", _.syntax.literal);
 
 const CollectionType= _.syntax.$PathNode($.$toSet($CollectionType, $.Cardinality.Many), null);
 
-const $Array = $.makeType(_.spec, "3efee811-7ce5-11ed-b38e-d9b50ea5f6d1", _.syntax.literal);
+const $Array = $.makeType(_.spec, "aa9266e1-7ccd-11ed-9421-873e848f752b", _.syntax.literal);
 
 const Array= _.syntax.$PathNode($.$toSet($Array, $.Cardinality.Many), null);
 
-const $CallableObject = $.makeType(_.spec, "3faa0542-7ce5-11ed-ab6a-f76dd11255cf", _.syntax.literal);
+const $CallableObject = $.makeType(_.spec, "ab6bf96b-7ccd-11ed-9f92-c1ecc11b8716", _.syntax.literal);
 
 const CallableObject= _.syntax.$PathNode($.$toSet($CallableObject, $.Cardinality.Many), null);
 
-const $VolatilitySubject = $.makeType(_.spec, "3fc29a8e-7ce5-11ed-87bd-b76b72471acd", _.syntax.literal);
+const $VolatilitySubject = $.makeType(_.spec, "ab8c1fac-7ccd-11ed-9fe7-1189ee737b29", _.syntax.literal);
 
 const VolatilitySubject= _.syntax.$PathNode($.$toSet($VolatilitySubject, $.Cardinality.Many), null);
 
-const $Cast = $.makeType(_.spec, "4307baac-7ce5-11ed-af14-75a2f0636293", _.syntax.literal);
+const $Cast = $.makeType(_.spec, "afb9ac10-7ccd-11ed-b350-3dd9d29ec5b8", _.syntax.literal);
 
 const Cast= _.syntax.$PathNode($.$toSet($Cast, $.Cardinality.Many), null);
 
-const $ConsistencySubject = $.makeType(_.spec, "3ffc1ecf-7ce5-11ed-8bf0-af13b6313865", _.syntax.literal);
+const $ConsistencySubject = $.makeType(_.spec, "abd63e29-7ccd-11ed-b383-7de08e9b717b", _.syntax.literal);
 
 const ConsistencySubject= _.syntax.$PathNode($.$toSet($ConsistencySubject, $.Cardinality.Many), null);
 
-const $Constraint = $.makeType(_.spec, "3fcf5a11-7ce5-11ed-a6b9-011abf2db3c0", _.syntax.literal);
+const $Constraint = $.makeType(_.spec, "ab9c2f61-7ccd-11ed-94c3-731946f27033", _.syntax.literal);
 
 const Constraint= _.syntax.$PathNode($.$toSet($Constraint, $.Cardinality.Many), null);
 
-const $Delta = $.makeType(_.spec, "3f503475-7ce5-11ed-a4b4-31fec31ddcc9", _.syntax.literal);
+const $Delta = $.makeType(_.spec, "aaf8c205-7ccd-11ed-9344-73897973673f", _.syntax.literal);
 
 const Delta= _.syntax.$PathNode($.$toSet($Delta, $.Cardinality.Many), null);
 
-const $Extension = $.makeType(_.spec, "4348a37a-7ce5-11ed-9cd4-655232e0df2e", _.syntax.literal);
+const $Extension = $.makeType(_.spec, "b00a378f-7ccd-11ed-ab74-41102ebe927f", _.syntax.literal);
 
 const Extension= _.syntax.$PathNode($.$toSet($Extension, $.Cardinality.Many), null);
 
-const $Function = $.makeType(_.spec, "42b9304d-7ce5-11ed-b169-b11eb416c645", _.syntax.literal);
+const $Function = $.makeType(_.spec, "af55305b-7ccd-11ed-876b-ad51fedd10d9", _.syntax.literal);
 
 const Function= _.syntax.$PathNode($.$toSet($Function, $.Cardinality.Many), null);
 
-const $FutureBehavior = $.makeType(_.spec, "4362c939-7ce5-11ed-928c-3d5000a583db", _.syntax.literal);
+const $FutureBehavior = $.makeType(_.spec, "b02b4382-7ccd-11ed-963f-0144a43165e6", _.syntax.literal);
 
 const FutureBehavior= _.syntax.$PathNode($.$toSet($FutureBehavior, $.Cardinality.Many), null);
 
-const $Global = $.makeType(_.spec, "4299dc56-7ce5-11ed-9189-93a9344530f5", _.syntax.literal);
+const $Global = $.makeType(_.spec, "af2cf060-7ccd-11ed-b595-7b55850e0692", _.syntax.literal);
 
 const Global= _.syntax.$PathNode($.$toSet($Global, $.Cardinality.Many), null);
 
-const $Index = $.makeType(_.spec, "40128468-7ce5-11ed-ba8d-0d157f4d3752", _.syntax.literal);
+const $Index = $.makeType(_.spec, "abf21549-7ccd-11ed-8432-b1f0f25ae3c4", _.syntax.literal);
 
 const Index= _.syntax.$PathNode($.$toSet($Index, $.Cardinality.Many), null);
 
-const $Pointer = $.makeType(_.spec, "40485342-7ce5-11ed-b2f0-772c7d54f524", _.syntax.literal);
+const $Pointer = $.makeType(_.spec, "ac35e089-7ccd-11ed-b0e0-95e4b3e1aadd", _.syntax.literal);
 
 const Pointer= _.syntax.$PathNode($.$toSet($Pointer, $.Cardinality.Many), null);
 
-const $Source = $.makeType(_.spec, "4034b15b-7ce5-11ed-84d8-f9e698f36744", _.syntax.literal);
+const $Source = $.makeType(_.spec, "ac1d40b2-7ccd-11ed-bbfd-1968e59a6c2d", _.syntax.literal);
 
 const Source= _.syntax.$PathNode($.$toSet($Source, $.Cardinality.Many), null);
 
-const $Link = $.makeType(_.spec, "41b6bb55-7ce5-11ed-b7f0-8d3e1ecd53f1", _.syntax.literal);
+const $Link = $.makeType(_.spec, "ae138727-7ccd-11ed-82b3-31a3afc7dc02", _.syntax.literal);
 
 const Link= _.syntax.$PathNode($.$toSet($Link, $.Cardinality.Many), null);
 
-const $Migration = $.makeType(_.spec, "432a7de1-7ce5-11ed-a053-6df10a5a4e5d", _.syntax.literal);
+const $Migration = $.makeType(_.spec, "afe53f0b-7ccd-11ed-b51e-ad87c2d025bc", _.syntax.literal);
 
 const Migration= _.syntax.$PathNode($.$toSet($Migration, $.Cardinality.Many), null);
 
-const $Module = $.makeType(_.spec, "3ea6baf7-7ce5-11ed-a819-ddb6790776cb", _.syntax.literal);
+const $Module = $.makeType(_.spec, "aa25eb2f-7ccd-11ed-99d7-f1de343297f0", _.syntax.literal);
 
 const Module= _.syntax.$PathNode($.$toSet($Module, $.Cardinality.Many), null);
 
-const $ObjectType = $.makeType(_.spec, "40ee7dfd-7ce5-11ed-9a59-f1a5c6f1a3e2", _.syntax.literal);
+const $ObjectType = $.makeType(_.spec, "ad0d1c1a-7ccd-11ed-9c9a-198688a96fd2", _.syntax.literal);
 
 const ObjectType= _.syntax.$PathNode($.$toSet($ObjectType, $.Cardinality.Many), null);
 
-const $Operator = $.makeType(_.spec, "42e13e76-7ce5-11ed-82b2-0f164f85d468", _.syntax.literal);
+const $Operator = $.makeType(_.spec, "af890f4e-7ccd-11ed-9e6e-3ba5983bb6ba", _.syntax.literal);
 
 const Operator= _.syntax.$PathNode($.$toSet($Operator, $.Cardinality.Many), null);
 
-const $Parameter = $.makeType(_.spec, "3f989b20-7ce5-11ed-b597-eff99cedb8a6", _.syntax.literal);
+const $Parameter = $.makeType(_.spec, "ab563265-7ccd-11ed-8d3a-7d4fb3362da2", _.syntax.literal);
 
 const Parameter= _.syntax.$PathNode($.$toSet($Parameter, $.Cardinality.Many), null);
 
-const $Property = $.makeType(_.spec, "41fe14a6-7ce5-11ed-a44c-6dc1b04be389", _.syntax.literal);
+const $Property = $.makeType(_.spec, "ae6e4f5c-7ccd-11ed-9066-6fa820eb294b", _.syntax.literal);
 
 const Property= _.syntax.$PathNode($.$toSet($Property, $.Cardinality.Many), null);
 
-const $PseudoType = $.makeType(_.spec, "3e8bab8a-7ce5-11ed-ac9c-c725fa312237", _.syntax.literal);
+const $PseudoType = $.makeType(_.spec, "aa014f7a-7ccd-11ed-a97d-a58f9d663386", _.syntax.literal);
 
 const PseudoType= _.syntax.$PathNode($.$toSet($PseudoType, $.Cardinality.Many), null);
 
-const $Range = $.makeType(_.spec, "3f3910b1-7ce5-11ed-9a6a-4537b9baba96", _.syntax.literal);
+const $Range = $.makeType(_.spec, "aadbd4e3-7ccd-11ed-be59-2f478bd539c7", _.syntax.literal);
 
 const Range= _.syntax.$PathNode($.$toSet($Range, $.Cardinality.Many), null);
 
-const $ScalarType = $.makeType(_.spec, "40b7f12d-7ce5-11ed-9736-e9dee305938a", _.syntax.literal);
+const $ScalarType = $.makeType(_.spec, "acc77a15-7ccd-11ed-b91c-37f0d2c3f3cd", _.syntax.literal);
 
 const ScalarType= _.syntax.$PathNode($.$toSet($ScalarType, $.Cardinality.Many), null);
 
-const $Tuple = $.makeType(_.spec, "3f1ef879-7ce5-11ed-bab1-2b5c4e41c462", _.syntax.literal);
+const $Tuple = $.makeType(_.spec, "aaba99f4-7ccd-11ed-b5c6-8d5e6c79f99c", _.syntax.literal);
 
 const Tuple= _.syntax.$PathNode($.$toSet($Tuple, $.Cardinality.Many), null);
 
-const $TupleElement = $.makeType(_.spec, "3f161636-7ce5-11ed-ad98-91932b457c1c", _.syntax.literal);
+const $TupleElement = $.makeType(_.spec, "aaafcb50-7ccd-11ed-a995-59e459b574da", _.syntax.literal);
 
 const TupleElement= _.syntax.$PathNode($.$toSet($TupleElement, $.Cardinality.Many), null);
 
 
 
-Object.assign(exports, { AccessKind: AccessKind, AccessPolicyAction: AccessPolicyAction, Cardinality: Cardinality, OperatorKind: OperatorKind, ParameterKind: ParameterKind, SourceDeleteAction: SourceDeleteAction, TargetDeleteAction: TargetDeleteAction, TypeModifier: TypeModifier, Volatility: Volatility, $Object_3e64d1877ce511ed817451bf3d27aba3: $Object_3e64d1877ce511ed817451bf3d27aba3, Object_3e64d1877ce511ed817451bf3d27aba3: Object_3e64d1877ce511ed817451bf3d27aba3, $SubclassableObject: $SubclassableObject, SubclassableObject: SubclassableObject, $InheritingObject: $InheritingObject, InheritingObject: InheritingObject, $AnnotationSubject: $AnnotationSubject, AnnotationSubject: AnnotationSubject, $AccessPolicy: $AccessPolicy, AccessPolicy: AccessPolicy, $Alias: $Alias, Alias: Alias, $Annotation: $Annotation, Annotation: Annotation, $Type: $Type, Type: Type, $PrimitiveType: $PrimitiveType, PrimitiveType: PrimitiveType, $CollectionType: $CollectionType, CollectionType: CollectionType, $Array: $Array, Array: Array, $CallableObject: $CallableObject, CallableObject: CallableObject, $VolatilitySubject: $VolatilitySubject, VolatilitySubject: VolatilitySubject, $Cast: $Cast, Cast: Cast, $ConsistencySubject: $ConsistencySubject, ConsistencySubject: ConsistencySubject, $Constraint: $Constraint, Constraint: Constraint, $Delta: $Delta, Delta: Delta, $Extension: $Extension, Extension: Extension, $Function: $Function, Function: Function, $FutureBehavior: $FutureBehavior, FutureBehavior: FutureBehavior, $Global: $Global, Global: Global, $Index: $Index, Index: Index, $Pointer: $Pointer, Pointer: Pointer, $Source: $Source, Source: Source, $Link: $Link, Link: Link, $Migration: $Migration, Migration: Migration, $Module: $Module, Module: Module, $ObjectType: $ObjectType, ObjectType: ObjectType, $Operator: $Operator, Operator: Operator, $Parameter: $Parameter, Parameter: Parameter, $Property: $Property, Property: Property, $PseudoType: $PseudoType, PseudoType: PseudoType, $Range: $Range, Range: Range, $ScalarType: $ScalarType, ScalarType: ScalarType, $Tuple: $Tuple, Tuple: Tuple, $TupleElement: $TupleElement, TupleElement: TupleElement });
+Object.assign(exports, { AccessKind: AccessKind, AccessPolicyAction: AccessPolicyAction, Cardinality: Cardinality, OperatorKind: OperatorKind, ParameterKind: ParameterKind, SourceDeleteAction: SourceDeleteAction, TargetDeleteAction: TargetDeleteAction, TypeModifier: TypeModifier, Volatility: Volatility, $Object_a9d0f5f17ccd11edaa8747f9107ad266: $Object_a9d0f5f17ccd11edaa8747f9107ad266, Object_a9d0f5f17ccd11edaa8747f9107ad266: Object_a9d0f5f17ccd11edaa8747f9107ad266, $SubclassableObject: $SubclassableObject, SubclassableObject: SubclassableObject, $InheritingObject: $InheritingObject, InheritingObject: InheritingObject, $AnnotationSubject: $AnnotationSubject, AnnotationSubject: AnnotationSubject, $AccessPolicy: $AccessPolicy, AccessPolicy: AccessPolicy, $Alias: $Alias, Alias: Alias, $Annotation: $Annotation, Annotation: Annotation, $Type: $Type, Type: Type, $PrimitiveType: $PrimitiveType, PrimitiveType: PrimitiveType, $CollectionType: $CollectionType, CollectionType: CollectionType, $Array: $Array, Array: Array, $CallableObject: $CallableObject, CallableObject: CallableObject, $VolatilitySubject: $VolatilitySubject, VolatilitySubject: VolatilitySubject, $Cast: $Cast, Cast: Cast, $ConsistencySubject: $ConsistencySubject, ConsistencySubject: ConsistencySubject, $Constraint: $Constraint, Constraint: Constraint, $Delta: $Delta, Delta: Delta, $Extension: $Extension, Extension: Extension, $Function: $Function, Function: Function, $FutureBehavior: $FutureBehavior, FutureBehavior: FutureBehavior, $Global: $Global, Global: Global, $Index: $Index, Index: Index, $Pointer: $Pointer, Pointer: Pointer, $Source: $Source, Source: Source, $Link: $Link, Link: Link, $Migration: $Migration, Migration: Migration, $Module: $Module, Module: Module, $ObjectType: $ObjectType, ObjectType: ObjectType, $Operator: $Operator, Operator: Operator, $Parameter: $Parameter, Parameter: Parameter, $Property: $Property, Property: Property, $PseudoType: $PseudoType, PseudoType: PseudoType, $Range: $Range, Range: Range, $ScalarType: $ScalarType, ScalarType: ScalarType, $Tuple: $Tuple, Tuple: Tuple, $TupleElement: $TupleElement, TupleElement: TupleElement });
 
 const __defaultExports = {
   "AccessKind": AccessKind,
@@ -200,7 +200,7 @@ const __defaultExports = {
   "TargetDeleteAction": TargetDeleteAction,
   "TypeModifier": TypeModifier,
   "Volatility": Volatility,
-  "Object": Object_3e64d1877ce511ed817451bf3d27aba3,
+  "Object": Object_a9d0f5f17ccd11edaa8747f9107ad266,
   "SubclassableObject": SubclassableObject,
   "InheritingObject": InheritingObject,
   "AnnotationSubject": AnnotationSubject,

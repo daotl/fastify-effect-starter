@@ -16,34 +16,34 @@ export const roleSchema = z.union([z.literal("user"), z.literal("admin")]);
 
 export const categorySchema: z.ZodSchema<Category> = z.lazy(() =>
   baseSchema.extend({
-    name: z.string().optional().nullable(),
     posts: z.array(postSchema),
+    name: z.string().optional().nullable(),
   })
 );
 
 export const postSchema: z.ZodSchema<Post> = z.lazy(() =>
   baseSchema.extend({
+    categories: z.array(categorySchema),
+    author: userSchema,
     title: z.string(),
     content: z.string(),
     published: z.boolean(),
-    categories: z.array(categorySchema),
-    author: userSchema,
   })
 );
 
 export const userSchema: z.ZodSchema<User> = z.lazy(() =>
   baseSchema.extend({
+    profile: profileSchema.optional().nullable(),
+    posts: z.array(postSchema),
     email: z.string(),
     name: z.string(),
     role: roleSchema,
-    profile: profileSchema.optional().nullable(),
-    posts: z.array(postSchema),
   })
 );
 
 export const profileSchema: z.ZodSchema<Profile> = z.lazy(() =>
   baseSchema.extend({
-    bio: z.string().optional().nullable(),
     user: z.array(userSchema),
+    bio: z.string().optional().nullable(),
   })
 );
