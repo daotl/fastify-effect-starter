@@ -21,8 +21,3 @@ export const Date_subHours = subHours
  * @tsplus fluent Date subMinutes
  */
 export const DateSubMinutes: (date: Date, amount: number) => Date = subMinutes
-
-/**
- * @tsplus global
- */
-import { _A, _E, _R } from '@fastify-effect-starter/prelude/types'
