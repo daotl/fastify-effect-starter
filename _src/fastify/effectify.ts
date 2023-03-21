@@ -476,7 +476,7 @@ export function effectify<
     RouteShorthandOptions,
     EffectRouteHandlerMethod<R>,
     EffectRouteShorthandOptionsWithHandler<R>,
-    R
+    FastifyApp | R
   >
 
   function isEffectRouteHandlerMethod<R>(
