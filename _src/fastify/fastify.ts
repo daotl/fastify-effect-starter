@@ -129,7 +129,7 @@ export function createFastify<
     })
     // WebSocket based on ws@8
     // https://github.com/fastify/fastify-websocket
-    .register(fastifyWebSocket as unknown as Fa.FastifyPluginCallback)
+    .register(fastifyWebSocket.default)
     // Swagger (OpenAPI v3)
     // https://github.com/fastify/fastify-swagger
     .register(fastifySwagger, {
@@ -165,7 +165,7 @@ export function createFastify<
     })
     .register(
       // https://github.com/sachinraja/trpc-playground/issues/28
-      // @ts-expect-error
+      // @ts-expect-error ignore
       getFastifyPlugin({
         trpcApiEndpoint: '/api/trpc',
         playgroundEndpoint: '/playground',
