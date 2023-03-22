@@ -20,6 +20,7 @@ import * as Fa from 'fastify'
 import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import { StatusCodes } from 'http-status-codes'
+import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
 import type { ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
@@ -162,6 +163,20 @@ export function createFastify<
         wss: fastifyWebSocket,
       },
     })
+    .register(
+      // https://github.com/sachinraja/trpc-playground/issues/28
+      // @ts-expect-error
+      getFastifyPlugin({
+        trpcApiEndpoint: '/api/trpc',
+        playgroundEndpoint: '/playground',
+        router: trpc.trpcRouter,
+        // https://github.com/sachinraja/trpc-playground/issues/44
+        request: {
+          superjson: true, // <- set this to true
+        },
+      }),
+      { prefix: '/playground' },
+    )
     // Health check `GET /health`
     .register(fastifyHealthCheck)
 
