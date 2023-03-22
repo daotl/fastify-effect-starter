@@ -1,4 +1,3 @@
-import { z } from 'zod'
 import { p, t } from '~/trpc/index.js'
 
 export const helloRouter = () =>

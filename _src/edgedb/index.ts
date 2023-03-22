@@ -4,9 +4,8 @@ export { Client }
 import edgeqlJs from 'edgeql-js'
 
 // app
-export const e = edgeqlJs.default
 export * from './utils.js'
-export * from './helpers/index.js'
+export * from './common.js'
 
 export const tagEdgedb = Tag<Client>()
 

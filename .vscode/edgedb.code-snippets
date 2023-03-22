@@ -1,0 +1,66 @@
+{
+  "EdgeDB: select with total": {
+    "prefix": "$select-with-total",
+    "body": [
+      "const shape = {",
+      "  ...e.$1['*'],",
+      "$2",
+      "}",
+      "e.select({",
+      "  total: e.count(",
+      "    e.select(e.$1,",
+      "      (_) => R.omit(['offset', 'limit'])(shape),",
+      "    ),",
+      "  ),",
+      "  data: e.select(e.$1, (_) => shape)",
+      "})${3:.run(edgedb)}",
+    ],
+    "description": "Select with total",
+    "scope": "javascript, typescript"
+  },
+  "EdgeDB: insert select": {
+    "prefix": "$insert-select",
+    "body": [
+      "e.select(",
+      "  e.insert(e.$1, {",
+      "    $2",
+      "  }),",
+      "  (_) => e.$1['*'],",
+      ")${3:.run(edgedb)}",
+    ],
+    "description": "Insert and select",
+    "scope": "javascript, typescript"
+  },
+  "EdgeDB: update select": {
+    "prefix": "$update-select",
+    "body": [
+      "e.select(",
+      "  e.update(e.$1, {",
+      "    $2",
+      "  }),",
+      "  (_) => e.$1['*'],",
+      ")${3:.run(edgedb)}",
+    ],
+    "description": "Update and select",
+    "scope": "javascript, typescript"
+  },
+  "EdgeDB: upsert": {
+    "prefix": "$upsert",
+    "body": [
+      "e.insert(e.$1, {",
+      "  $2",
+      "})",
+      "  .unlessConflict((_) => ({",
+      "    on: e.$1.$3,",
+      "    else: e.update(_, () => ({",
+      "      set: {",
+      "        ${4:$2}",
+      "      },",
+      "    })),",
+      "  }))",
+      "  ${5:.run(edgedb)}",
+    ],
+    "description": "Upsert",
+    "scope": "javascript, typescript"
+  }
+}

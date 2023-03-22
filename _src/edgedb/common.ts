@@ -1,4 +1,3 @@
-import { e } from '../index.js'
 import type { InsertShape } from 'edgeql-js/insert'
 import type { $expr_PathNode } from 'edgeql-js/path'
 import type { $scopify, TypeSet } from 'edgeql-js/typesystem'

@@ -2,60 +2,56 @@ import { createClient } from 'edgedb'
 
 import { Config } from '../auth/config.js'
 import * as E from '../edgedb/index.js'
-import { e } from '../edgedb/index.js'
 
 const client = createClient().withConfig({
   allow_user_specified_id: true,
 })
 
 async function main(): Promise<void> {
-  // const eu = new EdgedbUtil(client)
-  // Examples:
-  // const ex1 = await E.User.insertSelect(
-  //   { name: '', email: '' },
-  //   // { name: true, email: true },
-  // ).run()
-  // const ex2 = await E.User.updateSelect(
-  //   () => ({ set: { name: '', email: '' } }),
-  //   // { name: true, email: true },
-  // ).run()
-  // const ex3 = await E.User.updateSelect(
-  //   () => ({ filter_single: { email: '' }, set: { name: '', email: '' } }),
-  //   // { name: true, email: true },
-  // ).run()
-  // const ex4 = await E.User.upsertSelect(
-  //   e.User.email,
-  //   {
-  //     email: 'nex@daot.io',
-  //     name: 'Nex',
-  //   },
-  //   identity,
-  //   // { name: true, email: true },
-  // ).run()
-  // const ex5 = await E.User.selectCount(() => ({
-  //   offset: 100,
-  //   limit: 10,
-  //   ...e.User['*'],
-  // })).run()
-
   const users = await Promise.all([
-    E.User.upsert(
-      e.User.email,
-      {
+    e
+      .insert(e.User, {
         id: new Config().mockUserId,
         email: 'nex@daot.io',
         name: 'Nex',
-      },
-      R.omit(['id']),
-    ),
-    E.User.upsert(e.User.email, {
-      email: 'john@daot.io',
-      name: 'John',
-    }),
-    E.User.upsert(e.default.User.email, {
-      email: 'marie@daot.io',
-      name: 'Marie',
-    }),
+      })
+      .unlessConflict((_) => ({
+        on: e.User.email,
+        else: e.update(_, () => ({
+          set: {
+            email: 'nex@daot.io',
+            name: 'Nex',
+          },
+        })),
+      })),
+    e
+      .insert(e.User, {
+        email: 'john@daot.io',
+        name: 'John',
+      })
+      .unlessConflict((_) => ({
+        on: e.User.email,
+        else: e.update(_, () => ({
+          set: {
+            email: 'john@daot.io',
+            name: 'John',
+          },
+        })),
+      })),
+    e
+      .insert(e.User, {
+        email: 'marie@daot.io',
+        name: 'Marie',
+      })
+      .unlessConflict((_) => ({
+        on: e.User.email,
+        else: e.update(_, () => ({
+          set: {
+            email: 'marie@daot.io',
+            name: 'Marie',
+          },
+        })),
+      })),
   ])
 
   const posts = [
@@ -84,7 +80,15 @@ async function main(): Promise<void> {
     ...posts.map((p) =>
       // FIXME: Update author also. Currently if we don't omit `author`, there's an error:
       //   Error: Cannot extract repeated or aliased expression into 'WITH' block, expression or its aliases appear outside root scope
-      E.Post.upsert(e.Post.title, p, R.omit(['author'])).run(client),
+      e
+        .insert(e.Post, p)
+        .unlessConflict((_) => ({
+          on: e.Post.title,
+          else: e.update(_, () => ({
+            set: R.omit(['author'])(p),
+          })),
+        }))
+        .run(client),
     ),
   ])
 }

@@ -1,8 +1,6 @@
 import { StatusCodes } from 'http-status-codes'
-import { z } from 'zod'
 
 import { Config } from './config.js'
-import { e } from '~/edgedb/index.js'
 import * as E from '~/edgedb/index.js'
 import { Fastify } from '~/fastify/index.js'
 

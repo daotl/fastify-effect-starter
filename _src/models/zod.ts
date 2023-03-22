@@ -1,5 +1,4 @@
 import type * as Z from 'zod'
-import { z } from 'zod'
 
 import * as M from './generated/interfaces.zod.js'
 import * as DTO from './generated/zod/modules/default.js'
