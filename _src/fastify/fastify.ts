@@ -150,7 +150,7 @@ export function createFastify<
     })
     // https://github.com/fastify/fastify-swagger-ui
     .register(fastifySwaggerUI, {
-      routePrefix: '/documentation',
+      routePrefix: '/swagger',
     })
     // tRPC
     // https://trpc.io/docs/fastify
@@ -168,14 +168,14 @@ export function createFastify<
       // @ts-expect-error ignore
       getFastifyPlugin({
         trpcApiEndpoint: '/api/trpc',
-        playgroundEndpoint: '/playground',
+        playgroundEndpoint: '/api/trpc-playground',
         router: trpc.trpcRouter,
         // https://github.com/sachinraja/trpc-playground/issues/44
         request: {
           superjson: true, // <- set this to true
         },
       }),
-      { prefix: '/playground' },
+      { prefix: '/api/trpc-playground' },
     )
     // Health check `GET /health`
     .register(fastifyHealthCheck)

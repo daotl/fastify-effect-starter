@@ -1,6 +1,6 @@
-import { p, t } from '~/trpc/index.js'
+import { p, t } from '~/trpc/trpc.js'
 
-export const helloRouter = () =>
+export const router = () =>
   t.router({
     hello: p.public
       .input(z.object({ username: z.string().nullish() }).nullish())

@@ -22,10 +22,14 @@ export function filterPropsEqual<
   M extends ModelMap[K],
 >(
   m: M,
-  filter: Exclude<Partial<ModelTypeMap[K]>, EmptyObject>,
+  filter: Exclude<Partial<ModelTypeMap[K]>, EmptyObject> | undefined,
 ):
   | $.$expr_Function<$bool, $.Cardinality.One>
   | $.$expr_Literal<$.ScalarType<'std::bool', boolean, true>> {
+  if (!filter) {
+    return e.bool(true)
+  }
+
   const filters = Object.entries(filter)
   return filters.length
     ? // @ts-expect-error ignore
