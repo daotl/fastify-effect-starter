@@ -21,7 +21,7 @@ export const routes = (_config: Config) =>
 
         handler: (req, reply) =>
           Effect.gen(function* ($) {
-            const edgedb = yield* $(Effect.service(E.tagEdgedb))
+            const edgedb = yield* $(E.tagEdgedb.access)
 
             if (!req.session.user) {
               const oUser = Option.fromNullable(
@@ -47,7 +47,7 @@ export const routes = (_config: Config) =>
             }
             // Both forms are supported
             reply.code(200) //.send({ status: 'ok' })
-            return { status: 'ok' }
+            return { status: 'ok' } as const
           }),
       }) >
       Fastify.route({
