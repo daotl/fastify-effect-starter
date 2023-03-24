@@ -28,16 +28,30 @@
     "description": "Operators Import"
   },
   "Gen Function $": {
-    "prefix": "$gen",
+    "prefix": "gen$",
     "body": [
-      "function* ($) {$1}"
+      "function* ($) {\n\t$0\n}"
     ],
-    "description": "Generator Function with _ input"
+    "description": "Generator function with $ input"
+  },
+  "Gen Function $ (wrapped)": {
+    "prefix": "egen$",
+    "body": [
+      "Effect.gen(function* ($) {\n\t$0\n})"
+    ],
+    "description": "Generator function with $ input"
   },
   "Gen Yield $": {
-    "prefix": "$!",
+    "prefix": "yield$",
     "body": [
-      "yield* $($1)"
+      "yield* $($0)"
+    ],
+    "description": "Yield generator calling $()"
+  },
+  "Gen Yield $ (const)": {
+    "prefix": "cyield$",
+    "body": [
+      "const $1 = yield* $($0)"
     ],
     "description": "Yield generator calling $()"
   }
