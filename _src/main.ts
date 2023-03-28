@@ -43,7 +43,7 @@ const main = Effect.gen(function* ($) {
 
   return yield* $(
     Effect.never().scoped.provideLayer(
-      services > (initFastify > routes > Fastify.listen).toScopedDiscardLayer,
+      services > (initFastify > routes > Fastify.listen).toLayerScopedDiscard,
     ),
   )
 })

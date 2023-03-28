@@ -1,6 +1,6 @@
 // 3p
-import { Client } from 'edgedb/dist/baseClient.js'
-export { Client }
+import type { Client } from 'edgedb'
+export type { Client }
 import edgeqlJs from 'edgeql-js'
 
 // app

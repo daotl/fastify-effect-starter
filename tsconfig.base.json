@@ -2,13 +2,16 @@
   "extends": "./node_modules/@tsconfig/node18-strictest-esm/tsconfig.json",
   "compilerOptions": {
     "module": "ESNext",
-    "lib": ["esnext"],
+    "lib": [
+      "esnext"
+    ],
     "target": "es2021",
+    "composite": true,
+    "incremental": true,
+    "checkJs": false,
     // inline source maps stay better in sync with the source, which should aid with watchers.
     //"sourceMap": true,
     "inlineSourceMap": true,
-    "incremental": true,
-    "composite": true,
     "declarationMap": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
@@ -28,10 +31,10 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": false,
     "tsPlusTypes": [
+      "./node_modules/@effect-app/core/vendor/effect-data-tsplus.json",
       "./node_modules/@effect-app/core/vendor/effect-io-tsplus.json",
       "./node_modules/@effect-app/core/vendor/effect-stm-tsplus.json",
-      "./node_modules/@effect-app/core/vendor/fp-ts-core-tsplus.json",
-      "./node_modules/@effect-app/core/vendor/effect-data-tsplus.json",
+      "./node_modules/@effect-app/core/vendor/effect-stream-tsplus.json",
       "./node_modules/@effect-app/core/vendor/fp-ts-optic-tsplus.json"
     ],
     "plugins": [
@@ -46,12 +49,16 @@
       {
         "name": "@effect/language-service/transformer",
         "trace": {
-          "exclude": ["**/*.ts"]
+          "exclude": [
+            "**/*.ts"
+          ]
         }
         //"debug": {}
       }
-    ]
-    // "types": ["vitest/globals"]
+    ],
+    // "types": [
+    //   "vitest/globals"
+    // ]
   },
   "watchOptions": {
     // Use native file system events for files and directories
@@ -71,7 +78,11 @@
       "**/.logs",
       "**/.*"
     ],
-    "excludeFiles": ["**/*.tmp", "openapi.json", "*.json"]
+    "excludeFiles": [
+      "**/*.tmp",
+      "openapi.json",
+      "*.json"
+    ]
   },
   "exclude": [
     "**/__template.ts",

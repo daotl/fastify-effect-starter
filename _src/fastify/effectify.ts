@@ -6,12 +6,12 @@ import type { Method } from './types.js'
 
 export class NodeServerCloseError {
   readonly _tag = 'NodeServerCloseError'
-  constructor(readonly error: Error) {}
+  constructor(readonly _error: Error) {}
 }
 
 export class NodeServerListenError {
   readonly _tag = 'NodeServerListenError'
-  constructor(readonly error: Error) {}
+  constructor(readonly _error: Error) {}
 }
 
 type ExitHandler = (
@@ -236,6 +236,7 @@ export function effectify<
     RouteOptions<RouteGeneric, ContextConfig, SchemaCompiler>,
     'handler'
   > & {
+    // rome-ignore format: compact
     handler: EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>
   }
 
@@ -258,10 +259,8 @@ export function effectify<
     RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
     ContextConfig extends BaseContextConfig = BaseContextConfig,
     SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-  > = Except<
-    RouteShorthandOptionsWithHandler,
-    'handler'
-  > & {
+  > = Except<RouteShorthandOptionsWithHandler, 'handler'> & {
+    // rome-ignore format: compact
     handler: EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>
   }
 
@@ -416,7 +415,7 @@ export function effectify<
   const tagFastifyApp = Tag<FastifyApp>()
 
   const liveFastifyApp: Layer<FastifyAppConfig, never, FastifyApp> =
-    tFastifyApp.toScopedLayer(tagFastifyApp)
+    tFastifyApp.toLayerScoped(tagFastifyApp)
 
   const createLiveFastify = <R = never>(
     host: string,
@@ -514,8 +513,10 @@ export function effectify<
     RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
     ContextConfig extends BaseContextConfig = BaseContextConfig,
     SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-  >(handler: EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>) =>
-    tagFastifyApp.accessWithEffect((_) => _.runtime(handler))
+  >(
+    // rome-ignore format: compact
+    handler: EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>,
+  ) => tagFastifyApp.accessWithEffect((_) => _.runtime(handler))
 
   const route = <
     R = never,
@@ -528,6 +529,7 @@ export function effectify<
     runFasitfyHandler(opts.handler).flatMap((handler) =>
       withFastify((fastify) =>
         Effect(() => {
+          // rome-ignore format: compact
           fastify.route({ ...opts, handler } as RouteOptions<RouteGeneric, ContextConfig, SchemaCompiler>)
         }),
       ),
@@ -541,6 +543,7 @@ export function effectify<
   > = EffectRouteShorthandMethod<
     RouteShorthandOptions<RouteGeneric, ContextConfig, SchemaCompiler>,
     EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>,
+    // rome-ignore format: compact
     EffectRouteShorthandOptionsWithHandler<R, RouteGeneric, ContextConfig, SchemaCompiler>,
     FastifyApp | R
   >
@@ -552,25 +555,36 @@ export function effectify<
     SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
   >(
     _: unknown,
-  ): _ is EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler> {
+  ): // rome-ignore format: compact
+  _ is EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler> {
     return _ instanceof Function
   }
 
-  const routeMethod = <
-    R = never,
-    RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
-    ContextConfig extends BaseContextConfig = BaseContextConfig,
-    SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-  >(
-    method: Method,
-  ): _EffectRouteShorthandMethod<R, RouteGeneric, ContextConfig, SchemaCompiler> =>
-    ((path: string, ...args: unknown[]) => {
+  const routeMethod =
+    <
+      R = never,
+      RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
+      ContextConfig extends BaseContextConfig = BaseContextConfig,
+      SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
+    >(
+      method: Method,
+    ): // rome-ignore format: compact
+    _EffectRouteShorthandMethod<R, RouteGeneric, ContextConfig, SchemaCompiler> =>
+    (path: string, ...args: unknown[]) => {
+      // rome-ignore format: compact
       const [handler, opts] = isEffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>(args[0])
         ? [args[0], undefined]
         : isEffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>(args[1])
-        ? [args[1], args[0] as RouteShorthandOptions<RouteGeneric, ContextConfig, SchemaCompiler>]
+        ? [
+            args[1],
+            // rome-ignore format: compact
+            args[0] as RouteShorthandOptions<RouteGeneric, ContextConfig, SchemaCompiler>,
+          ]
         : [
-            (args[0] as EffectRouteShorthandOptionsWithHandler<R, RouteGeneric, ContextConfig, SchemaCompiler>).handler,
+            (
+              // rome-ignore format: compact
+              args[0] as EffectRouteShorthandOptionsWithHandler<R, RouteGeneric, ContextConfig, SchemaCompiler>
+            ).handler,
             undefined,
           ]
 
@@ -583,7 +597,7 @@ export function effectify<
           }),
         ),
       )
-    })
+    }
 
   return {
     tFastifyApp,
@@ -612,7 +626,8 @@ export function effectify<
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
         ContextConfig extends BaseContextConfig = BaseContextConfig,
         SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-      >() => _type<FastifyRequest<RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      >() =>
+        _type<FastifyRequest<RouteGeneric, ContextConfig, SchemaCompiler>>(),
 
       FastifyReply: <
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
@@ -624,8 +639,12 @@ export function effectify<
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
         ContextConfig extends BaseContextConfig = BaseContextConfig,
         SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-      >() =>  _type<RouteHandlerMethod<RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      >() =>
+        _type<
+          RouteHandlerMethod<RouteGeneric, ContextConfig, SchemaCompiler>
+        >(),
 
+      // rome-ignore format: compact
       EffectRouteHandlerMethod: <
         R = never,
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
@@ -637,44 +656,55 @@ export function effectify<
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
         ContextConfig extends BaseContextConfig = BaseContextConfig,
         SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-      >() =>  _type<RouteOptions<RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      >() => _type<RouteOptions<RouteGeneric, ContextConfig, SchemaCompiler>>(),
 
       EffectRouteOptions: <
         R = never,
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
         ContextConfig extends BaseContextConfig = BaseContextConfig,
         SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-      >() => _type<EffectRouteOptions<R, RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      >() =>
+        _type<
+          EffectRouteOptions<R, RouteGeneric, ContextConfig, SchemaCompiler>
+        >(),
 
       RouteShorthandOptions: <
-      RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
-      ContextConfig extends BaseContextConfig = BaseContextConfig,
-      SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-    >() =>_type<RouteShorthandOptions<RouteGeneric, ContextConfig, SchemaCompiler>>(),
+        RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
+        ContextConfig extends BaseContextConfig = BaseContextConfig,
+        SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
+      >() =>
+        _type<
+          RouteShorthandOptions<RouteGeneric, ContextConfig, SchemaCompiler>
+        >(),
 
-      RouteShorthandOptionsWithHandler:  <
-      RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
-      ContextConfig extends BaseContextConfig = BaseContextConfig,
-      SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-    >() =>_type<RouteShorthandOptionsWithHandler<RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      // rome-ignore format: compact
+      RouteShorthandOptionsWithHandler: <
+        RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
+        ContextConfig extends BaseContextConfig = BaseContextConfig,
+        SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
+      >() => _type<RouteShorthandOptionsWithHandler<RouteGeneric, ContextConfig, SchemaCompiler>>(),
 
-      EffectRouteShorthandOptionsWithHandler:  <
-      R = never,
-      RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
-      ContextConfig extends BaseContextConfig = BaseContextConfig,
-      SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-    >() =>_type<EffectRouteShorthandOptionsWithHandler<R, RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      // rome-ignore format: compact
+      EffectRouteShorthandOptionsWithHandler: <
+        R = never,
+        RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
+        ContextConfig extends BaseContextConfig = BaseContextConfig,
+        SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
+      >() =>
+        _type<EffectRouteShorthandOptionsWithHandler<R, RouteGeneric, ContextConfig, SchemaCompiler>>(),
 
       FastifyApp: _type<FastifyApp>(),
       FastifyCtx: _type<FastifyCtx>(),
       EffectFastifyRegister: _type<_EffectFastifyRegister>(),
 
+      // rome-ignore format: compact
       EffectRouteShorthandMethod: <
         R = never,
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
         ContextConfig extends BaseContextConfig = BaseContextConfig,
         SchemaCompiler extends BaseSchemaCompiler = BaseSchemaCompiler,
-      >() => _type<_EffectRouteShorthandMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>>(),
+      >() =>
+        _type<_EffectRouteShorthandMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>>(),
     },
   }
 }

@@ -3,7 +3,7 @@ import '@fastify-effect-starter/prelude/_global'
 /**
  * @tsplus global
  */
-import { none, some } from '@fp-ts/core/Option'
+import { none, some } from '@effect/data/Option'
 
 /**
  * @tsplus global
