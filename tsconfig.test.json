@@ -4,7 +4,7 @@
     "composite": true,
     "rootDir": "./_test",
     "outDir": "./_test/dist",
-    "tsBuildInfoFile": "./_test/dist/.tsbuildinfo"
+    "tsBuildInfoFile": "./_test/dist/.tsbuildinfo",
   },
   "include": [
     "./_test/**/*.ts"
@@ -19,11 +19,12 @@
     "**/*.d.ts.map",
     ".git",
     ".data",
+    "**/.*",
     "**/*.tmp"
   ],
   "references": [
     {
       "path": "./tsconfig.src.json"
-    }
+    },
   ]
 }

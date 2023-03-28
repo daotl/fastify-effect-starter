@@ -28,17 +28,16 @@ const patchModelSchema = <
   >,
 >(
   s: S,
-): Z.ZodObject<
-  Omit<S['shape'], keyof typeof patchModelOmitMask>,
-  UnknownKeys,
-  Catchall
-> =>
+) =>
   s.omit(
-    patchModelOmitMask as Z.noUnrecognized<
-      typeof patchModelOmitMask,
-      Z.objectKeyMask<T>
-    >,
-  )
+    patchModelOmitMask as {
+      [k in keyof S['shape']]?: true
+    },
+  ) as Z.ZodObject<
+    Omit<S['shape'], keyof typeof patchModelOmitMask>,
+    UnknownKeys,
+    Catchall
+  >
 
 // Create/Update/Select DTOs
 export const zCreateBaseInput = patchModelSchema(DTO.CreateBaseSchema)

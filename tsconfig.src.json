@@ -6,6 +6,9 @@
     "lib": [
       "esnext"
     ],
+    // "tsPlusGlobalFiles": [
+    //     "./_src/_global.ts"
+    // ],
     "tsBuildInfoFile": "./dist/.tsbuildinfo",
     "esModuleInterop": true,
     // temp disbaled to support ts-plus ops
@@ -22,7 +25,10 @@
         "_src/*"
       ]
     },
-    // "types": ["./types/modules", "node"],
+    // "types": [
+    //   "./types/modules",
+    //   "node"
+    // ],
     "outDir": "./dist",
     "transformers": [
       // Transform paths in output .js files
@@ -48,7 +54,6 @@
   "include": [
     "./_src/**/*.ts",
     "./_src/**/*.mts",
-    "_src/main.ts.bk",
   ],
   "exclude": [
     "**/__template.ts",
@@ -61,6 +66,7 @@
     "**/*.d.ts.map",
     ".git",
     ".data",
+    "**/.*",
     "**/*.tmp"
   ],
   "ts-node": {

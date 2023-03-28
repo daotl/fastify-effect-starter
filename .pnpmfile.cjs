@@ -13,6 +13,8 @@ const enforceSingleVersion = [
   '@effect-app/prelude',
   '@effect-app/react',
   '@effect-app/vue',
+  'vue',
+  'date-fns',
 ]
 
 function afterAllResolved(lockfile, context) {
@@ -43,8 +45,22 @@ function afterAllResolved(lockfile, context) {
   return lockfile
 }
 
+function readPackage(pkg, context) {
+  if (pkg.name === 'vue-tsc') {
+    context.log('Adding classic ts to vue-tsc')
+    // works around vue-tsc watch issues with later typescript versions.
+    pkg.dependencies['typescript'] =
+      'https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.150/compiler/typescript.tgz'
+  }
+  return pkg
+}
+
 module.exports = {
   hooks: {
+    // Temporary disabled for causing errors for unknown reason:
+    //   ERROR  @effect-app/prelude found 2 times
+    //   @effect-app/infra-adapters found 2 times
     afterAllResolved,
+    readPackage,
   },
 }

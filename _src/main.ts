@@ -1,4 +1,6 @@
 import { runtimeDebug } from '@effect/io/Debug'
+// Fix req.session type
+import '@fastify/session'
 
 import * as auth from './auth/index.js'
 import { createLiveEdgedb } from './edgedb/index.js'
@@ -43,7 +45,7 @@ const main = Effect.gen(function* ($) {
 
   return yield* $(
     Effect.never().scoped.provideLayer(
-      services > (initFastify > routes > Fastify.listen).toScopedDiscardLayer,
+      services > (initFastify > routes > Fastify.listen).toLayerScopedDiscard,
     ),
   )
 })
