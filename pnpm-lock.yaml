@@ -33,10 +33,10 @@ importers:
     specifiers:
       '@babel/cli': ^7.21.0
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
-      '@daotl/eslint-config': ^0.3.33
+      '@daotl/eslint-config': ^0.3.35
       '@daotl/rome-config': 0.0.1-alpha.4
       '@daotl/tsconfig': ^0.1.2
-      '@edgedb/generate': ^0.0.7
+      '@edgedb/generate': ^0.0.8
       '@effect-app/cli': ^0.7.0
       '@effect-app/compiler': ^0.17.0
       '@effect-app/core': ^0.36.0
@@ -48,21 +48,21 @@ importers:
       '@effect/io': ^0.12.0
       '@effect/language-service': ^0.0.19
       '@fastify-effect-starter/prelude': workspace:*
-      '@fastify/caching': ^8.2.0
+      '@fastify/caching': ^8.3.0
       '@fastify/cookie': ^8.3.0
-      '@fastify/cors': ^8.2.0
-      '@fastify/csrf-protection': ^6.1.0
+      '@fastify/cors': ^8.2.1
+      '@fastify/csrf-protection': ^6.2.0
       '@fastify/formbody': ^7.4.0
       '@fastify/helmet': ^10.1.0
       '@fastify/middie': ^8.1.0
       '@fastify/request-context': ^4.2.0
-      '@fastify/session': ^10.1.1
+      '@fastify/session': ^10.2.0
       '@fastify/static': ^6.9.0
       '@fastify/swagger': ^8.3.1
-      '@fastify/swagger-ui': ^1.4.0
-      '@fastify/websocket': ^7.1.2
-      '@trpc/client': ^10.12.0
-      '@trpc/server': ^10.12.0
+      '@fastify/swagger-ui': ^1.6.0
+      '@fastify/websocket': ^7.2.0
+      '@trpc/client': ^10.18.0
+      '@trpc/server': ^10.18.0
       '@tsconfig/node18-strictest-esm': ^1.0.1
       '@tsplus/installer': 0.0.171
       '@types/connect': ^3.4.35
@@ -74,10 +74,10 @@ importers:
       '@typescript-eslint/parser': ^5.56.0
       '@typescript-eslint/scope-manager': 5.56.0
       babel-plugin-replace-import-extension: ^1.1.3
-      concurrently: ^7.6.0
+      concurrently: ^8.0.0
       cross-env: ^7.0.3
-      dotenv-cli: ^7.0.0
-      edgedb: ^1.0.2
+      dotenv-cli: ^7.1.0
+      edgedb: ^1.1.0
       edgedb-zod: 1.0.0-beta4
       edgeql-js: workspace:*
       enhanced-resolve: ^5.12.0
@@ -85,7 +85,7 @@ importers:
       eslint-plugin-codegen: ^0.17.0
       eslint-plugin-simple-import-sort: ^10.0.0
       eslint-watch: ^8.0.0
-      fastify: ^4.13.0
+      fastify: ^4.15.0
       fastify-cors: ^6.1.0
       fastify-healthcheck: ^4.4.0
       fastify-helmet: ^7.1.0
@@ -96,8 +96,8 @@ importers:
       nodemon: ^2.0.22
       npm-check-updates: ^16.8.0
       prebuild-install: ^7.1.1
-      remeda: ^1.6.2
-      rome: ^11.0.0
+      remeda: ^1.9.4
+      rome: ^12.0.0
       source-map-support: ^0.5.21
       superjson: ^1.12.2
       tlru: ^1.0.2
@@ -107,13 +107,13 @@ importers:
       ts-transform-paths: ^3.0.0
       tsc-watch: ^6.0.0
       tsconfig-paths: ^4.1.2
-      type-fest: ^3.6.0
+      type-fest: ^3.7.1
       typescript: https://cdn.jsdelivr.net/npm/@tsplus/installer@0.0.171/compiler/typescript.tgz
       typescript-transform-paths: ^3.4.6
       unplugin-auto-import: ^0.15.2
       vitest: ^0.29.7
-      ws: ^8.12.1
-      zod: ^3.20.6
+      ws: ^8.13.0
+      zod: ^3.21.4
     dependencies:
       '@effect-app/core': 0.36.0
       '@effect-app/infra': 0.41.1
@@ -123,7 +123,7 @@ importers:
       '@effect/data': 0.5.1
       '@effect/io': 0.12.0
       '@fastify-effect-starter/prelude': link:_lib/prelude
-      '@fastify/caching': 8.2.0
+      '@fastify/caching': 8.3.0
       '@fastify/cookie': 8.3.0
       '@fastify/cors': 8.2.1
       '@fastify/csrf-protection': 6.2.0
@@ -131,11 +131,11 @@ importers:
       '@fastify/helmet': 10.1.0
       '@fastify/middie': 8.1.0
       '@fastify/request-context': 4.2.0
-      '@fastify/session': 10.1.1
+      '@fastify/session': 10.2.0
       '@fastify/static': 6.9.0
       '@fastify/swagger': 8.3.1
-      '@fastify/swagger-ui': 1.5.0
-      '@fastify/websocket': 7.1.3
+      '@fastify/swagger-ui': 1.6.0
+      '@fastify/websocket': 7.2.0
       '@trpc/client': 10.18.0_@trpc+server@10.18.0
       '@trpc/server': 10.18.0
       edgedb: 1.1.0
@@ -158,9 +158,9 @@ importers:
       '@babel/cli': 7.21.0
       '@daotl/effect-app-eslint-codegen-model': 0.11.0
       '@daotl/eslint-config': 0.3.35_2xiethmxne2qdl63m6ldxykf3m
-      '@daotl/rome-config': 0.0.1-alpha.4_rome@11.0.0
+      '@daotl/rome-config': 0.0.1-alpha.4_rome@12.0.0
       '@daotl/tsconfig': 0.1.2
-      '@edgedb/generate': 0.0.7_edgedb@1.1.0
+      '@edgedb/generate': 0.0.8_edgedb@1.1.0
       '@effect-app/cli': 0.7.0
       '@effect-app/compiler': 0.17.0_@types+node@18.11.19
       '@effect/language-service': 0.0.19_izp2ue34jjv4swyrhg2ux4ha3e
@@ -175,7 +175,7 @@ importers:
       '@typescript-eslint/parser': 5.56.0_2xiethmxne2qdl63m6ldxykf3m
       '@typescript-eslint/scope-manager': 5.56.0_tp5r7mwyjl4dxldk2tuwbgrsum
       babel-plugin-replace-import-extension: 1.1.3
-      concurrently: 7.6.0
+      concurrently: 8.0.0
       cross-env: 7.0.3
       dotenv-cli: 7.1.0
       edgedb-zod: 1.0.0-beta4
@@ -188,7 +188,7 @@ importers:
       nodemon: 2.0.22
       npm-check-updates: 16.8.0
       prebuild-install: 7.1.1
-      rome: 11.0.0
+      rome: 12.0.0
       ts-node: 10.9.1_zvhgg36a35vwcamhb77dcu4mv4
       ts-to-zod: github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d
       ts-transform-paths: 3.0.0
@@ -745,7 +745,7 @@ packages:
       prettier: 2.8.7
     dev: true
 
-  /@daotl/rome-config/0.0.1-alpha.4_rome@11.0.0:
+  /@daotl/rome-config/0.0.1-alpha.4_rome@12.0.0:
     resolution: {integrity: sha512-gLVldXscs26Yx01I6MDJeL6JVOvBZ7HjL0O1oWH1yReWojLZe7S4gthAznnlIFFpU9v+tuZGjQGXQ6j3BNkWAg==}
     hasBin: true
     requiresBuild: true
@@ -754,7 +754,7 @@ packages:
     dependencies:
       deepmerge: 4.3.1
       json-stable-stringify: 1.0.2
-      rome: 11.0.0
+      rome: 12.0.0
     dev: true
 
   /@daotl/tsconfig/0.1.2:
@@ -769,8 +769,8 @@ packages:
       node-source-walk: 5.0.1
     dev: true
 
-  /@edgedb/generate/0.0.7_edgedb@1.1.0:
-    resolution: {integrity: sha512-qUzvBQjj5u9gTyifkSVy6HChKcBVGh67QFSAdcy/K5GizqemyhtGjO/E9AI95gow7RHZIVvSIm55z899FnuxEA==}
+  /@edgedb/generate/0.0.8_edgedb@1.1.0:
+    resolution: {integrity: sha512-kpRtFgxMkPs5wge4/JJB2uYnk7OUz+Vvyac+jPWiZWKdMEfLhO9tBS36gFrXzRHyox9B1D8sWLhfYOAK7JMvnQ==}
     engines: {node: '>= 12.0.0'}
     hasBin: true
     peerDependencies:
@@ -1148,8 +1148,8 @@ packages:
       fast-uri: 2.2.0
     dev: false
 
-  /@fastify/caching/8.2.0:
-    resolution: {integrity: sha512-WTvD7/eFUs55Ep27HaahQZDjQBXnKYmgFyhhre4Vsrqbsv6P0rY6z2LRBiXy202dRD+Q3TBUfwRbjuMUr+BO3g==}
+  /@fastify/caching/8.3.0:
+    resolution: {integrity: sha512-wxlQS2C9omy7+Aq33XDaHJWO0wF3DH2QFBD/ZHMJnWbL2buUDsjzCNg0TbSbEMHyFi/NiryYYAXVCoFCD7nFTA==}
     dependencies:
       abstract-cache: 1.0.1
       fastify-plugin: 4.5.0
@@ -1235,8 +1235,8 @@ packages:
       mime: 3.0.0
     dev: false
 
-  /@fastify/session/10.1.1:
-    resolution: {integrity: sha512-8pKDTL9MuqU1FCTca6XNd1E4quZ/ipik69AHXqkANia9Z4xPFS5OSKIwmCClIdaMYD32/tPu4G/6wGgK5Buj5g==}
+  /@fastify/session/10.2.0:
+    resolution: {integrity: sha512-KFV68Cg/SCcVeGMro3sRuOcnifaUl73mS/oeuLX8fHd/BzmSz8EHGFfF/z/m5eLeNlYXmREVy2Hp6g4uhbherQ==}
     dependencies:
       fastify-plugin: 4.5.0
       safe-stable-stringify: 2.4.3
@@ -1254,8 +1254,8 @@ packages:
       readable-stream: 4.3.0
     dev: false
 
-  /@fastify/swagger-ui/1.5.0:
-    resolution: {integrity: sha512-wumG3RcYhhRpn0wjPMqOC96WNRVAj2lA4V4yDLqwC/hzwIinXzfuwSma+uAe2DhqoHHirk/dAannupsycrp1PA==}
+  /@fastify/swagger-ui/1.6.0:
+    resolution: {integrity: sha512-CfmRF79Ilrvo8k2M8hL6FrdOVTZyPa6UrEkN7n852CXPE+rqoxlN1eRrUg3qFkA93Wl6xEc1evAhFGz84uyM8A==}
     dependencies:
       '@fastify/static': 6.9.0
       fastify-plugin: 4.5.0
@@ -1283,8 +1283,8 @@ packages:
       fastify-plugin: 4.5.0
     dev: false
 
-  /@fastify/websocket/7.1.3:
-    resolution: {integrity: sha512-aFFaQtyMva+B3SItxsYRPguHAAFIFQbHe/v0KB7bhObcFzEdcf1mZOVBrk0m6Ug+U45qMmmk92GMMDbpHb1xYg==}
+  /@fastify/websocket/7.2.0:
+    resolution: {integrity: sha512-vhWQCT0I5a1JIKc34LXHQ2earW7kViYvhGn5x+lZr8TIOJKmx6NJk0Bw9zGWakulXhMsu/0y89QnsUnHiII9ag==}
     dependencies:
       fastify-plugin: 4.5.0
       ws: 8.13.0
@@ -1684,48 +1684,48 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@rometools/cli-darwin-arm64/11.0.0:
-    resolution: {integrity: sha512-F3vkdY+s3FLIEnAjSbyHTuIPB88cLpccimW4ecid5I7S6GzGG3iUJI4xT00JhH73K4P/qW20/9r+kH1T9Du8Xg==}
+  /@rometools/cli-darwin-arm64/12.0.0:
+    resolution: {integrity: sha512-kEFCzU6cgy6vfY0mkMzq57ea3srqV5X2wyCAxjVfA2JF7fioq695uWhy7yOCBW+nUUFIz62N9v1nf/aYqX8XkA==}
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-darwin-x64/11.0.0:
-    resolution: {integrity: sha512-X6jhtS6Iml4GOzgNtnLwIp/KXXhSdqeVyfv69m/AHnIzx3gQAjPZ7BPnJLvTCbhe4SKHL+uTZYFSCJpkUUKE6w==}
+  /@rometools/cli-darwin-x64/12.0.0:
+    resolution: {integrity: sha512-YDevVPKrkRFdjjM/3zOpOWI5mEY2ivjKM2eR8Yqv9xH3SZhyD/t67f/xo7Azp6NkGUVXSnHLGdkmIg+qrYgz5A==}
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-linux-arm64/11.0.0:
-    resolution: {integrity: sha512-dktTJJlTpmycBZ2TwhJBcAO8ztK8DdevdyZnFFxdYRvtmJgTjIsC2UFayf/SbKew8B8q1IhI0it+D6ihAeIpeg==}
+  /@rometools/cli-linux-arm64/12.0.0:
+    resolution: {integrity: sha512-n2LJg6eAZENUcJF99wjDeqQCr/40IqGUJDbX7NwiU1RvCy+RBZNmhcmSAaKOc6rCoLUcM9W5q+H4jfn4bWfJBA==}
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-linux-x64/11.0.0:
-    resolution: {integrity: sha512-WVcnXPNdWGUWo0p4NU8YzuthjYR7q+b4vRcjdxtP1DlpphZmSsoC/RSE85nEqRAz8hChcKUansVzOPM8BSsuGA==}
+  /@rometools/cli-linux-x64/12.0.0:
+    resolution: {integrity: sha512-VuQO4eOrKmfrLrc8KzMaZypz3i1rD9FXRxwOFk6ha16DNHV+17dRQYm7jRZ1p+HrXdjAJYTScxR/E03yGLThlQ==}
     cpu: [x64]
     os: [linux]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-win32-arm64/11.0.0:
-    resolution: {integrity: sha512-tPj6RThQzS7Q45jqQll7NlTYvNcsg/BEP3LYiiazqSh9FAFnMkrV6ewUcMPKWyAfiyLs7jlz4rRvdNRUSygzfQ==}
+  /@rometools/cli-win32-arm64/12.0.0:
+    resolution: {integrity: sha512-lvOh5/B8YuQdI2ieGJnJ6CUMZxvVwA8+1VDkEZJyl5IEF8AXzbXYx4k6SFA5a79cfXEL9tJuJy0rn+Zs/+1yJQ==}
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@rometools/cli-win32-x64/11.0.0:
-    resolution: {integrity: sha512-bmBai8WHxYjsGk1+je7ZTfCUCWq30WJI3pQM8pzTA674lfGTZ9ymJoZwTaIMSO4rL5V9mlO6uLunsBKso9VqOg==}
+  /@rometools/cli-win32-x64/12.0.0:
+    resolution: {integrity: sha512-yTfz71k8+9QIDzglKnMbEMMv1JUk30qfeSomgEUG2v0qDSbSq0Gs1ff0H0dysYOHLvZZmWA3IheOY/SC8fj1nA==}
     cpu: [x64]
     os: [win32]
     requiresBuild: true
@@ -2961,9 +2961,9 @@ packages:
   /concat-map/0.0.1:
     resolution: {integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=}
 
-  /concurrently/7.6.0:
-    resolution: {integrity: sha512-BKtRgvcJGeZ4XttiDiNcFiRlxoAeZOseqUvyYRUp/Vtd+9p1ULmeoSqGsDA+2ivdeDFpqrJvGvmI+StKfKl5hw==}
-    engines: {node: ^12.20.0 || ^14.13.0 || >=16.0.0}
+  /concurrently/8.0.0:
+    resolution: {integrity: sha512-1fjagjL+RgPRAx9Wi8Yv866Whtx34MRdk9qf6wwxpQoYL2mD+lUZMOe9RXYULC6eBl6e4sde6cu8bpyg9Rd9/w==}
+    engines: {node: ^14.13.0 || >=16.0.0}
     hasBin: true
     dependencies:
       chalk: 4.1.2
@@ -7483,18 +7483,18 @@ packages:
     optionalDependencies:
       fsevents: 2.3.2
 
-  /rome/11.0.0:
-    resolution: {integrity: sha512-rRo6JOwpMLc3OkeTDRXkrmrDqnxDvZ75GS4f0jLDBNmRgDXWbu0F8eVnJoRn+VbK2AE7vWvhVOMBjnWowcopkQ==}
+  /rome/12.0.0:
+    resolution: {integrity: sha512-w/tLvLj5PGUCx3R+Kna08BMq4zL83Xzh9spvrqoWa3Nkzk16SkD8JSpyWWP9WhI2r3qv3Xvc7FnYZ4QDnjAiYg==}
     engines: {node: '>=14.*'}
     hasBin: true
     requiresBuild: true
     optionalDependencies:
-      '@rometools/cli-darwin-arm64': 11.0.0
-      '@rometools/cli-darwin-x64': 11.0.0
-      '@rometools/cli-linux-arm64': 11.0.0
-      '@rometools/cli-linux-x64': 11.0.0
-      '@rometools/cli-win32-arm64': 11.0.0
-      '@rometools/cli-win32-x64': 11.0.0
+      '@rometools/cli-darwin-arm64': 12.0.0
+      '@rometools/cli-darwin-x64': 12.0.0
+      '@rometools/cli-linux-arm64': 12.0.0
+      '@rometools/cli-linux-x64': 12.0.0
+      '@rometools/cli-win32-arm64': 12.0.0
+      '@rometools/cli-win32-x64': 12.0.0
     dev: true
 
   /run-async/2.4.1:
