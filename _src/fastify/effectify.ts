@@ -497,7 +497,8 @@ export function effectify<
             )
 
             const tPlugin = plugin(Fastify as unknown as Fastify, _opts)
-              .provideServiceEffect(tagFastifyApp, Fastify.tFastifyApp)
+              // TODO: This is a bit hacky way to just provide the child FastifyApp
+              .provideServiceEffect(Fastify.tagFastifyApp, Fastify.tFastifyApp)
               .scoped.tap(() => {
                 done()
                 return Effect.unit

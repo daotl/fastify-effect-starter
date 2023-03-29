@@ -8,7 +8,7 @@ const signOutUrl = '/api/hello'
 
 export const routes = (_config: Config) =>
   Fastify.register(
-    (_Fastify) =>
+    (Fastify) =>
       Fastify.route({
         config: { authLevel: 'public' },
         method: 'GET',
