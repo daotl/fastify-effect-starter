@@ -2,8 +2,9 @@
   "$schema": "./node_modules/rome/configuration_schema.json",
   "files": {
     "ignore": [
-      "**/generated/*",
-      "**/dist/*"
+      "**/generated",
+      "**/*.json",
+      "**/dist"
     ]
   },
   "linter": {
@@ -18,7 +19,7 @@
       },
       "correctness": {
         "recommended": true,
-        "noUndeclaredVariables": "error",
+        "noUndeclaredVariables": "off",
         "noUnusedVariables": "error"
       },
       "performance": {

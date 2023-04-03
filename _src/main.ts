@@ -1,4 +1,4 @@
-import { runtimeDebug } from '@effect/io/Debug'
+import { runtimeDebug } from '@effect/data/Debug'
 // Fix req.session type
 import '@fastify/session'
 

@@ -1,4 +1,4 @@
-import * as Fa from 'fastify'
+import type * as Fa from 'fastify'
 import type { ResolveFastifyReplyType } from 'fastify/types/type-provider.js'
 import type { Except } from 'type-fest'
 
@@ -119,8 +119,8 @@ export type EffectFastifyPlugin<
   // rome-ignore format: compact
   // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
   // FastifyInstance extends Fa.FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>,
-  Fastify = any,
-  FastifyApp = any,
+  Fastify,
+  FastifyApp,
   R = never,
   Options extends Fa.FastifyPluginOptions = Record<never, never>,
 > = (
@@ -270,7 +270,7 @@ export function effectify<
       Ref.make(true).acquireRelease((a) => Effect(a.set(false))),
     )
 
-    const { exitHandler } = yield* $(tagFastifyAppConfig.access)
+    const { exitHandler } = yield* $(tagFastifyAppConfig)
 
     // if scope opens, create server, on scope close, close connections and server.
     yield* $(
@@ -428,13 +428,13 @@ export function effectify<
       exitHandler,
     )) > liveFastifyApp
 
-  const accessFastify = tagFastifyApp.accessWith((_) => _.fastify)
+  const accessFastify = tagFastifyApp.map((_) => _.fastify)
 
   const withFastify = <R, E, A>(
     self: (_: FastifyInstance) => Effect<R, E, A>,
-  ) => tagFastifyApp.accessWithEffect((_) => self(_.fastify))
+  ) => tagFastifyApp.flatMap((_) => self(_.fastify))
 
-  const listen = (tagFastifyAppConfig.access & accessFastify).flatMap(
+  const listen = (tagFastifyAppConfig & accessFastify).flatMap(
     ([{ host, port }, fastify]) =>
       Effect.async<never, never, FastifyInstance>((cb) => {
         fastify.listen({ host, port }, (err, _address) => {
@@ -517,7 +517,7 @@ export function effectify<
   >(
     // rome-ignore format: compact
     handler: EffectRouteHandlerMethod<R, RouteGeneric, ContextConfig, SchemaCompiler>,
-  ) => tagFastifyApp.accessWithEffect((_) => _.runtime(handler))
+  ) => tagFastifyApp.flatMap((_) => _.runtime(handler))
 
   const route = <
     R = never,

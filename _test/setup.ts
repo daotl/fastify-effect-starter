@@ -7,6 +7,7 @@ const POOL_ID = process.env['VITEST_POOL_ID']
 
 declare global {
   // var runtime: Runtime<LayerA<typeof appLayer>>
+  // rome-ignore lint/style/noVar: ignore
   var cleanup: () => Promise<void>
 }
 

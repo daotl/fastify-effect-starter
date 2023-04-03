@@ -1,6 +1,6 @@
 import type { ConditionalExcept } from 'type-fest'
 
-import {
+import type {
   Category as CategoryR,
   Post as PostR,
   Profile as ProfileR,

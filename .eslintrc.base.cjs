@@ -1,5 +1,5 @@
 const fs = require('fs')
-module.exports = (dirName, forceTS = false, project = undefined) => {
+module.exports = (dirName, forceTS = false, _project = undefined) => {
   const enableTS = !!dirName && (forceTS || process.env.ESLINT_TS)
   return {
     parser: '@typescript-eslint/parser', // Specifies the ESLint parser

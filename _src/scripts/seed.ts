@@ -1,7 +1,6 @@
 import { createClient } from 'edgedb'
 
 import { Config } from '../auth/config.js'
-import * as E from '../edgedb/index.js'
 
 const client = createClient().withConfig({
   allow_user_specified_id: true,

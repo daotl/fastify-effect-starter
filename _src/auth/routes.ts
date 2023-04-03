@@ -21,7 +21,7 @@ export const routes = (_config: Config) =>
 
         handler: (req, reply) =>
           Effect.gen(function* ($) {
-            const edgedb = yield* $(E.tagEdgedb.access)
+            const edgedb = yield* $(E.tagEdgedb)
 
             if (!req.session.user) {
               const oUser = Option.fromNullable(

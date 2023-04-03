@@ -1,4 +1,4 @@
-import http from 'node:http'
+import type http from 'node:http'
 import path from 'node:path'
 import url from 'node:url'
 
@@ -19,12 +19,12 @@ import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
 import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
-import { StatusCodes } from 'http-status-codes'
+import type { StatusCodes } from 'http-status-codes'
 import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
 import type { ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
-import * as auth from '~/auth/index.js'
+import type * as auth from '~/auth/index.js'
 import type { User } from '~/models/index.js'
 import * as trpc from '~/trpc/index.js'
 
@@ -58,6 +58,7 @@ declare module 'fastify' {
 }
 
 declare module '@fastify/request-context' {
+  // rome-ignore lint/suspicious/noEmptyInterface: <explanation>
   interface RequestContextData {}
 }
 
