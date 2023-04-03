@@ -32,7 +32,7 @@ importers:
   .:
     specifiers:
       '@babel/cli': ^7.21.0
-      '@daotl-effect/prelude': ^0.0.1
+      '@daotl-effect/prelude': ^0.0.3
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4
       '@edgedb/generate': ^0.0.8
@@ -112,7 +112,7 @@ importers:
       ws: ^8.13.0
       zod: ^3.21.4
     dependencies:
-      '@daotl-effect/prelude': 0.0.1
+      '@daotl-effect/prelude': 0.0.3
       '@effect-app/core': 0.38.1
       '@effect-app/infra': 0.44.5
       '@effect-app/infra-adapters': 0.32.4
@@ -616,8 +616,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@daotl-effect/prelude/0.0.1:
-    resolution: {integrity: sha512-SAf1fT37JHeEIEOS4zi/oz7r4Hu83ArqieNgfZP/Yc3vLh8x471HbH9vwkI5+uiua6nBvUZKdpNBMlD6fxO8Vg==}
+  /@daotl-effect/prelude/0.0.3:
+    resolution: {integrity: sha512-mR0akmViqr3C/9sR3b5lSnXUUar6JL020MvDzVyIBCdpZYhNdlQ2FADlrOBV2iCEICQtJXtDvpFcmaf5n+R8MA==}
     dependencies:
       '@effect-app/core': 0.38.1
       '@effect-app/infra-adapters': 0.32.4
@@ -632,6 +632,7 @@ packages:
       nanoid: 4.0.2
       path-parser: 6.1.0
       query-string: 8.1.0
+      remeda: 1.11.0
       ts-pattern: 4.2.2
       typed-case: 1.0.2
       uuid: 9.0.0
@@ -8284,7 +8285,7 @@ packages:
     patched: true
 
   github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d:
-    resolution: {commit: 17898c317daa5e1f09c462434abc21cabf1b536d, repo: git+ssh://git@github.com/daotl/ts-to-zod.git, type: git}
+    resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/17898c317daa5e1f09c462434abc21cabf1b536d}
     name: ts-to-zod
     version: 3.0.0
     hasBin: true

@@ -83,7 +83,7 @@
     "http-proxy": "npm:http-proxy-node16@1.0.0"
   },
   "dependencies": {
-    "@daotl-effect/prelude": "^0.0.1",
+    "@daotl-effect/prelude": "^0.0.3",
     "@effect-app/core": "^0.38.1",
     "@effect-app/infra": "^0.44.5",
     "@effect-app/infra-adapters": "^0.32.4",
