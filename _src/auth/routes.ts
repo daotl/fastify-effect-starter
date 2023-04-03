@@ -1,12 +1,13 @@
 import { StatusCodes } from 'http-status-codes'
 
-import { Config } from './config.js'
 import * as E from '~/edgedb/index.js'
 import { Fastify } from '~/fastify/index.js'
 
+import type { AuthConfig } from './config.js'
+
 const signOutUrl = '/api/hello'
 
-export const routes = (_config: Config) =>
+export const routes = (cfg: AuthConfig) =>
   Fastify.register(
     (Fastify) =>
       Fastify.route({
@@ -29,7 +30,7 @@ export const routes = (_config: Config) =>
                   Effect.promise(() =>
                     e
                       .select(e.User, () => ({
-                        filter_single: { id: new Config().mockUserId },
+                        filter_single: { id: cfg.mockUserId },
                         createdAt: true,
                         id: true,
                         name: true,

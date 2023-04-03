@@ -2,11 +2,11 @@ import type * as Fa from 'fastify'
 
 import type { FastifyContextConfig } from '~/fastify/index.js'
 
-import type { Config } from './config.js'
+import type { AuthConfig } from './config.js'
 
 // onRequest hook
 export const newAuthHook =
-  (_config: Config): Fa.onRequestHookHandler =>
+  (_config: AuthConfig): Fa.onRequestHookHandler =>
   (req, reply, done) => {
     // Refresh session
     req.session.touch()

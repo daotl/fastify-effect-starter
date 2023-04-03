@@ -2,19 +2,23 @@ import { runtimeDebug } from '@effect/data/Debug'
 // Fix req.session type
 import '@fastify/session'
 
-import * as auth from './auth/index.js'
-import { createLiveEdgedb } from './edgedb/index.js'
 import { Fastify } from '~/fastify/index.js'
+import * as auth from '~/auth/index.js'
+import { createLiveEdgedb } from '~/edgedb/index.js'
+
+import { ApiConfig, BaseConfig } from './config.js'
 
 runtimeDebug.traceStackLimit = 50
-if (process.argv.includes('--debug')) {
+const appConfig = BaseConfig.config.runSync$
+if (process.argv.includes('--debug') || appConfig.env === 'local-dev') {
   runtimeDebug.minumumLogLevel = 'Debug'
   runtimeDebug.tracingEnabled = true
   runtimeDebug.traceStackLimit = 100
   // runtimeDebug.filterStackFrame = _ => true
 }
 
-const liveFastify = Fastify.createLiveFastify('localhost', 3000)
+const apiConfig = ApiConfig.config.runSync$
+const liveFastify = Fastify.createLiveFastify(apiConfig.host, apiConfig.port)
 
 const liveEdgedb = createLiveEdgedb({
   allow_user_specified_id: true,
@@ -28,7 +32,7 @@ const initFastify = Fastify.accessFastify.tap((fastify) => {
   return Effect.unit
 })
 
-const authConfig = new auth.Config()
+const authConfig = auth.AuthConfig.config.runSync$
 
 const routes =
   auth.routes(authConfig)({ prefix: '/api/auth' }) >
