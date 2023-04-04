@@ -45,13 +45,6 @@ module.exports = (dirName, forceTS = false, _project = undefined) => {
           ],
         },
       ],
-
-      'codegen/codegen': [
-        'error',
-        {
-          presets: require('@daotl/effect-app-eslint-codegen-model/dist/presets/barrel'),
-        },
-      ],
     },
   }
 }

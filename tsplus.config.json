@@ -1,6 +1,5 @@
 {
   "importMap": {
-    "^(.*)/_lib/(.+)/_src/(.+)\\.[cm]?[tj]s$": "@fastify-effect-starter/$2/$3",
     "^(.*)/_src/(.+)\\.[cm]?[tj]s$": "@fastify-effect-starter/main/$2",
     "^(.*)/node_modules/@fastify-effect-starter/(.+)/_src/(.+)\\.[cm]?[tj]s$": "@fastify-effect-starter/$2/$3",
     ".pnpm/[^\/]*/node_modules/(.*)": "$1"
