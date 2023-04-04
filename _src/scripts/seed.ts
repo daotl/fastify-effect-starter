@@ -1,16 +1,18 @@
 import { createClient } from 'edgedb'
 
-import { Config } from '../auth/config.js'
+import { AuthConfig } from '../auth/config.js'
 
 const client = createClient().withConfig({
   allow_user_specified_id: true,
 })
 
+const authConfig = AuthConfig.config.runSync$
+
 async function main(): Promise<void> {
   const users = await Promise.all([
     e
       .insert(e.User, {
-        id: new Config().mockUserId,
+        id: authConfig.mockUserId,
         email: 'nex@daot.io',
         name: 'Nex',
       })
