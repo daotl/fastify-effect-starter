@@ -2,7 +2,6 @@ import type { castMaps } from 'edgeql-js/imports'
 import type models from 'edgeql-js/modules/default'
 import type { $bool } from 'edgeql-js/modules/std'
 import type * as $ from 'edgeql-js/reflection'
-import type { EmptyObject, Except } from 'type-fest'
 
 import type { ModelMap as ModelTypeMap } from '../models/index.js'
 

@@ -21,7 +21,6 @@ import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import type { StatusCodes } from 'http-status-codes'
 import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
-import type { ValueOf } from 'type-fest'
 import type { ZodTypeAny } from 'zod'
 
 import type * as auth from '~/auth/index.js'

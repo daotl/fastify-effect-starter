@@ -1,6 +1,5 @@
 import type * as Fa from 'fastify'
 import type { ResolveFastifyReplyType } from 'fastify/types/type-provider.js'
-import type { Except } from 'type-fest'
 
 import type { Method } from './types.js'
 

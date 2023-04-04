@@ -38,7 +38,7 @@ importers:
   .:
     specifiers:
       '@babel/cli': ^7.21.0
-      '@daotl-effect/prelude': ^0.0.4
+      '@daotl-effect/prelude': ^0.0.6
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4
       '@edgedb/generate': ^0.0.8
@@ -118,7 +118,7 @@ importers:
       ws: ^8.13.0
       zod: ^3.21.4
     dependencies:
-      '@daotl-effect/prelude': 0.0.4
+      '@daotl-effect/prelude': 0.0.6
       '@effect-app/core': 0.39.1
       '@effect-app/infra': 0.45.1
       '@effect-app/infra-adapters': 0.33.1
@@ -622,8 +622,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@daotl-effect/prelude/0.0.4:
-    resolution: {integrity: sha512-8unFzxaeHVrS0lWiUCgJ2sgtgolNH2Lr6wu0H3A7OMCqVJ21AyXRrst2EjkJ7Ijh9yqBmdsokcbAg0EttiGuDA==}
+  /@daotl-effect/prelude/0.0.6:
+    resolution: {integrity: sha512-ZgLM2dzHbOj1rYHkztgJDw4yP1aheZxGpLL63FZHNDGAAiBW0r4JVNhrOZBNLJmdD67T3dOGcwx9xUDyVcHygw==}
     dependencies:
       '@effect-app/core': 0.39.1
       '@effect-app/infra-adapters': 0.33.1
@@ -640,6 +640,7 @@ packages:
       query-string: 8.1.0
       remeda: 1.11.0
       ts-pattern: 4.2.2
+      type-fest: 3.7.2
       typed-case: 1.0.2
       uuid: 9.0.0
       validator: 13.9.0

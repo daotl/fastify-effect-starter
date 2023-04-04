@@ -1,5 +1,4 @@
 // import type * as Fa from 'fastify'
-// import type { Except } from 'type-fest'
 
 // export type RouteFn<
 //   ContextConfig = Fa.ContextConfigDefault,
