@@ -38,7 +38,8 @@ importers:
   .:
     specifiers:
       '@babel/cli': ^7.21.0
-      '@daotl-effect/prelude': ^0.0.6
+      '@daotl-effect/prelude': ^0.0.7
+      '@daotl-effect/trpc': 0.0.7
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4
       '@edgedb/generate': ^0.0.8
@@ -66,7 +67,6 @@ importers:
       '@fastify/swagger-ui': ^1.6.0
       '@fastify/websocket': ^7.2.0
       '@trpc/client': ^10.18.0
-      '@trpc/server': ^10.18.0
       '@tsconfig/node18-strictest-esm': ^1.0.1
       '@tsplus/installer': 0.0.171
       '@types/connect': ^3.4.35
@@ -118,7 +118,8 @@ importers:
       ws: ^8.13.0
       zod: ^3.21.4
     dependencies:
-      '@daotl-effect/prelude': 0.0.6
+      '@daotl-effect/prelude': 0.0.7
+      '@daotl-effect/trpc': 0.0.7
       '@effect-app/core': 0.39.1
       '@effect-app/infra': 0.45.1
       '@effect-app/infra-adapters': 0.33.1
@@ -139,8 +140,7 @@ importers:
       '@fastify/swagger': 8.3.1
       '@fastify/swagger-ui': 1.6.0
       '@fastify/websocket': 7.2.0
-      '@trpc/client': 10.18.0_@trpc+server@10.18.0
-      '@trpc/server': 10.18.0
+      '@trpc/client': 10.18.0
       edgedb: 1.1.0
       edgeql-js: link:dbschema/edgeql-js
       fastify: 4.15.0
@@ -154,7 +154,7 @@ importers:
       source-map-support: 0.5.21
       superjson: 1.12.2
       tlru: 1.0.2
-      trpc-playground: 1.0.4_eyvutfahwj5dqqhc73rmvk4fuu
+      trpc-playground: 1.0.4_5rxxwd3gx7j3erjbc2grfzskda
       ws: 8.13.0
       zod: 3.21.4
     devDependencies:
@@ -622,8 +622,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@daotl-effect/prelude/0.0.6:
-    resolution: {integrity: sha512-ZgLM2dzHbOj1rYHkztgJDw4yP1aheZxGpLL63FZHNDGAAiBW0r4JVNhrOZBNLJmdD67T3dOGcwx9xUDyVcHygw==}
+  /@daotl-effect/prelude/0.0.7:
+    resolution: {integrity: sha512-/cOxCZgMzUiMPKIDzHm0YcnZS2GHll+OFumNQmUAAcqWJE0KehOdbI9Cnobeff+YerJgDEF10D5pkR6IJexmEQ==}
     dependencies:
       '@effect-app/core': 0.39.1
       '@effect-app/infra-adapters': 0.33.1
@@ -631,6 +631,35 @@ packages:
       '@effect/data': 0.10.3
       '@effect/io': 0.17.0
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
+      date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
+      dotenv: 16.0.3
+      dotenv-expand: 10.0.0
+      lodash: 4.17.21
+      nanoid: 4.0.2
+      path-parser: 6.1.0
+      query-string: 8.1.0
+      remeda: 1.11.0
+      ts-pattern: 4.2.2
+      type-fest: 3.7.2
+      typed-case: 1.0.2
+      uuid: 9.0.0
+      validator: 13.9.0
+    transitivePeerDependencies:
+      - encoding
+    dev: false
+
+  /@daotl-effect/trpc/0.0.7:
+    resolution: {integrity: sha512-wfYd4yb+dCLNo0jmvk4yLQC9dO3q3+vr4edGsX/KLS+gFZ/51gSxmut5r8HjAt/gwXk3IOfOSbvEZu/zzAejtw==}
+    dependencies:
+      '@daotl-effect/prelude': 0.0.7
+      '@daotl/web-common': 0.0.6
+      '@effect-app/core': 0.39.1
+      '@effect-app/infra-adapters': 0.33.1
+      '@effect-app/prelude': 0.34.1
+      '@effect/data': 0.10.3
+      '@effect/io': 0.17.0
+      '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
+      '@trpc/server': github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668
       date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
       dotenv: 16.0.3
       dotenv-expand: 10.0.0
@@ -675,6 +704,16 @@ packages:
       json-stable-stringify: 1.0.2
       rome: 12.0.0
     dev: true
+
+  /@daotl/web-common/0.0.6:
+    resolution: {integrity: sha512-wYi0nATZXJuE+M/YmfyO5C3kx2+N4Tqq/ltWwvTua5NxA8nMehXm8AJWZRaOVghbuintTMOTd6E6NfbY59v0Qw==}
+    dependencies:
+      remeda: 1.11.0
+      ts-custom-error: 3.3.1
+      typed-case: 1.0.2
+    optionalDependencies:
+      '@trpc/server': 10.18.0
+    dev: false
 
   /@dependents/detective-less/3.0.1:
     resolution: {integrity: sha512-NjjCPJbx/za2287T6gnC5zD2IFSplro1evaTV9yvx3jnPpHi7s8PwJvh9vvJRFnMx5nbakodwNOnFvk8+9YQTg==}
@@ -1684,28 +1723,26 @@ packages:
       - terser
     dev: false
 
-  /@trpc-playground/types/1.0.0_sch5prjsojnytbhzmrzb47aaja:
+  /@trpc-playground/types/1.0.0_noqli5mnrg467zyaewisefordu:
     resolution: {integrity: sha512-Ap5aNaVlglfM9WLkPLKF2rHDZ8CwHcqK32A8YaqTyHUuoEFTSOh6oSgVU6Cv8toxClKiTXFvbWmE4aZxIoh4Zg==}
     peerDependencies:
       '@trpc/server': ^10
     dependencies:
-      '@trpc/server': 10.18.0
       ts-essentials: 9.3.1_noqli5mnrg467zyaewisefordu
     transitivePeerDependencies:
       - typescript
     dev: false
 
-  /@trpc/client/10.18.0_@trpc+server@10.18.0:
+  /@trpc/client/10.18.0:
     resolution: {integrity: sha512-2d+6r2C/xygTjDWX9jT66defgHzbQP0Z8vrvyT3XtPjqU6JNlRNuS2ZtB8xDPdOQUUVnndzZ43BMr+Zu49K0OQ==}
     peerDependencies:
-      '@trpc/server': 10.18.0
-    dependencies:
       '@trpc/server': 10.18.0
     dev: false
 
   /@trpc/server/10.18.0:
     resolution: {integrity: sha512-nVMqdDIF9YLOeC3g6RdAvdCPqkHFjpshSqZGThZ+fyjiWSUXj2ZKCduhJFnY77TjtgODojeaaghmzcnjxb+Onw==}
     dev: false
+    optional: true
 
   /@tsconfig/node10/1.0.9:
     resolution: {integrity: sha512-jNsYVVxU8v5g43Erja32laIDHXeoNvFEpX33OK4d6hljo3jDhCBDhx5dhCCTMWUojscpAagGiRkBKxpdl9fxqA==}
@@ -7412,15 +7449,14 @@ packages:
     hasBin: true
     dev: true
 
-  /trpc-playground/1.0.4_eyvutfahwj5dqqhc73rmvk4fuu:
+  /trpc-playground/1.0.4_5rxxwd3gx7j3erjbc2grfzskda:
     resolution: {integrity: sha512-6nVf1o2LNoo1g6oTS24yajoH7xV4CFjxGAbAH7qLXqa3yo9qB5QHsWLbrm1hNt51SyCG++P0zHJaCdVfgvEVDg==}
     peerDependencies:
       '@trpc/server': ^10
       zod: ^3
     dependencies:
       '@trpc-playground/html': 1.0.4_@types+node@18.11.19
-      '@trpc-playground/types': 1.0.0_sch5prjsojnytbhzmrzb47aaja
-      '@trpc/server': 10.18.0
+      '@trpc-playground/types': 1.0.0_noqli5mnrg467zyaewisefordu
       lodash: 4.17.21
       uttp: 0.1.3_fastify@4.15.0
       zod: 3.21.4
@@ -7437,6 +7473,11 @@ packages:
       - sugarss
       - terser
       - typescript
+    dev: false
+
+  /ts-custom-error/3.3.1:
+    resolution: {integrity: sha512-5OX1tzOjxWEgsr/YEUWSuPrQ00deKLh6D7OTWcvNHm12/7QPyRh8SYpyWvA4IZv8H/+GQWQEh/kwo95Q9OVW1A==}
+    engines: {node: '>=14.0.0'}
     dev: false
 
   /ts-essentials/9.3.1_noqli5mnrg467zyaewisefordu:
@@ -8290,6 +8331,12 @@ packages:
     engines: {node: '>=4.2.0'}
     hasBin: true
     patched: true
+
+  github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668:
+    resolution: {commit: 8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668, repo: git+ssh://git@github.com/daotl/trpc.git, type: git}
+    name: '@trpc/server'
+    version: 10.18.0
+    dev: false
 
   github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d:
     resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/17898c317daa5e1f09c462434abc21cabf1b536d}

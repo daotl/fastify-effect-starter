@@ -21,7 +21,7 @@
     "circular:dist": "madge --circular --extensions js ./dist",
     "clean": "rm -rf dist _test/dist _lib/**/dist",
     "clean:removed": "sh scripts/clean-dist.sh",
-    "build": "pnpm clean:removed && NODE_OPTIONS=--max-old-space-size=6144 tsc --build",
+    "build": "pnpm clean:removed && NODE_OPTIONS=--max-old-space-size=6144 tsc -p tsconfig.src.json",
     "rebuild": "pnpm clean && pnpm build",
     "build:watch": "pnpm build --watch",
     "build:watch2": "pnpm clean:dist && NODE_OPTIONS=--max-old-space-size=6144 tsc -w",
@@ -88,7 +88,8 @@
     "http-proxy": "npm:http-proxy-node16@1.0.0"
   },
   "dependencies": {
-    "@daotl-effect/prelude": "^0.0.6",
+    "@daotl-effect/prelude": "^0.0.7",
+    "@daotl-effect/trpc": "0.0.7",
     "@effect-app/core": "^0.39.1",
     "@effect-app/infra": "^0.45.1",
     "@effect-app/infra-adapters": "^0.33.1",
@@ -110,7 +111,6 @@
     "@fastify/swagger-ui": "^1.6.0",
     "@fastify/websocket": "^7.2.0",
     "@trpc/client": "^10.18.0",
-    "@trpc/server": "^10.18.0",
     "edgedb": "^1.1.0",
     "edgeql-js": "workspace:*",
     "fastify": "^4.15.0",

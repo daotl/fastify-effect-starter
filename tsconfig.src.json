@@ -21,6 +21,15 @@
       ],
       "@fastify-effect-starter/main/*": [
         "_src/*"
+      ],
+      "@trpc/server/internals": [
+        "./node_modules/@trpc/server/dist/internals.js"
+      ],
+      "@trpc/server/core/*": [
+        "./node_modules/@trpc/server/dist/core/*.js"
+      ],
+      "@trpc/server/error/formatter": [
+        "./node_modules/@trpc/server/dist/error/formatter.js"
       ]
     },
     // "types": [

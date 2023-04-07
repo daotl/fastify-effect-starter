@@ -1,13 +1,26 @@
-import type { Context } from './context.js'
-import { initTRPC } from '@trpc/server'
+import * as trpc from '@trpc/server'
+import type { DefaultErrorShape } from '@trpc/server/error/formatter'
 import superjson from 'superjson'
 
-export const t = initTRPC.context<Context>().create({
+import { effectify } from '@daotl-effect/trpc'
+
+import type { Context } from './context.js'
+
+const opts = {
   transformer: superjson,
-  errorFormatter({ shape }) {
+  errorFormatter({ shape }: { shape: DefaultErrorShape }) {
     return shape
   },
-})
+}
+
+const builder = trpc.initTRPC.context<Context>()
+const _t = builder.create(opts)
+
+type TParams = typeof builder extends trpc.TRPCBuilder<infer TParams>
+  ? TParams
+  : never
+
+export const t = effectify(Runtime.defaultRuntime)<TParams, typeof opts>(_t)
 
 export const p = {
   public: t.procedure,
