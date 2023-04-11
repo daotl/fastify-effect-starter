@@ -15,17 +15,14 @@ import fastifyStatic from '@fastify/static'
 import fastifySwagger from '@fastify/swagger'
 import fastifySwaggerUI from '@fastify/swagger-ui'
 import fastifyWebSocket from '@fastify/websocket'
-import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import * as Fa from 'fastify'
 import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyZod from 'fastify-type-provider-zod'
 import type { StatusCodes } from 'http-status-codes'
-import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
 import type { ZodTypeAny } from 'zod'
 
 import type * as auth from '~/auth/index.js'
 import type { User } from '~/models/index.js'
-import * as trpc from '~/trpc/index.js'
 
 export type ServerOptions = {
   dev?: boolean
@@ -152,31 +149,6 @@ export function createFastify<
     .register(fastifySwaggerUI, {
       routePrefix: '/swagger',
     })
-    // tRPC
-    // https://trpc.io/docs/fastify
-    .register(fastifyTRPCPlugin, {
-      prefix: '/api/trpc',
-      useWSS: true,
-      trpcOptions: {
-        router: trpc.trpcRouter,
-        createContext: trpc.genCreateContext(),
-        wss: fastifyWebSocket,
-      },
-    })
-    .register(
-      // https://github.com/sachinraja/trpc-playground/issues/28
-      // @ts-expect-error ignore
-      getFastifyPlugin({
-        trpcApiEndpoint: '/api/trpc',
-        playgroundEndpoint: '/api/trpc-playground',
-        router: trpc.trpcRouter,
-        // https://github.com/sachinraja/trpc-playground/issues/44
-        request: {
-          superjson: true, // <- set this to true
-        },
-      }),
-      { prefix: '/api/trpc-playground' },
-    )
     // Health check `GET /health`
     .register(fastifyHealthCheck)
 

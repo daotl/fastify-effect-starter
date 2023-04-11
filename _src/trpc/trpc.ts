@@ -4,6 +4,8 @@ import superjson from 'superjson'
 
 import { effectify } from '@daotl-effect/trpc'
 
+import { runtime } from '~/setup.js'
+
 import type { Context } from './context.js'
 
 const opts = {
@@ -20,7 +22,7 @@ type TParams = typeof builder extends trpc.TRPCBuilder<infer TParams>
   ? TParams
   : never
 
-export const t = effectify(Runtime.defaultRuntime)<TParams, typeof opts>(_t)
+export const t = effectify(runtime)<TParams, typeof opts>(_t)
 
 export const p = {
   public: t.procedure,

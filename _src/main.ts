@@ -1,38 +1,43 @@
-import { runtimeDebug } from '@effect/data/Debug'
-// Fix req.session type
-import '@fastify/session'
+import fastifyWebSocket from '@fastify/websocket'
+import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
+import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
 
 import { Fastify } from '~/fastify/index.js'
 import * as auth from '~/auth/index.js'
-import { createLiveEdgedb } from '~/edgedb/index.js'
+import * as trpc from '~/trpc/index.js'
+import { runtime, authConfig } from './setup.js'
 
-import { ApiConfig, BaseConfig } from './config.js'
-
-runtimeDebug.traceStackLimit = 50
-const appConfig = BaseConfig.config.runSync$
-if (process.argv.includes('--debug') || appConfig.env === 'local-dev') {
-  runtimeDebug.minumumLogLevel = 'Debug'
-  runtimeDebug.tracingEnabled = true
-  runtimeDebug.traceStackLimit = 100
-  // runtimeDebug.filterStackFrame = _ => true
-}
-
-const apiConfig = ApiConfig.config.runSync$
-const liveFastify = Fastify.createLiveFastify(apiConfig.host, apiConfig.port)
-
-const liveEdgedb = createLiveEdgedb({
-  allow_user_specified_id: true,
-})
-
-const services = liveFastify > liveEdgedb
-
-const initFastify = Fastify.accessFastify.tap((fastify) => {
-  fastify.addHook('onRequest', auth.newAuthHook(authConfig))
+export const initFastify = Fastify.accessFastify.tap((fastify) => {
+  fastify
+    .addHook('onRequest', auth.newAuthHook(authConfig))
+    // tRPC
+    // https://trpc.io/docs/fastify
+    .register(fastifyTRPCPlugin, {
+      prefix: '/api/trpc',
+      useWSS: true,
+      trpcOptions: {
+        router: trpc.trpcRouter,
+        createContext: trpc.genCreateContext(),
+        wss: fastifyWebSocket,
+      },
+    })
+    .register(
+      // https://github.com/sachinraja/trpc-playground/issues/28
+      // @ts-expect-error ignore
+      getFastifyPlugin({
+        trpcApiEndpoint: '/api/trpc',
+        playgroundEndpoint: '/api/trpc-playground',
+        router: trpc.trpcRouter,
+        // https://github.com/sachinraja/trpc-playground/issues/44
+        request: {
+          superjson: true, // <- set this to true
+        },
+      }),
+      { prefix: '/api/trpc-playground' },
+    )
   // Middlewares
   return Effect.unit
 })
-
-const authConfig = auth.AuthConfig.config.runSync$
 
 const routes =
   auth.routes(authConfig)({ prefix: '/api/auth' }) >
@@ -42,16 +47,6 @@ const routes =
     return Effect.succeed({ msg: `hello ${oUserName.getOrElse('anonymous')}` })
   })
 
-const main = Effect.gen(function* ($) {
-  // const apiConfig = yield* $(ApiConfig.config)
-  // const cfg = { ...appConfig, ...apiConfig }
-  // console.debug(`Config: ${JSON.stringify(cfg, undefined, 2)}`)
+export const main = initFastify > routes > Fastify.listen
 
-  return yield* $(
-    Effect.never().scoped.provideLayer(
-      services > (initFastify > routes > Fastify.listen).toLayerScopedDiscard,
-    ),
-  )
-})
-
-main.runMain$()
+await runtime.runPromise(main)
