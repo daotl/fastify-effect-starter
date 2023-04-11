@@ -1,5 +1,5 @@
-import { router as helloRouter } from '~/hello/router.js'
-import { router as postRouter } from '~/post/router.js'
+import { router as helloRouter } from '~/hello/trpc.js'
+import { router as postRouter } from '~/post/trpc.js'
 
 import { t } from './trpc.js'
 
