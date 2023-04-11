@@ -1,13 +1,13 @@
 lockfileVersion: 5.4
 
 overrides:
-  '@effect/data': ^0.10.2
-  '@effect/io': ^0.17.0
-  '@effect-app/core': ^0.39.1
-  '@effect-app/infra': ^0.45.1
-  '@effect-app/infra-adapters': ^0.33.1
-  '@effect-app/prelude': ^0.34.1
-  '@effect-app/schema': ^0.31.1
+  '@effect/data': ^0.11.5
+  '@effect/io': ^0.19.2
+  '@effect-app/core': ^0.40.0
+  '@effect-app/infra': ^0.47.0
+  '@effect-app/infra-adapters': ^0.34.0
+  '@effect-app/prelude': ^0.35.0
+  '@effect-app/schema': ^0.32.0
   '@typescript-eslint/scope-manager': 5.57.0
   '@types/node': ~18.11.11
   date-fns: ^2.29.3
@@ -38,20 +38,20 @@ importers:
   .:
     specifiers:
       '@babel/cli': ^7.21.0
-      '@daotl-effect/prelude': ^0.0.7
-      '@daotl-effect/trpc': 0.0.7
+      '@daotl-effect/prelude': ^0.0.9
+      '@daotl-effect/trpc': ^0.0.9
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4
       '@edgedb/generate': ^0.0.8
-      '@effect-app/cli': ^0.9.0
-      '@effect-app/compiler': ^0.19.0
-      '@effect-app/core': ^0.39.1
-      '@effect-app/infra': ^0.45.1
-      '@effect-app/infra-adapters': ^0.33.1
-      '@effect-app/prelude': ^0.34.1
-      '@effect-app/schema': ^0.31.1
-      '@effect/data': ^0.10.2
-      '@effect/io': ^0.17.0
+      '@effect-app/cli': ^0.10.0
+      '@effect-app/compiler': ^0.20.0
+      '@effect-app/core': ^0.40.0
+      '@effect-app/infra': ^0.47.0
+      '@effect-app/infra-adapters': ^0.34.0
+      '@effect-app/prelude': ^0.35.0
+      '@effect-app/schema': ^0.32.0
+      '@effect/data': ^0.11.5
+      '@effect/io': ^0.19.2
       '@effect/language-service': ^0.0.19
       '@fastify/caching': ^8.3.0
       '@fastify/cookie': ^8.3.0
@@ -118,15 +118,15 @@ importers:
       ws: ^8.13.0
       zod: ^3.21.4
     dependencies:
-      '@daotl-effect/prelude': 0.0.7
-      '@daotl-effect/trpc': 0.0.7
-      '@effect-app/core': 0.39.1
-      '@effect-app/infra': 0.45.1
-      '@effect-app/infra-adapters': 0.33.1
-      '@effect-app/prelude': 0.34.1
-      '@effect-app/schema': 0.31.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@daotl-effect/prelude': 0.0.9
+      '@daotl-effect/trpc': 0.0.9
+      '@effect-app/core': 0.40.0
+      '@effect-app/infra': 0.47.0
+      '@effect-app/infra-adapters': 0.34.0
+      '@effect-app/prelude': 0.35.0
+      '@effect-app/schema': 0.32.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@fastify/caching': 8.3.0
       '@fastify/cookie': 8.3.0
       '@fastify/cors': 8.2.1
@@ -162,8 +162,8 @@ importers:
       '@daotl/effect-app-eslint-codegen-model': 0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4_rome@12.0.0
       '@edgedb/generate': 0.0.8_edgedb@1.1.0
-      '@effect-app/cli': 0.9.0
-      '@effect-app/compiler': 0.19.0_@types+node@18.11.19
+      '@effect-app/cli': 0.10.0
+      '@effect-app/compiler': 0.20.0_@types+node@18.11.19
       '@effect/language-service': 0.0.19_izp2ue34jjv4swyrhg2ux4ha3e
       '@tsconfig/node18-strictest-esm': 1.0.1
       '@tsplus/installer': 0.0.171_zvhgg36a35vwcamhb77dcu4mv4
@@ -622,14 +622,14 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@daotl-effect/prelude/0.0.7:
-    resolution: {integrity: sha512-/cOxCZgMzUiMPKIDzHm0YcnZS2GHll+OFumNQmUAAcqWJE0KehOdbI9Cnobeff+YerJgDEF10D5pkR6IJexmEQ==}
+  /@daotl-effect/prelude/0.0.9:
+    resolution: {integrity: sha512-08GtDWnyQQ0Gh6an9DYYjKKPnf5PR3eugoFWdHh6s943EaUii9sYfXka9JamSDPCJPnPk1t5KhlTnIXhNioApQ==}
     dependencies:
-      '@effect-app/core': 0.39.1
-      '@effect-app/infra-adapters': 0.33.1
-      '@effect-app/prelude': 0.34.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect-app/core': 0.40.0
+      '@effect-app/infra-adapters': 0.34.0
+      '@effect-app/prelude': 0.35.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
       date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
       dotenv: 16.0.3
@@ -648,16 +648,16 @@ packages:
       - encoding
     dev: false
 
-  /@daotl-effect/trpc/0.0.7:
-    resolution: {integrity: sha512-wfYd4yb+dCLNo0jmvk4yLQC9dO3q3+vr4edGsX/KLS+gFZ/51gSxmut5r8HjAt/gwXk3IOfOSbvEZu/zzAejtw==}
+  /@daotl-effect/trpc/0.0.9:
+    resolution: {integrity: sha512-ue+1LQnnL3jRkll2y01SrqCR+0A1pN0M+0XkwzEEFZZCrfl9faam3HEId/8VokcQ2Wkzm19gIXLXq/dBpo0R9g==}
     dependencies:
-      '@daotl-effect/prelude': 0.0.7
+      '@daotl-effect/prelude': 0.0.9
       '@daotl/web-common': 0.0.6
-      '@effect-app/core': 0.39.1
-      '@effect-app/infra-adapters': 0.33.1
-      '@effect-app/prelude': 0.34.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect-app/core': 0.40.0
+      '@effect-app/infra-adapters': 0.34.0
+      '@effect-app/prelude': 0.35.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
       '@trpc/server': github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668
       date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
@@ -734,15 +734,15 @@ packages:
       edgedb: 1.1.0
     dev: true
 
-  /@effect-app/cli/0.9.0:
-    resolution: {integrity: sha512-EXKSAvg2HMgbG6QNfafBq3M1ox5KJAfDX/vXWjMJh7/ZjH+Hdad+82yNPZmxKNJ8T8vPHLsoik8PN3YsMJ69dA==}
+  /@effect-app/cli/0.10.0:
+    resolution: {integrity: sha512-QJ2GqkBG3PBncQQoyaE6aD6+YV5MOmXVhfKEV4lGbgkHa1eGrJdMi7R3jUDTETPu84HgS0DXeNRdMqGJdQRxJA==}
     hasBin: true
     dependencies:
       node-watch: 0.7.3
     dev: true
 
-  /@effect-app/compiler/0.19.0_@types+node@18.11.19:
-    resolution: {integrity: sha512-9pg6UAOm7nzJmSTAZZpeJ6NwfDdTt2qMKHmQuMepGDW0N/YmmTm2n52evgoXbk9Yfaj1+6vslv/XjGbwt3Js3w==}
+  /@effect-app/compiler/0.20.0_@types+node@18.11.19:
+    resolution: {integrity: sha512-Q0XcFlq7aPaeHrvw+soNC9Pwj50kd05JwRtlUnle9Jhc61nslUPtOiKns+7q1O8l/HEfyudfz5vfn57yfOly+A==}
     dependencies:
       '@rollup/pluginutils': 5.0.2
       vite: 4.2.1_@types+node@18.11.19
@@ -756,12 +756,12 @@ packages:
       - terser
     dev: true
 
-  /@effect-app/core/0.39.1:
-    resolution: {integrity: sha512-K5p5hyc+bvr6QExOWfwtnBnvlhpTivzFIkyga3LIas3qc7xbO0fXzlMmDTfCAH99KQWCvZxyZ2Sqy+mlRlke/A==}
+  /@effect-app/core/0.40.0:
+    resolution: {integrity: sha512-dOhAyPeKm/tos7prwPlbT5fK6hOAPiGB4q7KO1fdco85uvlXi22PQfBwc0zkroqYD6j7svlVRZinI+ca/1d7yg==}
     dependencies:
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
-      '@effect/stream': 0.15.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
+      '@effect/stream': 0.17.0
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
       cross-fetch: 3.1.5
       lodash: 4.17.21
@@ -773,31 +773,31 @@ packages:
       - encoding
     dev: false
 
-  /@effect-app/infra-adapters/0.33.1:
-    resolution: {integrity: sha512-cs6MVpRBNbGrvT0+kjc8TDDoiToyuAoByvRbeb1l3P55cPZN1Zwf3/DLV66EbWQVMbkFUZk7GLw7Cp287i6NBQ==}
+  /@effect-app/infra-adapters/0.34.0:
+    resolution: {integrity: sha512-U3lkR02JsYzL/rhPXlB6bEAEAK3FrlsF+u42coHyv5L5cBuetMft+uN3LuRo2HVfT44M/pCQcU+u20YOEUWkzQ==}
     dependencies:
-      '@effect-app/core': 0.39.1
-      '@effect-app/prelude': 0.34.1
-      '@effect-app/schema': 0.31.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect-app/core': 0.40.0
+      '@effect-app/prelude': 0.35.0
+      '@effect-app/schema': 0.32.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
       query-string: 8.1.0
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@effect-app/infra/0.45.1:
-    resolution: {integrity: sha512-Q36b7//qmNjMnRIOkB8sk/bArdLmJlbtmjned+eNpXCMeCdMvFr4UErrkRNCCe+LbsAo/U80VUbS5/o+47NXfg==}
+  /@effect-app/infra/0.47.0:
+    resolution: {integrity: sha512-BcVYcV55qP0jfFwLiUthbxC4HgKLOjCtOpSSueapNQMpvfynksDA1YVMIPy10iWd3lpkLqCkyv0ixz+SnlG0eA==}
     dependencies:
       '@azure/cosmos': 3.17.3
       '@azure/service-bus': 7.8.1
-      '@effect-app/core': 0.39.1
-      '@effect-app/infra-adapters': 0.33.1
-      '@effect-app/prelude': 0.34.1
-      '@effect-app/schema': 0.31.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect-app/core': 0.40.0
+      '@effect-app/infra-adapters': 0.34.0
+      '@effect-app/prelude': 0.35.0
+      '@effect-app/schema': 0.32.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@sendgrid/helpers': 7.7.0
       '@sendgrid/mail': 7.7.0
       change-case: 4.1.2
@@ -815,13 +815,13 @@ packages:
       - supports-color
     dev: false
 
-  /@effect-app/prelude/0.34.1:
-    resolution: {integrity: sha512-qnJJrFfMrPBIrdvXKD0PR8cZzwKHonRIKdSa7x7HJoGLRq4picZW4BK9TRboC+0adrnNuCv57srIuOXFIEqPsw==}
+  /@effect-app/prelude/0.35.0:
+    resolution: {integrity: sha512-Pk/CeHaJMMucvHGzwDHpRSObp/cgasupsbNFUM9YQM7fv2bKqFjQlFm2eCzuDzuTLKLCvCzKeDaEHZXh7wNTuw==}
     dependencies:
-      '@effect-app/core': 0.39.1
-      '@effect-app/schema': 0.31.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect-app/core': 0.40.0
+      '@effect-app/schema': 0.32.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
       date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
       lodash: 4.17.21
@@ -835,12 +835,12 @@ packages:
       - encoding
     dev: false
 
-  /@effect-app/schema/0.31.1:
-    resolution: {integrity: sha512-nHvassBDP+mZGLW4xLWmqCc/aWIWfhCmZDvClTGbd28hcHHA0jMTKGONEDRL17lWgOvU19SVVZuvRt5J5lrm4g==}
+  /@effect-app/schema/0.32.0:
+    resolution: {integrity: sha512-+sFONBU5li5atC8X6HtBL30Z7c6s3tlGvWm5KAVN1OG7nneG/1Hlx3J0Bn5PNKQzYjBaBXLYI/hsAzOwZOaVGQ==}
     dependencies:
-      '@effect-app/core': 0.39.1
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect-app/core': 0.40.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
       '@fp-ts/optic': 0.6.0_w2q3sj6fgtrlizsuwcsff4miva
       cross-fetch: 3.1.5
       lodash: 4.17.21
@@ -851,14 +851,14 @@ packages:
       - encoding
     dev: false
 
-  /@effect/data/0.10.3:
-    resolution: {integrity: sha512-D3T43FOiCDeYYQCfjR4ra1apgL78GS4T85wMMZ4A2UZ3SmKWeM0CP66jnysUoRW4f9Q6xnk4BfbU8eyUQo8oZw==}
+  /@effect/data/0.11.8:
+    resolution: {integrity: sha512-rOyVE5rbEAbg29mrn2yU4sf9CS3GaC1n8lrc9tjEZxDluHJTS5piu0p8JYv/JzMdRHQMLz6jJhM5INT/qf8c5A==}
     dev: false
 
-  /@effect/io/0.17.0:
-    resolution: {integrity: sha512-dJX3jaRksA3BXt3pmvjyBVvWsRJ7UVuw69BglWsDATn+7wPK+jTQSpZvtPehUknGm3aow095KsxCC+ruQ/7NnQ==}
+  /@effect/io/0.19.3:
+    resolution: {integrity: sha512-da5OwUrkdKxHZlBC+XdIu9+UhyI4IZ9pqN+ubnx7sePcBmIoL4OnTBXIKyHEC9YmuMGAuvdEqxx7icQHB9ZZNg==}
     dependencies:
-      '@effect/data': 0.10.3
+      '@effect/data': 0.11.8
     dev: false
 
   /@effect/language-service/0.0.19_izp2ue34jjv4swyrhg2ux4ha3e:
@@ -869,11 +869,11 @@ packages:
     dev: true
     patched: true
 
-  /@effect/stream/0.15.0:
-    resolution: {integrity: sha512-oqKVrOFONfcedZ33H40j8DYSgSt+IWzZStrM1Et8gyEx2ewaDH4MGrPFeBUCaswtp2IXAHNM6+XwnvkuvGCWbg==}
+  /@effect/stream/0.17.0:
+    resolution: {integrity: sha512-5VODeENcvwUQd83xu3yPG3cVnhpB5MYHWHPqg6U4oJcVCWeux2bfPZBbrz1+qUwWnF4jfswRJ/YCcoTPrML3zg==}
     dependencies:
-      '@effect/data': 0.10.3
-      '@effect/io': 0.17.0
+      '@effect/data': 0.11.8
+      '@effect/io': 0.19.3
     dev: false
 
   /@esbuild/android-arm/0.17.14:
@@ -1260,7 +1260,7 @@ packages:
   /@fp-ts/optic/0.6.0_w2q3sj6fgtrlizsuwcsff4miva:
     resolution: {integrity: sha512-7Yqpr3hWwcZtw/hH9ibzpirZf6hPvnMvr4G3Y2pcXhM/nie1knOzDXdruqljN4QVptLMZl4tfAHaeIAZ54P0eg==}
     dependencies:
-      '@effect/data': 0.10.3
+      '@effect/data': 0.11.8
     dev: false
     patched: true
 
@@ -1741,6 +1741,7 @@ packages:
 
   /@trpc/server/10.18.0:
     resolution: {integrity: sha512-nVMqdDIF9YLOeC3g6RdAvdCPqkHFjpshSqZGThZ+fyjiWSUXj2ZKCduhJFnY77TjtgODojeaaghmzcnjxb+Onw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -8333,7 +8334,7 @@ packages:
     patched: true
 
   github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668:
-    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668}
+    resolution: {commit: 8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668, repo: git+ssh://git@github.com/daotl/trpc.git, type: git}
     name: '@trpc/server'
     version: 10.18.0
     dev: false
