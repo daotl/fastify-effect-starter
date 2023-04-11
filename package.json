@@ -161,7 +161,7 @@
     "prebuild-install": "^7.1.1",
     "rome": "^12.0.0",
     "ts-node": "^10.9.1",
-    "ts-to-zod": "daotl/ts-to-zod#17898c317daa5e1f09c462434abc21cabf1b536d",
+    "ts-to-zod": "daotl/ts-to-zod#e4b5f4b47ebfec81d825ed651fa0f93b18ac9305",
     "ts-transform-paths": "^3.0.0",
     "tsc-watch": "^6.0.0",
     "tsconfig-paths": "^4.2.0",

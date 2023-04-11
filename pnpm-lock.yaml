@@ -106,7 +106,7 @@ importers:
       tlru: ^1.0.2
       trpc-playground: ^1.0.4
       ts-node: ^10.9.1
-      ts-to-zod: daotl/ts-to-zod#17898c317daa5e1f09c462434abc21cabf1b536d
+      ts-to-zod: daotl/ts-to-zod#e4b5f4b47ebfec81d825ed651fa0f93b18ac9305
       ts-transform-paths: ^3.0.0
       tsc-watch: ^6.0.0
       tsconfig-paths: ^4.2.0
@@ -190,7 +190,7 @@ importers:
       prebuild-install: 7.1.1
       rome: 12.0.0
       ts-node: 10.9.1_zvhgg36a35vwcamhb77dcu4mv4
-      ts-to-zod: github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d
+      ts-to-zod: github.com/daotl/ts-to-zod/e4b5f4b47ebfec81d825ed651fa0f93b18ac9305
       ts-transform-paths: 3.0.0
       tsc-watch: 6.0.0_noqli5mnrg467zyaewisefordu
       tsconfig-paths: 4.2.0
@@ -8333,13 +8333,13 @@ packages:
     patched: true
 
   github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668:
-    resolution: {commit: 8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668, repo: git+ssh://git@github.com/daotl/trpc.git, type: git}
+    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668}
     name: '@trpc/server'
     version: 10.18.0
     dev: false
 
-  github.com/daotl/ts-to-zod/17898c317daa5e1f09c462434abc21cabf1b536d:
-    resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/17898c317daa5e1f09c462434abc21cabf1b536d}
+  github.com/daotl/ts-to-zod/e4b5f4b47ebfec81d825ed651fa0f93b18ac9305:
+    resolution: {tarball: https://codeload.github.com/daotl/ts-to-zod/tar.gz/e4b5f4b47ebfec81d825ed651fa0f93b18ac9305}
     name: ts-to-zod
     version: 3.0.0
     hasBin: true
