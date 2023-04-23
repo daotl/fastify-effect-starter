@@ -31,4 +31,4 @@ export type ModelMap = {
   User: User
 }
 
-export { CategoryR, PostR, ProfileR, RoleR, UserR }
+export type { CategoryR, PostR, ProfileR, RoleR, UserR }
