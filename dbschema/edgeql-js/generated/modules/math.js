@@ -72,7 +72,7 @@ function lg(...args) {
 
 function abs(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('math::abs', args, _.spec, [
-    {args: [{typeId: "a1a8c1ca-7ccd-11ed-82df-77d20a1eeef2", optional: false, setoftype: false, variadic: false}], returnTypeId: "a1a8c1ca-7ccd-11ed-82df-77d20a1eeef2"},
+    {args: [{typeId: "38625c31-7ce5-11ed-8de2-f98f6b9b4b9a", optional: false, setoftype: false, variadic: false}], returnTypeId: "38625c31-7ce5-11ed-8de2-f98f6b9b4b9a"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -159,7 +159,7 @@ function stddev_pop(...args) {
   });
 };
 
-function var_b07f4c6f7ccd11eda8fe31f05c6eefdf(...args) {
+function var_43a5cee47ce511ed8b6c696d3d95a080(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('math::var', args, _.spec, [
     {args: [{typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "OptionalType"},
     {args: [{typeId: "00000000-0000-0000-0000-000000000108", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000108", returnTypemod: "OptionalType"},
@@ -201,7 +201,7 @@ const __defaultExports = {
   "mean": mean,
   "stddev": stddev,
   "stddev_pop": stddev_pop,
-  "var": var_b07f4c6f7ccd11eda8fe31f05c6eefdf,
+  "var": var_43a5cee47ce511ed8b6c696d3d95a080,
   "var_pop": var_pop
 };
 exports.default = __defaultExports;

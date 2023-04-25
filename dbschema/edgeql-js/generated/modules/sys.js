@@ -24,29 +24,29 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const $ = __importStar(require("../reflection"));
 const _ = __importStar(require("../imports"));
-const TransactionIsolation = $.makeType(_.spec, "b08ef8a8-7ccd-11ed-b1eb-89e0bb54ad5b", _.syntax.literal);
+const TransactionIsolation = $.makeType(_.spec, "43b27a5d-7ce5-11ed-a283-f3e2eed9cad3", _.syntax.literal);
 
-const VersionStage = $.makeType(_.spec, "b08fb505-7ccd-11ed-9b37-5fa942ea3a1e", _.syntax.literal);
+const VersionStage = $.makeType(_.spec, "43b30e35-7ce5-11ed-b1b6-b7ab15e95bb8", _.syntax.literal);
 
-const $SystemObject = $.makeType(_.spec, "b0907079-7ccd-11ed-b9dc-f5bd7dd2a62a", _.syntax.literal);
+const $SystemObject = $.makeType(_.spec, "43b3a0eb-7ce5-11ed-bd12-49572d7e3832", _.syntax.literal);
 
 const SystemObject= _.syntax.$PathNode($.$toSet($SystemObject, $.Cardinality.Many), null);
 
-const $Database = $.makeType(_.spec, "b0b1b1f0-7ccd-11ed-af79-158c2c60af14", _.syntax.literal);
+const $Database = $.makeType(_.spec, "43ce7d0f-7ce5-11ed-b7cf-fd857b5f5824", _.syntax.literal);
 
 const Database= _.syntax.$PathNode($.$toSet($Database, $.Cardinality.Many), null);
 
-const $ExtensionPackage = $.makeType(_.spec, "b0d79f7d-7ccd-11ed-b3db-213dc9daf131", _.syntax.literal);
+const $ExtensionPackage = $.makeType(_.spec, "43ed0b98-7ce5-11ed-9ffe-37160ad6cf01", _.syntax.literal);
 
 const ExtensionPackage= _.syntax.$PathNode($.$toSet($ExtensionPackage, $.Cardinality.Many), null);
 
-const $Role = $.makeType(_.spec, "b10364c1-7ccd-11ed-8b52-e39d41ec85c1", _.syntax.literal);
+const $Role = $.makeType(_.spec, "440fd704-7ce5-11ed-8192-8da939465545", _.syntax.literal);
 
 const Role= _.syntax.$PathNode($.$toSet($Role, $.Cardinality.Many), null);
 
 function get_version(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('sys::get_version', args, _.spec, [
-    {args: [], returnTypeId: "d163179f-0f4b-dbcd-cede-538f4f2a0383"},
+    {args: [], returnTypeId: "a0efd222-8d97-429f-32f7-4264a34815ff"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -88,7 +88,7 @@ function get_instance_name(...args) {
 
 function get_transaction_isolation(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('sys::get_transaction_isolation', args, _.spec, [
-    {args: [], returnTypeId: "b08ef8a8-7ccd-11ed-b1eb-89e0bb54ad5b"},
+    {args: [], returnTypeId: "43b27a5d-7ce5-11ed-a283-f3e2eed9cad3"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,

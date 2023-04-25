@@ -1,5 +1,5 @@
 import type * as Fa from 'fastify'
-import type { ZodTypeProvider } from 'fastify-type-provider-zod'
+import type { EffectSchemaTypeProvider } from 'fastify-type-provider-effect-schema'
 
 export * from './types.js'
 export * from './fastify.js'
@@ -8,7 +8,7 @@ export * from './effectify.js'
 import { type EffectFastifyPlugin, effectify } from './effectify.js'
 import {
   type FastifyContextConfig,
-  type FastifyZodSchema,
+  type FastifyEffectSchemaSchema,
   createFastify,
 } from './fastify.js'
 
@@ -19,8 +19,8 @@ await fastify
 
 export const _Fastify = effectify<
   FastifyContextConfig,
-  ZodTypeProvider,
-  FastifyZodSchema
+  EffectSchemaTypeProvider,
+  FastifyEffectSchemaSchema
 >(fastify)
 
 export const Fastify = {

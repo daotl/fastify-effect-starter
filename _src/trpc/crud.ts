@@ -1,8 +1,8 @@
-export const zListInput = z.object({
-  offset: z.number().optional(),
-  limit: z.number().optional(),
+export const sListInput = Schema.struct({
+  offset: Schema.optional(Schema.number),
+  limit: Schema.optional(Schema.number,
 })
 
-export const zIdInput = z.object({
-  id: z.string().uuid(),
+export const sIdInput = Schema.struct({
+  id: Schema.UUID,
 })

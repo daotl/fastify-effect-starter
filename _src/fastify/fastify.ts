@@ -12,14 +12,14 @@ import fastifyMiddie from '@fastify/middie'
 import { fastifyRequestContext } from '@fastify/request-context'
 import fastifySession from '@fastify/session'
 import fastifyStatic from '@fastify/static'
-import fastifySwagger from '@fastify/swagger'
-import fastifySwaggerUI from '@fastify/swagger-ui'
+// import fastifySwagger from '@fastify/swagger'
+// import fastifySwaggerUI from '@fastify/swagger-ui'
 import fastifyWebSocket from '@fastify/websocket'
 import * as Fa from 'fastify'
 import fastifyHealthCheck from 'fastify-healthcheck'
-import * as FastifyZod from 'fastify-type-provider-zod'
+import * as FastifyEffectSchema from 'fastify-type-provider-effect-schema'
 import type { StatusCodes } from 'http-status-codes'
-import type { ZodTypeAny } from 'zod'
+import * as S from '@effect/schema/Schema'
 
 import type * as auth from '~/auth/index.js'
 import type { User } from '~/models/index.js'
@@ -36,15 +36,18 @@ export type FastifyContextConfig = {
 export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
   {},
   Fa.RawServerDefault,
-  FastifyZod.ZodTypeProvider
+  FastifyEffectSchema.EffectSchemaTypeProvider
 >
 
-export interface FastifyZodSchema {
-  body?: ZodTypeAny
-  querystring?: ZodTypeAny
-  params?: ZodTypeAny
-  headers?: ZodTypeAny
-  response?: Partial<Record<ValueOf<typeof StatusCodes>, ZodTypeAny>>
+// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+type SchemaTypeAny = S.Schema<any, any>
+
+export interface FastifyEffectSchemaSchema {
+  body?: SchemaTypeAny
+  querystring?: SchemaTypeAny
+  params?: SchemaTypeAny
+  headers?: SchemaTypeAny
+  response?: Partial<Record<ValueOf<typeof StatusCodes>, SchemaTypeAny>>
 }
 
 declare module 'fastify' {
@@ -63,11 +66,11 @@ export function createFastify<
   Logger extends Fa.FastifyBaseLogger = Fa.FastifyBaseLogger,
 >(opts?: Fa.FastifyHttpOptions<Server, Logger>) {
   const fastify = Fa.fastify(opts)
-    // Zod schema validator
-    // https://github.com/turkerdev/fastify-type-provider-zod
-    .setValidatorCompiler(FastifyZod.validatorCompiler)
-    .setSerializerCompiler(FastifyZod.serializerCompiler)
-    .withTypeProvider<FastifyZod.ZodTypeProvider>()
+    // Effect schema validator
+    // https://github.com/turkerdev/fastify-type-provider-effect-schema
+    .setValidatorCompiler(FastifyEffectSchema.validatorCompiler)
+    .setSerializerCompiler(FastifyEffectSchema.serializerCompiler)
+    .withTypeProvider<FastifyEffectSchema.EffectSchemaTypeProvider>()
     // Middleware
     // https://github.com/fastify/middie
     .register(fastifyMiddie)
@@ -129,26 +132,26 @@ export function createFastify<
     .register(fastifyWebSocket.default)
     // Swagger (OpenAPI v3)
     // https://github.com/fastify/fastify-swagger
-    .register(fastifySwagger, {
-      openapi: {
-        info: {
-          title: 'SampleApi',
-          description: 'Sample backend service',
-          version: '1.0.0',
-        },
-        servers: [],
-      },
-      transform: FastifyZod.jsonSchemaTransform,
-      // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
-      //
-      // transform: createFastifyZod.JsonSchemaTransform({
-      //   skipList: [ '/documentation/static/*' ]
-      // })
-    })
+    // .register(fastifySwagger, {
+    //   openapi: {
+    //     info: {
+    //       title: 'SampleApi',
+    //       description: 'Sample backend service',
+    //       version: '1.0.0',
+    //     },
+    //     servers: [],
+    //   },
+    // transform: FastifyEffectSchema.jsonSchemaTransform,
+    // You can also create transform with custom skiplist of endpoints that should not be included in the specification:
+    //
+    // transform: createFastifyZod.JsonSchemaTransform({
+    //   skipList: [ '/documentation/static/*' ]
+    // })
+    // })
     // https://github.com/fastify/fastify-swagger-ui
-    .register(fastifySwaggerUI, {
-      routePrefix: '/swagger',
-    })
+    // .register(fastifySwaggerUI, {
+    //   routePrefix: '/swagger',
+    // })
     // Health check `GET /health`
     .register(fastifyHealthCheck)
 
