@@ -39,7 +39,7 @@ importers:
     specifiers:
       '@babel/cli': ^7.21.0
       '@daotl-effect/prelude': ^0.0.11
-      '@daotl-effect/trpc': ^0.0.12
+      '@daotl-effect/trpc': ^0.0.17
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4
       '@edgedb/generate': ^0.0.8
@@ -118,7 +118,7 @@ importers:
       zod: ^3.21.4
     dependencies:
       '@daotl-effect/prelude': 0.0.11
-      '@daotl-effect/trpc': 0.0.12
+      '@daotl-effect/trpc': 0.0.17
       '@effect-app/core': 0.47.1
       '@effect-app/infra': 0.54.12
       '@effect-app/infra-adapters': 0.40.12
@@ -647,8 +647,8 @@ packages:
       - encoding
     dev: false
 
-  /@daotl-effect/trpc/0.0.12:
-    resolution: {integrity: sha512-CjMTQAeHPqeFdFCCP7jmus3fBZPBQld+MqKzxW2u4PMMvDhF+T+tKeh/vv82dJEbsfRj9wFajBkrHPOXfvKNnQ==}
+  /@daotl-effect/trpc/0.0.17:
+    resolution: {integrity: sha512-XIbfzQ7fJQa1OCUrwZb54IL94LAFeiBI0Q6bjuA8aoTCGbNFl6wKrFatVb5UCSnwMFYTuP9tyL74shnawOhuBA==}
     dependencies:
       '@daotl-effect/prelude': 0.0.11
       '@daotl/web-common': 0.0.6
