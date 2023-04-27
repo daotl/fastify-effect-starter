@@ -16,7 +16,7 @@ export const routes = (cfg: AuthConfig) =>
         url: '/signin',
         schema: {
           response: {
-            [StatusCodes.OK]: Schema.struct({ status: S.literal('ok') }),
+            [StatusCodes.OK]: Schema.struct({ status: Schema.literal('ok') }),
           },
         },
 
@@ -42,7 +42,6 @@ export const routes = (cfg: AuthConfig) =>
               )
 
               oUser.tap((u) => {
-                console.log(u)
                 req.session.user = u
                 return some(null)
               })

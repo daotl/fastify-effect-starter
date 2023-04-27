@@ -40,7 +40,7 @@ importers:
     specifiers:
       '@babel/cli': ^7.21.0
       '@daotl-effect/prelude': ^0.0.11
-      '@daotl-effect/trpc': ^0.0.10
+      '@daotl-effect/trpc': ^0.0.17
       '@daotl/effect-app-eslint-codegen-model': ^0.11.0
       '@daotl/rome-config': 0.0.1-alpha.4
       '@edgedb/generate': ^0.0.8
@@ -96,8 +96,7 @@ importers:
       fastify-healthcheck: ^4.4.0
       fastify-helmet: ^7.1.0
       fastify-static: ^4.7.0
-      fastify-type-provider-effect-schema: file:/Users/zhaoweijie/Desktop/daotl-fastify-type-provider-effect-schema
-      fastify-type-provider-zod: ^1.1.9
+      fastify-type-provider-effect-schema: ^0.0.2
       http-status-codes: ^2.2.0
       madge: ^6.0.0
       nodemon: ^2.0.22
@@ -109,7 +108,7 @@ importers:
       tlru: ^1.0.2
       trpc-playground: ^1.0.4
       ts-node: ^10.9.1
-      ts-to-effect-schema: file:/Users/zhaoweijie/Desktop/daotl-ts-to-effect-schema
+      ts-to-effect-schema: ^0.0.2
       ts-to-zod: daotl/ts-to-zod#e4b5f4b47ebfec81d825ed651fa0f93b18ac9305
       ts-transform-paths: ^3.0.0
       tsc-watch: ^6.0.0
@@ -123,7 +122,7 @@ importers:
       zod: ^3.21.4
     dependencies:
       '@daotl-effect/prelude': 0.0.11
-      '@daotl-effect/trpc': 0.0.10
+      '@daotl-effect/trpc': 0.0.17
       '@effect-app/core': 0.47.1
       '@effect-app/infra': 0.54.12
       '@effect-app/infra-adapters': 0.40.12
@@ -153,8 +152,7 @@ importers:
       fastify-healthcheck: 4.4.0
       fastify-helmet: 7.1.0
       fastify-static: 4.7.0
-      fastify-type-provider-effect-schema: file:../daotl-fastify-type-provider-effect-schema_nwf53kysv7ix33trzlq5abxyfq
-      fastify-type-provider-zod: 1.1.9_fastify@4.15.0+zod@3.21.4
+      fastify-type-provider-effect-schema: 0.0.2_nwf53kysv7ix33trzlq5abxyfq
       http-status-codes: 2.2.0
       source-map-support: 0.5.21
       superjson: 1.12.3
@@ -197,7 +195,7 @@ importers:
       prebuild-install: 7.1.1
       rome: 12.0.0
       ts-node: 10.9.1_ef7sanq7pohvapdhnzfiku3lci
-      ts-to-effect-schema: file:../daotl-ts-to-effect-schema_@types+node@18.11.19
+      ts-to-effect-schema: 0.0.2_@types+node@18.11.19
       ts-to-zod: github.com/daotl/ts-to-zod/e4b5f4b47ebfec81d825ed651fa0f93b18ac9305
       ts-transform-paths: 3.0.0
       tsc-watch: 6.0.0_bygw4jzhenuk4ppa53hzcdup64
@@ -628,32 +626,6 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@daotl-effect/prelude/0.0.10:
-    resolution: {integrity: sha512-0d4cugwhSZjmD6BuFJfIUIiDLHONeK0xFY6IEvAYCok/ln6WQLdVZPesLp79T8ScQHl/68i/ZKCKMcRdmmjl+Q==}
-    dependencies:
-      '@effect-app/core': 0.47.1
-      '@effect-app/infra-adapters': 0.40.12
-      '@effect-app/prelude': 0.44.12
-      '@effect/data': 0.12.2
-      '@effect/io': 0.24.4
-      '@fp-ts/optic': 0.7.0_w2q3sj6fgtrlizsuwcsff4miva
-      date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
-      dotenv: 16.0.3
-      dotenv-expand: 10.0.0
-      lodash: 4.17.21
-      nanoid: 4.0.2
-      path-parser: 6.1.0
-      query-string: 8.1.0
-      remeda: 1.14.0
-      ts-pattern: 4.2.2
-      type-fest: 3.8.0
-      typed-case: 1.0.2
-      uuid: 9.0.0
-      validator: 13.9.0
-    transitivePeerDependencies:
-      - encoding
-    dev: false
-
   /@daotl-effect/prelude/0.0.11:
     resolution: {integrity: sha512-dmpaFbZx9ZHKJeNP73i/z4zVIgMkPJiV+f3nrWHFE1fCDGs9i109r9Iypj49LexN0xXdR/4PDt1fne5ufqnE5w==}
     dependencies:
@@ -681,10 +653,10 @@ packages:
       - encoding
     dev: false
 
-  /@daotl-effect/trpc/0.0.10:
-    resolution: {integrity: sha512-612ZsR+ikL37f5GNtQuZlRZ8Jiw3rcw993NH/8RAdr1A355hvi2ZdoIw7mnm/mBoPZ2OABDeBVGr/2zHP/g0BQ==}
+  /@daotl-effect/trpc/0.0.17:
+    resolution: {integrity: sha512-XIbfzQ7fJQa1OCUrwZb54IL94LAFeiBI0Q6bjuA8aoTCGbNFl6wKrFatVb5UCSnwMFYTuP9tyL74shnawOhuBA==}
     dependencies:
-      '@daotl-effect/prelude': 0.0.10
+      '@daotl-effect/prelude': 0.0.11
       '@daotl/web-common': 0.0.6
       '@effect-app/core': 0.47.1
       '@effect-app/infra-adapters': 0.40.12
@@ -692,7 +664,7 @@ packages:
       '@effect/data': 0.12.2
       '@effect/io': 0.24.4
       '@fp-ts/optic': 0.7.0_w2q3sj6fgtrlizsuwcsff4miva
-      '@trpc/server': github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668
+      '@trpc/server': github.com/daotl/trpc/f2daf966314d44134a3316d25977c5189bd3e257
       date-fns: 2.29.3_g5hqt5bhnjezqo5vnkpprfkba4
       dotenv: 16.0.3
       dotenv-expand: 10.0.0
@@ -745,7 +717,7 @@ packages:
       ts-custom-error: 3.3.1
       typed-case: 1.0.2
     optionalDependencies:
-      '@trpc/server': 10.18.0
+      '@trpc/server': 10.21.1
     dev: false
 
   /@dependents/detective-less/3.0.2:
@@ -1865,8 +1837,8 @@ packages:
       '@trpc/server': 10.21.1
     dev: false
 
-  /@trpc/server/10.18.0:
-    resolution: {integrity: sha512-nVMqdDIF9YLOeC3g6RdAvdCPqkHFjpshSqZGThZ+fyjiWSUXj2ZKCduhJFnY77TjtgODojeaaghmzcnjxb+Onw==}
+  /@trpc/server/10.21.1:
+    resolution: {integrity: sha512-4E4upTD2/Aq0Dm9HW4nbKSoIlqbV/ajRqNl1MCFBd9FjTv47qq2ncmAWMbb0AIVh2UV87PJlTjpPNNecRm6g9Q==}
     requiresBuild: true
     dev: false
     optional: true
@@ -4133,15 +4105,14 @@ packages:
       - supports-color
     dev: false
 
-  /fastify-type-provider-zod/1.1.9_fastify@4.15.0+zod@3.21.4:
-    resolution: {integrity: sha512-Ztnu1ZWJEKJouZvdTyfgjuVqS+A4JLoCbWBvFqFhfnrg6YQvEvW+5cJvP98kNbuV5gjfpWmHSOTi3BpkidJPQg==}
+  /fastify-type-provider-effect-schema/0.0.2_nwf53kysv7ix33trzlq5abxyfq:
+    resolution: {integrity: sha512-7NDHn7RZXVPNgOQDzrCY0xKevp9mTUTyR3tlRqxauDfX//14sI9es7RzjglWbfEEc7pig/FuLiHOiXV4KMk1dg==}
     peerDependencies:
+      '@effect/schema': ^0.12.1
       fastify: ^4.0.0
-      zod: ^3.14.2
     dependencies:
+      '@effect/schema': 0.15.0
       fastify: 4.15.0
-      zod: 3.21.4
-      zod-to-json-schema: 3.20.4_zod@3.21.4
     dev: false
 
   /fastify/4.15.0:
@@ -6687,6 +6658,12 @@ packages:
     hasBin: true
     dev: true
 
+  /prettier/2.3.0:
+    resolution: {integrity: sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
+
   /pretty-format/26.6.2:
     resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
     engines: {node: '>= 10'}
@@ -7950,6 +7927,39 @@ packages:
     resolution: {integrity: sha512-qzJMo2pbkUJWusRH5o8xR+xogn6RmvViyUgwBFTtRENLse470clCGjHDf6haWGZ1AOmk8XkEohUoBW8Uut6Scg==}
     dev: false
 
+  /ts-to-effect-schema/0.0.2_@types+node@18.11.19:
+    resolution: {integrity: sha512-5o4eLw3QO7E4K+DdMX0KJWLYaMTX6pc7UldnxgFp/uTx7AvIQryTbCH/b3izjL9A++IB26xJGsXaB5S24zrzBQ==}
+    hasBin: true
+    dependencies:
+      '@effect/data': 0.12.2
+      '@effect/io': 0.24.4
+      '@effect/schema': 0.15.0
+      '@oclif/core': 2.8.2_cbeyf7y55u5cxqv36f24vsz354
+      '@oclif/plugin-help': 5.2.9_cbeyf7y55u5cxqv36f24vsz354
+      '@oclif/plugin-plugins': 2.4.7_cbeyf7y55u5cxqv36f24vsz354
+      '@typescript/vfs': 1.4.0
+      async: 3.2.4
+      case: 1.6.3
+      chokidar: 3.5.3
+      fs-extra: 9.1.0
+      inquirer: 8.2.5
+      lodash: 4.17.21
+      lz-string: 1.5.0
+      ora: 5.4.1
+      prettier: 2.3.0
+      rxjs: 7.8.0
+      slash: 3.0.0
+      threads: 1.7.0
+      tslib: 2.5.0
+      tsutils: 3.21.0_typescript@5.0.4
+      typescript: 5.0.4
+    transitivePeerDependencies:
+      - '@swc/core'
+      - '@swc/wasm'
+      - '@types/node'
+      - supports-color
+    dev: true
+
   /ts-transform-paths/3.0.0:
     resolution: {integrity: sha512-6zaET4Gz6/65Zia2jzQkh2v4WJA1NK3IvxXP0GlFkfWL9rwnInIMzQbjDunJb+m22L9S9I4XZVgW6xC+fZ2n6g==}
     dev: true
@@ -8771,14 +8781,6 @@ packages:
     engines: {node: '>=0.2.0'}
     dev: true
 
-  /zod-to-json-schema/3.20.4_zod@3.21.4:
-    resolution: {integrity: sha512-Un9+kInJ2Zt63n6Z7mLqBifzzPcOyX+b+Exuzf7L1+xqck9Q2EPByyTRduV3kmSPaXaRer1JCsucubpgL1fipg==}
-    peerDependencies:
-      zod: ^3.20.0
-    dependencies:
-      zod: 3.21.4
-    dev: false
-
   /zod-to-ts/1.1.4_pcjc45czgfpyoj2etgsoopjlra:
     resolution: {integrity: sha512-jsCg+pTNxLAdJOfW4ul+SpechdGYEJPPnssSbqWdR2LSIkotT22k+UvqPb1nEHwe/YbEcbUOlZUfGM0npgR+Jg==}
     peerDependencies:
@@ -8801,59 +8803,10 @@ packages:
     hasBin: true
     patched: true
 
-  file:../daotl-fastify-type-provider-effect-schema_nwf53kysv7ix33trzlq5abxyfq:
-    resolution: {directory: ../daotl-fastify-type-provider-effect-schema, type: directory}
-    id: file:../daotl-fastify-type-provider-effect-schema
-    name: fastify-type-provider-effect-schema
-    version: 0.0.1
-    peerDependencies:
-      '@effect/schema': ^0.12.1
-      fastify: ^4.0.0
-    dependencies:
-      '@effect/schema': 0.15.0
-      fastify: 4.15.0
-    dev: false
-
-  file:../daotl-ts-to-effect-schema_@types+node@18.11.19:
-    resolution: {directory: ../daotl-ts-to-effect-schema, type: directory}
-    id: file:../daotl-ts-to-effect-schema
-    name: ts-to-effect-schema
-    version: 0.0.1
-    hasBin: true
-    dependencies:
-      '@effect/data': 0.12.2
-      '@effect/io': 0.24.4
-      '@effect/schema': 0.15.0
-      '@oclif/core': 2.8.2_cbeyf7y55u5cxqv36f24vsz354
-      '@oclif/plugin-help': 5.2.9_cbeyf7y55u5cxqv36f24vsz354
-      '@oclif/plugin-plugins': 2.4.7_cbeyf7y55u5cxqv36f24vsz354
-      '@typescript/vfs': 1.4.0
-      async: 3.2.4
-      case: 1.6.3
-      chokidar: 3.5.3
-      fs-extra: 9.1.0
-      inquirer: 8.2.5
-      lodash: 4.17.21
-      lz-string: 1.5.0
-      ora: 5.4.1
-      prettier: 2.2.1
-      rxjs: 7.8.0
-      slash: 3.0.0
-      threads: 1.7.0
-      tslib: 2.5.0
-      tsutils: 3.21.0_typescript@5.0.4
-      typescript: 5.0.4
-    transitivePeerDependencies:
-      - '@swc/core'
-      - '@swc/wasm'
-      - '@types/node'
-      - supports-color
-    dev: true
-
-  github.com/daotl/trpc/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668:
-    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/8e6efd7fd2b4e4475d7d919d1c7308bdf38f0668}
+  github.com/daotl/trpc/f2daf966314d44134a3316d25977c5189bd3e257:
+    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/f2daf966314d44134a3316d25977c5189bd3e257}
     name: '@trpc/server'
-    version: 10.18.0
+    version: 10.21.1
     dev: false
 
   github.com/daotl/ts-to-zod/e4b5f4b47ebfec81d825ed651fa0f93b18ac9305:

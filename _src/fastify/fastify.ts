@@ -19,7 +19,6 @@ import * as Fa from 'fastify'
 import fastifyHealthCheck from 'fastify-healthcheck'
 import * as FastifyEffectSchema from 'fastify-type-provider-effect-schema'
 import type { StatusCodes } from 'http-status-codes'
-import * as S from '@effect/schema/Schema'
 
 import type * as auth from '~/auth/index.js'
 import type { User } from '~/models/index.js'
@@ -40,8 +39,7 @@ export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
 >
 
 // rome-ignore lint/suspicious/noExplicitAny: <explanation>
-type SchemaTypeAny = S.Schema<any, any>
-
+type SchemaTypeAny = Schema<any, any>
 export interface FastifyEffectSchemaSchema {
   body?: SchemaTypeAny
   querystring?: SchemaTypeAny
