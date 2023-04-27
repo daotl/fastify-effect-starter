@@ -8,7 +8,7 @@ export const router = () =>
           Schema.struct({ username: Schema.optional(Schema.string) }),
         ),
       )
-      // .output(Schema.parse(Schema.struct({ text: Schema.string })))
+      .output(Schema.parse(Schema.struct({ text: Schema.string })))
       .query(({ input, ctx }) => {
         return Effect.succeed({
           text: `hello ${input?.username ?? ctx.user?.name ?? 'world'}`,

@@ -5,9 +5,3 @@ import '@daotl-effect/prelude/_global'
  */
 // rome-ignore lint/correctness/noUnusedVariables: ignore
 import { e } from '@fastify-effect-starter/main/_global/edgeql'
-
-/**
- * @tsplus global
- */
-// rome-ignore lint/correctness/noUnusedVariables: ignore
-import { z } from 'zod'

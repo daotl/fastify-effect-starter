@@ -100,9 +100,9 @@ const create = p.optional
       Effect.promise(
         e
           .insert(e.Post, {
-            ...input,
+            ...R.omit(input, ['author', 'categories']),
             author: e.select(e.User, (u) => ({
-              filter_single: e.op(u.id, '=', e.cast(e.uuid, input.authorId)),
+              filter_single: e.op(u.id, '=', e.cast(e.uuid, input.author.id)),
             })),
           })
           .run(edgedb),
@@ -117,7 +117,7 @@ const update = p.optional
       Effect.promise(
         e
           .update(e.Post, () => ({
-            set: input,
+            set: R.omit(input, ['author', 'categories']),
           }))
           .run(edgedb),
       ),
