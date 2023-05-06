@@ -2,7 +2,7 @@ import * as E from '~/edgedb/index.js'
 
 import { sIdInput, sListInput } from '~/trpc/crud.js'
 import { p, t } from '~/trpc/trpc.js'
-import { toDtoSchema } from '~/utils/effectSchema.js'
+import { toCreateSchema, toUpdateSchema } from '~/utils/effectSchema.js'
 import { postSchema } from '~/models/generated/interfaces.schema.js'
 
 export const zPostListInput = pipe(
@@ -94,7 +94,7 @@ const get = p.optional
   )
 
 const create = p.optional
-  .input(Schema.parse(toDtoSchema(postSchema)))
+  .input(Schema.parse(toCreateSchema(postSchema)))
   .mutation(async ({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(
@@ -111,7 +111,7 @@ const create = p.optional
   )
 
 const update = p.optional
-  .input(Schema.parse(toDtoSchema(postSchema)))
+  .input(Schema.parse(toUpdateSchema(postSchema)))
   .mutation(async ({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(
