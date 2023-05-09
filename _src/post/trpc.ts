@@ -23,6 +23,7 @@ export const router = () =>
     create,
     update,
     delete: _delete,
+    test,
   })
 
 const count = p.optional
@@ -137,3 +138,60 @@ const _delete = p.optional
       ),
     ),
   )
+
+// {
+//   title: 'DAOT Labs',
+//   content: {
+//     value: 'h',
+//     op: 'contains',
+//   },
+//   author: {
+//     op: 'all',
+//     value: {
+//       name: 'Marie',
+//       role: {
+//         op: '=',
+//         value: 'user',
+//         cast: 'str',
+//       },
+//     },
+//   },
+// }
+
+const test = p.optional
+  .input(
+    Schema.parse(
+      Schema.struct({
+        title: Schema.string,
+        content: Schema.struct({
+          value: Schema.string,
+          op: Schema.literal('contains'),
+        }),
+        author: Schema.struct({
+          op: Schema.literal('all'),
+          value: Schema.struct({
+            name: Schema.string,
+            role: Schema.struct({
+              value: Schema.string,
+              op: Schema.literal('='),
+              cast: Schema.literal('str'),
+            }),
+          }),
+        }),
+      }),
+    ),
+  )
+  .query(({ input }) => {
+    return E.tagEdgedb.flatMap((edgedb) => {
+      return Effect.promise(
+        e
+          .select(e.Post, (p) => ({
+            ...e.Post['*'],
+            author: { ...e.User['*'] },
+            filter: E.genFilterQuery(p, input),
+            // filter_single: { id: '' },
+          }))
+          .run(edgedb),
+      )
+    })
+  })

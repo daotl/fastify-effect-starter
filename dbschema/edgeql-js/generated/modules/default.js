@@ -24,25 +24,25 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const $ = __importStar(require("../reflection"));
 const _ = __importStar(require("../imports"));
-const Role = $.makeType(_.spec, "15c180b7-ebb8-11ed-9e6a-8de6df19698a", _.syntax.literal);
+const Role = $.makeType(_.spec, "7a102db7-ed47-11ed-841e-750a1baa7be0", _.syntax.literal);
 
-const $Base = $.makeType(_.spec, "15bb39c2-ebb8-11ed-b8cf-bd0854a6d33d", _.syntax.literal);
+const $Base = $.makeType(_.spec, "7a0a5f33-ed47-11ed-8367-0bbe4713cc72", _.syntax.literal);
 
 const Base= _.syntax.$PathNode($.$toSet($Base, $.Cardinality.Many), null);
 
-const $Category = $.makeType(_.spec, "15bcc16a-ebb8-11ed-ae5f-49620f1b0f10", _.syntax.literal);
+const $Category = $.makeType(_.spec, "7a0ba0ab-ed47-11ed-b6f5-3597463838d4", _.syntax.literal);
 
 const Category= _.syntax.$PathNode($.$toSet($Category, $.Cardinality.Many), null);
 
-const $Post = $.makeType(_.spec, "15bdf67d-ebb8-11ed-93e7-e95e38e21170", _.syntax.literal);
+const $Post = $.makeType(_.spec, "7a0cd4cf-ed47-11ed-ae35-03cfd82431aa", _.syntax.literal);
 
 const Post= _.syntax.$PathNode($.$toSet($Post, $.Cardinality.Many), null);
 
-const $Profile = $.makeType(_.spec, "15c04fc6-ebb8-11ed-afc4-2de9ca78d164", _.syntax.literal);
+const $Profile = $.makeType(_.spec, "7a0f0bfc-ed47-11ed-891f-973d2292bd55", _.syntax.literal);
 
 const Profile= _.syntax.$PathNode($.$toSet($Profile, $.Cardinality.Many), null);
 
-const $User = $.makeType(_.spec, "15c18da4-ebb8-11ed-90b1-91c91aff439f", _.syntax.literal);
+const $User = $.makeType(_.spec, "7a10397f-ed47-11ed-abca-c9ff78bf7ff9", _.syntax.literal);
 
 const User= _.syntax.$PathNode($.$toSet($User, $.Cardinality.Many), null);
 
