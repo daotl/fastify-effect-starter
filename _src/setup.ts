@@ -7,6 +7,7 @@ import { makeBasicRuntime } from '@daotl-effect/prelude/basicRuntime'
 import { Fastify } from '~/fastify/index.js'
 import * as auth from '~/auth/index.js'
 import { createLiveEdgedb } from '~/edgedb/index.js'
+import { liveLogger } from '~/logger.js'
 
 import { ApiConfig, BaseConfig } from './config.js'
 
@@ -29,7 +30,7 @@ export const liveEdgedb = createLiveEdgedb({
   allow_user_specified_id: true,
 })
 
-export const services = liveFastify > liveEdgedb
+export const services = liveLogger > liveFastify > liveEdgedb
 
 const { runtime, clean } = Runtime.defaultRuntime.runSync(
   makeBasicRuntime(services),

@@ -163,12 +163,12 @@ const test = p.optional
     Schema.parse(
       Schema.struct({
         title: Schema.string,
-        content: E.strContainsSchema,
+        content: E.SStrContains,
         author: Schema.struct({
           op: Schema.literal('all'),
           value: Schema.struct({
             name: Schema.string,
-            role: E.strEqualSchema,
+            role: E.SStrEqual,
           }),
         }),
       }),

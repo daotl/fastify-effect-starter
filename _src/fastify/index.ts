@@ -1,4 +1,5 @@
 import type * as Fa from 'fastify'
+import { logger } from '~/logger.js'
 import type { EffectSchemaTypeProvider } from 'fastify-type-provider-effect-schema'
 
 export * from './types.js'
@@ -14,6 +15,7 @@ import {
 
 const fastify = createFastify({
   pluginTimeout: 0,
+  logger,
 })
 await fastify
 
