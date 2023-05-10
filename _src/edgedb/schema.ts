@@ -3,32 +3,32 @@
  */
 export const strBaseObj = {
   value: Schema.string,
-  cast: Schema.optional(Schema.literal('str')),
+  cast: Schema.literal('str'),
 }
 
-export const strContainsSchema = Schema.struct({
+export const SStrContains = Schema.struct({
   ...strBaseObj,
-  op: Schema.optional(Schema.literal('contains')).withDefault(() => 'contains'),
+  op: Schema.literal('contains'),
 })
 
-export const strEqualSchema = Schema.struct({
+export const SStrEqual = Schema.struct({
   ...strBaseObj,
-  op: Schema.optional(Schema.literal('=')).withDefault(() => '='),
+  op: Schema.literal('='),
 })
 
-export const strNotEqualSchema = Schema.struct({
+export const SStrNotEqual = Schema.struct({
   ...strBaseObj,
-  op: Schema.optional(Schema.literal('!=')).withDefault(() => '!='),
+  op: Schema.literal('!='),
 })
 
-export const strInSchema = Schema.struct({
+export const SStrIn = Schema.struct({
   ...strBaseObj,
-  op: Schema.optional(Schema.literal('in')).withDefault(() => 'in'),
+  op: Schema.literal('in'),
 })
 
-export const strNotInSchema = Schema.struct({
+export const SStrNotIn = Schema.struct({
   ...strBaseObj,
-  op: Schema.optional(Schema.literal('not in')).withDefault(() => 'not in'),
+  op: Schema.literal('not in'),
 })
 
 /**
@@ -37,64 +37,64 @@ export const strNotInSchema = Schema.struct({
 
 export const numBaseObj = {
   value: Schema.number,
-  cast: Schema.optional(Schema.literal('int64', 'int32', 'int16')),
+  cast: Schema.literal('int64', 'int32', 'int16'),
 }
 
-export const numAdditionSchema = Schema.struct({
+export const SNumAddition = Schema.struct({
   ...numBaseObj,
-  op: Schema.optional(Schema.literal('+')).withDefault(() => '+'),
+  op: Schema.literal('+'),
 })
 
-export const numSubtractionSchema = Schema.struct({
+export const SNumSubtraction = Schema.struct({
   ...numBaseObj,
-  op: Schema.optional(Schema.literal('-')).withDefault(() => '-'),
+  op: Schema.literal('-'),
 })
 
-export const numMultiplicationSchema = Schema.struct({
+export const SNumMultiplication = Schema.struct({
   ...numBaseObj,
-  op: Schema.optional(Schema.literal('*')).withDefault(() => '*'),
+  op: Schema.literal('*'),
 })
 
-export const numDivisionSchema = Schema.struct({
+export const SNumDivision = Schema.struct({
   ...numBaseObj,
-  op: Schema.optional(Schema.literal('/')).withDefault(() => '/'),
+  op: Schema.literal('/'),
 })
 
-export const numGreaterThanSchema = (num: number) =>
+export const SNumGreaterThan = (num: number) =>
   Schema.struct({
     ...numBaseObj,
     value: pipe(Schema.number, Schema.greaterThan(num)),
-    op: Schema.optional(Schema.literal('>')).withDefault(() => '>'),
+    op: Schema.literal('>'),
   })
 
-export const numGreaterThanOrEqualToSchema = (num: number) =>
+export const SNumGreaterThanOrEqualTo = (num: number) =>
   Schema.struct({
     ...numBaseObj,
     value: pipe(Schema.number, Schema.greaterThanOrEqualTo(num)),
-    op: Schema.optional(Schema.literal('>=')).withDefault(() => '>='),
+    op: Schema.literal('>='),
   })
 
-export const numLessThanSchema = (num: number) =>
+export const SNumLessThan = (num: number) =>
   Schema.struct({
     ...numBaseObj,
     value: pipe(Schema.number, Schema.lessThan(num)),
-    op: Schema.optional(Schema.literal('<')).withDefault(() => '<'),
+    op: Schema.literal('<'),
   })
 
-export const numLessThanOrEqualToSchema = (num: number) =>
+export const SNumLessThanOrEqualTo = (num: number) =>
   Schema.struct({
     ...numBaseObj,
     value: pipe(Schema.number, Schema.lessThanOrEqualTo(num)),
-    op: Schema.optional(Schema.literal('<=')).withDefault(() => '<='),
+    op: Schema.literal('<='),
   })
 
-export const numBetweenSchema = (min: number, max: number) =>
+export const SNumBetween = (min: number, max: number) =>
   Schema.struct({
     ...numBaseObj,
-    op: Schema.optional(Schema.literal('all')).withDefault(() => 'all'),
+    op: Schema.literal('all'),
     // value: pipe(Schema.number, Schema.between(min, max)),
     value: Schema.struct({
-      min: numGreaterThanOrEqualToSchema(min),
-      max: numLessThanOrEqualToSchema(max),
+      min: SNumGreaterThanOrEqualTo(min),
+      max: SNumLessThanOrEqualTo(max),
     }),
   })
