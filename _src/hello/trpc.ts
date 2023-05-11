@@ -3,7 +3,7 @@ import { tagLogger } from '~/logger.js'
 
 export const router = () =>
   t.router({
-    hello: p.public
+    hello: p.protected
       .input(
         Schema.parse(
           Schema.struct({ username: Schema.optional(Schema.string) }),

@@ -107,6 +107,7 @@ importers:
       superjson: ^1.12.3
       tlru: ^1.0.2
       trpc-playground: ^1.0.4
+      trpc-shield: ^0.4.2
       ts-node: ^10.9.1
       ts-to-effect-schema: ^0.0.5
       ts-transform-paths: ^3.0.0
@@ -158,6 +159,7 @@ importers:
       superjson: 1.12.3
       tlru: 1.0.2
       trpc-playground: 1.0.4_x2dn7l75rjyrr6xbt7jmaj2loq
+      trpc-shield: 0.4.2
       type-fest: 3.10.0_bygw4jzhenuk4ppa53hzcdup64
       ws: 8.13.0
       zod: 3.21.4
@@ -737,7 +739,7 @@ packages:
       ts-custom-error: 3.3.1
       typed-case: 1.0.2_bygw4jzhenuk4ppa53hzcdup64
     optionalDependencies:
-      '@trpc/server': 10.21.1
+      '@trpc/server': 10.25.1
     transitivePeerDependencies:
       - typescript
     dev: false
@@ -1702,11 +1704,9 @@ packages:
       '@trpc/server': 10.25.0
     dev: false
 
-  /@trpc/server/10.21.1:
-    resolution: {integrity: sha512-4E4upTD2/Aq0Dm9HW4nbKSoIlqbV/ajRqNl1MCFBd9FjTv47qq2ncmAWMbb0AIVh2UV87PJlTjpPNNecRm6g9Q==}
-    requiresBuild: true
+  /@trpc/server/10.25.1:
+    resolution: {integrity: sha512-zi08QKVvWPK0EEGpEy7i5PlOK9CBlQb3LqiIdmaIpe27DzFNz6+yZ4qXwsLXTwDcDphELl/BNw+RzzQ2+Ou2vw==}
     dev: false
-    optional: true
 
   /@tsconfig/esm/1.0.3:
     resolution: {integrity: sha512-Gp56rIc3R8ab032nXMUitmc7YIb4nAi8DQ6Qt47tuL0Ssn9LIOm+o2FQmqPu3jX4z0TsqgzWwkmVygxcq+yHYg==}
@@ -7637,6 +7637,12 @@ packages:
       - typescript
     dev: false
 
+  /trpc-shield/0.4.2:
+    resolution: {integrity: sha512-uDtQJPVCk71On+2NgB0LnVgBhFdjfcEu7I3vl5S9FACaYOvaO2fnKwLYKwdU8W5O2mX71KMmoxu+jUt/VTfvWQ==}
+    dependencies:
+      '@trpc/server': 10.25.1
+    dev: false
+
   /ts-custom-error/3.3.1:
     resolution: {integrity: sha512-5OX1tzOjxWEgsr/YEUWSuPrQ00deKLh6D7OTWcvNHm12/7QPyRh8SYpyWvA4IZv8H/+GQWQEh/kwo95Q9OVW1A==}
     engines: {node: '>=14.0.0'}
@@ -8646,7 +8652,7 @@ packages:
     patched: true
 
   github.com/daotl/trpc/f2daf966314d44134a3316d25977c5189bd3e257:
-    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/f2daf966314d44134a3316d25977c5189bd3e257}
+    resolution: {commit: f2daf966314d44134a3316d25977c5189bd3e257, repo: git+ssh://git@github.com/daotl/trpc.git, type: git}
     name: '@trpc/server'
     version: 10.21.1
     dev: false
