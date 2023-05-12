@@ -1,100 +1,102 @@
-/**
- * common string schema
- */
-export const strBaseObj = {
+const strSchemaBase = {
   value: Schema.string,
   cast: Schema.literal('str'),
 }
 
-export const SStrContains = Schema.struct({
-  ...strBaseObj,
+export const sStrContains = Schema.struct({
+  ...strSchemaBase,
   op: Schema.literal('contains'),
 })
 
-export const SStrEqual = Schema.struct({
-  ...strBaseObj,
+export const sStrEqual = Schema.struct({
+  ...strSchemaBase,
   op: Schema.literal('='),
 })
 
-export const SStrNotEqual = Schema.struct({
-  ...strBaseObj,
+export const sStrNotEqual = Schema.struct({
+  ...strSchemaBase,
   op: Schema.literal('!='),
 })
 
-export const SStrIn = Schema.struct({
-  ...strBaseObj,
+export const sStrIn = Schema.struct({
+  ...strSchemaBase,
   op: Schema.literal('in'),
 })
 
-export const SStrNotIn = Schema.struct({
-  ...strBaseObj,
+export const sStrNotIn = Schema.struct({
+  ...strSchemaBase,
   op: Schema.literal('not in'),
 })
 
-/**
- * common number schema
- */
-
-export const numBaseObj = {
+const numSchemaBase = {
   value: Schema.number,
   cast: Schema.literal('int64', 'int32', 'int16'),
 }
 
-export const SNumAddition = Schema.struct({
-  ...numBaseObj,
+export const sNumAdd = Schema.struct({
+  ...numSchemaBase,
   op: Schema.literal('+'),
 })
 
-export const SNumSubtraction = Schema.struct({
-  ...numBaseObj,
+export const sNumSubtract = Schema.struct({
+  ...numSchemaBase,
   op: Schema.literal('-'),
 })
 
-export const SNumMultiplication = Schema.struct({
-  ...numBaseObj,
+export const sNumMultiply = Schema.struct({
+  ...numSchemaBase,
   op: Schema.literal('*'),
 })
 
-export const SNumDivision = Schema.struct({
-  ...numBaseObj,
+export const sNumDivide = Schema.struct({
+  ...numSchemaBase,
   op: Schema.literal('/'),
 })
 
-export const SNumGreaterThan = (num: number) =>
+export const sNumGt = (num: number) =>
   Schema.struct({
-    ...numBaseObj,
+    ...numSchemaBase,
     value: pipe(Schema.number, Schema.greaterThan(num)),
     op: Schema.literal('>'),
   })
 
-export const SNumGreaterThanOrEqualTo = (num: number) =>
+export const sNumGte = (num: number) =>
   Schema.struct({
-    ...numBaseObj,
+    ...numSchemaBase,
     value: pipe(Schema.number, Schema.greaterThanOrEqualTo(num)),
     op: Schema.literal('>='),
   })
 
-export const SNumLessThan = (num: number) =>
+export const sNumLt = (num: number) =>
   Schema.struct({
-    ...numBaseObj,
+    ...numSchemaBase,
     value: pipe(Schema.number, Schema.lessThan(num)),
     op: Schema.literal('<'),
   })
 
-export const SNumLessThanOrEqualTo = (num: number) =>
+export const sNumLte = (num: number) =>
   Schema.struct({
-    ...numBaseObj,
+    ...numSchemaBase,
     value: pipe(Schema.number, Schema.lessThanOrEqualTo(num)),
     op: Schema.literal('<='),
   })
 
-export const SNumBetween = (min: number, max: number) =>
+export const sNumRangeOpen = (min: number, max: number) =>
   Schema.struct({
-    ...numBaseObj,
+    ...numSchemaBase,
     op: Schema.literal('all'),
-    // value: pipe(Schema.number, Schema.between(min, max)),
     value: Schema.struct({
-      min: SNumGreaterThanOrEqualTo(min),
-      max: SNumLessThanOrEqualTo(max),
+      min: sNumGt(min),
+      max: sNumLt(max),
+    }),
+  })
+
+export const sNumRangeClosed = (min: number, max: number) =>
+  Schema.struct({
+    ...numSchemaBase,
+    op: Schema.literal('all'),
+    value: Schema.struct({
+      min: sNumGte(min),
+      max: sNumLte(max),
     }),
   })

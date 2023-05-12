@@ -27,6 +27,7 @@ export const initFastify = Fastify.accessFastify.tap((fastify) => {
       getFastifyPlugin({
         trpcApiEndpoint: '/api/trpc',
         playgroundEndpoint: '/api/trpc-playground',
+        // @ts-expect-error ignore
         router: trpc.trpcRouter,
         // https://github.com/sachinraja/trpc-playground/issues/44
         request: {
