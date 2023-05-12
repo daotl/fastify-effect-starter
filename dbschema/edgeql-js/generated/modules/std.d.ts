@@ -6,7 +6,7 @@ import * as _ from "../imports";
 import type * as _cfg from "./cfg";
 import type * as _cal from "./cal";
 import type * as _schema from "./schema";
-declare type $anyscalar = $anypoint | $anyreal | $.EnumType | $bool | $bytes | $uuid | $str | $json | $datetime | $duration | _cfg.$memory | _cal.$local_datetime | _cal.$local_date | _cal.$local_time | _cal.$relative_duration | _cal.$date_duration;
+declare type $anyscalar = $anypoint | $anyreal | $.EnumType | $bool | $bytes | $uuid | $str | $json | _cfg.$memory | _cal.$local_time | _cal.$relative_duration | _cal.$date_duration;
 
 declare type $anypoint = $anydiscrete | $anycontiguous;
 
@@ -82,8 +82,8 @@ export declare type $number = $.ScalarType<"std::number", number>;
 declare const number: $.scalarTypeWithConstructor<$number, string>
 
 export declare type $BaseObjectλShape = $.typeutil.flatten<{
-  "id": $.PropertyDesc<$uuid, $.Cardinality.One, true, false, true, true>;
   "__type__": $.LinkDesc<_schema.$ObjectType, $.Cardinality.One, {}, false, false,  true, false>;
+  "id": $.PropertyDesc<$uuid, $.Cardinality.One, true, false, true, true>;
 }>;
 declare type $BaseObject = $.ObjectType<"std::BaseObject", $BaseObjectλShape, null, [
   {id: {__element__: $uuid, __cardinality__: $.Cardinality.One | $.Cardinality.AtMostOne },},
@@ -92,15 +92,15 @@ declare const $BaseObject: $BaseObject
 
 declare const BaseObject: $.$expr_PathNode<$.TypeSet<$BaseObject, $.Cardinality.Many>, null> 
 
-export declare type $Object_3dff02017ce511eda4582d4e2bc60621λShape = $.typeutil.flatten<$BaseObjectλShape & {
+export declare type $Object_b4984deceb7c11ed94484765662a055bλShape = $.typeutil.flatten<$BaseObjectλShape & {
 }>;
-declare type $Object_3dff02017ce511eda4582d4e2bc60621 = $.ObjectType<"std::Object", $Object_3dff02017ce511eda4582d4e2bc60621λShape, null, [
+declare type $Object_b4984deceb7c11ed94484765662a055b = $.ObjectType<"std::Object", $Object_b4984deceb7c11ed94484765662a055bλShape, null, [
   ...$BaseObject['__exclusives__'],
 ]>;
-export declare type $Object = $Object_3dff02017ce511eda4582d4e2bc60621
-declare const $Object_3dff02017ce511eda4582d4e2bc60621: $Object_3dff02017ce511eda4582d4e2bc60621
+export declare type $Object = $Object_b4984deceb7c11ed94484765662a055b
+declare const $Object_b4984deceb7c11ed94484765662a055b: $Object_b4984deceb7c11ed94484765662a055b
 
-declare const Object_3dff02017ce511eda4582d4e2bc60621: $.$expr_PathNode<$.TypeSet<$Object_3dff02017ce511eda4582d4e2bc60621, $.Cardinality.Many>, null> 
+declare const Object_b4984deceb7c11ed94484765662a055b: $.$expr_PathNode<$.TypeSet<$Object_b4984deceb7c11ed94484765662a055b, $.Cardinality.Many>, null> 
 
 export declare type $FreeObjectλShape = $.typeutil.flatten<$BaseObjectλShape & {
 }>;
@@ -218,6 +218,40 @@ declare function assert_distinct<
 >(
   input: P1,
 ): assert_distinctλFuncExpr2<P1>;
+
+declare type assertλFuncExpr<
+  NamedArgs extends {
+    "message"?: _.castMaps.orScalarLiteral<$.TypeSet<$str>>,
+  },
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$bool>>,
+> = $.$expr_Function<
+  $bool, $.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.optionalParamCardinality<NamedArgs["message"]>>
+>;
+declare type assertλFuncExpr2<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$bool>>,
+> = $.$expr_Function<
+  $bool, $.cardutil.paramCardinality<P1>
+>;
+/**
+ * Assert that a boolean value is true.
+ */
+declare function assert<
+  NamedArgs extends {
+    "message"?: _.castMaps.orScalarLiteral<$.TypeSet<$str>>,
+  },
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$bool>>,
+>(
+  namedArgs: NamedArgs,
+  input: P1,
+): assertλFuncExpr<NamedArgs, P1>;
+/**
+ * Assert that a boolean value is true.
+ */
+declare function assert<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$bool>>,
+>(
+  input: P1,
+): assertλFuncExpr2<P1>;
 
 declare type lenλFuncExpr<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$str>>,
@@ -596,14 +630,14 @@ declare type maxλFuncExpr13<
   $.ArrayType<_cal.$date_duration>, $.cardutil.overrideUpperBound<$.cardutil.paramCardinality<P1>, "One">
 >;
 declare type maxλFuncExpr14<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_cal.$local_datetimeλICastableTo>>,
-> = $.$expr_Function<
-  _cal.$local_datetime, $.cardutil.overrideUpperBound<$.cardutil.paramCardinality<P1>, "One">
->;
-declare type maxλFuncExpr15<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_cal.$relative_durationλICastableTo>>,
 > = $.$expr_Function<
   _cal.$relative_duration, $.cardutil.overrideUpperBound<$.cardutil.paramCardinality<P1>, "One">
+>;
+declare type maxλFuncExpr15<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_cal.$local_datetimeλICastableTo>>,
+> = $.$expr_Function<
+  _cal.$local_datetime, $.cardutil.overrideUpperBound<$.cardutil.paramCardinality<P1>, "One">
 >;
 declare type maxλFuncExpr16<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$.BaseType>>,
@@ -715,18 +749,18 @@ declare function max<
   vals: P1,
 ): maxλFuncExpr13<P1>;
 /**
- * Return the smallest value of the input set.
- */
-declare function max<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_cal.$local_datetimeλICastableTo>>,
->(
-  vals: P1,
-): maxλFuncExpr14<P1>;
-/**
  * Return the greatest value of the input set.
  */
 declare function max<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_cal.$relative_durationλICastableTo>>,
+>(
+  vals: P1,
+): maxλFuncExpr14<P1>;
+/**
+ * Return the smallest value of the input set.
+ */
+declare function max<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_cal.$local_datetimeλICastableTo>>,
 >(
   vals: P1,
 ): maxλFuncExpr15<P1>;
@@ -1004,121 +1038,6 @@ declare function contains<
   haystack: P1,
   needle: P2,
 ): containsλFuncExpr11<P1, P2>;
-
-declare type array_replaceλFuncExpr<
-  P1 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
-  P2 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
-  P3 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
-> = $.$expr_Function<
-  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
->;
-declare type array_replaceλFuncExpr2<
-  P1 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
-  P2 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
-  P3 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
-> = $.$expr_Function<
-  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
->;
-declare type array_replaceλFuncExpr3<
-  P1 extends $.TypeSet<$.ArrayType<$decimalλICastableTo>>,
-  P2 extends $.TypeSet<$decimalλICastableTo>,
-  P3 extends $.TypeSet<$decimalλICastableTo>,
-> = $.$expr_Function<
-  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
->;
-declare type array_replaceλFuncExpr4<
-  P1 extends $.TypeSet<$.ArrayType<$.ObjectType>>,
-  P2 extends $.TypeSet<$.ObjectType>,
-  P3 extends $.TypeSet<$.ObjectType>,
-> = $.$expr_Function<
-  $.ArrayType<_.syntax.mergeObjectTypes<_.syntax.mergeObjectTypes<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
->;
-declare type array_replaceλFuncExpr5<
-  P1 extends $.TypeSet<$.ArrayType<$.AnyTupleType>>,
-  P2 extends $.TypeSet<$.AnyTupleType>,
-  P3 extends $.TypeSet<$.AnyTupleType>,
-> = $.$expr_Function<
-  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
->;
-declare type array_replaceλFuncExpr6<
-  P1 extends $.TypeSet<$.ArrayType<$.NonArrayType>>,
-  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
-  P3 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
-> = $.$expr_Function<
-  $.ArrayType<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
->;
-/**
- * Replace each array element equal to the second argument with the third argument.
- */
-declare function array_replace<
-  P1 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
-  P2 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
-  P3 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
->(
-  array: P1,
-  old: P2,
-  new_2: P3,
-): array_replaceλFuncExpr<P1, P2, P3>;
-/**
- * Replace each array element equal to the second argument with the third argument.
- */
-declare function array_replace<
-  P1 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
-  P2 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
-  P3 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
->(
-  array: P1,
-  old: P2,
-  new_2: P3,
-): array_replaceλFuncExpr2<P1, P2, P3>;
-/**
- * Replace each array element equal to the second argument with the third argument.
- */
-declare function array_replace<
-  P1 extends $.TypeSet<$.ArrayType<$decimalλICastableTo>>,
-  P2 extends $.TypeSet<$decimalλICastableTo>,
-  P3 extends $.TypeSet<$decimalλICastableTo>,
->(
-  array: P1,
-  old: P2,
-  new_2: P3,
-): array_replaceλFuncExpr3<P1, P2, P3>;
-/**
- * Replace each array element equal to the second argument with the third argument.
- */
-declare function array_replace<
-  P1 extends $.TypeSet<$.ArrayType<$.ObjectType>>,
-  P2 extends $.TypeSet<$.ObjectType>,
-  P3 extends $.TypeSet<$.ObjectType>,
->(
-  array: P1,
-  old: P2,
-  new_2: P3,
-): array_replaceλFuncExpr4<P1, P2, P3>;
-/**
- * Replace each array element equal to the second argument with the third argument.
- */
-declare function array_replace<
-  P1 extends $.TypeSet<$.ArrayType<$.AnyTupleType>>,
-  P2 extends $.TypeSet<$.AnyTupleType>,
-  P3 extends $.TypeSet<$.AnyTupleType>,
->(
-  array: P1,
-  old: P2,
-  new_2: P3,
-): array_replaceλFuncExpr5<P1, P2, P3>;
-/**
- * Replace each array element equal to the second argument with the third argument.
- */
-declare function array_replace<
-  P1 extends $.TypeSet<$.ArrayType<$.NonArrayType>>,
-  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
-  P3 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
->(
-  array: P1,
-  old: P2,
-  new_2: P3,
-): array_replaceλFuncExpr6<P1, P2, P3>;
 
 declare type findλFuncExpr<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$str>>,
@@ -1410,6 +1329,121 @@ declare function array_fill<
   val: P1,
   n: P2,
 ): array_fillλFuncExpr<P1, P2>;
+
+declare type array_replaceλFuncExpr<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
+  P2 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+  P3 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+> = $.$expr_Function<
+  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
+>;
+declare type array_replaceλFuncExpr2<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
+  P2 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+  P3 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+> = $.$expr_Function<
+  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
+>;
+declare type array_replaceλFuncExpr3<
+  P1 extends $.TypeSet<$.ArrayType<$decimalλICastableTo>>,
+  P2 extends $.TypeSet<$decimalλICastableTo>,
+  P3 extends $.TypeSet<$decimalλICastableTo>,
+> = $.$expr_Function<
+  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
+>;
+declare type array_replaceλFuncExpr4<
+  P1 extends $.TypeSet<$.ArrayType<$.ObjectType>>,
+  P2 extends $.TypeSet<$.ObjectType>,
+  P3 extends $.TypeSet<$.ObjectType>,
+> = $.$expr_Function<
+  $.ArrayType<_.syntax.mergeObjectTypes<_.syntax.mergeObjectTypes<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
+>;
+declare type array_replaceλFuncExpr5<
+  P1 extends $.TypeSet<$.ArrayType<$.AnyTupleType>>,
+  P2 extends $.TypeSet<$.AnyTupleType>,
+  P3 extends $.TypeSet<$.AnyTupleType>,
+> = $.$expr_Function<
+  $.ArrayType<_.syntax.getSharedParentPrimitive<_.syntax.getSharedParentPrimitive<P1["__element__"]["__element__"], P2["__element__"]>, P3["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
+>;
+declare type array_replaceλFuncExpr6<
+  P1 extends $.TypeSet<$.ArrayType<$.NonArrayType>>,
+  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
+  P3 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
+> = $.$expr_Function<
+  $.ArrayType<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>, $.cardutil.multiplyCardinalities<$.cardutil.multiplyCardinalities<$.cardutil.paramCardinality<P1>, $.cardutil.paramCardinality<P2>>, $.cardutil.paramCardinality<P3>>
+>;
+/**
+ * Replace each array element equal to the second argument with the third argument.
+ */
+declare function array_replace<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
+  P2 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+  P3 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+>(
+  array: P1,
+  old: P2,
+  new_2: P3,
+): array_replaceλFuncExpr<P1, P2, P3>;
+/**
+ * Replace each array element equal to the second argument with the third argument.
+ */
+declare function array_replace<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
+  P2 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+  P3 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+>(
+  array: P1,
+  old: P2,
+  new_2: P3,
+): array_replaceλFuncExpr2<P1, P2, P3>;
+/**
+ * Replace each array element equal to the second argument with the third argument.
+ */
+declare function array_replace<
+  P1 extends $.TypeSet<$.ArrayType<$decimalλICastableTo>>,
+  P2 extends $.TypeSet<$decimalλICastableTo>,
+  P3 extends $.TypeSet<$decimalλICastableTo>,
+>(
+  array: P1,
+  old: P2,
+  new_2: P3,
+): array_replaceλFuncExpr3<P1, P2, P3>;
+/**
+ * Replace each array element equal to the second argument with the third argument.
+ */
+declare function array_replace<
+  P1 extends $.TypeSet<$.ArrayType<$.ObjectType>>,
+  P2 extends $.TypeSet<$.ObjectType>,
+  P3 extends $.TypeSet<$.ObjectType>,
+>(
+  array: P1,
+  old: P2,
+  new_2: P3,
+): array_replaceλFuncExpr4<P1, P2, P3>;
+/**
+ * Replace each array element equal to the second argument with the third argument.
+ */
+declare function array_replace<
+  P1 extends $.TypeSet<$.ArrayType<$.AnyTupleType>>,
+  P2 extends $.TypeSet<$.AnyTupleType>,
+  P3 extends $.TypeSet<$.AnyTupleType>,
+>(
+  array: P1,
+  old: P2,
+  new_2: P3,
+): array_replaceλFuncExpr5<P1, P2, P3>;
+/**
+ * Replace each array element equal to the second argument with the third argument.
+ */
+declare function array_replace<
+  P1 extends $.TypeSet<$.ArrayType<$.NonArrayType>>,
+  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
+  P3 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveNonArrayBaseType<P1["__element__"]["__element__"]>>>,
+>(
+  array: P1,
+  old: P2,
+  new_2: P3,
+): array_replaceλFuncExpr6<P1, P2, P3>;
 
 declare type array_getλFuncExpr<
   NamedArgs extends {
@@ -1907,6 +1941,20 @@ declare function json_object_unpack<
 >(
   obj: P1,
 ): json_object_unpackλFuncExpr<P1>;
+
+declare type json_object_packλFuncExpr<
+  P1 extends $.TypeSet<$.TupleType<[$str, $json]>>,
+> = $.$expr_Function<
+  $json, $.Cardinality.One
+>;
+/**
+ * Return a JSON object with set key/value pairs.
+ */
+declare function json_object_pack<
+  P1 extends $.TypeSet<$.TupleType<[$str, $json]>>,
+>(
+  pairs: P1,
+): json_object_packλFuncExpr<P1>;
 
 declare type json_getλFuncExpr<
   NamedArgs extends {
@@ -3047,7 +3095,7 @@ declare function sequence_next<
 
 
 
-export { JsonEmpty, bigint, bool, bytes, datetime, decimal, duration, float32, float64, int16, int32, int64, json, $sequence, str, uuid, number, $BaseObject, BaseObject, $Object_3dff02017ce511eda4582d4e2bc60621, Object_3dff02017ce511eda4582d4e2bc60621, $FreeObject, FreeObject };
+export { JsonEmpty, bigint, bool, bytes, datetime, decimal, duration, float32, float64, int16, int32, int64, json, $sequence, str, uuid, number, $BaseObject, BaseObject, $Object_b4984deceb7c11ed94484765662a055b, Object_b4984deceb7c11ed94484765662a055b, $FreeObject, FreeObject };
 
 export type { $anyscalar, $anypoint, $anydiscrete, $anycontiguous, $anyreal, $anyfloat, $anyint, $anynumeric };
 
@@ -3068,11 +3116,12 @@ declare type __defaultExports = {
   "str": typeof str;
   "uuid": typeof uuid;
   "BaseObject": typeof BaseObject;
-  "Object": typeof Object_3dff02017ce511eda4582d4e2bc60621;
+  "Object": typeof Object_b4984deceb7c11ed94484765662a055b;
   "FreeObject": typeof FreeObject;
   "assert_single": typeof assert_single;
   "assert_exists": typeof assert_exists;
   "assert_distinct": typeof assert_distinct;
+  "assert": typeof assert;
   "len": typeof len;
   "sum": typeof sum;
   "count": typeof count;
@@ -3084,7 +3133,6 @@ declare type __defaultExports = {
   "enumerate": typeof enumerate;
   "round": typeof round;
   "contains": typeof contains;
-  "array_replace": typeof array_replace;
   "find": typeof find;
   "bit_and": typeof bit_and;
   "bit_or": typeof bit_or;
@@ -3095,6 +3143,7 @@ declare type __defaultExports = {
   "array_agg": typeof array_agg;
   "array_unpack": typeof array_unpack;
   "array_fill": typeof array_fill;
+  "array_replace": typeof array_replace;
   "array_get": typeof array_get;
   "array_join": typeof array_join;
   "bytes_get_bit": typeof bytes_get_bit;
@@ -3109,6 +3158,7 @@ declare type __defaultExports = {
   "json_typeof": typeof json_typeof;
   "json_array_unpack": typeof json_array_unpack;
   "json_object_unpack": typeof json_object_unpack;
+  "json_object_pack": typeof json_object_pack;
   "json_get": typeof json_get;
   "json_set": typeof json_set;
   "re_match": typeof re_match;

@@ -24,29 +24,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const $ = __importStar(require("../reflection"));
 const _ = __importStar(require("../imports"));
-const TransactionIsolation = $.makeType(_.spec, "43b27a5d-7ce5-11ed-a283-f3e2eed9cad3", _.syntax.literal);
+const TransactionIsolation = $.makeType(_.spec, "bd4e7170-eb7c-11ed-9c42-dbb9e535e78d", _.syntax.literal);
 
-const VersionStage = $.makeType(_.spec, "43b30e35-7ce5-11ed-b1b6-b7ab15e95bb8", _.syntax.literal);
+const VersionStage = $.makeType(_.spec, "bd4f34cc-eb7c-11ed-8095-a5d13db6ff15", _.syntax.literal);
 
-const $SystemObject = $.makeType(_.spec, "43b3a0eb-7ce5-11ed-bd12-49572d7e3832", _.syntax.literal);
+const $SystemObject = $.makeType(_.spec, "bd4fedbb-eb7c-11ed-ac79-c1831187b7f8", _.syntax.literal);
 
 const SystemObject= _.syntax.$PathNode($.$toSet($SystemObject, $.Cardinality.Many), null);
 
-const $Database = $.makeType(_.spec, "43ce7d0f-7ce5-11ed-b7cf-fd857b5f5824", _.syntax.literal);
+const $ExternalObject = $.makeType(_.spec, "bd63938d-eb7c-11ed-939a-2d6b7c53b270", _.syntax.literal);
+
+const ExternalObject= _.syntax.$PathNode($.$toSet($ExternalObject, $.Cardinality.Many), null);
+
+const $Database = $.makeType(_.spec, "bd77359b-eb7c-11ed-b327-5fb3f8a52d7c", _.syntax.literal);
 
 const Database= _.syntax.$PathNode($.$toSet($Database, $.Cardinality.Many), null);
 
-const $ExtensionPackage = $.makeType(_.spec, "43ed0b98-7ce5-11ed-9ffe-37160ad6cf01", _.syntax.literal);
+const $ExtensionPackage = $.makeType(_.spec, "bd9aec42-eb7c-11ed-a1fe-d590dd7ba29d", _.syntax.literal);
 
 const ExtensionPackage= _.syntax.$PathNode($.$toSet($ExtensionPackage, $.Cardinality.Many), null);
 
-const $Role = $.makeType(_.spec, "440fd704-7ce5-11ed-8192-8da939465545", _.syntax.literal);
+const $Role = $.makeType(_.spec, "bdc4bbd1-eb7c-11ed-ad87-2770363c8b8d", _.syntax.literal);
 
 const Role= _.syntax.$PathNode($.$toSet($Role, $.Cardinality.Many), null);
 
 function get_version(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('sys::get_version', args, _.spec, [
-    {args: [], returnTypeId: "a0efd222-8d97-429f-32f7-4264a34815ff"},
+    {args: [], returnTypeId: "bda0fc79-eb7c-11ed-9d8b-938559bfce65"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -88,7 +92,7 @@ function get_instance_name(...args) {
 
 function get_transaction_isolation(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('sys::get_transaction_isolation', args, _.spec, [
-    {args: [], returnTypeId: "43b27a5d-7ce5-11ed-a283-f3e2eed9cad3"},
+    {args: [], returnTypeId: "bd4e7170-eb7c-11ed-9c42-dbb9e535e78d"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -116,12 +120,13 @@ function get_current_database(...args) {
 
 
 
-Object.assign(exports, { TransactionIsolation: TransactionIsolation, VersionStage: VersionStage, $SystemObject: $SystemObject, SystemObject: SystemObject, $Database: $Database, Database: Database, $ExtensionPackage: $ExtensionPackage, ExtensionPackage: ExtensionPackage, $Role: $Role, Role: Role });
+Object.assign(exports, { TransactionIsolation: TransactionIsolation, VersionStage: VersionStage, $SystemObject: $SystemObject, SystemObject: SystemObject, $ExternalObject: $ExternalObject, ExternalObject: ExternalObject, $Database: $Database, Database: Database, $ExtensionPackage: $ExtensionPackage, ExtensionPackage: ExtensionPackage, $Role: $Role, Role: Role });
 
 const __defaultExports = {
   "TransactionIsolation": TransactionIsolation,
   "VersionStage": VersionStage,
   "SystemObject": SystemObject,
+  "ExternalObject": ExternalObject,
   "Database": Database,
   "ExtensionPackage": ExtensionPackage,
   "Role": Role,

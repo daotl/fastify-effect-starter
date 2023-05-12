@@ -3,7 +3,7 @@ name: fastify-effect-starter
 
 services:
   edgedb:
-    image: edgedb/edgedb:2.9
+    image: edgedb/edgedb:${EDGEDB_TAG}
     restart: unless-stopped
     volumes:
       - ./edgedb-cli-config:/root/.config/edgedb

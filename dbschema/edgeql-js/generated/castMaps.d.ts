@@ -31,10 +31,15 @@ export declare type scalarAssignableBy<T extends $.ScalarType> =
   T extends _std.$JsonEmpty ? _std.$JsonEmpty : 
   T extends _schema.$Volatility ? _schema.$Volatility : 
   T extends _schema.$TypeModifier ? _schema.$TypeModifier : 
+  T extends _schema.$TriggerTiming ? _schema.$TriggerTiming : 
+  T extends _schema.$TriggerScope ? _schema.$TriggerScope : 
+  T extends _schema.$TriggerKind ? _schema.$TriggerKind : 
   T extends _schema.$TargetDeleteAction ? _schema.$TargetDeleteAction : 
   T extends _schema.$SourceDeleteAction ? _schema.$SourceDeleteAction : 
+  T extends _schema.$RewriteKind ? _schema.$RewriteKind : 
   T extends _schema.$ParameterKind ? _schema.$ParameterKind : 
   T extends _schema.$OperatorKind ? _schema.$OperatorKind : 
+  T extends _schema.$MigrationGeneratedBy ? _schema.$MigrationGeneratedBy : 
   T extends _schema.$Cardinality ? _schema.$Cardinality : 
   T extends _schema.$AccessPolicyAction ? _schema.$AccessPolicyAction : 
   T extends _schema.$AccessKind ? _schema.$AccessKind : 
@@ -70,10 +75,15 @@ export declare type scalarCastableFrom<T extends $.ScalarType> =
   T extends _std.$JsonEmpty ? _std.$JsonEmpty : 
   T extends _schema.$Volatility ? _schema.$Volatility : 
   T extends _schema.$TypeModifier ? _schema.$TypeModifier : 
+  T extends _schema.$TriggerTiming ? _schema.$TriggerTiming : 
+  T extends _schema.$TriggerScope ? _schema.$TriggerScope : 
+  T extends _schema.$TriggerKind ? _schema.$TriggerKind : 
   T extends _schema.$TargetDeleteAction ? _schema.$TargetDeleteAction : 
   T extends _schema.$SourceDeleteAction ? _schema.$SourceDeleteAction : 
+  T extends _schema.$RewriteKind ? _schema.$RewriteKind : 
   T extends _schema.$ParameterKind ? _schema.$ParameterKind : 
   T extends _schema.$OperatorKind ? _schema.$OperatorKind : 
+  T extends _schema.$MigrationGeneratedBy ? _schema.$MigrationGeneratedBy : 
   T extends _schema.$Cardinality ? _schema.$Cardinality : 
   T extends _schema.$AccessPolicyAction ? _schema.$AccessPolicyAction : 
   T extends _schema.$AccessKind ? _schema.$AccessKind : 
@@ -215,6 +225,24 @@ declare type getSharedParentScalar<A, B> =
     :
     never
   :
+  A extends _schema.$TriggerTiming ?
+    B extends _schema.$TriggerTiming ?
+    B
+    :
+    never
+  :
+  A extends _schema.$TriggerScope ?
+    B extends _schema.$TriggerScope ?
+    B
+    :
+    never
+  :
+  A extends _schema.$TriggerKind ?
+    B extends _schema.$TriggerKind ?
+    B
+    :
+    never
+  :
   A extends _schema.$TargetDeleteAction ?
     B extends _schema.$TargetDeleteAction ?
     B
@@ -227,6 +255,12 @@ declare type getSharedParentScalar<A, B> =
     :
     never
   :
+  A extends _schema.$RewriteKind ?
+    B extends _schema.$RewriteKind ?
+    B
+    :
+    never
+  :
   A extends _schema.$ParameterKind ?
     B extends _schema.$ParameterKind ?
     B
@@ -235,6 +269,12 @@ declare type getSharedParentScalar<A, B> =
   :
   A extends _schema.$OperatorKind ?
     B extends _schema.$OperatorKind ?
+    B
+    :
+    never
+  :
+  A extends _schema.$MigrationGeneratedBy ?
+    B extends _schema.$MigrationGeneratedBy ?
     B
     :
     never

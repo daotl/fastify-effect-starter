@@ -156,6 +156,24 @@ function getSharedParentScalar(a, b) {
     }
     throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
     }
+  if (a.__name__ === "schema::TriggerTiming") {
+    if(b.__name__ === "schema::TriggerTiming") {
+      return b;
+    }
+    throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
+    }
+  if (a.__name__ === "schema::TriggerScope") {
+    if(b.__name__ === "schema::TriggerScope") {
+      return b;
+    }
+    throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
+    }
+  if (a.__name__ === "schema::TriggerKind") {
+    if(b.__name__ === "schema::TriggerKind") {
+      return b;
+    }
+    throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
+    }
   if (a.__name__ === "schema::TargetDeleteAction") {
     if(b.__name__ === "schema::TargetDeleteAction") {
       return b;
@@ -168,6 +186,12 @@ function getSharedParentScalar(a, b) {
     }
     throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
     }
+  if (a.__name__ === "schema::RewriteKind") {
+    if(b.__name__ === "schema::RewriteKind") {
+      return b;
+    }
+    throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
+    }
   if (a.__name__ === "schema::ParameterKind") {
     if(b.__name__ === "schema::ParameterKind") {
       return b;
@@ -176,6 +200,12 @@ function getSharedParentScalar(a, b) {
     }
   if (a.__name__ === "schema::OperatorKind") {
     if(b.__name__ === "schema::OperatorKind") {
+      return b;
+    }
+    throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);
+    }
+  if (a.__name__ === "schema::MigrationGeneratedBy") {
+    if(b.__name__ === "schema::MigrationGeneratedBy") {
       return b;
     }
     throw new Error(`Types are not castable: ${a.__name__}, ${b.__name__}`);

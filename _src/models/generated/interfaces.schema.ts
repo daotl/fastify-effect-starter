@@ -56,8 +56,8 @@ export const categorySchema: ObjectSchema<Category> = S.lazy(() =>
     baseSchema,
     S.extend(
       S.struct({
-        name: S.optional(S.nullable(S.string)),
         posts: S.array(postSchema),
+        name: S.optional(S.nullable(S.string)),
       })
     )
   )
@@ -68,11 +68,11 @@ export const postSchema: ObjectSchema<Post> = S.lazy(() =>
     baseSchema,
     S.extend(
       S.struct({
+        categories: S.array(categorySchema),
+        author: userSchema,
         title: S.string,
         content: S.string,
         published: S.boolean,
-        categories: S.array(categorySchema),
-        author: userSchema,
       })
     )
   )
@@ -83,11 +83,11 @@ export const userSchema: ObjectSchema<User> = S.lazy(() =>
     baseSchema,
     S.extend(
       S.struct({
+        profile: S.optional(S.nullable(profileSchema)),
+        posts: S.array(postSchema),
         email: S.string,
         name: S.string,
         role: roleSchema,
-        profile: S.optional(S.nullable(profileSchema)),
-        posts: S.array(postSchema),
       })
     )
   )
@@ -98,8 +98,8 @@ export const profileSchema: ObjectSchema<Profile> = S.lazy(() =>
     baseSchema,
     S.extend(
       S.struct({
-        bio: S.optional(S.nullable(S.string)),
         user: S.array(userSchema),
+        bio: S.optional(S.nullable(S.string)),
       })
     )
   )

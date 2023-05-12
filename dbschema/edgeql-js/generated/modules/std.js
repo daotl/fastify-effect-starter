@@ -28,7 +28,7 @@ const _ = __importStar(require("../imports"));
 
 
 
-const JsonEmpty = $.makeType(_.spec, "3cc0c801-7ce5-11ed-a960-b1850c03c3b6", _.syntax.literal);
+const JsonEmpty = $.makeType(_.spec, "b304699c-eb7c-11ed-86f8-3ddb3a962d1f", _.syntax.literal);
 
 
 
@@ -58,7 +58,7 @@ const int64 = $.makeType(_.spec, "00000000-0000-0000-0000-000000000105", _.synta
 
 const json = $.makeType(_.spec, "00000000-0000-0000-0000-00000000010f", _.syntax.literal);
 
-const $sequence = $.makeType(_.spec, "38682760-7ce5-11ed-9a67-c5966d37e23e", _.syntax.literal);
+const $sequence = $.makeType(_.spec, "ad6ddc7d-eb7c-11ed-977b-951956b15374", _.syntax.literal);
 
 const str = $.makeType(_.spec, "00000000-0000-0000-0000-000000000101", _.syntax.literal);
 
@@ -66,15 +66,15 @@ const uuid = $.makeType(_.spec, "00000000-0000-0000-0000-000000000100", _.syntax
 
 const number = $.makeType(_.spec, "00000000-0000-0000-0000-0000000001ff", _.syntax.literal);
 
-const $BaseObject = $.makeType(_.spec, "3df9f7b6-7ce5-11ed-a7ff-dfb667b08b13", _.syntax.literal);
+const $BaseObject = $.makeType(_.spec, "b492574b-eb7c-11ed-8922-4fa28ce5c1ae", _.syntax.literal);
 
 const BaseObject= _.syntax.$PathNode($.$toSet($BaseObject, $.Cardinality.Many), null);
 
-const $Object_3dff02017ce511eda4582d4e2bc60621 = $.makeType(_.spec, "3dff0201-7ce5-11ed-a458-2d4e2bc60621", _.syntax.literal);
+const $Object_b4984deceb7c11ed94484765662a055b = $.makeType(_.spec, "b4984dec-eb7c-11ed-9448-4765662a055b", _.syntax.literal);
 
-const Object_3dff02017ce511eda4582d4e2bc60621= _.syntax.$PathNode($.$toSet($Object_3dff02017ce511eda4582d4e2bc60621, $.Cardinality.Many), null);
+const Object_b4984deceb7c11ed94484765662a055b= _.syntax.$PathNode($.$toSet($Object_b4984deceb7c11ed94484765662a055b, $.Cardinality.Many), null);
 
-const $FreeObject = $.makeType(_.spec, "3e04d9fa-7ce5-11ed-86b0-95077baae98f", _.syntax.literal);
+const $FreeObject = $.makeType(_.spec, "b49f86c0-eb7c-11ed-8fb1-1969ee414efc", _.syntax.literal);
 
 const FreeObject= _.syntax.$PathNode($.$toSet($FreeObject, $.Cardinality.One), null);
 
@@ -120,11 +120,25 @@ function assert_distinct(...args) {
   });
 };
 
+function assert(...args) {
+  const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::assert', args, _.spec, [
+    {args: [{typeId: "00000000-0000-0000-0000-000000000109", optional: false, setoftype: false, variadic: false}], namedArgs: {"message": {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-000000000109"},
+  ]);
+  return _.syntax.$expressionify({
+    __kind__: $.ExpressionKind.Function,
+    __element__: returnType,
+    __cardinality__: cardinality,
+    __name__: "std::assert",
+    __args__: positionalArgs,
+    __namedargs__: namedArgs,
+  });
+};
+
 function len(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::len', args, _.spec, [
     {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
     {args: [{typeId: "00000000-0000-0000-0000-000000000102", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
-    {args: [{typeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
+    {args: [{typeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -182,19 +196,19 @@ function random(...args) {
 
 function min(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::min', args, _.spec, [
-    {args: [{typeId: "38625c31-7ce5-11ed-8de2-f98f6b9b4b9a", optional: false, setoftype: true, variadic: false}], returnTypeId: "38625c31-7ce5-11ed-8de2-f98f6b9b4b9a", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "3868b1e1-7ce5-11ed-aa3d-39ef0e51a8bb", optional: false, setoftype: true, variadic: false}], returnTypeId: "3868b1e1-7ce5-11ed-aa3d-39ef0e51a8bb", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "ad66945f-eb7c-11ed-b54c-f9895657d015", optional: false, setoftype: true, variadic: false}], returnTypeId: "ad66945f-eb7c-11ed-b54c-f9895657d015", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "ad6e88b1-eb7c-11ed-86d9-43f6bb9a5c20", optional: false, setoftype: true, variadic: false}], returnTypeId: "ad6e88b1-eb7c-11ed-86d9-43f6bb9a5c20", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010a", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010a", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010e", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010e", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010c", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010c", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010d", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010d", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000112", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000112", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "44a76fab-349d-00e9-396b-1000d7e967da", optional: false, setoftype: true, variadic: false}], returnTypeId: "44a76fab-349d-00e9-396b-1000d7e967da", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "076e1d6f-f104-88b2-0632-d53171d9c827", optional: false, setoftype: true, variadic: false}], returnTypeId: "076e1d6f-f104-88b2-0632-d53171d9c827", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "82ea7b30-73d3-c79c-86fb-b253f194f53e", optional: false, setoftype: true, variadic: false}], returnTypeId: "82ea7b30-73d3-c79c-86fb-b253f194f53e", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "63acbf06-4c0c-67ac-c508-50a5ef4f4b16", optional: false, setoftype: true, variadic: false}], returnTypeId: "63acbf06-4c0c-67ac-c508-50a5ef4f4b16", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "6b937ab8-47dc-95f9-8213-dc2fd50cd7fe", optional: false, setoftype: true, variadic: false}], returnTypeId: "6b937ab8-47dc-95f9-8213-dc2fd50cd7fe", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c128ac24-eb7c-11ed-b8b2-ad937f4d2901", optional: false, setoftype: true, variadic: false}], returnTypeId: "c128ac24-eb7c-11ed-b8b2-ad937f4d2901", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c12bc0d3-eb7c-11ed-a5f0-638a8804d76e", optional: false, setoftype: true, variadic: false}], returnTypeId: "c12bc0d3-eb7c-11ed-a5f0-638a8804d76e", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c12eea4a-eb7c-11ed-bb70-030bc1c4b1bc", optional: false, setoftype: true, variadic: false}], returnTypeId: "c12eea4a-eb7c-11ed-bb70-030bc1c4b1bc", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c1320295-eb7c-11ed-a48a-2fa12b3e2360", optional: false, setoftype: true, variadic: false}], returnTypeId: "c1320295-eb7c-11ed-a48a-2fa12b3e2360", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c1353981-eb7c-11ed-bb22-d33a031f9117", optional: false, setoftype: true, variadic: false}], returnTypeId: "c1353981-eb7c-11ed-bb22-d33a031f9117", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010b", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010b", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000111", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000111", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000001", returnTypemod: "OptionalType", preservesOptionality: true},
@@ -211,21 +225,21 @@ function min(...args) {
 
 function max(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::max', args, _.spec, [
-    {args: [{typeId: "38625c31-7ce5-11ed-8de2-f98f6b9b4b9a", optional: false, setoftype: true, variadic: false}], returnTypeId: "38625c31-7ce5-11ed-8de2-f98f6b9b4b9a", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "3868b1e1-7ce5-11ed-aa3d-39ef0e51a8bb", optional: false, setoftype: true, variadic: false}], returnTypeId: "3868b1e1-7ce5-11ed-aa3d-39ef0e51a8bb", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "ad66945f-eb7c-11ed-b54c-f9895657d015", optional: false, setoftype: true, variadic: false}], returnTypeId: "ad66945f-eb7c-11ed-b54c-f9895657d015", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "ad6e88b1-eb7c-11ed-86d9-43f6bb9a5c20", optional: false, setoftype: true, variadic: false}], returnTypeId: "ad6e88b1-eb7c-11ed-86d9-43f6bb9a5c20", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010a", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010a", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010e", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010e", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010c", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010c", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010d", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010d", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000112", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000112", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "44a76fab-349d-00e9-396b-1000d7e967da", optional: false, setoftype: true, variadic: false}], returnTypeId: "44a76fab-349d-00e9-396b-1000d7e967da", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "076e1d6f-f104-88b2-0632-d53171d9c827", optional: false, setoftype: true, variadic: false}], returnTypeId: "076e1d6f-f104-88b2-0632-d53171d9c827", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "82ea7b30-73d3-c79c-86fb-b253f194f53e", optional: false, setoftype: true, variadic: false}], returnTypeId: "82ea7b30-73d3-c79c-86fb-b253f194f53e", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "63acbf06-4c0c-67ac-c508-50a5ef4f4b16", optional: false, setoftype: true, variadic: false}], returnTypeId: "63acbf06-4c0c-67ac-c508-50a5ef4f4b16", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "6b937ab8-47dc-95f9-8213-dc2fd50cd7fe", optional: false, setoftype: true, variadic: false}], returnTypeId: "6b937ab8-47dc-95f9-8213-dc2fd50cd7fe", returnTypemod: "OptionalType", preservesOptionality: true},
-    {args: [{typeId: "00000000-0000-0000-0000-00000000010b", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010b", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c128ac24-eb7c-11ed-b8b2-ad937f4d2901", optional: false, setoftype: true, variadic: false}], returnTypeId: "c128ac24-eb7c-11ed-b8b2-ad937f4d2901", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c12bc0d3-eb7c-11ed-a5f0-638a8804d76e", optional: false, setoftype: true, variadic: false}], returnTypeId: "c12bc0d3-eb7c-11ed-a5f0-638a8804d76e", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c12eea4a-eb7c-11ed-bb70-030bc1c4b1bc", optional: false, setoftype: true, variadic: false}], returnTypeId: "c12eea4a-eb7c-11ed-bb70-030bc1c4b1bc", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c1320295-eb7c-11ed-a48a-2fa12b3e2360", optional: false, setoftype: true, variadic: false}], returnTypeId: "c1320295-eb7c-11ed-a48a-2fa12b3e2360", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "c1353981-eb7c-11ed-bb22-d33a031f9117", optional: false, setoftype: true, variadic: false}], returnTypeId: "c1353981-eb7c-11ed-bb22-d33a031f9117", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000111", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000111", returnTypemod: "OptionalType", preservesOptionality: true},
+    {args: [{typeId: "00000000-0000-0000-0000-00000000010b", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010b", returnTypemod: "OptionalType", preservesOptionality: true},
     {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000001", returnTypemod: "OptionalType", preservesOptionality: true},
   ]);
   return _.syntax.$expressionify({
@@ -268,7 +282,7 @@ function any(...args) {
 
 function enumerate(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::enumerate', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: true, variadic: false}], returnTypeId: "9c27acd9-0932-6050-c7b0-c7410e2e0a85", returnTypemod: "SetOfType", preservesOptionality: true},
+    {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: true, variadic: false}], returnTypeId: "add36f2b-eb7c-11ed-8a3c-ed941f8448e8", returnTypemod: "SetOfType", preservesOptionality: true},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -301,10 +315,10 @@ function contains(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::contains', args, _.spec, [
     {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
     {args: [{typeId: "00000000-0000-0000-0000-000000000102", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000102", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}, {typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}, {typeId: "385d230a-7ce5-11ed-8c05-a3f082eb1bb7", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
-    {args: [{typeId: "ca752a6b-54a8-ba10-285b-13a79b02a110", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-00000000010c", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
-    {args: [{typeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}, {typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}, {typeId: "ad602ba5-eb7c-11ed-994f-5bce2299c427", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "c15487e0-eb7c-11ed-bd69-eb4088425f2a", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-00000000010c", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -316,25 +330,11 @@ function contains(...args) {
   });
 };
 
-function array_replace(...args) {
-  const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_replace', args, _.spec, [
-    {args: [{typeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}], returnTypeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3"},
-  ]);
-  return _.syntax.$expressionify({
-    __kind__: $.ExpressionKind.Function,
-    __element__: returnType,
-    __cardinality__: cardinality,
-    __name__: "std::array_replace",
-    __args__: positionalArgs,
-    __namedargs__: namedArgs,
-  });
-};
-
 function find(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::find', args, _.spec, [
     {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
     {args: [{typeId: "00000000-0000-0000-0000-000000000102", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000102", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
-    {args: [{typeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
+    {args: [{typeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -432,7 +432,7 @@ function bit_lshift(...args) {
 
 function array_agg(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_agg', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: true, variadic: false}], returnTypeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3"},
+    {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: true, variadic: false}], returnTypeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -446,7 +446,7 @@ function array_agg(...args) {
 
 function array_unpack(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_unpack', args, _.spec, [
-    {args: [{typeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000001", returnTypemod: "SetOfType"},
+    {args: [{typeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000001", returnTypemod: "SetOfType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -460,7 +460,7 @@ function array_unpack(...args) {
 
 function array_fill(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_fill', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3"},
+    {args: [{typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -472,9 +472,23 @@ function array_fill(...args) {
   });
 };
 
+function array_replace(...args) {
+  const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_replace', args, _.spec, [
+    {args: [{typeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000001", optional: false, setoftype: false, variadic: false}], returnTypeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55"},
+  ]);
+  return _.syntax.$expressionify({
+    __kind__: $.ExpressionKind.Function,
+    __element__: returnType,
+    __cardinality__: cardinality,
+    __name__: "std::array_replace",
+    __args__: positionalArgs,
+    __namedargs__: namedArgs,
+  });
+};
+
 function array_get(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_get', args, _.spec, [
-    {args: [{typeId: "5d31584b-3a5f-533d-3d64-fab0fdab61b3", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], namedArgs: {"default": {typeId: "00000000-0000-0000-0000-000000000001", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-000000000001", returnTypemod: "OptionalType"},
+    {args: [{typeId: "ad995ffc-eb7c-11ed-91ef-2bc851773b55", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], namedArgs: {"default": {typeId: "00000000-0000-0000-0000-000000000001", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-000000000001", returnTypemod: "OptionalType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -488,7 +502,7 @@ function array_get(...args) {
 
 function array_join(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::array_join', args, _.spec, [
-    {args: [{typeId: "05f91774-15ea-9001-038e-092c1cad80af", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
+    {args: [{typeId: "b236ab91-eb7c-11ed-97b5-c3121737e2be", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -661,13 +675,27 @@ function json_array_unpack(...args) {
 
 function json_object_unpack(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::json_object_unpack', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-00000000010f", optional: false, setoftype: false, variadic: false}], returnTypeId: "79d8ede8-30f1-a805-fbc3-503ece3c9205", returnTypemod: "SetOfType"},
+    {args: [{typeId: "00000000-0000-0000-0000-00000000010f", optional: false, setoftype: false, variadic: false}], returnTypeId: "b30a023b-eb7c-11ed-8bf4-5b6eaeb75497", returnTypemod: "SetOfType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
     __element__: returnType,
     __cardinality__: cardinality,
     __name__: "std::json_object_unpack",
+    __args__: positionalArgs,
+    __namedargs__: namedArgs,
+  });
+};
+
+function json_object_pack(...args) {
+  const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::json_object_pack', args, _.spec, [
+    {args: [{typeId: "b30a023b-eb7c-11ed-8bf4-5b6eaeb75497", optional: false, setoftype: true, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010f"},
+  ]);
+  return _.syntax.$expressionify({
+    __kind__: $.ExpressionKind.Function,
+    __element__: returnType,
+    __cardinality__: cardinality,
+    __name__: "std::json_object_pack",
     __args__: positionalArgs,
     __namedargs__: namedArgs,
   });
@@ -689,7 +717,7 @@ function json_get(...args) {
 
 function json_set(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::json_set', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-00000000010f", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: true}], namedArgs: {"value": {typeId: "00000000-0000-0000-0000-00000000010f", optional: true, setoftype: false, variadic: false}, "create_if_missing": {typeId: "00000000-0000-0000-0000-000000000109", optional: true, setoftype: false, variadic: false}, "empty_treatment": {typeId: "3cc0c801-7ce5-11ed-a960-b1850c03c3b6", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-00000000010f", returnTypemod: "OptionalType"},
+    {args: [{typeId: "00000000-0000-0000-0000-00000000010f", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: true}], namedArgs: {"value": {typeId: "00000000-0000-0000-0000-00000000010f", optional: true, setoftype: false, variadic: false}, "create_if_missing": {typeId: "00000000-0000-0000-0000-000000000109", optional: true, setoftype: false, variadic: false}, "empty_treatment": {typeId: "b304699c-eb7c-11ed-86f8-3ddb3a962d1f", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-00000000010f", returnTypemod: "OptionalType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -703,7 +731,7 @@ function json_set(...args) {
 
 function re_match(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::re_match', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "05f91774-15ea-9001-038e-092c1cad80af"},
+    {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "b236ab91-eb7c-11ed-97b5-c3121737e2be"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -717,7 +745,7 @@ function re_match(...args) {
 
 function re_match_all(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::re_match_all', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "05f91774-15ea-9001-038e-092c1cad80af", returnTypemod: "SetOfType"},
+    {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "b236ab91-eb7c-11ed-97b5-c3121737e2be", returnTypemod: "SetOfType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -941,7 +969,7 @@ function str_trim(...args) {
 
 function str_split(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::str_split', args, _.spec, [
-    {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "05f91774-15ea-9001-038e-092c1cad80af"},
+    {args: [{typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "b236ab91-eb7c-11ed-97b5-c3121737e2be"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1013,7 +1041,7 @@ const range = _.syntax.$range;
 
 function range_is_empty(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::range_is_empty', args, _.spec, [
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1027,17 +1055,17 @@ function range_is_empty(...args) {
 
 function range_unpack(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::range_unpack', args, _.spec, [
-    {args: [{typeId: "9cd6f1bb-820a-e4e0-15cf-bc45c4e7baa0", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
-    {args: [{typeId: "2dcd88a1-d377-baa4-c12e-d4abfef28c86", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
-    {args: [{typeId: "ca752a6b-54a8-ba10-285b-13a79b02a110", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010c", returnTypemod: "SetOfType"},
-    {args: [{typeId: "9cd6f1bb-820a-e4e0-15cf-bc45c4e7baa0", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
-    {args: [{typeId: "2dcd88a1-d377-baa4-c12e-d4abfef28c86", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
-    {args: [{typeId: "e0169746-82b2-efaf-ec9e-fea17257877c", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
-    {args: [{typeId: "b5052505-ceb2-a54d-f438-97a8f6a2120b", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
-    {args: [{typeId: "1847fc4b-5f10-5b74-8257-168c3a85faa5", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-00000000010e", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010a", returnTypemod: "SetOfType"},
-    {args: [{typeId: "ca752a6b-54a8-ba10-285b-13a79b02a110", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000112", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010c", returnTypemod: "SetOfType"},
-    {args: [{typeId: "c98e3620-6f26-d050-921e-24fbfb0b5873", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000108", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000108", returnTypemod: "SetOfType"},
-    {args: [{typeId: "31bc1223-f64b-a6f0-b9b3-c7f3df5321dc", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000111", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010b", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b416306b-eb7c-11ed-a553-29dabfa27e90", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b41a82ed-eb7c-11ed-a01e-13ff5bad03ac", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
+    {args: [{typeId: "c15487e0-eb7c-11ed-bd69-eb4088425f2a", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010c", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b416306b-eb7c-11ed-a553-29dabfa27e90", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b41a82ed-eb7c-11ed-a01e-13ff5bad03ac", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b41ee0b1-eb7c-11ed-814a-bb2550d9ccf3", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b4219f8d-eb7c-11ed-a90d-dbf61960e8d3", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b426fd46-eb7c-11ed-8253-6b921b2ed834", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-00000000010e", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010a", returnTypemod: "SetOfType"},
+    {args: [{typeId: "c15487e0-eb7c-11ed-bd69-eb4088425f2a", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000112", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010c", returnTypemod: "SetOfType"},
+    {args: [{typeId: "b4244c2d-eb7c-11ed-bdd2-ab1c7e33257d", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000108", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000108", returnTypemod: "SetOfType"},
+    {args: [{typeId: "c151a2b4-eb7c-11ed-acd6-290848a6de23", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000111", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-00000000010b", returnTypemod: "SetOfType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1051,7 +1079,7 @@ function range_unpack(...args) {
 
 function range_get_upper(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::range_get_upper', args, _.spec, [
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "385d230a-7ce5-11ed-8c05-a3f082eb1bb7", returnTypemod: "OptionalType"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "ad602ba5-eb7c-11ed-994f-5bce2299c427", returnTypemod: "OptionalType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1065,7 +1093,7 @@ function range_get_upper(...args) {
 
 function range_get_lower(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::range_get_lower', args, _.spec, [
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "385d230a-7ce5-11ed-8c05-a3f082eb1bb7", returnTypemod: "OptionalType"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "ad602ba5-eb7c-11ed-994f-5bce2299c427", returnTypemod: "OptionalType"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1079,7 +1107,7 @@ function range_get_lower(...args) {
 
 function range_is_inclusive_upper(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::range_is_inclusive_upper', args, _.spec, [
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1093,7 +1121,7 @@ function range_is_inclusive_upper(...args) {
 
 function range_is_inclusive_lower(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::range_is_inclusive_lower', args, _.spec, [
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1107,7 +1135,7 @@ function range_is_inclusive_lower(...args) {
 
 function overlaps(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::overlaps', args, _.spec, [
-    {args: [{typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}, {typeId: "722438c0-5113-1e82-ad04-e40101e17a53", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
+    {args: [{typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}, {typeId: "b34da425-eb7c-11ed-b01e-1ba55714df2b", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000109"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1125,7 +1153,7 @@ function to_str(...args) {
     {args: [{typeId: "00000000-0000-0000-0000-00000000010e", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
     {args: [{typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
     {args: [{typeId: "00000000-0000-0000-0000-000000000110", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
-    {args: [{typeId: "05f91774-15ea-9001-038e-092c1cad80af", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
+    {args: [{typeId: "b236ab91-eb7c-11ed-97b5-c3121737e2be", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010f", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010c", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
     {args: [{typeId: "00000000-0000-0000-0000-00000000010d", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-000000000101"},
@@ -1289,8 +1317,8 @@ function to_float32(...args) {
 
 function sequence_reset(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::sequence_reset', args, _.spec, [
-    {args: [{typeId: "40b7f12d-7ce5-11ed-9736-e9dee305938a", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
-    {args: [{typeId: "40b7f12d-7ce5-11ed-9736-e9dee305938a", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
+    {args: [{typeId: "b8fd788f-eb7c-11ed-bc38-6f4af72a6209", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
+    {args: [{typeId: "b8fd788f-eb7c-11ed-bc38-6f4af72a6209", optional: false, setoftype: false, variadic: false}, {typeId: "00000000-0000-0000-0000-0000000001ff", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1304,7 +1332,7 @@ function sequence_reset(...args) {
 
 function sequence_next(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('std::sequence_next', args, _.spec, [
-    {args: [{typeId: "40b7f12d-7ce5-11ed-9736-e9dee305938a", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
+    {args: [{typeId: "b8fd788f-eb7c-11ed-bc38-6f4af72a6209", optional: false, setoftype: false, variadic: false}], returnTypeId: "00000000-0000-0000-0000-0000000001ff"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,
@@ -1318,7 +1346,7 @@ function sequence_next(...args) {
 
 
 
-Object.assign(exports, { JsonEmpty: JsonEmpty, bigint: bigint, bool: bool, bytes: bytes, datetime: datetime, decimal: decimal, duration: duration, float32: float32, float64: float64, int16: int16, int32: int32, int64: int64, json: json, $sequence: $sequence, str: str, uuid: uuid, number: number, $BaseObject: $BaseObject, BaseObject: BaseObject, $Object_3dff02017ce511eda4582d4e2bc60621: $Object_3dff02017ce511eda4582d4e2bc60621, Object_3dff02017ce511eda4582d4e2bc60621: Object_3dff02017ce511eda4582d4e2bc60621, $FreeObject: $FreeObject, FreeObject: FreeObject });
+Object.assign(exports, { JsonEmpty: JsonEmpty, bigint: bigint, bool: bool, bytes: bytes, datetime: datetime, decimal: decimal, duration: duration, float32: float32, float64: float64, int16: int16, int32: int32, int64: int64, json: json, $sequence: $sequence, str: str, uuid: uuid, number: number, $BaseObject: $BaseObject, BaseObject: BaseObject, $Object_b4984deceb7c11ed94484765662a055b: $Object_b4984deceb7c11ed94484765662a055b, Object_b4984deceb7c11ed94484765662a055b: Object_b4984deceb7c11ed94484765662a055b, $FreeObject: $FreeObject, FreeObject: FreeObject });
 
 const __defaultExports = {
   "JsonEmpty": JsonEmpty,
@@ -1337,11 +1365,12 @@ const __defaultExports = {
   "str": str,
   "uuid": uuid,
   "BaseObject": BaseObject,
-  "Object": Object_3dff02017ce511eda4582d4e2bc60621,
+  "Object": Object_b4984deceb7c11ed94484765662a055b,
   "FreeObject": FreeObject,
   "assert_single": assert_single,
   "assert_exists": assert_exists,
   "assert_distinct": assert_distinct,
+  "assert": assert,
   "len": len,
   "sum": sum,
   "count": count,
@@ -1353,7 +1382,6 @@ const __defaultExports = {
   "enumerate": enumerate,
   "round": round,
   "contains": contains,
-  "array_replace": array_replace,
   "find": find,
   "bit_and": bit_and,
   "bit_or": bit_or,
@@ -1364,6 +1392,7 @@ const __defaultExports = {
   "array_agg": array_agg,
   "array_unpack": array_unpack,
   "array_fill": array_fill,
+  "array_replace": array_replace,
   "array_get": array_get,
   "array_join": array_join,
   "bytes_get_bit": bytes_get_bit,
@@ -1378,6 +1407,7 @@ const __defaultExports = {
   "json_typeof": json_typeof,
   "json_array_unpack": json_array_unpack,
   "json_object_unpack": json_object_unpack,
+  "json_object_pack": json_object_pack,
   "json_get": json_get,
   "json_set": json_set,
   "re_match": re_match,

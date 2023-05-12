@@ -20,20 +20,29 @@ export declare type $VersionStage = {
 } & $.EnumType<"sys::VersionStage", ["dev", "alpha", "beta", "rc", "final"]>;
 declare const VersionStage: $VersionStage
 
-export declare type $SystemObjectλShape = $.typeutil.flatten<_schema.$AnnotationSubjectλShape & {
+export declare type $SystemObjectλShape = $.typeutil.flatten<_schema.$Object_b51be0c9eb7c11ed94a0f94f79d11149λShape & {
 }>;
 declare type $SystemObject = $.ObjectType<"sys::SystemObject", $SystemObjectλShape, null, [
-  ..._schema.$AnnotationSubject['__exclusives__'],
+  ..._schema.$Object_b51be0c9eb7c11ed94a0f94f79d11149['__exclusives__'],
 ]>;
 declare const $SystemObject: $SystemObject
 
 declare const SystemObject: $.$expr_PathNode<$.TypeSet<$SystemObject, $.Cardinality.Many>, null> 
 
-export declare type $DatabaseλShape = $.typeutil.flatten<$SystemObjectλShape & _schema.$AnnotationSubjectλShape & {
+export declare type $ExternalObjectλShape = $.typeutil.flatten<$SystemObjectλShape & {
+}>;
+declare type $ExternalObject = $.ObjectType<"sys::ExternalObject", $ExternalObjectλShape, null, [
+  ...$SystemObject['__exclusives__'],
+]>;
+declare const $ExternalObject: $ExternalObject
+
+declare const ExternalObject: $.$expr_PathNode<$.TypeSet<$ExternalObject, $.Cardinality.Many>, null> 
+
+export declare type $DatabaseλShape = $.typeutil.flatten<$ExternalObjectλShape & _schema.$AnnotationSubjectλShape & {
   "name": $.PropertyDesc<_std.$str, $.Cardinality.One, true, false, false, false>;
 }>;
 declare type $Database = $.ObjectType<"sys::Database", $DatabaseλShape, null, [
-  ...$SystemObject['__exclusives__'],
+  ...$ExternalObject['__exclusives__'],
   ..._schema.$AnnotationSubject['__exclusives__'],
   {name: {__element__: _std.$str, __cardinality__: $.Cardinality.One | $.Cardinality.AtMostOne },},
 ]>;
@@ -56,11 +65,11 @@ declare const $ExtensionPackage: $ExtensionPackage
 declare const ExtensionPackage: $.$expr_PathNode<$.TypeSet<$ExtensionPackage, $.Cardinality.Many>, null> 
 
 export declare type $RoleλShape = $.typeutil.flatten<$SystemObjectλShape & _schema.$InheritingObjectλShape & _schema.$AnnotationSubjectλShape & {
-  "superuser": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, false, false, false>;
-  "password": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
-  "name": $.PropertyDesc<_std.$str, $.Cardinality.One, true, false, false, false>;
-  "is_superuser": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, true, false, false>;
   "member_of": $.LinkDesc<$Role, $.Cardinality.Many, {}, false, false,  false, false>;
+  "name": $.PropertyDesc<_std.$str, $.Cardinality.One, true, false, false, false>;
+  "superuser": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, false, false, false>;
+  "is_superuser": $.PropertyDesc<_std.$bool, $.Cardinality.One, false, true, false, false>;
+  "password": $.PropertyDesc<_std.$str, $.Cardinality.AtMostOne, false, false, false, false>;
   "<member_of[is sys::Role]": $.LinkDesc<$Role, $.Cardinality.Many, {}, false, false,  false, false>;
   "<member_of": $.LinkDesc<$.ObjectType, $.Cardinality.Many, {}, false, false,  false, false>;
 }>;
@@ -116,12 +125,13 @@ declare function get_current_database(): get_current_databaseλFuncExpr;
 
 
 
-export { TransactionIsolation, VersionStage, $SystemObject, SystemObject, $Database, Database, $ExtensionPackage, ExtensionPackage, $Role, Role };
+export { TransactionIsolation, VersionStage, $SystemObject, SystemObject, $ExternalObject, ExternalObject, $Database, Database, $ExtensionPackage, ExtensionPackage, $Role, Role };
 
 declare type __defaultExports = {
   "TransactionIsolation": typeof TransactionIsolation;
   "VersionStage": typeof VersionStage;
   "SystemObject": typeof SystemObject;
+  "ExternalObject": typeof ExternalObject;
   "Database": typeof Database;
   "ExtensionPackage": typeof ExtensionPackage;
   "Role": typeof Role;

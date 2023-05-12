@@ -4,15 +4,123 @@
 import * as $ from "../reflection";
 import * as _ from "../imports";
 import type * as _std from "./std";
-declare type floorλFuncExpr<
+declare type var_bd40eee7eb7c11eda578ad6672382d33λFuncExpr<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+> = $.$expr_Function<
+  _std.$number, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
+>;
+declare type var_bd40eee7eb7c11eda578ad6672382d33λFuncExpr2<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
+> = $.$expr_Function<
+  _std.$decimal, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
+>;
+/**
+ * Return the sample variance of the input set.
+ */
+declare function var_bd40eee7eb7c11eda578ad6672382d33<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+>(
+  vals: P1,
+): var_bd40eee7eb7c11eda578ad6672382d33λFuncExpr<P1>;
+/**
+ * Return the sample variance of the input set.
+ */
+declare function var_bd40eee7eb7c11eda578ad6672382d33<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
+>(
+  vals: P1,
+): var_bd40eee7eb7c11eda578ad6672382d33λFuncExpr2<P1>;
+
+declare type var_popλFuncExpr<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+> = $.$expr_Function<
+  _std.$number, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
+>;
+declare type var_popλFuncExpr2<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
+> = $.$expr_Function<
+  _std.$decimal, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
+>;
+/**
+ * Return the population variance of the input set.
+ */
+declare function var_pop<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+>(
+  vals: P1,
+): var_popλFuncExpr<P1>;
+/**
+ * Return the population variance of the input set.
+ */
+declare function var_pop<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
+>(
+  vals: P1,
+): var_popλFuncExpr2<P1>;
+
+declare type absλFuncExpr<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$anyreal>>,
+> = $.$expr_Function<
+  _std.$anyreal, $.cardutil.paramCardinality<P1>
+>;
+/**
+ * Return the absolute value of the input *x*.
+ */
+declare function abs<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$anyreal>>,
+>(
+  x: P1,
+): absλFuncExpr<P1>;
+
+declare type ceilλFuncExpr<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+> = $.$expr_Function<
+  _std.$number, $.cardutil.paramCardinality<P1>
+>;
+declare type ceilλFuncExpr2<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
 > = $.$expr_Function<
   _std.$bigint, $.cardutil.paramCardinality<P1>
 >;
-declare type floorλFuncExpr2<
+declare type ceilλFuncExpr3<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
+> = $.$expr_Function<
+  _std.$decimal, $.cardutil.paramCardinality<P1>
+>;
+/**
+ * Round up to the nearest integer.
+ */
+declare function ceil<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+>(
+  x: P1,
+): ceilλFuncExpr<P1>;
+/**
+ * Round up to the nearest integer.
+ */
+declare function ceil<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
+>(
+  x: P1,
+): ceilλFuncExpr2<P1>;
+/**
+ * Round up to the nearest integer.
+ */
+declare function ceil<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
+>(
+  x: P1,
+): ceilλFuncExpr3<P1>;
+
+declare type floorλFuncExpr<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
 > = $.$expr_Function<
   _std.$number, $.cardutil.paramCardinality<P1>
+>;
+declare type floorλFuncExpr2<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
+> = $.$expr_Function<
+  _std.$bigint, $.cardutil.paramCardinality<P1>
 >;
 declare type floorλFuncExpr3<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
@@ -23,7 +131,7 @@ declare type floorλFuncExpr3<
  * Round down to the nearest integer.
  */
 declare function floor<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
 >(
   x: P1,
 ): floorλFuncExpr<P1>;
@@ -31,7 +139,7 @@ declare function floor<
  * Round down to the nearest integer.
  */
 declare function floor<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
 >(
   x: P1,
 ): floorλFuncExpr2<P1>;
@@ -97,60 +205,6 @@ declare function lg<
 >(
   x: P1,
 ): lgλFuncExpr2<P1>;
-
-declare type absλFuncExpr<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$anyreal>>,
-> = $.$expr_Function<
-  _std.$anyreal, $.cardutil.paramCardinality<P1>
->;
-/**
- * Return the absolute value of the input *x*.
- */
-declare function abs<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$anyreal>>,
->(
-  x: P1,
-): absλFuncExpr<P1>;
-
-declare type ceilλFuncExpr<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
-> = $.$expr_Function<
-  _std.$number, $.cardutil.paramCardinality<P1>
->;
-declare type ceilλFuncExpr2<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
-> = $.$expr_Function<
-  _std.$bigint, $.cardutil.paramCardinality<P1>
->;
-declare type ceilλFuncExpr3<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
-> = $.$expr_Function<
-  _std.$decimal, $.cardutil.paramCardinality<P1>
->;
-/**
- * Round up to the nearest integer.
- */
-declare function ceil<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
->(
-  x: P1,
-): ceilλFuncExpr<P1>;
-/**
- * Round up to the nearest integer.
- */
-declare function ceil<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
->(
-  x: P1,
-): ceilλFuncExpr2<P1>;
-/**
- * Round up to the nearest integer.
- */
-declare function ceil<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
->(
-  x: P1,
-): ceilλFuncExpr3<P1>;
 
 declare type logλFuncExpr<
   NamedArgs extends {
@@ -254,74 +308,20 @@ declare function stddev_pop<
   vals: P1,
 ): stddev_popλFuncExpr2<P1>;
 
-declare type var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
-> = $.$expr_Function<
-  _std.$number, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
->;
-declare type var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr2<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
-> = $.$expr_Function<
-  _std.$decimal, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
->;
-/**
- * Return the sample variance of the input set.
- */
-declare function var_43a5cee47ce511ed8b6c696d3d95a080<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
->(
-  vals: P1,
-): var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr<P1>;
-/**
- * Return the sample variance of the input set.
- */
-declare function var_43a5cee47ce511ed8b6c696d3d95a080<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
->(
-  vals: P1,
-): var_43a5cee47ce511ed8b6c696d3d95a080λFuncExpr2<P1>;
-
-declare type var_popλFuncExpr<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
-> = $.$expr_Function<
-  _std.$number, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
->;
-declare type var_popλFuncExpr2<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
-> = $.$expr_Function<
-  _std.$decimal, $.cardutil.overrideLowerBound<$.Cardinality.One, 'Zero'>
->;
-/**
- * Return the population variance of the input set.
- */
-declare function var_pop<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$number>>,
->(
-  vals: P1,
-): var_popλFuncExpr<P1>;
-/**
- * Return the population variance of the input set.
- */
-declare function var_pop<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$decimalλICastableTo>>,
->(
-  vals: P1,
-): var_popλFuncExpr2<P1>;
-
 
 
 declare type __defaultExports = {
+  "var": typeof var_bd40eee7eb7c11eda578ad6672382d33;
+  "var_pop": typeof var_pop;
+  "abs": typeof abs;
+  "ceil": typeof ceil;
   "floor": typeof floor;
   "ln": typeof ln;
   "lg": typeof lg;
-  "abs": typeof abs;
-  "ceil": typeof ceil;
   "log": typeof log;
   "mean": typeof mean;
   "stddev": typeof stddev;
-  "stddev_pop": typeof stddev_pop;
-  "var": typeof var_43a5cee47ce511ed8b6c696d3d95a080;
-  "var_pop": typeof var_pop
+  "stddev_pop": typeof stddev_pop
 };
 declare const __defaultExports: __defaultExports;
 export default __defaultExports;

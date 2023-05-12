@@ -914,17 +914,6 @@ declare function op<
 * Compare two (potentially empty) values for inequality.
 */
 declare function op<
-  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$duration>>,
-  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$duration>>,
->(
-  l: P1, op: "?!=", r: P2
-): $.$expr_Operator<
-  _std.$bool, $.cardutil.multiplyCardinalities<$.cardutil.optionalParamCardinality<P1>, $.cardutil.optionalParamCardinality<P2>>
->;
-/**
-* Compare two (potentially empty) values for inequality.
-*/
-declare function op<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
   P2 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$bigint>>,
 >(
@@ -1015,6 +1004,17 @@ declare function op<
 declare function op<
   P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$datetime>>,
   P2 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$datetime>>,
+>(
+  l: P1, op: "?!=", r: P2
+): $.$expr_Operator<
+  _std.$bool, $.cardutil.multiplyCardinalities<$.cardutil.optionalParamCardinality<P1>, $.cardutil.optionalParamCardinality<P2>>
+>;
+/**
+* Compare two (potentially empty) values for inequality.
+*/
+declare function op<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$duration>>,
+  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<_std.$duration>>,
 >(
   l: P1, op: "?!=", r: P2
 ): $.$expr_Operator<
@@ -3334,6 +3334,204 @@ declare function op<
           $.cardutil.paramCardinality<P1>,
           $.cardutil.paramCardinality<P2>
         >
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+  P2 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+  P2 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<_std.$decimalλICastableTo>,
+  P2 extends $.TypeSet<_std.$decimalλICastableTo>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
+  P2 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
+  P2 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ArrayType<_std.$decimalλICastableTo>>,
+  P2 extends $.TypeSet<$.ArrayType<_std.$decimalλICastableTo>>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ObjectType>,
+  P2 extends $.TypeSet<$.ObjectType>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.mergeObjectTypes<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.AnyTupleType>,
+  P2 extends $.TypeSet<$.AnyTupleType>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset difference.
+*/
+declare function op<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$.BaseType>>,
+  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveBaseType<_.castMaps.literalToTypeSet<P1>["__element__"]>>>,
+>(
+  s1: P1, op: "except", s2: P2
+): $.$expr_Operator<
+  $.getPrimitiveBaseType<_.castMaps.literalToTypeSet<P1>["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+  P2 extends $.TypeSet<_cal.$relative_durationλICastableTo>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+  P2 extends $.TypeSet<_cal.$local_datetimeλICastableTo>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<_std.$decimalλICastableTo>,
+  P2 extends $.TypeSet<_std.$decimalλICastableTo>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
+  P2 extends $.TypeSet<$.ArrayType<_cal.$relative_durationλICastableTo>>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
+  P2 extends $.TypeSet<$.ArrayType<_cal.$local_datetimeλICastableTo>>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ArrayType<_std.$decimalλICastableTo>>,
+  P2 extends $.TypeSet<$.ArrayType<_std.$decimalλICastableTo>>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.ObjectType>,
+  P2 extends $.TypeSet<$.ObjectType>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.mergeObjectTypes<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends $.TypeSet<$.AnyTupleType>,
+  P2 extends $.TypeSet<$.AnyTupleType>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  _.syntax.getSharedParentPrimitive<P1["__element__"], P2["__element__"]>, $.Cardinality.Many
+>;
+/**
+* Multiset intersection.
+*/
+declare function op<
+  P1 extends _.castMaps.orScalarLiteral<$.TypeSet<$.BaseType>>,
+  P2 extends _.castMaps.orScalarLiteral<$.TypeSet<$.getPrimitiveBaseType<_.castMaps.literalToTypeSet<P1>["__element__"]>>>,
+>(
+  s1: P1, op: "intersect", s2: P2
+): $.$expr_Operator<
+  $.getPrimitiveBaseType<_.castMaps.literalToTypeSet<P1>["__element__"]>, $.Cardinality.Many
 >;
 /**
 * Coalesce.

@@ -24,55 +24,55 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const $ = __importStar(require("../reflection"));
 const _ = __importStar(require("../imports"));
-const AllowBareDDL = $.makeType(_.spec, "445bc80a-7ce5-11ed-8efc-81e270d26345", _.syntax.literal);
+const AllowBareDDL = $.makeType(_.spec, "be39e138-eb7c-11ed-971a-95748a95a707", _.syntax.literal);
 
-const ConnectionTransport = $.makeType(_.spec, "445c5629-7ce5-11ed-82a5-87c8606096c0", _.syntax.literal);
+const ConnectionTransport = $.makeType(_.spec, "be3a9d99-eb7c-11ed-bd54-3f25775ad6f6", _.syntax.literal);
 
 const memory = $.makeType(_.spec, "00000000-0000-0000-0000-000000000130", _.syntax.literal);
 
-const $ConfigObject = $.makeType(_.spec, "445cf27e-7ce5-11ed-93f3-c79e5695c5a4", _.syntax.literal);
+const $ConfigObject = $.makeType(_.spec, "be3b5e50-eb7c-11ed-a76b-7f7a17b7c2cf", _.syntax.literal);
 
 const ConfigObject= _.syntax.$PathNode($.$toSet($ConfigObject, $.Cardinality.Many), null);
 
-const $AbstractConfig = $.makeType(_.spec, "44aba552-7ce5-11ed-ac90-3deb180729ec", _.syntax.literal);
+const $AbstractConfig = $.makeType(_.spec, "be8b730b-eb7c-11ed-93fd-b5bbafda1b5a", _.syntax.literal);
 
 const AbstractConfig= _.syntax.$PathNode($.$toSet($AbstractConfig, $.Cardinality.Many), null);
 
-const $Auth = $.makeType(_.spec, "44963f44-7ce5-11ed-b5f4-5d19ced3f263", _.syntax.literal);
+const $Auth = $.makeType(_.spec, "be751b62-eb7c-11ed-af3b-c7835be51809", _.syntax.literal);
 
 const Auth= _.syntax.$PathNode($.$toSet($Auth, $.Cardinality.Many), null);
 
-const $AuthMethod = $.makeType(_.spec, "446706a5-7ce5-11ed-843b-855184775875", _.syntax.literal);
+const $AuthMethod = $.makeType(_.spec, "be459af1-eb7c-11ed-9093-35da78f3a95c", _.syntax.literal);
 
 const AuthMethod= _.syntax.$PathNode($.$toSet($AuthMethod, $.Cardinality.Many), null);
 
-const $Config = $.makeType(_.spec, "44d27903-7ce5-11ed-aa7f-5718f93b2ce4", _.syntax.literal);
+const $Config = $.makeType(_.spec, "becbdb88-eb7c-11ed-90de-51505943005c", _.syntax.literal);
 
 const Config= _.syntax.$PathNode($.$toSet($Config, $.Cardinality.Many), null);
 
-const $DatabaseConfig = $.makeType(_.spec, "452531d4-7ce5-11ed-9788-0198192bc09f", _.syntax.literal);
+const $DatabaseConfig = $.makeType(_.spec, "bf3afcaf-eb7c-11ed-8dcb-374e1bf6e326", _.syntax.literal);
 
 const DatabaseConfig= _.syntax.$PathNode($.$toSet($DatabaseConfig, $.Cardinality.Many), null);
 
-const $InstanceConfig = $.makeType(_.spec, "44fbb141-7ce5-11ed-b182-7f20f240af36", _.syntax.literal);
+const $InstanceConfig = $.makeType(_.spec, "bf036e46-eb7c-11ed-8169-b142efc3cea6", _.syntax.literal);
 
 const InstanceConfig= _.syntax.$PathNode($.$toSet($InstanceConfig, $.Cardinality.Many), null);
 
-const $JWT = $.makeType(_.spec, "448999a5-7ce5-11ed-a65d-8d457ec70948", _.syntax.literal);
+const $JWT = $.makeType(_.spec, "be681fa8-eb7c-11ed-94af-e1ee22b52de6", _.syntax.literal);
 
 const JWT= _.syntax.$PathNode($.$toSet($JWT, $.Cardinality.Many), null);
 
-const $SCRAM = $.makeType(_.spec, "447d0c46-7ce5-11ed-9227-f70b1a944ce7", _.syntax.literal);
+const $SCRAM = $.makeType(_.spec, "be5b7b9e-eb7c-11ed-be9c-79f9ad4ed92d", _.syntax.literal);
 
 const SCRAM= _.syntax.$PathNode($.$toSet($SCRAM, $.Cardinality.Many), null);
 
-const $Trust = $.makeType(_.spec, "4472042c-7ce5-11ed-9259-a72157cf76d9", _.syntax.literal);
+const $Trust = $.makeType(_.spec, "be50539f-eb7c-11ed-8053-6b922b312d23", _.syntax.literal);
 
 const Trust= _.syntax.$PathNode($.$toSet($Trust, $.Cardinality.Many), null);
 
 function get_config_json(...args) {
   const {returnType, cardinality, args: positionalArgs, namedArgs} = _.syntax.$resolveOverload('cfg::get_config_json', args, _.spec, [
-    {args: [], namedArgs: {"sources": {typeId: "05f91774-15ea-9001-038e-092c1cad80af", optional: true, setoftype: false, variadic: false}, "max_source": {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-00000000010f"},
+    {args: [], namedArgs: {"sources": {typeId: "b236ab91-eb7c-11ed-97b5-c3121737e2be", optional: true, setoftype: false, variadic: false}, "max_source": {typeId: "00000000-0000-0000-0000-000000000101", optional: true, setoftype: false, variadic: false}}, returnTypeId: "00000000-0000-0000-0000-00000000010f"},
   ]);
   return _.syntax.$expressionify({
     __kind__: $.ExpressionKind.Function,

@@ -2,44 +2,44 @@ module default {
   scalar type Role extending enum<user, admin>;
 
   abstract type Base {
-    required property createdAt -> datetime {
+    required createdAt: datetime {
       default := datetime_current();
     }
   }
 
   type User extending Base {
-	  required property email -> str {
+	  required email: str {
       constraint exclusive;
     }
-    required property name -> str;
-	  required property role ->Role {
-      default := Role.user;;
+    required name: str;
+	  required role: Role {
+      default := Role.user;
     }
-	  multi link posts := .<author[is Post];
-	  link profile -> Profile;
+    link posts := .<author[is Post];
+	  profile: Profile;
   }
 
   type Profile extending Base {
-  	property bio -> str;
+  	bio: str;
   	link user := .<profile[is User];
   }
 
   type Post extending Base {
-    required property title -> str {
+    required title: str {
       constraint exclusive;
     }
-    required property content -> str;
-    required property published -> bool {
+    required content: str;
+    required published: bool {
       default := false;
     }
-    required link author -> User;
-    multi link categories -> Category;
+    required author: User;
+    multi categories: Category;
 
     index on (.title);
   }
 
   type Category extending Base {
-	property name -> str;
-	multi link posts := .<categories[is Post];
+	  name: str;
+	  link posts := .<categories[is Post];
   }
 }
