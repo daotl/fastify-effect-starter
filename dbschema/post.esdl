@@ -8,6 +8,10 @@ module default {
       default := false;
     }
     required author: User;
+    multi editors: User;
+    multi editorGroups: `Group`;
+    multi viewers: User;
+    multi viewerGroups: `Group`;
     multi categories: Category;
 
     index on (.title);

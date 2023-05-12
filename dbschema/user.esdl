@@ -7,7 +7,11 @@ module default {
 	  required role: Role {
       default := Role.user;
     }
-    link posts := .<author[is Post];
+    link groups := .<members[is `Group`];
+    link groupRoles := .<users[is GroupRole];
+    link authoredPosts := .<author[is Post];
+    link editablePosts := .<editors[is Post];
+    link viewablePosts := .<viewers[is Post];
 	  profile: Profile;
   }
 }
