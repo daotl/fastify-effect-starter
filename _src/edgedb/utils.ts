@@ -99,7 +99,7 @@ export const genFilterQuery = <M extends OModel>(
   obj: M,
   filterJson: FilterJson,
   set: 'all' | 'any' = 'all',
-  parentPath: string = '',
+  parentPath = '',
 ) => {
   const ops = Object.entries(filterJson).reduce((pre, [key, item]) => {
     const _o = {}

@@ -165,6 +165,8 @@ export function effectify<
   // Used to pass liveFastifyAppConfig to effectified Fastify sub instances for plugins
   liveFastifyAppConfig?: Layer<never, never, FastifyAppConfig>,
 ) {
+  let _liveFastifyAppConfig = liveFastifyAppConfig
+
   const _effectify = <
     // rome-ignore format: compact
     FastifyInstance extends Fa.FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>,
@@ -416,16 +418,18 @@ export function effectify<
   const liveFastifyApp: Layer<FastifyAppConfig, never, FastifyApp> =
     tFastifyApp.toLayerScoped(tagFastifyApp)
 
-  const createLiveFastify = <R = never>(
+  function createLiveFastify<R = never>(
     host: string,
     port: number,
     exitHandler: ExitHandler = defaultExitHandler,
-  ): Layer<R, never, FastifyCtx> =>
-    (liveFastifyAppConfig ??= createLiveFastifyAppConfig(
+  ): Layer<R, never, FastifyCtx> {
+    _liveFastifyAppConfig ??= createLiveFastifyAppConfig(
       host,
       port,
       exitHandler,
-    )) > liveFastifyApp
+    )
+    return _liveFastifyAppConfig > liveFastifyApp
+  }
 
   const accessFastify = tagFastifyApp.map((_) => _.fastify)
 
@@ -492,7 +496,7 @@ export function effectify<
           await fastify.register((instance, _opts, done) => {
             const Fastify = _effectify(
               instance as unknown as FastifyInstance,
-              liveFastifyAppConfig,
+              _liveFastifyAppConfig,
             )
 
             const tPlugin = plugin(Fastify as unknown as Fastify, _opts)

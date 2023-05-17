@@ -61,6 +61,7 @@ export const routes = (cfg: AuthConfig) =>
           },
         },
         handler: (req, reply) =>
+          // rome-ignore lint/correctness/useYield: ignore
           Effect.gen(function* () {
             req.session.destroy()
             reply.redirect(signOutUrl)
