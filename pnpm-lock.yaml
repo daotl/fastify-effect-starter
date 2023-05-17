@@ -9,7 +9,7 @@ overrides:
   '@effect-app/infra-adapters': ^0.45.0
   '@effect-app/prelude': ^0.44.12
   '@effect-app/schema': ^0.39.12
-  '@trpc/server': daotl/trpc#f2daf966314d44134a3316d25977c5189bd3e257
+  '@trpc/server': daotl/trpc#f40bc9dc6bc14827802f46cc377cf4fa164ccb05
   '@typescript-eslint/scope-manager': 5.59.1
   '@types/node': ~18.11.11
   date-fns: ^2.29.3
@@ -690,7 +690,7 @@ packages:
       '@effect/data': 0.12.2
       '@effect/io': 0.25.8
       '@fp-ts/optic': 0.7.0(patch_hash=w2q3sj6fgtrlizsuwcsff4miva)
-      '@trpc/server': github.com/daotl/trpc/f2daf966314d44134a3316d25977c5189bd3e257
+      '@trpc/server': github.com/daotl/trpc/f40bc9dc6bc14827802f46cc377cf4fa164ccb05
       date-fns: 2.29.3(patch_hash=g5hqt5bhnjezqo5vnkpprfkba4)
       dotenv: 16.0.3
       dotenv-expand: 10.0.0
@@ -727,7 +727,7 @@ packages:
       ts-custom-error: 3.3.1
       typed-case: 1.0.2(typescript@5.1.0-tsplus.20230423)
     optionalDependencies:
-      '@trpc/server': github.com/daotl/trpc/f2daf966314d44134a3316d25977c5189bd3e257
+      '@trpc/server': github.com/daotl/trpc/f40bc9dc6bc14827802f46cc377cf4fa164ccb05
     transitivePeerDependencies:
       - typescript
     dev: false
@@ -8602,8 +8602,8 @@ packages:
     hasBin: true
     patched: true
 
-  github.com/daotl/trpc/f2daf966314d44134a3316d25977c5189bd3e257:
-    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/f2daf966314d44134a3316d25977c5189bd3e257}
+  github.com/daotl/trpc/f40bc9dc6bc14827802f46cc377cf4fa164ccb05:
+    resolution: {tarball: https://codeload.github.com/daotl/trpc/tar.gz/f40bc9dc6bc14827802f46cc377cf4fa164ccb05}
     name: '@trpc/server'
-    version: 10.21.1
+    version: 10.26.0
     dev: false

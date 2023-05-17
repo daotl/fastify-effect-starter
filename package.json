@@ -81,7 +81,7 @@
     "@effect-app/infra-adapters": "^0.45.0",
     "@effect-app/prelude": "^0.44.12",
     "@effect-app/schema": "^0.39.12",
-    "@trpc/server": "daotl/trpc#f2daf966314d44134a3316d25977c5189bd3e257",
+    "@trpc/server": "daotl/trpc#f40bc9dc6bc14827802f46cc377cf4fa164ccb05",
     "@typescript-eslint/scope-manager": "5.59.1",
     "@types/node": "~18.11.11",
     "date-fns": "^2.29.3",
