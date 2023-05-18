@@ -3,7 +3,7 @@ lockfileVersion: '6.0'
 overrides:
   '@effect/data': ^0.12.2
   '@effect/io': ^0.25.7
-  '@effect/schema': ^0.15.0
+  '@effect/schema': ^0.19.0
   '@effect-app/core': ^0.47.1
   '@effect-app/infra': ^0.54.12
   '@effect-app/infra-adapters': ^0.45.0
@@ -64,8 +64,8 @@ importers:
         specifier: ^0.25.7
         version: 0.25.8
       '@effect/schema':
-        specifier: ^0.15.0
-        version: 0.15.0
+        specifier: ^0.19.0
+        version: 0.19.2
       '@fastify/caching':
         specifier: ^8.3.0
         version: 8.3.0
@@ -137,7 +137,7 @@ importers:
         version: 4.7.0
       fastify-type-provider-effect-schema:
         specifier: ^0.0.2
-        version: 0.0.2(@effect/schema@0.15.0)(fastify@4.17.0)
+        version: 0.0.2(@effect/schema@0.19.2)(fastify@4.17.0)
       http-status-codes:
         specifier: ^2.2.0
         version: 2.2.0
@@ -672,7 +672,7 @@ packages:
       '@effect/data': 0.12.2
       '@effect/io': 0.25.8
       '@effect/match': 0.23.4
-      '@effect/schema': 0.15.0
+      '@effect/schema': 0.19.2
       date-fns: 2.29.3(patch_hash=g5hqt5bhnjezqo5vnkpprfkba4)
       remeda: 1.14.0
       type-fest: 3.10.0(typescript@5.1.0-tsplus.20230423)
@@ -891,11 +891,11 @@ packages:
     resolution: {integrity: sha512-bt8h5JySwV6s/HxfHz8d20drvTi1/45Ka67C4mZQPoQu4KaxLDnLMWYP/lq6eZCv7n6+rIfDEZ9aYZZmwoK/DQ==}
     dependencies:
       '@effect/data': 0.12.2
-      '@effect/schema': 0.15.0
+      '@effect/schema': 0.19.2
     dev: false
 
-  /@effect/schema@0.15.0:
-    resolution: {integrity: sha512-62qhGEAP0c+fFUfk/uXJ8hHIt+W9s+KKn5vLMaxw76kvwgYU2P71bFesZ6vjx5bV77GQ0CAWEc2IwfvQ3bs5qw==}
+  /@effect/schema@0.19.2:
+    resolution: {integrity: sha512-BxZNe554zn/K+Gx14swNqMNs0pL4Ply7o4YmIsVecgZ/7ht5ch4VPJGkuMnqjhHQ8Mv2m2duIpRVQGAsAsKNcQ==}
     dependencies:
       '@effect/data': 0.12.2
       '@effect/io': 0.25.8
@@ -3947,13 +3947,13 @@ packages:
       - supports-color
     dev: false
 
-  /fastify-type-provider-effect-schema@0.0.2(@effect/schema@0.15.0)(fastify@4.17.0):
+  /fastify-type-provider-effect-schema@0.0.2(@effect/schema@0.19.2)(fastify@4.17.0):
     resolution: {integrity: sha512-7NDHn7RZXVPNgOQDzrCY0xKevp9mTUTyR3tlRqxauDfX//14sI9es7RzjglWbfEEc7pig/FuLiHOiXV4KMk1dg==}
     peerDependencies:
       '@effect/schema': ^0.12.1
       fastify: ^4.0.0
     dependencies:
-      '@effect/schema': 0.15.0
+      '@effect/schema': 0.19.2
       fastify: 4.17.0
     dev: false
 
@@ -7740,7 +7740,7 @@ packages:
     dependencies:
       '@effect/data': 0.12.2
       '@effect/io': 0.25.8
-      '@effect/schema': 0.15.0
+      '@effect/schema': 0.19.2
       '@oclif/core': 2.8.5(@types/node@18.11.19)(typescript@5.0.4)
       '@oclif/plugin-help': 5.2.9(@types/node@18.11.19)(typescript@5.0.4)
       '@typescript/vfs': 1.4.0
