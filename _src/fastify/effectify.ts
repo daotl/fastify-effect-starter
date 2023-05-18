@@ -114,22 +114,6 @@ export interface EffectFastifyRegister<FastifyInstance, FastifyApp> {
   ) => Effect<FastifyApp, never, void>
 }
 
-export type EffectFastifyPlugin<
-  // rome-ignore format: compact
-  // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
-  // FastifyInstance extends Fa.FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>,
-  Fastify,
-  FastifyApp,
-  R = never,
-  Options extends Fa.FastifyPluginOptions = Record<never, never>,
-> = (
-  // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
-  // Fastify: ReturnType<typeof _effectify<FastifyInstance>>,
-  Fastify: Fastify,
-  opts: Options,
-  // ) => Effect<ReturnType<typeof _effectify<FastifyInstance>> | R, never, void>
-) => Effect<FastifyApp | R, never, void>
-
 export interface EffectRouteShorthandMethod<
   RouteShorthandOptions,
   EffectRouteHandlerMethod,
@@ -162,7 +146,7 @@ export function effectify<
   FastifyInstance extends Fa.FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider> = Fa.FastifyInstance<RawServer, RawRequest, RawReply, Logger, TypeProvider>,
 >(
   fastify: FastifyInstance,
-  // Used to pass liveFastifyAppConfig to effectified Fastify sub instances for plugins
+  // Used to pass liveFastifyAppConfig to effectified Fastify sub instances which will be passed to plugins
   liveFastifyAppConfig?: Layer<never, never, FastifyAppConfig>,
 ) {
   let _liveFastifyAppConfig = liveFastifyAppConfig
@@ -178,6 +162,8 @@ export function effectify<
     effectify<
       BaseContextConfig, TypeProvider, BaseSchemaCompiler, RawServer, RawRequest, RawReply, Logger, BaseRouteGeneric, FastifyInstance
     >(fastify, liveFastifyAppConfig)
+
+  type Fastify = ReturnType<typeof _effectify<FastifyInstance>>
 
   // rome-ignore format: compact
   type FastifyRequest<
@@ -283,7 +269,7 @@ export function effectify<
         cb(Effect.succeed(fastify))
       }).acquireRelease(
         (_fastify) => Effect.unit,
-        // Scopes are closed when plugin registrations are done for effectified Fastify sub instances, so don't close the server here for now.
+        // Scopes are also closed when plugin registrations are done for effectified Fastify sub instances, so don't close the server here for now.
         // Effect.async<never, never, void>((cb) => {
         //   void fastify.close().then((err) => {
         //     if (err) {
@@ -479,14 +465,14 @@ export function effectify<
         }),
       )) as _EffectFastifyRegister
 
+  type EffectFastifyPlugin<
+    R = never,
+    Options extends Fa.FastifyPluginOptions = Record<never, never>,
+  > = (Fastify: Fastify, opts: Options) => Effect<Fastify | R, never, void>
+
   const register =
-    <
-      // To workaround: The inferred type of this node exceeds the maximum length the compiler will serialize. An explicit type annotation is needed.
-      Fastify,
-      R = never,
-      Options extends Fa.FastifyPluginOptions = Record<never, never>,
-    >(
-      plugin: EffectFastifyPlugin<Fastify, FastifyApp, R, Options>,
+    <R = never, Options extends Fa.FastifyPluginOptions = Record<never, never>>(
+      plugin: EffectFastifyPlugin<R, Options>,
     ) =>
     (
       opts?: FastifyRegisterOptions<FastifyInstance, Options>,
@@ -499,7 +485,7 @@ export function effectify<
               _liveFastifyAppConfig,
             )
 
-            const tPlugin = plugin(Fastify as unknown as Fastify, _opts)
+            const tPlugin = plugin(Fastify, _opts)
               // TODO: This is a bit hacky way to just provide the child FastifyApp
               .provideServiceEffect(Fastify.tagFastifyApp, Fastify.tFastifyApp)
               .scoped.tap(() => {
@@ -626,6 +612,9 @@ export function effectify<
 
     // Only for exporting types, don't use the values
     _types: {
+      // This will cause: Type alias 'Fastify' circularly references itself.
+      // Fastify: _type<Fastify>(),
+
       FastifyRequest: <
         RouteGeneric extends BaseRouteGeneric = BaseRouteGeneric,
         ContextConfig extends BaseContextConfig = BaseContextConfig,
@@ -700,6 +689,10 @@ export function effectify<
       FastifyApp: _type<FastifyApp>(),
       FastifyCtx: _type<FastifyCtx>(),
       EffectFastifyRegister: _type<_EffectFastifyRegister>(),
+      EffectFastifyPlugin: <
+        R = never,
+        Options extends Fa.FastifyPluginOptions = Record<never, never>,
+      >() => _type<EffectFastifyPlugin<R, Options>>(),
 
       // rome-ignore format: compact
       EffectRouteShorthandMethod: <
