@@ -18,6 +18,8 @@ module.exports = [
         'Profile',
         'Role',
         'User',
+        'Group',
+        'GroupRole',
       ].includes(n),
   },
 ]

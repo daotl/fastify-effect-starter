@@ -4,11 +4,13 @@ import type {
   Profile as ProfileR,
   Role as RoleR,
   User as UserR,
+  Group as GroupR,
+  GroupRole as GroupRoleR,
 } from './generated/interfaces.js'
 
 export * from './generated/interfaces.js'
 
-export type ModelR = CategoryR | PostR | ProfileR | RoleR | UserR
+export type ModelR = CategoryR | PostR | ProfileR | RoleR | UserR | GroupRoleR | GroupR
 
 export type OmitModelRelations<MR extends ModelR> = ConditionalExcept<
   MR,
@@ -20,8 +22,10 @@ export type Post = OmitModelRelations<PostR>
 export type Profile = OmitModelRelations<ProfileR>
 export type Role = OmitModelRelations<RoleR>
 export type User = OmitModelRelations<UserR>
+export type Group = OmitModelRelations<GroupR>
+export type GroupRole = OmitModelRelations<GroupRoleR>
 
-export type Model = Category | Post | Profile | Role | User
+export type Model = Category | Post | Profile | Role | User | Group | GroupRole
 
 export type ModelMap = {
   Category: Category
@@ -29,6 +33,8 @@ export type ModelMap = {
   Profile: Profile
   Role: Role
   User: User
+  Group: Group
+  GroupRole: GroupRole
 }
 
-export type { CategoryR, PostR, ProfileR, RoleR, UserR }
+export type { CategoryR, PostR, ProfileR, RoleR, UserR, GroupR, GroupRoleR }

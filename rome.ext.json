@@ -1,16 +1,15 @@
 {
   "$schema": "./node_modules/rome/configuration_schema.json",
   "files": {
-    "ignore": [
-      "**/generated",
-      "**/*.json",
-      "**/dist"
-    ]
+    "ignore": ["**/generated", "**/*.json", "**/dist"]
   },
   "linter": {
     "rules": {
       "correctness": {
         "noUndeclaredVariables": "off"
+      },
+      "suspicious": {
+        "noEmptyInterface": "off"
       }
     }
   }
