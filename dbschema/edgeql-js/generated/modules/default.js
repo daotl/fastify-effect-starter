@@ -24,33 +24,33 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 const $ = __importStar(require("../reflection"));
 const _ = __importStar(require("../imports"));
-const Role = $.makeType(_.spec, "66a41c81-f51f-11ed-b900-ed03ae6795e3", _.syntax.literal);
+const Role = $.makeType(_.spec, "6af6e3e1-f544-11ed-bd4e-dd220922c31f", _.syntax.literal);
 
-const $Base = $.makeType(_.spec, "669a01b6-f51f-11ed-a0e2-a9319d4f536f", _.syntax.literal);
+const $Base = $.makeType(_.spec, "6aeca8cc-f544-11ed-acbb-9142afe32223", _.syntax.literal);
 
 const Base= _.syntax.$PathNode($.$toSet($Base, $.Cardinality.Many), null);
 
-const $Category = $.makeType(_.spec, "669b5762-f51f-11ed-b6e9-850b2bdbfb12", _.syntax.literal);
+const $Category = $.makeType(_.spec, "6aee048b-f544-11ed-994f-39502f2e418b", _.syntax.literal);
 
 const Category= _.syntax.$PathNode($.$toSet($Category, $.Cardinality.Many), null);
 
-const $Group = $.makeType(_.spec, "669c7bff-f51f-11ed-9496-41c794a13569", _.syntax.literal);
+const $Group = $.makeType(_.spec, "6aef2d12-f544-11ed-834e-7f14071992fb", _.syntax.literal);
 
 const Group= _.syntax.$PathNode($.$toSet($Group, $.Cardinality.Many), null);
 
-const $GroupRole = $.makeType(_.spec, "669d9c15-f51f-11ed-9688-1fedd5ad99d4", _.syntax.literal);
+const $GroupRole = $.makeType(_.spec, "6af052b6-f544-11ed-9bed-e73df9e0ca5f", _.syntax.literal);
 
 const GroupRole= _.syntax.$PathNode($.$toSet($GroupRole, $.Cardinality.Many), null);
 
-const $Post = $.makeType(_.spec, "66a032a5-f51f-11ed-9a48-cb9c0f5eef67", _.syntax.literal);
+const $Post = $.makeType(_.spec, "6af2f202-f544-11ed-8b34-d1affa593c8c", _.syntax.literal);
 
 const Post= _.syntax.$PathNode($.$toSet($Post, $.Cardinality.Many), null);
 
-const $Profile = $.makeType(_.spec, "66a2faa5-f51f-11ed-b12f-ed3600c73471", _.syntax.literal);
+const $Profile = $.makeType(_.spec, "6af5bcad-f544-11ed-8b6e-ab857f338a1f", _.syntax.literal);
 
 const Profile= _.syntax.$PathNode($.$toSet($Profile, $.Cardinality.Many), null);
 
-const $User = $.makeType(_.spec, "66a429b4-f51f-11ed-b513-a5a3dcbed9de", _.syntax.literal);
+const $User = $.makeType(_.spec, "6af6f180-f544-11ed-853e-97107e8a6eba", _.syntax.literal);
 
 const User= _.syntax.$PathNode($.$toSet($User, $.Cardinality.Many), null);
 
