@@ -12,7 +12,7 @@ export const router = () =>
       .output(Schema.parse(Schema.struct({ text: Schema.string })))
       .query(({ input, ctx }) => {
         return tagLogger.flatMap((logger) => {
-          console.log(ctx, 'cccc');
+          console.log(ctx, 'cccc')
 
           logger.info(`${input.username}------------------------------------>`)
           return Effect.succeed({

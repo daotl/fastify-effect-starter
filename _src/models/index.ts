@@ -10,7 +10,14 @@ import type {
 
 export * from './generated/interfaces.js'
 
-export type ModelR = CategoryR | PostR | ProfileR | RoleR | UserR | GroupRoleR | GroupR
+export type ModelR =
+  | CategoryR
+  | PostR
+  | ProfileR
+  | RoleR
+  | UserR
+  | GroupRoleR
+  | GroupR
 
 export type OmitModelRelations<MR extends ModelR> = ConditionalExcept<
   MR,
