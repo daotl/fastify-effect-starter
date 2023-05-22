@@ -6,5 +6,4 @@ export const AuthConfig = Config.all({
   ),
 })
 
-// rome-ignore lint/suspicious/noEmptyInterface: ignore
 export interface AuthConfig extends ConfigA<typeof AuthConfig> {}

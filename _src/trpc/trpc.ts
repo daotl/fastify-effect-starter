@@ -1,44 +1,44 @@
-import * as trpc from "@trpc/server";
-import type { DefaultErrorShape } from "@trpc/server/error/formatter";
-import superjson from "superjson";
+import * as trpc from '@trpc/server'
+import type { DefaultErrorShape } from '@trpc/server/error/formatter'
+import superjson from 'superjson'
 
-import { effectify } from "@daotl-effect/trpc";
+import { effectify } from '@daotl-effect/trpc'
 
-import { runtime } from "~/setup.js";
-import type { User } from "~/models/index.js";
+import { runtime } from '~/setup.js'
+import type { User } from '~/models/index.js'
 
-import type { Context } from "./context.js";
-import { permissions } from "./permissions.js";
-import { extractUserFromRequest } from "~/auth/utils.js";
+import type { Context } from './context.js'
+import { permissions } from './permissions.js'
+import { extractUserFromRequest } from '~/auth/utils.js'
 
 const opts = {
   transformer: superjson,
   errorFormatter({ shape }: { shape: DefaultErrorShape }) {
-    return shape;
+    return shape
   },
-};
+}
 
-const builder = trpc.initTRPC.context<Context>();
-const _t = builder.create(opts);
+const builder = trpc.initTRPC.context<Context>()
+const _t = builder.create(opts)
 
 type TParams = typeof builder extends trpc.TRPCBuilder<infer TParams>
   ? TParams
-  : never;
+  : never
 
-export const t = effectify(runtime)<TParams, typeof opts>(_t);
+export const t = effectify(runtime)<TParams, typeof opts>(_t)
 interface ProcedureCtx<Ctx extends Context> {
-  public: Omit<Ctx, "user"> & { user: never };
-  optional: Ctx;
-  protected: Omit<Ctx, "user"> & { user: User };
-  admin: Ctx;
+  public: Omit<Ctx, 'user'> & { user: never }
+  optional: Ctx
+  protected: Omit<Ctx, 'user'> & { user: User }
+  admin: Ctx
 }
 
-export type ProcedureContext = ProcedureCtx<Context>;
+export type ProcedureContext = ProcedureCtx<Context>
 
 const trpcErrUnauthorized = new trpc.TRPCError({
-  code: "UNAUTHORIZED",
-  message: "Unauthorized",
-});
+  code: 'UNAUTHORIZED',
+  message: 'Unauthorized',
+})
 
 const publicMiddleware = t.middleware(async ({ ctx, next }) => {
   return next({
@@ -46,19 +46,19 @@ const publicMiddleware = t.middleware(async ({ ctx, next }) => {
       ...ctx,
       // @ts-expect-error
       req: { ...req, session: { ...req.session, user: undefined } },
-    } as unknown as ProcedureContext["public"],
-  });
-});
+    } as unknown as ProcedureContext['public'],
+  })
+})
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function checkSignedInUserMiddleware<Optional extends boolean>(
-  optional: Optional
+  optional: Optional,
 ) {
   return t.middleware(async ({ ctx, next }) => {
-    const user = extractUserFromRequest(ctx.req);
+    const user = extractUserFromRequest(ctx.req)
 
     if (!optional && !user) {
-      throw trpcErrUnauthorized;
+      throw trpcErrUnauthorized
     }
 
     return next({
@@ -67,18 +67,18 @@ function checkSignedInUserMiddleware<Optional extends boolean>(
         ...ctx,
         user,
       } as unknown as ProcedureContext[Optional extends true
-        ? "optional"
-        : "protected"],
-    });
-  });
+        ? 'optional'
+        : 'protected'],
+    })
+  })
 }
 
 const checkAdminMiddleware = t.middleware(async (/*{ ctx, next }*/) => {
-  throw trpcErrUnauthorized;
+  throw trpcErrUnauthorized
   // return next({
   //   ctx: ctx as ProcedureContext['admin'],
   // })
-});
+})
 
 export const p = {
   public: t.procedure.use(publicMiddleware).use(permissions()),
@@ -89,4 +89,4 @@ export const p = {
     .use(checkSignedInUserMiddleware(false))
     .use(permissions()),
   admin: t.procedure.use(checkAdminMiddleware).use(permissions()),
-};
+}

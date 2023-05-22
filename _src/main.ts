@@ -2,12 +2,12 @@ import fastifyWebSocket from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
 
-import { Fastify } from '~/fastify/index.js'
+import { fa } from '~/fastify/index.js'
 import * as auth from '~/auth/index.js'
 import * as trpc from '~/trpc/index.js'
 import { runtime, authConfig } from './setup.js'
 
-export const initFastify = Fastify.accessFastify.tap((fastify) => {
+export const initFastify = fa.accessFastify.tap((fastify) => {
   fastify
     .addHook('onRequest', auth.newAuthHook(authConfig))
     // tRPC
@@ -41,12 +41,12 @@ export const initFastify = Fastify.accessFastify.tap((fastify) => {
 
 const routes =
   auth.routes(authConfig)({ prefix: '/api/auth' }) >
-  Fastify.get('/api/hello', (req) => {
+  fa.get('/api/hello', (req) => {
     const oUserName = Option.fromNullable(req.session.user).map(R.prop('name'))
 
     return Effect.succeed({ msg: `hello ${oUserName.getOrElse('anonymous')}` })
   })
 
-export const main = initFastify > routes > Fastify.listen
+export const main = initFastify > routes > fa.listen
 
 await runtime.runPromise(main)

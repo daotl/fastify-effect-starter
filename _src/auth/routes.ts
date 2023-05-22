@@ -1,16 +1,16 @@
 import { StatusCodes } from 'http-status-codes'
 
 import * as E from '~/edgedb/index.js'
-import { Fastify } from '~/fastify/index.js'
+import { fa } from '~/fastify/index.js'
 
 import type { AuthConfig } from './config.js'
 
 const signOutUrl = '/api/hello'
 
 export const routes = (cfg: AuthConfig) =>
-  Fastify.register(
-    (Fastify) =>
-      Fastify.route({
+  fa.register(
+    (fa) =>
+      fa.route({
         config: { authLevel: 'public' },
         method: 'GET',
         url: '/signin',
@@ -51,7 +51,7 @@ export const routes = (cfg: AuthConfig) =>
             return { status: 'ok' } as const
           }),
       }) >
-      Fastify.route({
+      fa.route({
         config: { authLevel: 'protected' },
         method: 'GET',
         url: '/signout',

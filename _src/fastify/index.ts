@@ -1,11 +1,9 @@
-import { logger } from '~/logger.js'
 import type { EffectSchemaTypeProvider } from 'fastify-type-provider-effect-schema'
+import { effectify } from '@daotl-effect/fastify'
 
-export * from './types.js'
+import { logger } from '~/logger.js'
+
 export * from './fastify.js'
-export * from './effectify.js'
-
-import { effectify } from './effectify.js'
 import {
   type FastifyContextConfig,
   type FastifyEffectSchemaSchema,
@@ -18,7 +16,7 @@ const fastify = createFastify({
 })
 await fastify
 
-export const Fastify = effectify<
+export const fa = effectify<
   FastifyContextConfig,
   EffectSchemaTypeProvider,
   FastifyEffectSchemaSchema

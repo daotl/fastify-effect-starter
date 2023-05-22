@@ -55,7 +55,6 @@ declare module 'fastify' {
 }
 
 declare module '@fastify/request-context' {
-  // rome-ignore lint/suspicious/noEmptyInterface: <explanation>
   interface RequestContextData {}
 }
 

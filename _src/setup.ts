@@ -4,7 +4,7 @@ import '@fastify/session'
 
 import { makeBasicRuntime } from '@daotl-effect/prelude/basicRuntime'
 
-import { Fastify } from '~/fastify/index.js'
+import { fa } from '~/fastify/index.js'
 import * as auth from '~/auth/index.js'
 import { createLiveEdgedb } from '~/edgedb/index.js'
 import { liveLogger } from '~/logger.js'
@@ -21,10 +21,7 @@ if (process.argv.includes('--debug') || appConfig.env === 'local-dev') {
 }
 
 export const apiConfig = ApiConfig.config.runSync$
-export const liveFastify = Fastify.createLiveFastify(
-  apiConfig.host,
-  apiConfig.port,
-)
+export const liveFastify = fa.createLiveFastify(apiConfig.host, apiConfig.port)
 
 export const liveEdgedb = createLiveEdgedb({
   allow_user_specified_id: true,

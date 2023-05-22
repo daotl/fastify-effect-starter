@@ -18,7 +18,6 @@ export const ApiConfig = Config.all({
   port: Config.integer('port').withDefault(3000),
 })
 
-// rome-ignore lint/suspicious/noEmptyInterface: ignore
 export interface ApiConfig extends ConfigA<typeof ApiConfig> {}
 
 export interface ApiMainConfig extends ApiConfig, BaseConfig {}
