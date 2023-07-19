@@ -1,6 +1,7 @@
-import { pino, type Logger } from 'pino'
+import { pino } from 'pino'
 
 export const logger = pino()
+export type Logger = typeof logger
 
 export const tagLogger = Tag<Logger>()
 

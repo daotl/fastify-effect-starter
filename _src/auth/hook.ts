@@ -1,18 +1,15 @@
-import type * as Fa from 'fastify'
-
-import type { FastifyContextConfig } from '~/fastify/index.js'
+import type { FaTypes } from '~/fastify/index.js'
 
 import type { AuthConfig } from './config.js'
 
 // onRequest hook
 export const newAuthHook =
-  (_config: AuthConfig): Fa.onRequestHookHandler =>
+  (_config: AuthConfig): FaTypes['OnRequestHookHandler'] =>
   (req, reply, done) => {
     // Refresh session
     req.session.touch()
 
-    const authLevel =
-      (req.routeConfig as FastifyContextConfig).authLevel ?? 'protected'
+    const authLevel = req.routeConfig.authLevel ?? 'protected'
 
     if (
       // Allow access to static files without authentication

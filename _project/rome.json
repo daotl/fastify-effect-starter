@@ -1,12 +1,5 @@
 {
   "$schema": "./node_modules/rome/configuration_schema.json",
-  "files": {
-    "ignore": [
-      "**/generated",
-      "**/*.json",
-      "**/dist"
-    ]
-  },
   "linter": {
     "rules": {
       "recommended": true,
@@ -19,7 +12,7 @@
       },
       "correctness": {
         "recommended": true,
-        "noUndeclaredVariables": "off",
+        "noUndeclaredVariables": "error",
         "noUnusedVariables": "error"
       },
       "performance": {
@@ -36,8 +29,7 @@
         "useShorthandArrayType": "error"
       },
       "suspicious": {
-        "recommended": true,
-        "noEmptyInterface": "off"
+        "recommended": true
       }
     }
   },
@@ -50,10 +42,5 @@
       "quoteStyle": "single",
       "semicolons": "asNeeded"
     }
-  },
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
   }
 }

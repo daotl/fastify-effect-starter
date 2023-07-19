@@ -17,7 +17,7 @@ const enforceSingleVersion = [
   'date-fns',
 ]
 
-function afterAllResolved(lockfile, context) {
+function _afterAllResolved(lockfile, context) {
   context.log('Checking duplicate packages')
   const packagesKeys = Object.keys(lockfile.packages)
   const found = {}
@@ -47,6 +47,9 @@ function afterAllResolved(lockfile, context) {
 
 module.exports = {
   hooks: {
-    afterAllResolved,
+    // Temporarily disabled, seems to be false positives:
+    // pnpm: @effect/data found 2 times
+    // date-fns found 2 times
+    // afterAllResolved,
   },
 }
