@@ -6,4 +6,4 @@ export const AuthConfig = Config.all({
   ),
 })
 
-export interface AuthConfig extends ConfigA<typeof AuthConfig> {}
+export type AuthConfig = ConfigA<typeof AuthConfig>

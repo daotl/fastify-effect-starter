@@ -4,15 +4,27 @@
       "name": "Debug",
       "request": "launch",
       "cwd": "${workspaceFolder}",
-      "runtimeExecutable": "ts-node-esm",
-      // "runtimeArgs": ["--loader", "ts-node/esm"],
-      "program": "${workspaceFolder}/_src/main.ts",
+      "runtimeExecutable": "node",
+      "program": "${workspaceFolder}/dist/main.js",
       // "skipFiles": ["<node_internals>/**"],
       "type": "node",
       "env": {
         "EDGEDB_DSN": "edgedb://fastify_effect_starter:password@localhost:15656?database=fastify_effect_starter&tls_security=insecure"
       }
     },
+    // {
+    //   "name": "Debug",
+    //   "request": "launch",
+    //   "cwd": "${workspaceFolder}",
+    //   "runtimeExecutable": "ts-node-esm",
+    //   // "runtimeArgs": ["--loader", "ts-node/esm"],
+    //   "program": "${workspaceFolder}/_src/main.ts",
+    //   // "skipFiles": ["<node_internals>/**"],
+    //   "type": "node",
+    //   "env": {
+    //     "EDGEDB_DSN": "edgedb://fastify_effect_starter:password@localhost:15656?database=fastify_effect_starter&tls_security=insecure"
+    //   }
+    // },
     {
       "name": "Debug Attach",
       "port": 9229,

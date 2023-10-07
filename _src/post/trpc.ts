@@ -23,16 +23,13 @@ export const router = () =>
     create,
     update,
     delete: _delete,
-    test,
   })
 
 const count = p.optional
-  .input(Schema.parse(zPostListInput))
+  .input(Schema.parseSync(zPostListInput))
   .query(({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
-      Effect.promise(
-        e
-          .count(
+      Effect.promise(() => e.count(
             e.select(e.Post, (_p) => ({
               ...input,
               filter: E.filterPropsEqual(e.Post, input.filter),
@@ -43,11 +40,9 @@ const count = p.optional
     ),
   )
 
-const list = p.optional.input(Schema.parse(zPostListInput)).query(({ input }) =>
+const list = p.optional.input(Schema.parseSync(zPostListInput)).query(({ input }) =>
   E.tagEdgedb.flatMap((edgedb) =>
-    Effect.promise(
-      e
-        .select(e.Post, (_p) => ({
+    Effect.promise(() => e.select(e.Post, (_p) => ({
           ...input,
           filter: E.filterPropsEqual(e.Post, input.filter),
           ...e.Post['*'],
@@ -58,7 +53,7 @@ const list = p.optional.input(Schema.parse(zPostListInput)).query(({ input }) =>
 )
 
 const listWithTotal = p.optional
-  .input(Schema.parse(zPostListInput))
+  .input(Schema.parseSync(zPostListInput))
   .query(({ input }) => {
     const shape = {
       ...e.Post['*'],
@@ -66,9 +61,7 @@ const listWithTotal = p.optional
       filter: E.filterPropsEqual(e.Post, input.filter),
     }
     return E.tagEdgedb.flatMap((edgedb) =>
-      Effect.promise(
-        e
-          .select({
+      Effect.promise(() => e.select({
             total: e.count(
               e.select(e.Post, (_) => R.omit(['offset', 'limit'])(shape)),
             ),
@@ -80,12 +73,10 @@ const listWithTotal = p.optional
   })
 
 const get = p.optional
-  .input(Schema.parse(sIdInput))
+  .input(Schema.parseSync(sIdInput))
   .query(({ input: { id } }) =>
     E.tagEdgedb.flatMap((edgedb) =>
-      Effect.promise(
-        e
-          .select(e.Post, (p) => ({
+      Effect.promise(() => e.select(e.Post, (p) => ({
             filter_single: e.op(p.id, '=', e.cast(e.uuid, id)),
             ...e.Post['*'],
           }))
@@ -95,12 +86,10 @@ const get = p.optional
   )
 
 const create = p.optional
-  .input(Schema.parse(toCreateSchema(postSchema)))
+  .input(Schema.parseSync(toCreateSchema(postSchema)))
   .mutation(async ({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
-      Effect.promise(
-        e
-          .insert(e.Post, {
+      Effect.promise(() => e.insert(e.Post, {
             ...R.omit(input, [
               'author',
               'categories',
@@ -119,12 +108,10 @@ const create = p.optional
   )
 
 const update = p.optional
-  .input(Schema.parse(toUpdateSchema(postSchema)))
+  .input(Schema.parseSync(toUpdateSchema(postSchema)))
   .mutation(async ({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
-      Effect.promise(
-        e
-          .update(e.Post, () => ({
+      Effect.promise(() => e.update(e.Post, () => ({
             set: R.omit(input, [
               'author',
               'categories',
@@ -140,65 +127,13 @@ const update = p.optional
   )
 
 const _delete = p.optional
-  .input(Schema.parse(sIdInput))
+  .input(Schema.parseSync(sIdInput))
   .mutation(async ({ input: { id } }) =>
     E.tagEdgedb.flatMap((edgedb) =>
-      Effect.promise(
-        e
-          .delete(e.Post, (p) => ({
+      Effect.promise(() => e.delete(e.Post, (p) => ({
             filter_single: e.op(p.id, '=', e.cast(e.uuid, id)),
           }))
           .run(edgedb),
       ),
     ),
   )
-
-// {
-//   title: 'DAOT Labs',
-//   content: {
-//     value: 'h',
-//     op: 'contains',
-//   },
-//   author: {
-//     op: 'all',
-//     value: {
-//       name: 'Marie',
-//       role: {
-//         op: '=',
-//         value: 'user',
-//         cast: 'str',
-//       },
-//     },
-//   },
-// }
-
-const test = p.optional
-  .input(
-    Schema.parse(
-      Schema.struct({
-        title: Schema.string,
-        content: E.sStrContains,
-        author: Schema.struct({
-          op: Schema.literal('all'),
-          value: Schema.struct({
-            name: Schema.string,
-            role: E.sStrEqual,
-          }),
-        }),
-      }),
-    ),
-  )
-  .query(({ input }) => {
-    return E.tagEdgedb.flatMap((edgedb) => {
-      return Effect.promise(
-        e
-          .select(e.Post, (p) => ({
-            ...e.Post['*'],
-            author: { ...e.User['*'] },
-            filter: E.genFilterQuery(p, input),
-            // filter_single: { id: '' },
-          }))
-          .run(edgedb),
-      )
-    })
-  })

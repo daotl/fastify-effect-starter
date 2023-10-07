@@ -2,10 +2,10 @@ import fastifyWebSocket from '@fastify/websocket'
 import { fastifyTRPCPlugin } from '@trpc/server/adapters/fastify'
 import { getFastifyPlugin } from 'trpc-playground/handlers/fastify'
 
-import { fa } from '~/fastify/index.js'
 import * as auth from '~/auth/index.js'
+import { fa } from '~/fastify/index.js'
 import * as trpc from '~/trpc/index.js'
-import { runtime, authConfig } from './setup.js'
+import { authConfig, runtime } from './setup.js'
 
 export const initFastify = fa.accessFastify.tap((fastify) => {
   fastify
@@ -49,4 +49,4 @@ const routes =
 
 export const main = initFastify > routes > fa.listen
 
-await runtime.runPromise(main)
+await runtime.runPromise(main).then(console.log).catch(console.error)

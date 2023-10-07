@@ -6,7 +6,7 @@
   ],
   "compilerOptions": {
     "tsPlusConfig": "./tsplus.config.json",
-    "module": "ESNext",
+    "module": "NodeNext",
     "lib": [
       "esnext"
     ],
@@ -29,7 +29,7 @@
     "noImplicitThis": true,
     "outDir": "dist",
     "resolveJsonModule": true,
-    "moduleResolution": "Node16",
+    "moduleResolution": "NodeNext",
     "downlevelIteration": true,
     "noErrorTruncation": true,
     "ignoreDeprecations": "5.0",

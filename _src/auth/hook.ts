@@ -9,7 +9,7 @@ export const newAuthHook =
     // Refresh session
     req.session.touch()
 
-    const authLevel = req.routeConfig.authLevel ?? 'protected'
+    const authLevel = req.routeOptions.config.authLevel ?? 'protected'
 
     if (
       // Allow access to static files without authentication
@@ -19,18 +19,18 @@ export const newAuthHook =
       return done()
     }
 
-    Option.fromNullable(req.session.user).match(
-      () => {
+    Option.fromNullable(req.session.user).match({
+      onNone() {
         // Deny if auth is not optional
         if (authLevel !== 'optional') {
           reply.code(401).send()
         }
       },
-      (u) => {
+      onSome(u) {
         req.log.info('Secure API requested by', u.name)
         return some(null)
       },
-    )
+    })
 
     done()
   }
