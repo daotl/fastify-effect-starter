@@ -9,7 +9,7 @@ import type {
   IsEmptyObject,
 } from "type-fest";
 import * as AST from "@effect/schema/AST";
-import { pipe } from "@effect/data/Function";
+import { pipe } from "effect/Function";
 import type {
   Category,
   Group,

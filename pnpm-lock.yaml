@@ -35,14 +35,14 @@ importers:
   .:
     dependencies:
       '@daotl-effect/fastify':
-        specifier: ^0.0.9-alpha.4
-        version: 0.0.9-alpha.4(@effect/typeclass@0.6.2)(fast-check@3.13.1)(fastify@4.23.2)
+        specifier: ^0.0.9
+        version: 0.0.9(@effect/typeclass@0.6.2)(fast-check@3.13.1)(fastify@4.23.2)
       '@daotl-effect/prelude':
         specifier: ^0.0.20
         version: 0.0.20(@effect/typeclass@0.6.2)(fast-check@3.13.1)
       '@daotl-effect/trpc':
-        specifier: ^0.0.20-alpha.1
-        version: 0.0.20-alpha.1(@effect/typeclass@0.6.2)(fast-check@3.13.1)
+        specifier: ^0.0.20
+        version: 0.0.20(@effect/typeclass@0.6.2)(fast-check@3.13.1)
       '@effect-app/core':
         specifier: ^0.58.4
         version: 0.58.4(@effect/typeclass@0.6.2)
@@ -62,10 +62,10 @@ importers:
         specifier: ^8.3.0
         version: 8.3.0
       '@fastify/cookie':
-        specifier: ^8.3.0
-        version: 8.3.0
+        specifier: ^9.1.0
+        version: 9.1.0
       '@fastify/cors':
-        specifier: ^8.3.0
+        specifier: ^8.4.0
         version: 8.4.0
       '@fastify/csrf-protection':
         specifier: ^6.3.0
@@ -74,7 +74,7 @@ importers:
         specifier: ^7.4.0
         version: 7.4.0
       '@fastify/helmet':
-        specifier: ^11.0.0
+        specifier: ^11.1.1
         version: 11.1.1
       '@fastify/middie':
         specifier: ^8.3.0
@@ -83,16 +83,16 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0
       '@fastify/session':
-        specifier: ^10.4.0
+        specifier: ^10.5.0
         version: 10.5.0
       '@fastify/static':
-        specifier: ^6.10.2
+        specifier: ^6.11.2
         version: 6.11.2
       '@fastify/swagger':
-        specifier: ^8.8.0
+        specifier: ^8.11.0
         version: 8.11.0
       '@fastify/swagger-ui':
-        specifier: ^1.9.2
+        specifier: ^1.10.0
         version: 1.10.0
       '@fastify/websocket':
         specifier: ^8.2.0
@@ -110,7 +110,7 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0
       edgedb:
-        specifier: ^1.3.3
+        specifier: ^1.3.6
         version: 1.3.6
       edgeql-js:
         specifier: workspace:*
@@ -119,7 +119,7 @@ importers:
         specifier: 2.0.0-next.47
         version: 2.0.0-next.47
       fastify:
-        specifier: ^4.20.0
+        specifier: ^4.23.2
         version: 4.23.2
       fastify-cors:
         specifier: ^6.1.0
@@ -137,16 +137,16 @@ importers:
         specifier: ^0.0.2
         version: 0.0.2(@effect/schema@0.42.0)(fastify@4.23.2)
       http-status-codes:
-        specifier: ^2.2.0
+        specifier: ^2.3.0
         version: 2.3.0
       pino:
-        specifier: ^8.14.1
+        specifier: ^8.15.6
         version: 8.15.6
       source-map-support:
         specifier: ^0.5.21
         version: 0.5.21
       superjson:
-        specifier: ^1.13.1
+        specifier: ^1.13.3
         version: 1.13.3
       tlru:
         specifier: ^1.0.2
@@ -158,7 +158,7 @@ importers:
         specifier: ^0.4.3
         version: 0.4.3
       ws:
-        specifier: ^8.13.0
+        specifier: ^8.14.2
         version: 8.14.2
     devDependencies:
       '@biomejs/biome':
@@ -168,37 +168,37 @@ importers:
         specifier: 0.0.1
         version: 0.0.1(@biomejs/biome@1.2.2)
       '@edgedb/generate':
-        specifier: ^0.3.1
+        specifier: ^0.3.3
         version: 0.3.3(edgedb@1.3.6)
       '@effect-app/cli':
-        specifier: ^0.16.0
-        version: 0.16.0
+        specifier: ^0.17.0
+        version: 0.17.0
       '@effect-app/compiler':
-        specifier: ^0.27.0
-        version: 0.27.0(@types/node@20.8.3)
+        specifier: ^0.28.0
+        version: 0.28.0(@types/node@20.8.3)
       '@effect/language-service':
-        specifier: ^0.0.19
+        specifier: 0.0.19
         version: 0.0.19(patch_hash=izp2ue34jjv4swyrhg2ux4ha3e)
       '@tsconfig/esm':
-        specifier: ^1.0.4
+        specifier: ^1.0.5
         version: 1.0.5
       '@tsconfig/node20':
         specifier: ^20.1.2
         version: 20.1.2
       '@tsconfig/strictest':
-        specifier: ^2.0.1
+        specifier: ^2.0.2
         version: 2.0.2
       '@tsplus/installer':
-        specifier: 0.0.177
-        version: 0.0.177(@effect-app/typescript@5.3.0-tsplus.202310052)(@types/node@20.8.3)
+        specifier: 0.0.179
+        version: 0.0.179(@effect-app/typescript@5.3.0-tsplus.202310052)(@types/node@20.8.3)
       '@types/connect':
-        specifier: ^3.4.35
+        specifier: ^3.4.36
         version: 3.4.36
       '@types/cookie':
-        specifier: ^0.5.1
+        specifier: ^0.5.2
         version: 0.5.2
       '@types/fs-extra':
-        specifier: ^11.0.1
+        specifier: ^11.0.2
         version: 11.0.2
       '@types/node':
         specifier: ~20.8.3
@@ -222,7 +222,7 @@ importers:
         specifier: ^7.0.3
         version: 7.0.3
       dotenv-cli:
-        specifier: ^7.2.1
+        specifier: ^7.3.0
         version: 7.3.0
       enhanced-resolve:
         specifier: ^5.15.0
@@ -252,8 +252,8 @@ importers:
         specifier: ^10.9.1
         version: 10.9.1(@effect-app/typescript@5.3.0-tsplus.202310052)(@types/node@20.8.3)
       ts-to-effect-schema:
-        specifier: ^0.0.7
-        version: 0.0.7(@types/node@20.8.3)(effect@2.0.0-next.47)(fast-check@3.13.1)
+        specifier: ^0.0.8
+        version: 0.0.8(@types/node@20.8.3)(fast-check@3.13.1)
       ts-transform-paths:
         specifier: ^3.0.0
         version: 3.0.0
@@ -730,8 +730,8 @@ packages:
       '@jridgewell/trace-mapping': 0.3.9
     dev: true
 
-  /@daotl-effect/fastify@0.0.9-alpha.4(@effect/typeclass@0.6.2)(fast-check@3.13.1)(fastify@4.23.2):
-    resolution: {integrity: sha512-NEiNWBpddJ+qhbnxWwMPlcXmfJ22jAGhohXrqXB97BYJPGc1biesY2jUYxD9YfOTCJ4tE+w1y0nohCPoNJQJwA==}
+  /@daotl-effect/fastify@0.0.9(@effect/typeclass@0.6.2)(fast-check@3.13.1)(fastify@4.23.2):
+    resolution: {integrity: sha512-oH0okHca5Qqy4NeSlHHEHM4tORo4RbwoPBcTmF8iIUi4Z6MDszH7ZjgopuHpIGwLGhk1bW/6iaM2v6Rp4kUSww==}
     peerDependencies:
       fastify: ^4.23.2
     dependencies:
@@ -772,30 +772,10 @@ packages:
       - fast-check
     dev: false
 
-  /@daotl-effect/prelude@0.0.20-alpha.4(@effect/typeclass@0.6.2)(fast-check@3.13.1):
-    resolution: {integrity: sha512-6DxgRWLaihRoxcw+NoOEJVPNqNLepGoUt4Hv5MwsXWLTe/kOilInn5AJl9OcQ+jHAS/wWDACWqL6D6touP+t8g==}
+  /@daotl-effect/trpc@0.0.20(@effect/typeclass@0.6.2)(fast-check@3.13.1):
+    resolution: {integrity: sha512-A+/MxLkpG+Cf3cZr0oo/CdjoLeoRAgRpkWrMirsud1x7D/xKfDeW1qXv4MHWMMOp1vUXp8CJxkXowMPjkMNhkg==}
     dependencies:
-      '@effect-app/core': 0.58.4(@effect/typeclass@0.6.2)
-      '@effect-app/infra-adapters': 0.51.4(@effect/typeclass@0.6.2)
-      '@effect-app/prelude': 0.60.4(@effect/typeclass@0.6.2)
-      '@effect/match': 0.38.0(effect@2.0.0-next.47)
-      '@effect/schema': 0.42.0(effect@2.0.0-next.47)(fast-check@3.13.1)
-      '@fp-ts/optic': 0.10.0(patch_hash=g6p2wvdqwpzq42ns4zy72w6lre)(@effect/typeclass@0.6.2)(effect@2.0.0-next.47)
-      date-fns: 2.29.3(patch_hash=g5hqt5bhnjezqo5vnkpprfkba4)
-      effect: 2.0.0-next.47
-      remeda: 1.27.0
-      type-fest: 3.13.1
-      typed-case: 1.0.2
-    transitivePeerDependencies:
-      - '@effect/typeclass'
-      - encoding
-      - fast-check
-    dev: false
-
-  /@daotl-effect/trpc@0.0.20-alpha.1(@effect/typeclass@0.6.2)(fast-check@3.13.1):
-    resolution: {integrity: sha512-3LVObAy92Wol2irinwFKCrMqCeG6L1EELOxoBACE8oS35u2LTykz+18xoNe1a0EySDbbrc0LAt+qbma4pP8vBg==}
-    dependencies:
-      '@daotl-effect/prelude': 0.0.20-alpha.4(@effect/typeclass@0.6.2)(fast-check@3.13.1)
+      '@daotl-effect/prelude': 0.0.20(@effect/typeclass@0.6.2)(fast-check@3.13.1)
       '@daotl/web-common': 0.0.11
       '@effect-app/core': 0.58.4(@effect/typeclass@0.6.2)
       '@effect-app/prelude': 0.60.4(@effect/typeclass@0.6.2)
@@ -805,7 +785,7 @@ packages:
       dotenv-expand: 10.0.0
       effect: 2.0.0-next.47
       remeda: 1.27.0
-      type-fest: 3.13.1
+      type-fest: 4.4.0
       typed-case: 1.0.2
     transitivePeerDependencies:
       - '@effect/typeclass'
@@ -853,15 +833,15 @@ packages:
       edgedb: 1.3.6
     dev: true
 
-  /@effect-app/cli@0.16.0:
-    resolution: {integrity: sha512-jALX/DYOGpI6ctsKz4Se4FzBlSf2cpFpZJcW7UL4huYC/OQ06i8NAx1dEBGLwpse7oAz1NC6BMi+y/Vz5vfzpw==}
+  /@effect-app/cli@0.17.0:
+    resolution: {integrity: sha512-ve2MnL3wntjLqZqaiJZ+di1BWfULYSL8fbvfzr5VC/X2PKAAqF+HVOfAd8MilL7cCQTvQpgSnb6eLvKVvRXVSA==}
     hasBin: true
     dependencies:
       node-watch: 0.7.4
     dev: true
 
-  /@effect-app/compiler@0.27.0(@types/node@20.8.3):
-    resolution: {integrity: sha512-3f7vH3jgzzEH+qP3JiLHXKUKGkUI/KC0FLpdL1PBGP4uvFhCaNlO3pxOkVbIung+PGi1QrgVQ6nmBAEzFf2biQ==}
+  /@effect-app/compiler@0.28.0(@types/node@20.8.3):
+    resolution: {integrity: sha512-NA4kzlJ03/Du9RRAgYAscwLBpNFfZm2jzSXS7Zf2i3FrNiibeGdk7fq0GQF/iWuHV/pYTXaAJNz83oP4nY24vw==}
     dependencies:
       '@rollup/pluginutils': 5.0.5
       vite: 4.4.11(@types/node@20.8.3)
@@ -975,16 +955,6 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  /@effect/data@0.12.10:
-    resolution: {integrity: sha512-zIz/DgumH2LgGdr1Wc9ChET5JSG0k/G5kDc8rn4a6yIJ0v2d5rfnbRWIJO2fWmdFvc+128JyaBvYguIyz9JaAQ==}
-    dev: true
-
-  /@effect/io@0.25.13:
-    resolution: {integrity: sha512-NdZFSaNbG6AN8bzSAPdmi95AXgHWr4dH58R8viqbFBb0zmfQ/PQq+5XEsC++qy/qpT/ZLzpvJJWhW9jf1atq2g==}
-    dependencies:
-      '@effect/data': 0.12.10
-    dev: true
-
   /@effect/language-service@0.0.19(patch_hash=izp2ue34jjv4swyrhg2ux4ha3e):
     resolution: {integrity: sha512-sKNVo031dkwLfe1jHZzdTiF1UXgLq1lAYd2JG7q416dlmMoxRcMXrZWyw6a/SxIDM0hyIJAEmrz5iUkQPcPdBQ==}
     dependencies:
@@ -992,14 +962,6 @@ packages:
       '@fp-ts/data': 0.0.41
     dev: true
     patched: true
-
-  /@effect/match@0.38.0(effect@2.0.0-next.47):
-    resolution: {integrity: sha512-VRTD0ka2++qzvXYrq3QhRaq2OGUfhHugTzzQ3mOCxzHGmgCaW8NE/D6nTzVgBVJWLy4OkP2XBh+2DNA6nCbbjw==}
-    peerDependencies:
-      effect: 2.0.0-next.47
-    dependencies:
-      effect: 2.0.0-next.47
-    dev: false
 
   /@effect/match@0.39.0(effect@2.0.0-next.47):
     resolution: {integrity: sha512-XwW+8wpa/niPZz5qxMtwR5PuRKdvW6APHvQEq4Mw1uLij3ZpB34PROoMQlWn0xmFrO5ztax05DmZQkDRii1cSw==}
@@ -1265,8 +1227,8 @@ packages:
       uid-safe: 2.1.5
     dev: false
 
-  /@fastify/cookie@8.3.0:
-    resolution: {integrity: sha512-P9hY9GO11L20TnZ33XN3i0bt+3x0zaT7S0ohAzWO950E9PB2xnNhLYzPFJIGFi5AVN0yr5+/iZhWxeYvR6KCzg==}
+  /@fastify/cookie@9.1.0:
+    resolution: {integrity: sha512-w/LlQjj7cmYlQNhEKNm4jQoLkFXCL73kFu1Jy3aL7IFbYEojEKur0f7ieCKUxBBaU65tpaWC83UM8xW7AzY6uw==}
     dependencies:
       cookie: 0.5.0
       fastify-plugin: 4.5.1
@@ -1827,8 +1789,8 @@ packages:
     resolution: {integrity: sha512-jt4jIsWKvUvuY6adJnQJlb/UR7DdjC8CjHI/OaSQruj2yX9/K6+KOvDt/vD6udqos/FUk5Op66CvYT7TBLYO5Q==}
     dev: true
 
-  /@tsplus/installer@0.0.177(@effect-app/typescript@5.3.0-tsplus.202310052)(@types/node@20.8.3):
-    resolution: {integrity: sha512-4L4aZa9HdAY2qW+OSs017n7ma/Svi2rZjOdsxoHFa1Es/M6a5bqhsBFVdQCr45nBkUZONhZbbxkvNU7/gBhIlg==}
+  /@tsplus/installer@0.0.179(@effect-app/typescript@5.3.0-tsplus.202310052)(@types/node@20.8.3):
+    resolution: {integrity: sha512-lnRIak08WLjS0oygORzRzBbjtxAUmTzF0+JsqBMr1IGTelixtnOkW7OuitN+WVCT5IK6LZJPOKtKqlp+remsCA==}
     hasBin: true
     dependencies:
       mkdirp: 1.0.4
@@ -7600,12 +7562,10 @@ packages:
     resolution: {integrity: sha512-tL0w8U/pgaacOmkb9fRlYzWEUDCfVjjv9dD4wHTgZ61MjhuMt46VNWTG747NqW6vRzoWIKABVhFSOJ82FvXrfA==}
     dev: false
 
-  /ts-to-effect-schema@0.0.7(@types/node@20.8.3)(effect@2.0.0-next.47)(fast-check@3.13.1):
-    resolution: {integrity: sha512-oCRqyH/pb3R4lqmYfg5HWKvDs2Qxzkj0DUxbWNSAcrgjLOAHYppU67yp+VjeitTTtUADxLB6yj8SpX3OjnbHCg==}
+  /ts-to-effect-schema@0.0.8(@types/node@20.8.3)(fast-check@3.13.1):
+    resolution: {integrity: sha512-iQT796nXJqOTGVvKI0oajpPGTjKzwj3ZWKF9Ae+IKkfFe5ZyanIABf+QvAx1YtRhB884QLlAOPYqvF4giCEu0A==}
     hasBin: true
     dependencies:
-      '@effect/data': 0.12.10
-      '@effect/io': 0.25.13
       '@effect/schema': 0.42.0(effect@2.0.0-next.47)(fast-check@3.13.1)
       '@oclif/core': 2.15.0(@types/node@20.8.3)(typescript@5.0.4)
       '@oclif/plugin-help': 5.2.20(@types/node@20.8.3)(typescript@5.0.4)
@@ -7613,6 +7573,7 @@ packages:
       async: 3.2.4
       case: 1.6.3
       chokidar: 3.5.3
+      effect: 2.0.0-next.47
       fs-extra: 9.1.0
       inquirer: 8.2.6
       lodash: 4.17.21
@@ -7629,7 +7590,6 @@ packages:
       - '@swc/core'
       - '@swc/wasm'
       - '@types/node'
-      - effect
       - fast-check
       - supports-color
     dev: true
