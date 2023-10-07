@@ -4,9 +4,9 @@ import '@fastify/session'
 
 import { makeBasicRuntime } from '@daotl-effect/prelude/basicRuntime'
 
-import { fa } from '~/fastify/index.js'
 import * as auth from '~/auth/index.js'
 import { createLiveEdgedb } from '~/edgedb/index.js'
+import { fa } from '~/fastify/index.js'
 import { liveLogger } from '~/logger.js'
 
 import { ApiConfig, BaseConfig } from './config.js'

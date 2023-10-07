@@ -1,11 +1,7 @@
 {
   "$schema": "./node_modules/biome/configuration_schema.json",
   "files": {
-    "ignore": [
-      "**/generated",
-      "**/*.json",
-      "**/dist"
-    ]
+    "ignore": ["**/generated", "**/*.json", "**/dist"]
   },
   "linter": {
     "rules": {
@@ -15,7 +11,8 @@
       },
       "complexity": {
         "recommended": true,
-        "noUselessFragments": "error"
+        "noUselessFragments": "error",
+        "useLiteralKeys": "off"
       },
       "correctness": {
         "recommended": true,

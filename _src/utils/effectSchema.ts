@@ -1,5 +1,5 @@
 export const toCreateSchema = <
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   From extends { [K in keyof To]: any },
   To extends {
     readonly id: string
@@ -12,7 +12,7 @@ export const toCreateSchema = <
 }
 
 export const toUpdateSchema = <
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   From extends { [K in keyof To]: any },
   To extends {
     readonly id: string

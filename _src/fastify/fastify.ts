@@ -33,12 +33,12 @@ export type FastifyContextConfig = {
 }
 
 export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
-  {},
+  Record<never, never>,
   Fa.RawServerDefault,
   FastifyEffectSchema.EffectSchemaTypeProvider
 >
 
-// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 type SchemaTypeAny = Schema<any, any>
 export interface FastifyEffectSchemaSchema {
   body?: SchemaTypeAny

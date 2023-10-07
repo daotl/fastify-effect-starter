@@ -6,8 +6,7 @@ const POOL_ID = process.env['VITEST_POOL_ID']
 // type LayerA<T> = T extends Layer<any, any, infer A> ? A : never
 
 declare global {
-  // var runtime: Runtime<LayerA<typeof appLayer>>
-  // rome-ignore lint/style/noVar: ignore
+  // biome-ignore lint/style/noVar: ignore
   var cleanup: () => Promise<void>
 }
 

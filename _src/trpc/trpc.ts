@@ -4,12 +4,12 @@ import superjson from 'superjson'
 
 import { effectify } from '@daotl-effect/trpc'
 
-import { runtime } from '~/setup.js'
 import type { User } from '~/models/index.js'
+import { runtime } from '~/setup.js'
 
+import { extractUserFromRequest } from '~/auth/utils.js'
 import type { Context } from './context.js'
 import { permissions } from './permissions.js'
-import { extractUserFromRequest } from '~/auth/utils.js'
 
 const opts = {
   transformer: superjson,

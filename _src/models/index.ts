@@ -1,11 +1,11 @@
 import type {
   Category as CategoryR,
+  Group as GroupR,
+  GroupRole as GroupRoleR,
   Post as PostR,
   Profile as ProfileR,
   Role as RoleR,
   User as UserR,
-  Group as GroupR,
-  GroupRole as GroupRoleR,
 } from './generated/interfaces.js'
 
 export * from './generated/interfaces.js'

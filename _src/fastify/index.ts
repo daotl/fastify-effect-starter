@@ -1,7 +1,7 @@
-import type { EffectSchemaTypeProvider } from 'fastify-type-provider-effect-schema'
 import { effectify } from '@daotl-effect/fastify'
+import type { EffectSchemaTypeProvider } from 'fastify-type-provider-effect-schema'
 
-import { logger, type Logger } from '~/logger.js'
+import { type Logger, logger } from '~/logger.js'
 
 export * from './fastify.js'
 import {

@@ -1,5 +1,5 @@
-import { p, t } from '~/trpc/trpc.js'
 import { tagLogger } from '~/logger.js'
+import { p, t } from '~/trpc/trpc.js'
 
 export const router = () =>
   t.router({
