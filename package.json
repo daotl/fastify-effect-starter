@@ -132,7 +132,7 @@
     "@effect-app/compiler": "^0.27.0",
     "@effect/language-service": "^0.0.19",
     "@tsconfig/esm": "^1.0.4",
-    "@tsconfig/node20": "^20.1.0",
+    "@tsconfig/node20": "^20.1.2",
     "@tsconfig/strictest": "^2.0.1",
     "@tsplus/installer": "0.0.177",
     "@types/connect": "^3.4.35",
