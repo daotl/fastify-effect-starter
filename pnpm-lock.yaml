@@ -134,8 +134,8 @@ importers:
         specifier: ^4.7.0
         version: 4.7.0
       fastify-type-provider-effect-schema:
-        specifier: ^0.0.2
-        version: 0.0.2(@effect/schema@0.42.0)(fastify@4.23.2)
+        specifier: ^0.0.3
+        version: 0.0.3(@effect/schema@0.42.0)(fastify@4.23.2)
       http-status-codes:
         specifier: ^2.3.0
         version: 2.3.0
@@ -252,8 +252,8 @@ importers:
         specifier: ^10.9.1
         version: 10.9.1(@effect-app/typescript@5.3.0-tsplus.202310052)(@types/node@20.8.3)
       ts-to-effect-schema:
-        specifier: ^0.0.8
-        version: 0.0.8(@types/node@20.8.3)(fast-check@3.13.1)
+        specifier: ^0.0.10
+        version: 0.0.10(@types/node@20.8.3)(fast-check@3.13.1)
       ts-transform-paths:
         specifier: ^3.0.0
         version: 3.0.0
@@ -966,7 +966,7 @@ packages:
   /@effect/match@0.39.0(effect@2.0.0-next.47):
     resolution: {integrity: sha512-XwW+8wpa/niPZz5qxMtwR5PuRKdvW6APHvQEq4Mw1uLij3ZpB34PROoMQlWn0xmFrO5ztax05DmZQkDRii1cSw==}
     peerDependencies:
-      effect: 2.0.0-next.47
+      effect: 2.0.0-next.46
     dependencies:
       effect: 2.0.0-next.47
     dev: false
@@ -983,7 +983,7 @@ packages:
   /@effect/typeclass@0.6.2(effect@2.0.0-next.47):
     resolution: {integrity: sha512-H9FklKKpzm8RjaIwHVruk+hHUK6HYW9aVRQ09YMCQMJBdxs/bPdJ6/hJvBVhPp1TmcwGLe0mI2+IQ3HSpIjgfg==}
     peerDependencies:
-      effect: 2.0.0-next.47
+      effect: ^2.0.0-next.39
     dependencies:
       effect: 2.0.0-next.47
     dev: false
@@ -1377,7 +1377,7 @@ packages:
     resolution: {integrity: sha512-ArMc8qawBESuvps1BR74y3s8Vn8AiDnbNe/Pu1Pxc3RwVPDxb34cui6PblAIRXEieYH2QQiwsVp+bNDfxA48Zg==}
     peerDependencies:
       '@effect/typeclass': ^0.6.2
-      effect: 2.0.0-next.47
+      effect: ^2.0.0-next.44
     dependencies:
       '@effect/typeclass': 0.6.2(effect@2.0.0-next.47)
       effect: 2.0.0-next.47
@@ -1745,7 +1745,7 @@ packages:
   /@trpc-playground/types@1.0.0(@effect-app/typescript@5.3.0-tsplus.202310052)(@trpc/server@10.26.0):
     resolution: {integrity: sha512-Ap5aNaVlglfM9WLkPLKF2rHDZ8CwHcqK32A8YaqTyHUuoEFTSOh6oSgVU6Cv8toxClKiTXFvbWmE4aZxIoh4Zg==}
     peerDependencies:
-      '@trpc/server': daotl/trpc#f40bc9dc6bc14827802f46cc377cf4fa164ccb05
+      '@trpc/server': ^10
     dependencies:
       '@trpc/server': github.com/daotl/trpc/f40bc9dc6bc14827802f46cc377cf4fa164ccb05
       ts-essentials: 9.4.1(@effect-app/typescript@5.3.0-tsplus.202310052)
@@ -1756,7 +1756,7 @@ packages:
   /@trpc/client@10.26.0(@trpc/server@10.26.0):
     resolution: {integrity: sha512-ojHxQFIE97rBEGPK8p1ijbzo0T1IdEBoJ9fFSgWWL9FMuEEA/DNQ9s0uuiOrDKhCCdTFT1unfRharoJhB2/O2w==}
     peerDependencies:
-      '@trpc/server': daotl/trpc#f40bc9dc6bc14827802f46cc377cf4fa164ccb05
+      '@trpc/server': 10.26.0
     dependencies:
       '@trpc/server': github.com/daotl/trpc/f40bc9dc6bc14827802f46cc377cf4fa164ccb05
     dev: false
@@ -3325,7 +3325,7 @@ packages:
     hasBin: true
 
   /ee-first@1.1.1:
-    resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
+    resolution: {integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=}
     dev: false
 
   /effect@2.0.0-next.47:
@@ -3906,10 +3906,10 @@ packages:
       - supports-color
     dev: false
 
-  /fastify-type-provider-effect-schema@0.0.2(@effect/schema@0.42.0)(fastify@4.23.2):
-    resolution: {integrity: sha512-7NDHn7RZXVPNgOQDzrCY0xKevp9mTUTyR3tlRqxauDfX//14sI9es7RzjglWbfEEc7pig/FuLiHOiXV4KMk1dg==}
+  /fastify-type-provider-effect-schema@0.0.3(@effect/schema@0.42.0)(fastify@4.23.2):
+    resolution: {integrity: sha512-0S7ZYrtCAo7WJSP7MWsr2AFXiQePAOIoVQ3EBdAMRDWTPTwpMx+q3wNnPXMpuQwqx3x1LeTgwEi8bGMy0AlVmQ==}
     peerDependencies:
-      '@effect/schema': 0.42.0
+      '@effect/schema': ^0.12.1
       fastify: ^4.0.0
     dependencies:
       '@effect/schema': 0.42.0(effect@2.0.0-next.47)(fast-check@3.13.1)
@@ -4093,7 +4093,7 @@ packages:
     dev: true
 
   /fresh@0.5.2:
-    resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
+    resolution: {integrity: sha1-PYyt2Q2XZWn6g1qx+OSyOhBWBac=}
     engines: {node: '>= 0.6'}
     dev: false
 
@@ -7435,7 +7435,7 @@ packages:
   /trpc-playground@1.0.4(@effect-app/typescript@5.3.0-tsplus.202310052)(@trpc/server@10.26.0)(@types/node@20.8.3)(fastify@4.23.2)(zod@3.22.4):
     resolution: {integrity: sha512-6nVf1o2LNoo1g6oTS24yajoH7xV4CFjxGAbAH7qLXqa3yo9qB5QHsWLbrm1hNt51SyCG++P0zHJaCdVfgvEVDg==}
     peerDependencies:
-      '@trpc/server': daotl/trpc#f40bc9dc6bc14827802f46cc377cf4fa164ccb05
+      '@trpc/server': ^10
       zod: ^3
     dependencies:
       '@trpc-playground/html': 1.0.4(@types/node@20.8.3)
@@ -7502,7 +7502,7 @@ packages:
     peerDependencies:
       '@swc/core': '>=1.2.50'
       '@swc/wasm': '>=1.2.50'
-      '@types/node': ~20.8.3
+      '@types/node': '*'
       typescript: '>=2.7'
     peerDependenciesMeta:
       '@swc/core':
@@ -7533,7 +7533,7 @@ packages:
     peerDependencies:
       '@swc/core': '>=1.2.50'
       '@swc/wasm': '>=1.2.50'
-      '@types/node': ~20.8.3
+      '@types/node': '*'
       typescript: '>=2.7'
     peerDependenciesMeta:
       '@swc/core':
@@ -7562,8 +7562,8 @@ packages:
     resolution: {integrity: sha512-tL0w8U/pgaacOmkb9fRlYzWEUDCfVjjv9dD4wHTgZ61MjhuMt46VNWTG747NqW6vRzoWIKABVhFSOJ82FvXrfA==}
     dev: false
 
-  /ts-to-effect-schema@0.0.8(@types/node@20.8.3)(fast-check@3.13.1):
-    resolution: {integrity: sha512-iQT796nXJqOTGVvKI0oajpPGTjKzwj3ZWKF9Ae+IKkfFe5ZyanIABf+QvAx1YtRhB884QLlAOPYqvF4giCEu0A==}
+  /ts-to-effect-schema@0.0.10(@types/node@20.8.3)(fast-check@3.13.1):
+    resolution: {integrity: sha512-37eH0xP1jucfZO/S+exK2uRaFeR+jRlOE890sEbmpZZYiWz/ouzArcsaHiizSwVUunkuPKTN/7MCaF68R5W48Q==}
     hasBin: true
     dependencies:
       '@effect/schema': 0.42.0(effect@2.0.0-next.47)(fast-check@3.13.1)
@@ -8073,7 +8073,7 @@ packages:
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
-      '@types/node': ~20.8.3
+      '@types/node': '>= 14'
       less: '*'
       lightningcss: ^1.21.0
       sass: '*'

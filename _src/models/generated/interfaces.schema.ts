@@ -9,7 +9,6 @@ import type {
   IsEmptyObject,
 } from "type-fest";
 import * as AST from "@effect/schema/AST";
-import { pipe } from "effect/Function";
 import type {
   Category,
   Group,
@@ -43,15 +42,18 @@ export type ObjectSchema<T extends Object> = S.Schema<
   ReadonlyDeep<T>
 >;
 
-export const getPropertySignatures = <I extends { [K in keyof A]: any }, A>(
+// https://github.com/Effect-TS/schema/releases/tag/v0.18.0
+// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+export const getPropertySchemas = <I extends { [K in keyof A]: any }, A>(
   schema: S.Schema<I, A>
 ): { [K in keyof A]: S.Schema<I[K], A[K]> } => {
-  const out: Record<PropertyKey, S.Schema<any>> = {};
-  const propertySignatures = AST.getPropertySignatures(schema.ast);
+  const out: Record<PropertyKey, S.Schema<unknown>> = {};
+  const propertySignatures = AST.getPropertySignatures(S.to(schema).ast);
   for (let i = 0; i < propertySignatures.length; i++) {
-    const propertySignature = propertySignatures[i]!;
+    const propertySignature = propertySignatures[i] as AST.PropertySignature;
     out[propertySignature.name] = S.make(propertySignature.type);
   }
+  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
   return out as any;
 };
 
@@ -61,19 +63,19 @@ export type CommonKey<T, U, TK = keyof T, UK = keyof U> = {
 };
 
 const omitCommonProperties = <
-  I extends { [K in keyof A]: unknown },
+  I extends { [K in keyof A]?: unknown },
   A,
-  IB extends { [K in keyof B]: unknown },
+  IB extends { [K in keyof B]?: unknown },
   B,
   R = IsEmptyObject<CommonKey<A, B>> extends true
     ? S.Schema<I, A>
-    : S.Schema<I, Omit<A, keyof CommonKey<A, B>>>
+    : S.Schema<Omit<I, keyof CommonKey<I, IB>>, Omit<A, keyof CommonKey<A, B>>>
 >(
   self: S.Schema<I, A>,
   that: S.Schema<IB, B>
 ): R => {
-  const selfObj = getPropertySignatures(self);
-  const thatObj = getPropertySignatures(that);
+  const selfObj = getPropertySchemas(self);
+  const thatObj = getPropertySchemas(that);
 
   const intersections = Object.keys(selfObj).reduce<(keyof A)[]>(
     (keys, key) => {
@@ -87,8 +89,7 @@ const omitCommonProperties = <
   ) as unknown as (keyof CommonKey<A, B>)[];
 
   if (intersections.length) {
-    return pipe(
-      self,
+    return self.pipe(
       S.omit<A, (keyof CommonKey<A, B>)[]>(...intersections)
     ) as unknown as R;
   }
@@ -102,8 +103,7 @@ export const stdBaseObjectSchema = S.struct({
 
 export const stdObjectSchema = stdBaseObjectSchema;
 
-export const baseSchema = pipe(
-  stdObjectSchema,
+export const baseSchema = stdObjectSchema.pipe(
   S.extend(
     omitCommonProperties(
       S.struct({
@@ -117,8 +117,7 @@ export const baseSchema = pipe(
 export const roleSchema = S.union(S.literal("user"), S.literal("admin"));
 
 export const categorySchema: ObjectSchema<Category> = S.lazy(() =>
-  pipe(
-    baseSchema,
+  baseSchema.pipe(
     S.extend(
       omitCommonProperties(
         S.struct({
@@ -132,8 +131,7 @@ export const categorySchema: ObjectSchema<Category> = S.lazy(() =>
 );
 
 export const groupSchema: ObjectSchema<Group> = S.lazy(() =>
-  pipe(
-    baseSchema,
+  baseSchema.pipe(
     S.extend(
       omitCommonProperties(
         S.struct({
@@ -151,8 +149,7 @@ export const groupSchema: ObjectSchema<Group> = S.lazy(() =>
 );
 
 export const userSchema: ObjectSchema<User> = S.lazy(() =>
-  pipe(
-    baseSchema,
+  baseSchema.pipe(
     S.extend(
       omitCommonProperties(
         S.struct({
@@ -173,8 +170,7 @@ export const userSchema: ObjectSchema<User> = S.lazy(() =>
 );
 
 export const groupRoleSchema: ObjectSchema<GroupRole> = S.lazy(() =>
-  pipe(
-    baseSchema,
+  baseSchema.pipe(
     S.extend(
       omitCommonProperties(
         S.struct({
@@ -189,8 +185,7 @@ export const groupRoleSchema: ObjectSchema<GroupRole> = S.lazy(() =>
 );
 
 export const postSchema: ObjectSchema<Post> = S.lazy(() =>
-  pipe(
-    baseSchema,
+  baseSchema.pipe(
     S.extend(
       omitCommonProperties(
         S.struct({
@@ -211,8 +206,7 @@ export const postSchema: ObjectSchema<Post> = S.lazy(() =>
 );
 
 export const profileSchema: ObjectSchema<Profile> = S.lazy(() =>
-  pipe(
-    baseSchema,
+  baseSchema.pipe(
     S.extend(
       omitCommonProperties(
         S.struct({
