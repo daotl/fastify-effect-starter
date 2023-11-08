@@ -1,15 +1,9 @@
 {
-  "extends": [
-    "@tsconfig/strictest",
-    "@tsconfig/node20",
-    "@tsconfig/esm"
-  ],
+  "extends": ["@tsconfig/strictest", "@tsconfig/node20", "@tsconfig/esm"],
   "compilerOptions": {
     "tsPlusConfig": "./tsplus.config.json",
     "module": "NodeNext",
-    "lib": [
-      "esnext"
-    ],
+    "lib": ["esnext"],
     "target": "es2021",
     "composite": true,
     "incremental": true,
@@ -54,9 +48,7 @@
       {
         "name": "@effect/language-service/transformer",
         "trace": {
-          "exclude": [
-            "**/*.ts"
-          ]
+          "exclude": ["**/*.ts"]
         }
         //"debug": {}
       }
@@ -83,11 +75,7 @@
       "**/.logs",
       "**/.*"
     ],
-    "excludeFiles": [
-      "**/*.tmp",
-      "openapi.json",
-      "*.json"
-    ]
+    "excludeFiles": ["**/*.tmp", "openapi.json", "*.json"]
   },
   "exclude": [
     "**/__template.ts",

@@ -35,6 +35,30 @@
       ],
       "type": "pwa-node",
       "sourceMaps": true
-    }
+    },
+		{
+			"type": "dockerfile",
+			"request": "launch",
+			"name": "Debug Dockerfile",
+			"program": "${workspaceFolder}/docker/Dockerfile",
+			"stopOnEntry": true,
+		},
+		{
+			"type": "dockerfile",
+			"request": "launch",
+			"name": "Debug Dockerfile Without Stop On Entry",
+			"program": "${workspaceFolder}/docker/Dockerfile",
+			"stopOnEntry": false,
+		},
+		{
+			"type": "dockerfile",
+			"request": "launch",
+			"name": "Debug Dockerfile With Options",
+			"program": "${workspaceFolder}/docker/Dockerfile",
+			"stopOnEntry": true,
+			"build-args": [ "FOO=bar", "AAA=bbbbb" ],
+			"target": "build2",
+			"image": "ghcr.io/stargz-containers/ubuntu:20.04-org",
+		},
   ]
 }
