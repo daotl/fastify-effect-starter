@@ -26,7 +26,7 @@ export const router = () =>
   })
 
 const count = p.optional
-  .input(Schema.parseSync(zPostListInput))
+  .input(Schema.decodeUnknownSync(zPostListInput))
   .query(({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(() =>
@@ -43,7 +43,7 @@ const count = p.optional
   )
 
 const list = p.optional
-  .input(Schema.parseSync(zPostListInput))
+  .input(Schema.decodeUnknownSync(zPostListInput))
   .query(({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(() =>
@@ -59,7 +59,7 @@ const list = p.optional
   )
 
 const listWithTotal = p.optional
-  .input(Schema.parseSync(zPostListInput))
+  .input(Schema.decodeUnknownSync(zPostListInput))
   .query(({ input }) => {
     const shape = {
       ...e.Post['*'],
@@ -71,7 +71,7 @@ const listWithTotal = p.optional
         e
           .select({
             total: e.count(
-              e.select(e.Post, (_) => R.omit(['offset', 'limit'])(shape)),
+              e.select(e.Post, (_) => $R.omit(shape, ['offset', 'limit'])),
             ),
             data: e.select(e.Post, (_) => shape),
           })
@@ -81,7 +81,7 @@ const listWithTotal = p.optional
   })
 
 const get = p.optional
-  .input(Schema.parseSync(sIdInput))
+  .input(Schema.decodeUnknownSync(sIdInput))
   .query(({ input: { id } }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(() =>
@@ -96,13 +96,13 @@ const get = p.optional
   )
 
 const create = p.optional
-  .input(Schema.parseSync(toCreateSchema(postSchema)))
+  .input(Schema.decodeUnknownSync(toCreateSchema(postSchema)))
   .mutation(async ({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(() =>
         e
           .insert(e.Post, {
-            ...R.omit(input, [
+            ...$R.omit(input, [
               'author',
               'categories',
               'viewerGroups',
@@ -120,13 +120,13 @@ const create = p.optional
   )
 
 const update = p.optional
-  .input(Schema.parseSync(toUpdateSchema(postSchema)))
+  .input(Schema.decodeUnknownSync(toUpdateSchema(postSchema)))
   .mutation(async ({ input }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(() =>
         e
           .update(e.Post, () => ({
-            set: R.omit(input, [
+            set: $R.omit(input, [
               'author',
               'categories',
               'viewerGroups',
@@ -141,7 +141,7 @@ const update = p.optional
   )
 
 const _delete = p.optional
-  .input(Schema.parseSync(sIdInput))
+  .input(Schema.decodeUnknownSync(sIdInput))
   .mutation(async ({ input: { id } }) =>
     E.tagEdgedb.flatMap((edgedb) =>
       Effect.promise(() =>

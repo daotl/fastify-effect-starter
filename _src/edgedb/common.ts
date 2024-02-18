@@ -17,7 +17,7 @@ export const upsertConflictGetter =
   >(
     on: On,
     insertShape: InsShape,
-    updateShapeFn: UpShapeFn = R.identity as UpShapeFn,
+    updateShapeFn: UpShapeFn = $R.identity as UpShapeFn,
   ) =>
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   (obj: $scopify<Root['__element__']>) => ({

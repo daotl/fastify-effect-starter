@@ -29,7 +29,8 @@ export type ReplaceTypeDeep<T, From, To> = T extends BuiltIns
   ? ReplaceType<T, From, To>
   : IsUnknown<T> extends true
   ? ReplaceType<T, From, To>
-  : T extends Function
+  : // biome-ignore lint/complexity/noBannedTypes: <explanation>
+  T extends Function
   ? ReplaceType<T, From, To>
   : {
       [K in keyof T]: ReplaceTypeDeep<T[K], From, To>;
@@ -37,23 +38,23 @@ export type ReplaceTypeDeep<T, From, To> = T extends BuiltIns
 
 export type ReplaceDateToStringDeep<T> = ReplaceTypeDeep<T, Date, string>;
 
-export type ObjectSchema<T extends Object> = S.Schema<
-  ReplaceDateToStringDeep<ReadonlyDeep<T>>,
-  ReadonlyDeep<T>
+export type ObjectSchema<T extends object> = S.Schema<
+  ReadonlyDeep<T>,
+  ReplaceDateToStringDeep<ReadonlyDeep<T>>
 >;
 
 // https://github.com/Effect-TS/schema/releases/tag/v0.18.0
-// rome-ignore lint/suspicious/noExplicitAny: <explanation>
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 export const getPropertySchemas = <I extends { [K in keyof A]: any }, A>(
-  schema: S.Schema<I, A>
-): { [K in keyof A]: S.Schema<I[K], A[K]> } => {
-  const out: Record<PropertyKey, S.Schema<unknown>> = {};
+  schema: S.Schema<A, I>
+): { [K in keyof A]: S.Schema<A[K], I[K]> } => {
+  const out: Record<PropertyKey, S.Schema<unknown, unknown>> = {};
   const propertySignatures = AST.getPropertySignatures(S.to(schema).ast);
   for (let i = 0; i < propertySignatures.length; i++) {
     const propertySignature = propertySignatures[i] as AST.PropertySignature;
     out[propertySignature.name] = S.make(propertySignature.type);
   }
-  // rome-ignore lint/suspicious/noExplicitAny: <explanation>
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   return out as any;
 };
 
@@ -68,11 +69,11 @@ const omitCommonProperties = <
   IB extends { [K in keyof B]?: unknown },
   B,
   R = IsEmptyObject<CommonKey<A, B>> extends true
-    ? S.Schema<I, A>
-    : S.Schema<Omit<I, keyof CommonKey<I, IB>>, Omit<A, keyof CommonKey<A, B>>>
+    ? S.Schema<A, I>
+    : S.Schema<Omit<A, keyof CommonKey<A, B>>, Omit<I, keyof CommonKey<I, IB>>>
 >(
-  self: S.Schema<I, A>,
-  that: S.Schema<IB, B>
+  self: S.Schema<A, I>,
+  that: S.Schema<B, IB>
 ): R => {
   const selfObj = getPropertySchemas(self);
   const thatObj = getPropertySchemas(that);
@@ -116,7 +117,7 @@ export const baseSchema = stdObjectSchema.pipe(
 
 export const roleSchema = S.union(S.literal("user"), S.literal("admin"));
 
-export const categorySchema: ObjectSchema<Category> = S.lazy(() =>
+export const categorySchema: ObjectSchema<Category> = S.suspend(() =>
   baseSchema.pipe(
     S.extend(
       omitCommonProperties(
@@ -130,7 +131,7 @@ export const categorySchema: ObjectSchema<Category> = S.lazy(() =>
   )
 );
 
-export const groupSchema: ObjectSchema<Group> = S.lazy(() =>
+export const groupSchema: ObjectSchema<Group> = S.suspend(() =>
   baseSchema.pipe(
     S.extend(
       omitCommonProperties(
@@ -148,7 +149,7 @@ export const groupSchema: ObjectSchema<Group> = S.lazy(() =>
   )
 );
 
-export const userSchema: ObjectSchema<User> = S.lazy(() =>
+export const userSchema: ObjectSchema<User> = S.suspend(() =>
   baseSchema.pipe(
     S.extend(
       omitCommonProperties(
@@ -169,7 +170,7 @@ export const userSchema: ObjectSchema<User> = S.lazy(() =>
   )
 );
 
-export const groupRoleSchema: ObjectSchema<GroupRole> = S.lazy(() =>
+export const groupRoleSchema: ObjectSchema<GroupRole> = S.suspend(() =>
   baseSchema.pipe(
     S.extend(
       omitCommonProperties(
@@ -184,7 +185,7 @@ export const groupRoleSchema: ObjectSchema<GroupRole> = S.lazy(() =>
   )
 );
 
-export const postSchema: ObjectSchema<Post> = S.lazy(() =>
+export const postSchema: ObjectSchema<Post> = S.suspend(() =>
   baseSchema.pipe(
     S.extend(
       omitCommonProperties(
@@ -205,7 +206,7 @@ export const postSchema: ObjectSchema<Post> = S.lazy(() =>
   )
 );
 
-export const profileSchema: ObjectSchema<Profile> = S.lazy(() =>
+export const profileSchema: ObjectSchema<Profile> = S.suspend(() =>
   baseSchema.pipe(
     S.extend(
       omitCommonProperties(

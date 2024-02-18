@@ -8,7 +8,6 @@ export const newAuthHook =
   (req, reply, done) => {
     // Refresh session
     req.session.touch()
-
     const authLevel = req.routeOptions.config.authLevel ?? 'protected'
 
     if (

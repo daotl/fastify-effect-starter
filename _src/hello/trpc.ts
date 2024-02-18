@@ -5,11 +5,11 @@ export const router = () =>
   t.router({
     hello: p.protected
       .input(
-        Schema.parseSync(
+        Schema.decodeUnknownSync(
           Schema.struct({ username: Schema.optional(Schema.string) }),
         ),
       )
-      .output(Schema.parseSync(Schema.struct({ text: Schema.string })))
+      .output(Schema.decodeUnknownSync(Schema.struct({ text: Schema.string })))
       .query(({ input, ctx }) => {
         return tagLogger.flatMap((logger) => {
           const text = `hello ${input?.username ?? ctx.user?.name ?? 'world'}`

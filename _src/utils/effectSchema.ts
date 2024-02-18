@@ -1,25 +1,27 @@
 export const toCreateSchema = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  From extends { [K in keyof To]: any },
-  To extends {
+  A extends { [K in keyof I]: any },
+  I extends {
     readonly id: string
-    readonly createdAt: Date
-  } = From,
+    readonly createdAt: string
+  },
+  R = never,
 >(
-  schema: Schema<From, To>,
+  schema: Schema<A, I, R>,
 ) => {
   return pipe(schema, Schema.omit('id', 'createdAt'))
 }
 
 export const toUpdateSchema = <
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  From extends { [K in keyof To]: any },
-  To extends {
+  A extends { [K in keyof I]: any },
+  I extends {
     readonly id: string
-    readonly createdAt: Date
-  } = From,
+    readonly createdAt: string
+  },
+  R = never,
 >(
-  schema: Schema<From, To>,
+  schema: Schema<A, I, R>,
 ) => {
-  return pipe(schema, Schema.omit('id', 'createdAt'), Schema.partial)
+  return Schema.partial(pipe(schema, Schema.omit('id', 'createdAt')))
 }

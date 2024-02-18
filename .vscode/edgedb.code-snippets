@@ -9,7 +9,7 @@
       "e.select({",
       "  total: e.count(",
       "    e.select(e.$1,",
-      "      (_) => R.omit(['offset', 'limit'])(shape),",
+      "      (_) => $R.omit(['offset', 'limit'])(shape),",
       "    ),",
       "  ),",
       "  data: e.select(e.$1, (_) => shape)",

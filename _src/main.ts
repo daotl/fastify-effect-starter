@@ -39,14 +39,20 @@ export const initFastify = fa.accessFastify.tap((fastify) => {
   return Effect.unit
 })
 
-const routes =
-  auth.routes(authConfig)({ prefix: '/api/auth' }) >
-  fa.get('/api/hello', (req) => {
-    const oUserName = Option.fromNullable(req.session.user).map(R.prop('name'))
+const routes = auth
+  .routes(authConfig)({ prefix: '/api/auth' })
+  .zipRight(
+    fa.get('/api/hello', (req) => {
+      const oUserName = Option.fromNullable(req.session.user).map(
+        $R.prop('name'),
+      )
 
-    return Effect.succeed({ msg: `hello ${oUserName.getOrElse('anonymous')}` })
-  })
+      return Effect.succeed({
+        msg: `hello ${oUserName.getOrElse('anonymous')}`,
+      })
+    }),
+  )
 
-export const main = initFastify > routes > fa.listen
+export const main = initFastify.zipRight(routes).zipRight(fa.listen)
 
 await runtime.runPromise(main).then(console.log).catch(console.error)

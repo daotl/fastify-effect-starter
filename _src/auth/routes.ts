@@ -7,10 +7,10 @@ import type { AuthConfig } from './config.js'
 
 const signOutUrl = '/api/hello'
 
-export const routes = (cfg: AuthConfig) =>
-  fa.register(
-    (fa) =>
-      fa.route({
+export const routes = (cfg: AuthConfig) => {
+  return fa.register((fa) => {
+    return fa
+      .route({
         config: { authLevel: 'public' },
         method: 'GET',
         url: '/signin',
@@ -50,21 +50,25 @@ export const routes = (cfg: AuthConfig) =>
             reply.code(200) //.send({ status: 'ok' })
             return { status: 'ok' } as const
           }),
-      }) >
-      fa.route({
-        config: { authLevel: 'protected' },
-        method: 'GET',
-        url: '/signout',
-        schema: {
-          response: {
-            [StatusCodes.OK]: Schema.literal(''),
+      })
+      .zipRight(
+        fa.route({
+          config: { authLevel: 'protected' },
+          method: 'GET',
+          url: '/signout',
+          schema: {
+            response: {
+              [StatusCodes.OK]: Schema.literal(''),
+            },
           },
-        },
-        handler: (req, reply) =>
-          // biome-ignore lint/correctness/useYield: ignore
-          Effect.gen(function* () {
-            req.session.destroy()
-            reply.redirect(signOutUrl)
-          }),
-      }),
-  )
+          handler: (req, reply) =>
+            // biome-ignore lint/correctness/useYield: ignore
+            Effect.gen(function* () {
+              req.session.destroy()
+              reply.redirect(signOutUrl)
+            }),
+        }),
+        { concurrent: true },
+      )
+  })
+}

@@ -6,7 +6,7 @@ const client = createClient().withConfig({
   allow_user_specified_id: true,
 })
 
-const authConfig = AuthConfig.config.runSync$
+const authConfig = AuthConfig.runSync$
 
 async function main(): Promise<void> {
   const users = await Promise.all([
@@ -86,7 +86,7 @@ async function main(): Promise<void> {
         .unlessConflict((_) => ({
           on: e.Post.title,
           else: e.update(_, () => ({
-            set: R.omit(['author'])(p),
+            set: $R.omit(p, ['author']),
           })),
         }))
         .run(client),

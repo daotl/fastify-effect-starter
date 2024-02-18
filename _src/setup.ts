@@ -10,7 +10,6 @@ import { fa } from '~/fastify/index.js'
 import { liveLogger } from '~/logger.js'
 
 import { ApiConfig } from './config.js'
-
 // runtimeDebug.traceStackLimit = 50
 // const appConfig = BaseConfig.config.runSync$
 // if (process.argv.includes('--debug') || appConfig.env === 'local-dev') {
@@ -20,18 +19,20 @@ import { ApiConfig } from './config.js'
 //   // runtimeDebug.filterStackFrame = _ => true
 // }
 
-export const apiConfig = ApiConfig.config.runSync$
+export const apiConfig = ApiConfig.runSync$
 export const liveFastify = fa.createLiveFastify(apiConfig.host, apiConfig.port)
 
 export const liveEdgedb = createLiveEdgedb({
   allow_user_specified_id: true,
 })
 
-export const services = liveLogger > liveFastify > liveEdgedb
+export const services = liveLogger
+  .provideMerge(liveFastify)
+  .provideMerge(liveEdgedb)
 
 const { runtime, clean } = Runtime.defaultRuntime.runSync(
   makeBasicRuntime(services),
 )
 export { runtime, clean }
 
-export const authConfig = auth.AuthConfig.config.runSync$
+export const authConfig = auth.AuthConfig.runSync$

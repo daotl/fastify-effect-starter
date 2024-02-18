@@ -103,7 +103,7 @@ export const genFilterQuery = <M extends OModel>(
 ) => {
   const ops = Object.entries(filterJson).reduce((pre, [key, item]) => {
     const _o = {}
-    const o = R.pathOr(
+    const o = $R.pathOr(
       obj,
       // @ts-expect-error
       `${parentPath ? `${parentPath}.` : ''}${key}`.split('.'),
@@ -112,7 +112,7 @@ export const genFilterQuery = <M extends OModel>(
 
     if (_o === o) {
       return pre
-    } else if (!R.isObject(item)) {
+    } else if (!$R.isObject(item)) {
       // @ts-expect-error
       pre.push(e.op(o, '=', item))
     } else if (item.op === 'contains') {

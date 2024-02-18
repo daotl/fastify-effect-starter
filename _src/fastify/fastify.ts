@@ -39,7 +39,7 @@ export type FastifyNestedRoutes = Fa.FastifyPluginCallback<
 >
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-type SchemaTypeAny = Schema<any, any>
+type SchemaTypeAny = Schema<any, any, never>
 export interface FastifyEffectSchemaSchema {
   body?: SchemaTypeAny
   querystring?: SchemaTypeAny

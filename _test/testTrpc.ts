@@ -14,4 +14,3 @@ const client = createTRPCProxyClient<TrpcRouter>(trpcClientOpts)
 const a = await client.hello.hello.query({
   username: 'lifang',
 })
-console.log(a.text, 'text')
